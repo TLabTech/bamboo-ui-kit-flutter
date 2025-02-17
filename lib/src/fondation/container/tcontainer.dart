@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/fondation/utils/tshadow.dart';
+import 'package:flutter_bamboo_ui_kit/src/fondation/utils/tshadow.dart';
 
 class TContainerWBoxDecoration extends StatelessWidget {
   final Widget widget;

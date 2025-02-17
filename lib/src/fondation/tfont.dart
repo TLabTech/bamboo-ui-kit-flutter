@@ -1,8 +1,8 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 const String fontFamily = 'Inter';
 
-class TFontReguler {
+class TFontRegular {
   static TextStyle titleLarge = TextStyle(fontFamily: fontFamily, fontWeight: FontWeight.w400, fontSize: 34);
 
   static TextStyle title1 = TextStyle(fontFamily: fontFamily, fontWeight: FontWeight.w400, fontSize: 28);
@@ -15,7 +15,7 @@ class TFontReguler {
 
   static TextStyle body = TextStyle(fontFamily: fontFamily, fontWeight: FontWeight.w400, fontSize: 17);
 
-  static TextStyle callout = TextStyle(fontFamily: fontFamily, fontWeight: FontWeight.w400, fontSize: 16);
+  static TextStyle callOut = TextStyle(fontFamily: fontFamily, fontWeight: FontWeight.w400, fontSize: 16);
 
   static TextStyle subHeadline = TextStyle(fontFamily: fontFamily, fontWeight: FontWeight.w400, fontSize: 15);
 

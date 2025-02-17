@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bamboo_ui_kit/fondation/hex_color.dart';
+import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 
 class TShadow {
   static final BoxShadow shadowS = BoxShadow(

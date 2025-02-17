@@ -1,0 +1,105 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+
+import '../../fondation/hex_color.dart';
+
+class TSwitch extends StatefulWidget {
+  final String label;
+  final String description;
+  final bool value;
+  final ValueChanged<bool> onChanged;
+  final String? error;
+
+  const TSwitch({
+    super.key,
+    required this.label,
+    required this.description,
+    required this.value,
+    required this.onChanged,
+    this.error,
+  });
+
+  @override
+  State<TSwitch> createState() => _TSwitchState();
+}
+
+class _TSwitchState extends State<TSwitch> {
+  bool _internalValue = false; // To manage tap and error display
+
+  @override
+  void initState() {
+    super.initState();
+    _internalValue = widget.value;
+  }
+
+  @override
+  void didUpdateWidget(covariant TSwitch oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.value != widget.value) {
+      _internalValue = widget.value;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        if (widget.error == null) {
+          setState(() {
+            _internalValue = !_internalValue;
+          });
+          widget.onChanged(_internalValue);
+        }
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Switch(
+            value: _internalValue,
+            onChanged: (newValue) {
+              if (widget.error == null) {
+                setState(() {
+                  _internalValue = newValue;
+                });
+                widget.onChanged(newValue);
+              }
+            },
+            activeColor: HexColor(neutral050),
+            activeTrackColor: HexColor(primary500),
+          ),
+          const SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                widget.label,
+                style: TFontRegular.body.copyWith(
+                  color: widget.error != null
+                      ? HexColor(danger500)
+                      : HexColor(neutral900),
+                ),
+              ),
+              Text(
+                widget.description,
+                  style: TFontRegular.footNote.copyWith(
+                    color: HexColor(neutral500),
+                  ),
+              ),
+              if (widget.error != null) ...[
+                const SizedBox(height: 4),
+                Text(
+                  widget.error!,
+                  style: TFontRegular.footNote.copyWith(
+                    color: HexColor(danger500),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
