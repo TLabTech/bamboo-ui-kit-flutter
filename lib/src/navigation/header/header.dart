@@ -1,0 +1,244 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/src/fondation/utils/static_constant.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../../fondation/hex_color.dart';
+
+enum HeaderType { defaultType, nested, homepage, search }
+
+class THeader extends StatefulWidget implements PreferredSizeWidget {
+  final String title;
+  final String? subtitle;
+  final String? hintText;
+  final bool enableCenterTitle;
+  final bool isBackButtonEnabled;
+  final Widget? prefixAction;
+  final List<Widget>? suffixAction;
+  final Color? backgroundColor;
+  final HeaderType headerType;
+  final Function(String)? onChanged;
+  final Function(String)? onSubmitted;
+
+  const THeader({
+    super.key,
+    required this.title,
+    this.enableCenterTitle = false,
+    this.suffixAction,
+    this.backgroundColor,
+  })  : headerType = HeaderType.defaultType,
+        isBackButtonEnabled = false,
+        subtitle = null,
+        prefixAction = null,
+        hintText = null,
+        onChanged = null,
+        onSubmitted = null;
+
+  const THeader.nested({
+    super.key,
+    required this.title,
+    this.enableCenterTitle = false,
+    this.suffixAction,
+    this.backgroundColor,
+    this.prefixAction,
+  })  : headerType = HeaderType.nested,
+        subtitle = null,
+        isBackButtonEnabled = true,
+        hintText = null,
+        onChanged = null,
+        onSubmitted = null;
+
+  const THeader.homepage({
+    super.key,
+    required this.title,
+    this.subtitle,
+    this.enableCenterTitle = false,
+    this.suffixAction,
+    this.backgroundColor,
+    this.prefixAction,
+  })  : headerType = HeaderType.homepage,
+        isBackButtonEnabled = false,
+        hintText = null,
+        onChanged = null,
+        onSubmitted = null;
+
+  const THeader.search({
+    super.key,
+    required this.title,
+    this.backgroundColor,
+    this.hintText,
+    this.onSubmitted,
+    this.onChanged,
+    this.prefixAction,
+  })  : headerType = HeaderType.search,
+        subtitle = null,
+        suffixAction = null,
+        enableCenterTitle = false,
+        isBackButtonEnabled = true;
+
+  @override
+  State<THeader> createState() => _THeaderState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(88);
+}
+
+class _THeaderState extends State<THeader> {
+  final TextEditingController _controller = TextEditingController();
+  bool _isTextNotEmpty = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      setState(() {
+        _isTextNotEmpty = _controller.text.isNotEmpty;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget child;
+
+    if (widget.headerType == HeaderType.defaultType) {
+      child = _buildDefaultHeader(context);
+    } else if (widget.headerType == HeaderType.nested) {
+      child = _buildDefaultHeader(context);
+    } else if (widget.headerType == HeaderType.homepage) {
+      child = _buildHomepageHeader(context);
+    } else if (widget.headerType == HeaderType.search) {
+      child = _buildSearchHeader(context);
+    } else {
+      child = _buildDefaultHeader(context);
+    }
+
+    return AppBar(
+      toolbarHeight: 88.0,
+      automaticallyImplyLeading: false,
+      backgroundColor: widget.backgroundColor ?? Colors.white,
+      surfaceTintColor: Colors.transparent,
+      titleSpacing: 0,
+      centerTitle: widget.enableCenterTitle,
+      iconTheme: IconThemeData(color: HexColor(neutral900)),
+      elevation: 0,
+      leading: widget.isBackButtonEnabled
+          ? (widget.prefixAction ??
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+                  child: SvgPicture.asset(
+                    Assets.iconChevronLeft,
+                  ),
+                ),
+              ))
+          : null,
+      title: child,
+      actions: widget.suffixAction,
+    );
+  }
+
+  Widget _buildDefaultHeader(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 16.0),
+      child: Text(
+        widget.title,
+        style: TFontRegular.title3,
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  Widget _buildHomepageHeader(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 16.0),
+      child: Row(
+        children: [
+          SizedBox(
+            height: 40,
+            width: 40,
+            child: widget.prefixAction,
+          ),
+          SizedBox(
+            width: 18,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.title,
+                style:
+                    TFontRegular.title3.copyWith(color: HexColor(neutral900)),
+                textAlign: TextAlign.center,
+              ),
+              if (widget.subtitle != null)
+                Text(
+                  widget.subtitle!,
+                  style: TFontRegular.caption2.copyWith(
+                    color: HexColor(neutral500),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSearchHeader(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 8.0, right: 16.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(left: 12.0),
+              decoration: BoxDecoration(
+                color: HexColor(neutral500).withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Row(
+                children: [
+                  SvgPicture.asset(Assets.iconSearch),
+                  const SizedBox(width: 8.0),
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      decoration: InputDecoration(
+                        hintText: widget.hintText,
+                        border: InputBorder.none,
+                      ),
+                      onChanged: (value) {
+                        widget.onChanged?.call(value);
+                      },
+                      onSubmitted: (value) {
+                        widget.onSubmitted?.call(value);
+                      },
+                    ),
+                  ),
+                  if (_isTextNotEmpty)
+                    IconButton(
+                      icon: SvgPicture.asset(Assets.iconClose),
+                      onPressed: () {
+                        _controller.clear();
+                      },
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

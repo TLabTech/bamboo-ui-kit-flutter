@@ -10,3 +10,4 @@ export 'widgets/accordion.dart';
 export 'widgets/avatar.dart';
 export 'widgets/badge.dart';
 export 'widgets/tile.dart';
+export 'widgets/header.dart';
