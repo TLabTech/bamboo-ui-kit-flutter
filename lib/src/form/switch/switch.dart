@@ -9,6 +9,8 @@ class TSwitch extends StatefulWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
   final String? error;
+  final bool isEnabled;
+  final bool isError;
 
   const TSwitch({
     super.key,
@@ -17,6 +19,8 @@ class TSwitch extends StatefulWidget {
     required this.value,
     required this.onChanged,
     this.error,
+    this.isEnabled = false,
+    this.isError = false,
   });
 
   @override
@@ -30,6 +34,8 @@ class _TSwitchState extends State<TSwitch> {
   void initState() {
     super.initState();
     _internalValue = widget.value;
+
+    if (widget.isEnabled == false) _internalValue = false;
   }
 
   @override
@@ -38,13 +44,15 @@ class _TSwitchState extends State<TSwitch> {
     if (oldWidget.value != widget.value) {
       _internalValue = widget.value;
     }
+
+    if (widget.isEnabled == false) _internalValue = false;
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (widget.error == null) {
+        if (widget.error == null && widget.isEnabled) {
           setState(() {
             _internalValue = !_internalValue;
           });
@@ -58,11 +66,16 @@ class _TSwitchState extends State<TSwitch> {
           Switch(
             value: _internalValue,
             onChanged: (newValue) {
-              if (widget.error == null) {
+              if (widget.isEnabled) {
                 setState(() {
                   _internalValue = newValue;
                 });
                 widget.onChanged(newValue);
+              } else if (!widget.isEnabled){
+                setState(() {
+                  _internalValue = false;
+                });
+                widget.onChanged(_internalValue);
               }
             },
             activeColor: HexColor(neutral050),
@@ -76,7 +89,7 @@ class _TSwitchState extends State<TSwitch> {
               Text(
                 widget.label,
                 style: TFontRegular.body.copyWith(
-                  color: widget.error != null
+                  color: widget.isError
                       ? HexColor(danger500)
                       : HexColor(neutral900),
                 ),
