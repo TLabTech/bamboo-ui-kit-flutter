@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/gen/assets.gen.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/utils/static_constant.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../fondation/hex_color.dart';
@@ -137,7 +137,7 @@ class _THeaderState extends State<THeader> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16.0, right: 8.0),
                   child: SvgPicture.asset(
-                    Assets.iconChevronLeft,
+                    Assets.svg.chevronLeft,
                   ),
                 ),
               ))
@@ -209,7 +209,7 @@ class _THeaderState extends State<THeader> {
               ),
               child: Row(
                 children: [
-                  SvgPicture.asset(Assets.iconSearch),
+                  SvgPicture.asset(Assets.svg.magnifyingGlass),
                   const SizedBox(width: 8.0),
                   Expanded(
                     child: TextField(
@@ -228,7 +228,7 @@ class _THeaderState extends State<THeader> {
                   ),
                   if (_isTextNotEmpty)
                     IconButton(
-                      icon: SvgPicture.asset(Assets.iconClose),
+                      icon: SvgPicture.asset(Assets.svg.xMark),
                       onPressed: () {
                         _controller.clear();
                       },

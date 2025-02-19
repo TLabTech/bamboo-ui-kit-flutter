@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bamboo_ui_kit/gen/assets.gen.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../fondation/hex_color.dart';
-import '../../fondation/utils/static_constant.dart';
 
 enum TextFieldType { defaultType, multiline, password, email }
 
@@ -209,7 +209,7 @@ class TTextFieldState extends State<TTextField> {
               widget.type == TextFieldType.email
                   ? Padding(
                       padding: EdgeInsets.only(right: 8.0),
-                      child: SvgPicture.asset(Assets.iconEnvelope),
+                      child: SvgPicture.asset(Assets.svg.envelope),
                     )
                   : Padding(
                       padding: EdgeInsets.only(right: 8.0),
@@ -245,7 +245,7 @@ class TTextFieldState extends State<TTextField> {
               if (widget.obscureText) // Conditionally show the icon
                 IconButton(
                   icon: SvgPicture.asset(
-                      _obscureText ? Assets.iconEyeSlash : Assets.iconEye),
+                      _obscureText ? Assets.svg.eyeSlash : Assets.svg.eye),
                   onPressed: () {
                     setState(() {
                       _obscureText = !_obscureText;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/gen/fonts.gen.dart';
 
-const String fontFamily = 'Inter';
+const String fontFamily = FontFamily.inter;
 
 class TFontRegular {
   static TextStyle titleLarge = TextStyle(fontFamily: fontFamily, fontWeight: FontWeight.w400, fontSize: 34);
