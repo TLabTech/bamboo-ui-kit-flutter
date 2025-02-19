@@ -11,3 +11,5 @@ export 'widgets/avatar.dart';
 export 'widgets/badge.dart';
 export 'widgets/tile.dart';
 export 'widgets/header.dart';
+export 'widgets/tab.dart';
+export 'widgets/stepper.dart';
