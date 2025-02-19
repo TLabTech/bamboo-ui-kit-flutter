@@ -15,3 +15,4 @@ export 'widgets/tab.dart';
 export 'widgets/stepper.dart';
 export 'widgets/alert.dart';
 export 'widgets/progress.dart';
+export 'widgets/dialog.dart';
