@@ -15,7 +15,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   intl: ^0.19.0
   calendar_view:
-    path: /Users/mobiledev/AndroidStudioProjects/calendar_view
+    git:
+      url: https://github.com/ysavr/calendar_view.git
   fl_chart: ^0.70.2
 
 dev_dependencies:
