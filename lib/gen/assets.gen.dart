@@ -37,6 +37,14 @@ class $AssetsSvgGen {
   String get magnifyingGlass =>
       'packages/flutter_bamboo_ui_kit/assets/svg/magnifying-glass.svg';
 
+  /// File path: assets/svg/next-circle.svg
+  String get nextCircle =>
+      'packages/flutter_bamboo_ui_kit/assets/svg/next-circle.svg';
+
+  /// File path: assets/svg/previous-circle.svg
+  String get previousCircle =>
+      'packages/flutter_bamboo_ui_kit/assets/svg/previous-circle.svg';
+
   /// File path: assets/svg/x-mark.svg
   String get xMark => 'packages/flutter_bamboo_ui_kit/assets/svg/x-mark.svg';
 
@@ -49,6 +57,8 @@ class $AssetsSvgGen {
     eye,
     informationCircle,
     magnifyingGlass,
+    nextCircle,
+    previousCircle,
     xMark,
   ];
 }
