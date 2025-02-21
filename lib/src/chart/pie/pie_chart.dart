@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/src/chart/pie/pie_chart_data.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/charts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class TGroupBarChart extends StatelessWidget {
+class TPieChart extends StatelessWidget {
   final String title;
-  final List<ChartSeriesData> seriesList;
+  final List<PieChartData> data;
   final VoidCallback? optionTap;
-  final double height;
   final bool showLegends;
-  final Axis direction;
   final bool showOption;
+  final double? height;
 
-  const TGroupBarChart({
+  const TPieChart({
     super.key,
     required this.title,
-    required this.seriesList,
+    required this.data,
     this.optionTap,
     this.showLegends = true,
     this.showOption = true,
-    this.direction = Axis.horizontal,
     this.height = 300,
   });
 
@@ -35,7 +33,7 @@ class TGroupBarChart extends StatelessWidget {
         border: Border.all(color: HexColor(neutral300), width: 1.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -56,45 +54,26 @@ class TGroupBarChart extends StatelessWidget {
             const SizedBox(height: 10),
             SizedBox(
               height: height,
-              child: SfCartesianChart(
-                primaryXAxis: CategoryAxis(),
-                primaryYAxis:
-                    NumericAxis(minimum: 0, maximum: 100, interval: 20),
-                series: seriesList.map((seriesData) {
-                  if (direction == Axis.horizontal) {
-                    return ColumnSeries<ChartData, String>(
-                      name: seriesData.label,
-                      dataSource: seriesData.data,
-                      xValueMapper: (ChartData data, _) => data.label,
-                      yValueMapper: (ChartData data, _) => data.value,
-                      color: seriesData.color,
-                      dataLabelSettings: DataLabelSettings(
-                        isVisible: true,
-                        textStyle: TFontRegular.caption2
-                            .copyWith(color: HexColor(neutral900)),
-                        labelAlignment: ChartDataLabelAlignment.outer,
-                      ),
-                    );
-                  } else {
-                    return BarSeries<ChartData, String>(
-                      name: seriesData.label,
-                      dataSource: seriesData.data,
-                      xValueMapper: (ChartData data, _) => data.label,
-                      yValueMapper: (ChartData data, _) => data.value,
-                      color: seriesData.color,
-                      dataLabelSettings: DataLabelSettings(
-                        isVisible: true,
-                        textStyle: TFontRegular.caption2
-                            .copyWith(color: HexColor(neutral900)),
-                        labelAlignment: ChartDataLabelAlignment.outer,
-                      ),
-                    );
-                  }
-                }).toList(),
+              child: SfCircularChart(
+                series: <PieSeries<PieChartData, String>>[
+                  PieSeries<PieChartData, String>(
+                    dataSource: data,
+                    xValueMapper: (PieChartData data, _) => data.label,
+                    yValueMapper: (PieChartData data, _) => data.value,
+                    pointColorMapper: (PieChartData data, _) => data.color,
+                    dataLabelMapper: (PieChartData data, _) =>
+                        "${data.label}\n${data.value}",
+                    dataLabelSettings: const DataLabelSettings(
+                      isVisible: true,
+                      textStyle: TextStyle(fontSize: 14, color: Colors.white),
+                    ),
+                    explode: true,
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 10),
-            if (showLegends) _buildCustomLegend(),
+            if (showLegends) _buildCustomLegend()
           ],
         ),
       ),
@@ -105,7 +84,7 @@ class TGroupBarChart extends StatelessWidget {
     return Center(
       child: Wrap(
         spacing: 10,
-        children: seriesList.map((data) {
+        children: data.map((data) {
           return Row(
             mainAxisSize: MainAxisSize.min,
             children: [

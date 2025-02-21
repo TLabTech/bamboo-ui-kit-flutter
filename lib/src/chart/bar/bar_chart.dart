@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/chart.dart';
+import 'package:flutter_bamboo_ui_kit/widgets/charts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class TBarChart extends StatelessWidget {
