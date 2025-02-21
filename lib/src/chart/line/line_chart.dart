@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/chart/doughnut/doughnut_chart_data.dart';
+import 'package:flutter_bamboo_ui_kit/src/chart/line/legend_label.dart';
+import 'package:flutter_bamboo_ui_kit/src/chart/line/line_chart_data.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class TDoughnutChart extends StatelessWidget {
+class TLineChart extends StatelessWidget {
   final String title;
-  final List<DoughnutChartData> data;
+  final List<List<LineChartData>> data;
+  final List<LegendLabel>? legendLabels;
   final VoidCallback? optionTap;
   final bool showLegends;
   final bool showOption;
   final double? height;
 
-  const TDoughnutChart({
+  const TLineChart({
     super.key,
     required this.title,
     required this.data,
+    this.legendLabels,
     this.optionTap,
     this.showLegends = true,
     this.showOption = true,
@@ -51,55 +54,64 @@ class TDoughnutChart extends StatelessWidget {
                   ),
               ],
             ),
-            const SizedBox(height: 10),
             SizedBox(
               height: height ?? 250,
-              child: SfCircularChart(
-                series: <DoughnutSeries<DoughnutChartData, String>>[
-                  DoughnutSeries<DoughnutChartData, String>(
-                    dataSource: data,
-                    xValueMapper: (DoughnutChartData data, _) => data.label,
-                    yValueMapper: (DoughnutChartData data, _) => data.value,
-                    pointColorMapper: (DoughnutChartData data, _) => data.color,
-                    dataLabelMapper: (DoughnutChartData data, _) => "${data.label}\n${data.value}",
-                    dataLabelSettings: DataLabelSettings(
-                      isVisible: true,
-                      textStyle: TFontRegular.callOut.copyWith(color: Colors.white),
-                    ),
-                    innerRadius: '30%',
-                  ),
-                ],
+              child: SfCartesianChart(
+                primaryXAxis: CategoryAxis(),
+                primaryYAxis: NumericAxis(
+                  minimum: 0,
+                  maximum: 100,
+                  interval: 20,
+                ),
+                tooltipBehavior: TooltipBehavior(enable: true),
+                series: _buildLineSeries(),
               ),
             ),
-            SizedBox(height: 10),
-            if (showLegends) _buildCustomLegend()
+            const SizedBox(height: 10),
+            const SizedBox(height: 10),
+            if (showLegends) legendLabels == null ? SizedBox() : _buildLegends()
           ],
         ),
       ),
     );
   }
 
-  Widget _buildCustomLegend() {
+  List<SplineSeries<LineChartData, String>> _buildLineSeries() {
+    return List.generate(data.length, (index) {
+      return SplineSeries<LineChartData, String>(
+        dataSource: data[index],
+        xValueMapper: (LineChartData data, _) => data.x,
+        yValueMapper: (LineChartData data, _) => data.y,
+        pointColorMapper: (LineChartData data, _) => data.color,
+        markerSettings: const MarkerSettings(isVisible: true),
+        dataLabelSettings: const DataLabelSettings(isVisible: true),
+      );
+    });
+  }
+
+  Widget _buildLegends() {
     return Center(
       child: Wrap(
         spacing: 10,
-        children: data.map((data) {
+        children: legendLabels!.map((data) {
           return Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: 12,
-                height: 12,
-                decoration: BoxDecoration(
-                  color: data.color,
-                  borderRadius: BorderRadius.circular(4),
+              ClipOval(
+                child: Container(
+                  width: 12,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    color: data.color,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
                 ),
               ),
               const SizedBox(width: 4),
               Text(
                 data.label,
-                style: TFontRegular.caption2
-                    .copyWith(color: HexColor(neutral900)),
+                style:
+                    TFontRegular.caption2.copyWith(color: HexColor(neutral900)),
               ),
             ],
           );
