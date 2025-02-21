@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/chart/pie/pie_chart_data.dart';
+import 'package:flutter_bamboo_ui_kit/src/chart/doughnut/doughnut_chart_data.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class TPieChart extends StatelessWidget {
+class TDoughnutChart extends StatelessWidget {
   final String title;
-  final List<PieChartData> data;
+  final List<DoughnutChartData> data;
   final VoidCallback? optionTap;
   final bool showLegends;
   final bool showOption;
   final double? height;
 
-  const TPieChart({
+  const TDoughnutChart({
     super.key,
     required this.title,
     required this.data,
@@ -53,21 +53,20 @@ class TPieChart extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             SizedBox(
-              height: height,
+              height: 250, // Adjustable height
               child: SfCircularChart(
-                series: <PieSeries<PieChartData, String>>[
-                  PieSeries<PieChartData, String>(
+                series: <DoughnutSeries<DoughnutChartData, String>>[
+                  DoughnutSeries<DoughnutChartData, String>(
                     dataSource: data,
-                    xValueMapper: (PieChartData data, _) => data.label,
-                    yValueMapper: (PieChartData data, _) => data.value,
-                    pointColorMapper: (PieChartData data, _) => data.color,
-                    dataLabelMapper: (PieChartData data, _) =>
-                        "${data.label}\n${data.value}",
+                    xValueMapper: (DoughnutChartData data, _) => data.label,
+                    yValueMapper: (DoughnutChartData data, _) => data.value,
+                    pointColorMapper: (DoughnutChartData data, _) => data.color,
+                    dataLabelMapper: (DoughnutChartData data, _) => "${data.label}\n${data.value}",
                     dataLabelSettings: DataLabelSettings(
                       isVisible: true,
-                      textStyle: TFontBold.body.copyWith(color: Colors.white),
+                      textStyle: TFontRegular.callOut.copyWith(color: Colors.white),
                     ),
-                    explode: true,
+                    innerRadius: '30%',
                   ),
                 ],
               ),
