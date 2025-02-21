@@ -1,30 +1,27 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/widgets/chart.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class TBarChart extends StatelessWidget {
   final String title;
-  final List<BarChartGroupData> barGroups;
+  final List<ChartData> data;
   final VoidCallback? optionTap;
-  final List<String> bottomTitles;
-  final bool showLeftTitles;
-  final bool showBottomTitles;
   final bool showLegends;
   final bool showOption;
-  final double maxY;
+  final Axis direction;
+  final double? height;
 
   const TBarChart({
     super.key,
     required this.title,
-    required this.barGroups,
-    required this.bottomTitles,
+    required this.data,
     this.optionTap,
-    this.showLeftTitles = true,
-    this.showBottomTitles = true,
     this.showLegends = true,
     this.showOption = true,
-    this.maxY = 100,
+    this.direction = Axis.horizontal,
+    this.height = 300,
   });
 
   @override
@@ -35,14 +32,13 @@ class TBarChart extends StatelessWidget {
           Radius.circular(8),
         ),
         color: HexColor(neutral050),
-        border: Border.all(color: HexColor(neutral050), width: 1.0),
+        border: Border.all(color: HexColor(neutral300), width: 1.0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Title
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -57,79 +53,39 @@ class TBarChart extends StatelessWidget {
                   ),
               ],
             ),
-            SizedBox(height: 10),
-            // Bar Chart
+            const SizedBox(height: 10),
             SizedBox(
-              height: 200,
-              child: BarChart(
-                BarChartData(
-                  alignment: BarChartAlignment.spaceAround,
-                  maxY: maxY,
-                  barTouchData: BarTouchData(
-                    enabled: false,
-                    touchTooltipData: BarTouchTooltipData(
-                      getTooltipColor: (group) => Colors.transparent,
-                      tooltipPadding: EdgeInsets.zero,
-                      tooltipMargin: 8,
-                      getTooltipItem: (
-                        BarChartGroupData group,
-                        int groupIndex,
-                        BarChartRodData rod,
-                        int rodIndex,
-                      ) {
-                        return BarTooltipItem(
-                          rod.toY.round().toString(),
-                          TFontRegular.caption2
-                              .copyWith(color: HexColor(neutral900)),
-                        );
-                      },
-                    ),
-                  ),
-                  titlesData: FlTitlesData(
-                    topTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: false,
-                      ),
-                    ),
-                    rightTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: false,
-                      ),
-                    ),
-                    leftTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: showLeftTitles,
-                        reservedSize: 40,
-                        interval: 20,
-                        getTitlesWidget: (value, meta) => Text(
-                          value.toInt().toString(),
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                    ),
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: showBottomTitles,
-                        getTitlesWidget: (value, meta) {
-                          return Text(
-                            bottomTitles[value.toInt()],
-                            style: TextStyle(fontSize: 12),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  gridData: FlGridData(show: true, drawVerticalLine: false),
-                  borderData: FlBorderData(
-                    show: true,
-                    border: Border.all(color: Colors.grey.shade300),
-                  ),
-                  barGroups: barGroups,
+              height: height,
+              child: SfCartesianChart(
+                primaryXAxis: CategoryAxis(),
+                primaryYAxis: NumericAxis(
+                  minimum: 0,
+                  maximum: 100,
+                  interval: 20,
                 ),
+                series: <CartesianSeries<dynamic, dynamic>>[
+                  direction == Axis.horizontal
+                      ? ColumnSeries<dynamic, dynamic>(
+                          dataSource: data,
+                          xValueMapper: (data, _) => data.label,
+                          yValueMapper: (data, _) => data.value,
+                          dataLabelSettings:
+                              const DataLabelSettings(isVisible: true),
+                          color: HexColor(primary500),
+                        )
+                      : BarSeries<dynamic, dynamic>(
+                          dataSource: data,
+                          xValueMapper: (data, _) => data.label,
+                          yValueMapper: (data, _) => data.value,
+                          dataLabelSettings:
+                              const DataLabelSettings(isVisible: true),
+                          color: HexColor(primary500),
+                        )
+                ],
+                legend: Legend(isVisible: false),
               ),
             ),
             SizedBox(height: 10),
-            // Legends
             if (showLegends)
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
