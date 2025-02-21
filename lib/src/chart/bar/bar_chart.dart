@@ -12,17 +12,18 @@ class TBarChart extends StatelessWidget {
   final bool showOption;
   final Axis direction;
   final double? height;
+  final Color? barColor;
 
-  const TBarChart({
-    super.key,
-    required this.title,
-    required this.data,
-    this.optionTap,
-    this.showLegends = true,
-    this.showOption = true,
-    this.direction = Axis.horizontal,
-    this.height = 300,
-  });
+  const TBarChart(
+      {super.key,
+      required this.title,
+      required this.data,
+      this.optionTap,
+      this.showLegends = true,
+      this.showOption = true,
+      this.direction = Axis.horizontal,
+      this.height = 300,
+      this.barColor});
 
   @override
   Widget build(BuildContext context) {
@@ -69,17 +70,25 @@ class TBarChart extends StatelessWidget {
                           dataSource: data,
                           xValueMapper: (data, _) => data.label,
                           yValueMapper: (data, _) => data.value,
-                          dataLabelSettings:
-                              const DataLabelSettings(isVisible: true),
-                          color: HexColor(primary500),
+                          dataLabelSettings: DataLabelSettings(
+                            isVisible: true,
+                            textStyle: TFontRegular.caption2
+                                .copyWith(color: HexColor(neutral900)),
+                            labelAlignment: ChartDataLabelAlignment.outer,
+                          ),
+                          color: barColor ?? HexColor(primary500),
                         )
                       : BarSeries<dynamic, dynamic>(
                           dataSource: data,
                           xValueMapper: (data, _) => data.label,
                           yValueMapper: (data, _) => data.value,
-                          dataLabelSettings:
-                              const DataLabelSettings(isVisible: true),
-                          color: HexColor(primary500),
+                          dataLabelSettings: DataLabelSettings(
+                            isVisible: true,
+                            textStyle: TFontRegular.caption2
+                                .copyWith(color: HexColor(neutral900)),
+                            labelAlignment: ChartDataLabelAlignment.outer,
+                          ),
+                          color: barColor ?? HexColor(primary500),
                         )
                 ],
                 legend: Legend(isVisible: false),
@@ -90,7 +99,11 @@ class TBarChart extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(width: 12, height: 12, color: HexColor(primary500)),
+                  Container(
+                    width: 12,
+                    height: 12,
+                    color: barColor ?? HexColor(primary500),
+                  ),
                   SizedBox(width: 4),
                   Text(
                     "1",
