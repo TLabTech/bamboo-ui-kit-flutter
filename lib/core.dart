@@ -20,3 +20,5 @@ export 'widgets/slider.dart';
 export 'widgets/bottom_navigation_bar.dart';
 export 'widgets/calendar.dart';
 export 'widgets/charts.dart';
+
+export 'src/fondation/tfont.dart';

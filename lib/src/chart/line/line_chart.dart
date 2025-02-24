@@ -54,6 +54,7 @@ class TLineChart extends StatelessWidget {
                   ),
               ],
             ),
+            SizedBox(height: 10,),
             SizedBox(
               height: height ?? 250,
               child: SfCartesianChart(

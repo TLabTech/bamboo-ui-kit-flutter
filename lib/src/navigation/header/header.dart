@@ -9,13 +9,16 @@ enum HeaderType { defaultType, nested, homepage, search }
 
 class THeader extends StatefulWidget implements PreferredSizeWidget {
   final String title;
+  final TextStyle? titleStyle;
   final String? subtitle;
+  final TextStyle? subtitleStyle;
   final String? hintText;
   final bool enableCenterTitle;
   final bool isBackButtonEnabled;
   final Widget? prefixAction;
   final List<Widget>? suffixAction;
   final Color? backgroundColor;
+  final Color? iconColor;
   final HeaderType headerType;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
@@ -23,12 +26,15 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   const THeader({
     super.key,
     required this.title,
+    this.titleStyle,
     this.enableCenterTitle = false,
     this.suffixAction,
     this.backgroundColor,
+    this.iconColor,
   })  : headerType = HeaderType.defaultType,
         isBackButtonEnabled = false,
         subtitle = null,
+        subtitleStyle = null,
         prefixAction = null,
         hintText = null,
         onChanged = null,
@@ -37,12 +43,15 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   const THeader.nested({
     super.key,
     required this.title,
+    this.titleStyle,
     this.enableCenterTitle = false,
     this.suffixAction,
     this.backgroundColor,
     this.prefixAction,
+    this.iconColor,
   })  : headerType = HeaderType.nested,
         subtitle = null,
+        subtitleStyle = null,
         isBackButtonEnabled = true,
         hintText = null,
         onChanged = null,
@@ -51,7 +60,9 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   const THeader.homepage({
     super.key,
     required this.title,
+    this.titleStyle,
     this.subtitle,
+    this.subtitleStyle,
     this.enableCenterTitle = false,
     this.suffixAction,
     this.backgroundColor,
@@ -60,18 +71,22 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         isBackButtonEnabled = false,
         hintText = null,
         onChanged = null,
+        iconColor = null,
         onSubmitted = null;
 
   const THeader.search({
     super.key,
     required this.title,
+    this.titleStyle,
     this.backgroundColor,
     this.hintText,
     this.onSubmitted,
     this.onChanged,
     this.prefixAction,
+    this.iconColor,
   })  : headerType = HeaderType.search,
         subtitle = null,
+        subtitleStyle = null,
         suffixAction = null,
         enableCenterTitle = false,
         isBackButtonEnabled = true;
@@ -138,6 +153,10 @@ class _THeaderState extends State<THeader> {
                   padding: const EdgeInsets.only(left: 16.0, right: 8.0),
                   child: SvgPicture.asset(
                     Assets.svg.chevronLeft,
+                    colorFilter: ColorFilter.mode(
+                      widget.iconColor ?? HexColor(neutral900),
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
               ))
@@ -152,7 +171,7 @@ class _THeaderState extends State<THeader> {
       padding: const EdgeInsets.only(left: 8.0, right: 16.0),
       child: Text(
         widget.title,
-        style: TFontRegular.title3,
+        style: widget.titleStyle ?? TFontRegular.title3,
         textAlign: TextAlign.center,
       ),
     );
@@ -176,14 +195,14 @@ class _THeaderState extends State<THeader> {
             children: [
               Text(
                 widget.title,
-                style:
+                style: widget.titleStyle ??
                     TFontRegular.title3.copyWith(color: HexColor(neutral900)),
                 textAlign: TextAlign.center,
               ),
               if (widget.subtitle != null)
                 Text(
                   widget.subtitle!,
-                  style: TFontRegular.caption2.copyWith(
+                  style: widget.subtitleStyle ?? TFontRegular.caption2.copyWith(
                     color: HexColor(neutral500),
                   ),
                   textAlign: TextAlign.center,

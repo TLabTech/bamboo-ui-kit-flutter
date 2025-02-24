@@ -31,7 +31,7 @@ class TProgress extends StatelessWidget {
     this.strokeWidth = 6.0,
     this.color,
     this.backgroundColor,
-  })  : type = TProgressType.circular;
+  }) : type = TProgressType.circular;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,10 @@ class TProgress extends StatelessWidget {
         ),
         Text(
           "${(value * 100).toInt()}%",
-          style: TFontBold.body.copyWith(color: valueColor ?? HexColor(neutral500)),
+          style: TFontRegular.body.copyWith(
+            color: valueColor ?? HexColor(neutral500),
+            fontSize: size * 0.3,
+          ),
         ),
       ],
     );

@@ -4,11 +4,13 @@ import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 
 class TTile extends StatelessWidget {
   final String title;
+  final TextStyle? titleStyle;
   final Color? backgroundColor;
   final Color? borderColor;
   final Color? textColor;
   final bool? enable;
   final String? subtitle;
+  final TextStyle? subtitleStyle;
   final String? detail;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -16,6 +18,8 @@ class TTile extends StatelessWidget {
   const TTile({
     super.key,
     required this.title,
+    this.titleStyle,
+    this.subtitleStyle,
     this.backgroundColor,
     this.borderColor,
     this.textColor,
@@ -50,14 +54,14 @@ class TTile extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontRegular.body.copyWith(color: HexColor(neutral900)),
+                  style: titleStyle ?? TFontRegular.body.copyWith(color: HexColor(neutral900)),
                   overflow: TextOverflow.clip,
                   maxLines: 2,
                 ),
                 if (subtitle != null)
                   Text(
                     subtitle!,
-                    style: TFontRegular.caption2.copyWith(color: HexColor(neutral500)),
+                    style: subtitleStyle ?? TFontRegular.caption2.copyWith(color: HexColor(neutral500)),
                     overflow: TextOverflow.visible,
                   ),
               ],
