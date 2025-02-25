@@ -17,7 +17,7 @@ export 'widgets/alert.dart';
 export 'widgets/progress.dart';
 export 'widgets/dialog.dart';
 export 'widgets/slider.dart';
-export 'widgets/bottom_navigation_bar.dart';
+export 'widgets/bottom_navigation.dart';
 export 'widgets/calendar.dart';
 export 'widgets/charts.dart';
 
