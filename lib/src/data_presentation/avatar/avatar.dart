@@ -1,77 +1,82 @@
 import 'package:flutter/material.dart';
 
+enum AvatarShape { circle, roundedSquare }
+
 class TAvatar extends StatelessWidget {
-  final double radius;
+  final double size;
   final Color backgroundColor;
   final Widget? icon;
-  final String? _text;
+  final String? text;
   final String? imageUrl;
   final TextStyle? textStyle;
-  final Color? iconColor;
-
-  String? get text {
-    if (_text == null) return null;
-    return _text.length > 2 ? _text.substring(0, 2) : _text;
-  }
+  final AvatarShape shape;
+  final double borderRadius;
 
   TAvatar({
     super.key,
-    this.radius = 40.0,
+    this.size = 80.0,
     this.backgroundColor = Colors.grey,
     this.icon,
-    String? text,
+    this.text,
     this.imageUrl,
     this.textStyle,
-    this.iconColor,
-  }): _text = text {
-    final nonNullCount =
-        [icon, text, imageUrl].where((element) => element != null).length;
-    if (nonNullCount != 1) {
-      throw ArgumentError(
-          'Exactly one of icon, text, or imageUrl must be provided.');
-    }
+    this.shape = AvatarShape.circle,
+    double? borderRadius,
+  })  : assert(
+          [icon, text, imageUrl].where((element) => element != null).length ==
+              1,
+          'Exactly one of icon, text, or imageUrl must be provided.',
+        ),
+        borderRadius =
+            borderRadius ?? (shape == AvatarShape.circle ? size / 2 : 12);
+
+  String? get formattedText {
+    if (text == null || text!.trim().isEmpty) return null;
+    final trimmed = text!.trim().toUpperCase();
+    return trimmed.length > 2 ? trimmed.substring(0, 2) : trimmed;
   }
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: radius,
-      backgroundColor: backgroundColor,
-      child: _buildContent(),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: Container(
+        width: size,
+        height: size,
+        color: backgroundColor,
+        alignment: Alignment.center,
+        child: _buildContent(),
+      ),
     );
   }
 
   Widget _buildContent() {
     if (icon != null) {
       return icon!;
-    } else if (text != null) {
+    } else if (formattedText != null) {
       return Text(
-        text!,
+        formattedText!,
         style: textStyle ??
             TextStyle(
               color: Colors.white,
-              fontSize: radius * 0.6,
+              fontSize: size * 0.3,
               fontWeight: FontWeight.bold,
             ),
       );
     } else if (imageUrl != null) {
-      // Render an image
-      return ClipOval(
-        child: Image.network(
-          imageUrl!,
-          width: radius * 2,
-          height: radius * 2,
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return Icon(
-              Icons.error,
-              color: Colors.red,
-            ); // Fallback for invalid images
-          },
-        ),
+      return Image.network(
+        imageUrl!,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) {
+          return Icon(
+            Icons.error,
+            color: Colors.red,
+          );
+        },
       );
     } else {
-      // Default fallback (should not reach here due to validation)
       return Icon(Icons.person, color: Colors.white);
     }
   }
