@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/gen/assets.gen.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../fondation/hex_color.dart';
 
 enum HeaderType { defaultType, nested, homepage, search, brand }
@@ -40,10 +39,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         hintText = null,
         onChanged = null,
         onSubmitted = null,
-        icon = const Icon(
-          Icons.home,
-          color: Colors.white,
-        );
+        icon = const Icon(Icons.home, color: Colors.white);
 
   const THeader.nested({
     super.key,
@@ -61,10 +57,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         hintText = null,
         onChanged = null,
         onSubmitted = null,
-        icon = const Icon(
-          Icons.arrow_back_ios,
-          color: Colors.white,
-        );
+        icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
 
   const THeader.homepage({
     super.key,
@@ -82,10 +75,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         onChanged = null,
         iconColor = null,
         onSubmitted = null,
-        icon = const Icon(
-          Icons.arrow_back_ios,
-          color: Colors.white,
-        );
+        icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
 
   const THeader.search({
     super.key,
@@ -103,10 +93,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         suffixAction = null,
         enableCenterTitle = false,
         isBackButtonEnabled = true,
-        icon = const Icon(
-          Icons.arrow_back_ios,
-          color: Colors.white,
-        );
+        icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
 
   const THeader.brand({
     super.key,
@@ -130,7 +117,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   State<THeader> createState() => _THeaderState();
 
   @override
-  Size get preferredSize => Size.fromHeight(88);
+  Size get preferredSize => const Size.fromHeight(88);
 }
 
 class _THeaderState extends State<THeader> {
@@ -155,22 +142,6 @@ class _THeaderState extends State<THeader> {
 
   @override
   Widget build(BuildContext context) {
-    Widget child;
-
-    if (widget.headerType == HeaderType.defaultType) {
-      child = _buildDefaultHeader(context);
-    } else if (widget.headerType == HeaderType.nested) {
-      child = _buildDefaultHeader(context);
-    } else if (widget.headerType == HeaderType.homepage) {
-      child = _buildHomepageHeader(context);
-    } else if (widget.headerType == HeaderType.search) {
-      child = _buildSearchHeader(context);
-    } else if (widget.headerType == HeaderType.brand) {
-      child = _buildBrandHeader(context);
-    } else {
-      child = _buildDefaultHeader(context);
-    }
-
     return AppBar(
       toolbarHeight: 88.0,
       automaticallyImplyLeading: false,
@@ -183,9 +154,7 @@ class _THeaderState extends State<THeader> {
       leading: widget.isBackButtonEnabled
           ? (widget.prefixAction ??
               GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
+                onTap: () => Navigator.pop(context),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16.0, right: 8.0),
                   child: SvgPicture.asset(
@@ -198,14 +167,28 @@ class _THeaderState extends State<THeader> {
                 ),
               ))
           : null,
-      title: child,
+      title: _buildHeaderContent(),
       actions: widget.suffixAction,
     );
   }
 
-  Widget _buildDefaultHeader(BuildContext context) {
+  Widget _buildHeaderContent() {
+    switch (widget.headerType) {
+      case HeaderType.defaultType:
+      case HeaderType.nested:
+        return _buildDefaultOrNestedHeader();
+      case HeaderType.homepage:
+        return _buildHomepageHeader();
+      case HeaderType.search:
+        return _buildSearchHeader();
+      case HeaderType.brand:
+        return _buildBrandHeader();
+    }
+  }
+
+  Widget _buildDefaultOrNestedHeader() {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0, right: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Text(
         widget.title,
         style: widget.titleStyle ?? TFontRegular.title3,
@@ -214,45 +197,41 @@ class _THeaderState extends State<THeader> {
     );
   }
 
-  Widget _buildHomepageHeader(BuildContext context) {
+  Widget _buildHomepageHeader() {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 16.0),
       child: Row(
         children: [
-          SizedBox(
-            height: 40,
-            width: 40,
-            child: widget.prefixAction,
-          ),
-          SizedBox(
-            width: 18,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.title,
-                style: widget.titleStyle ??
-                    TFontRegular.title3.copyWith(color: HexColor(neutral900)),
-                textAlign: TextAlign.center,
-              ),
-              if (widget.subtitle != null)
+          if (widget.prefixAction != null)
+            SizedBox(height: 40, width: 40, child: widget.prefixAction),
+          const SizedBox(width: 18),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Text(
-                  widget.subtitle!,
-                  style: widget.subtitleStyle ??
-                      TFontRegular.caption2.copyWith(
-                        color: HexColor(neutral500),
-                      ),
+                  widget.title,
+                  style: widget.titleStyle ??
+                      TFontRegular.title3.copyWith(color: HexColor(neutral900)),
                   textAlign: TextAlign.center,
                 ),
-            ],
+                if (widget.subtitle != null)
+                  Text(
+                    widget.subtitle!,
+                    style: widget.subtitleStyle ??
+                        TFontRegular.caption2
+                            .copyWith(color: HexColor(neutral500)),
+                    textAlign: TextAlign.center,
+                  ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSearchHeader(BuildContext context) {
+  Widget _buildSearchHeader() {
     return Padding(
       padding: EdgeInsets.only(left: 8.0, right: 16.0),
       child: Row(
@@ -301,9 +280,9 @@ class _THeaderState extends State<THeader> {
     );
   }
 
-  Widget _buildBrandHeader(BuildContext context) {
+  Widget _buildBrandHeader() {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: widget.icon,
     );
   }
