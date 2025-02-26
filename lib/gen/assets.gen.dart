@@ -29,6 +29,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/eye.svg
   String get eye => 'packages/flutter_bamboo_ui_kit/assets/svg/eye.svg';
 
+  /// File path: assets/svg/home.svg
+  String get home => 'packages/flutter_bamboo_ui_kit/assets/svg/home.svg';
+
   /// File path: assets/svg/information-circle.svg
   String get informationCircle =>
       'packages/flutter_bamboo_ui_kit/assets/svg/information-circle.svg';
@@ -55,6 +58,7 @@ class $AssetsSvgGen {
     envelope,
     eyeSlash,
     eye,
+    home,
     informationCircle,
     magnifyingGlass,
     nextCircle,
