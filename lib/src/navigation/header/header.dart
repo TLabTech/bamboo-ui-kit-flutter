@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../fondation/hex_color.dart';
 
-enum HeaderType { defaultType, nested, homepage, search }
+enum HeaderType { defaultType, nested, homepage, search, brand }
 
 class THeader extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -22,6 +22,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   final HeaderType headerType;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
+  final Widget icon;
 
   const THeader({
     super.key,
@@ -38,7 +39,11 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         prefixAction = null,
         hintText = null,
         onChanged = null,
-        onSubmitted = null;
+        onSubmitted = null,
+        icon = const Icon(
+          Icons.home,
+          color: Colors.white,
+        );
 
   const THeader.nested({
     super.key,
@@ -55,7 +60,11 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         isBackButtonEnabled = true,
         hintText = null,
         onChanged = null,
-        onSubmitted = null;
+        onSubmitted = null,
+        icon = const Icon(
+          Icons.arrow_back_ios,
+          color: Colors.white,
+        );
 
   const THeader.homepage({
     super.key,
@@ -72,12 +81,14 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         hintText = null,
         onChanged = null,
         iconColor = null,
-        onSubmitted = null;
+        onSubmitted = null,
+        icon = const Icon(
+          Icons.arrow_back_ios,
+          color: Colors.white,
+        );
 
   const THeader.search({
     super.key,
-    required this.title,
-    this.titleStyle,
     this.backgroundColor,
     this.hintText,
     this.onSubmitted,
@@ -85,11 +96,35 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.prefixAction,
     this.iconColor,
   })  : headerType = HeaderType.search,
+        title = '',
+        titleStyle = null,
         subtitle = null,
         subtitleStyle = null,
         suffixAction = null,
         enableCenterTitle = false,
-        isBackButtonEnabled = true;
+        isBackButtonEnabled = true,
+        icon = const Icon(
+          Icons.arrow_back_ios,
+          color: Colors.white,
+        );
+
+  const THeader.brand({
+    super.key,
+    required this.icon,
+    this.suffixAction,
+    this.backgroundColor,
+  })  : headerType = HeaderType.brand,
+        title = '',
+        titleStyle = null,
+        isBackButtonEnabled = false,
+        subtitle = null,
+        subtitleStyle = null,
+        prefixAction = null,
+        enableCenterTitle = false,
+        iconColor = null,
+        hintText = null,
+        onChanged = null,
+        onSubmitted = null;
 
   @override
   State<THeader> createState() => _THeaderState();
@@ -130,6 +165,8 @@ class _THeaderState extends State<THeader> {
       child = _buildHomepageHeader(context);
     } else if (widget.headerType == HeaderType.search) {
       child = _buildSearchHeader(context);
+    } else if (widget.headerType == HeaderType.brand) {
+      child = _buildBrandHeader(context);
     } else {
       child = _buildDefaultHeader(context);
     }
@@ -202,9 +239,10 @@ class _THeaderState extends State<THeader> {
               if (widget.subtitle != null)
                 Text(
                   widget.subtitle!,
-                  style: widget.subtitleStyle ?? TFontRegular.caption2.copyWith(
-                    color: HexColor(neutral500),
-                  ),
+                  style: widget.subtitleStyle ??
+                      TFontRegular.caption2.copyWith(
+                        color: HexColor(neutral500),
+                      ),
                   textAlign: TextAlign.center,
                 ),
             ],
@@ -223,7 +261,7 @@ class _THeaderState extends State<THeader> {
             child: Container(
               padding: const EdgeInsets.only(left: 12.0),
               decoration: BoxDecoration(
-                color: HexColor(neutral500).withValues(alpha: 0.2),
+                color: HexColor(neutral300).withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Row(
@@ -235,6 +273,8 @@ class _THeaderState extends State<THeader> {
                       controller: _controller,
                       decoration: InputDecoration(
                         hintText: widget.hintText,
+                        hintStyle: TFontRegular.caption1
+                            .copyWith(color: HexColor(neutral500)),
                         border: InputBorder.none,
                       ),
                       onChanged: (value) {
@@ -258,6 +298,13 @@ class _THeaderState extends State<THeader> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildBrandHeader(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+      child: widget.icon,
     );
   }
 }
