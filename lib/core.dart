@@ -23,3 +23,6 @@ export 'widgets/charts.dart';
 export 'widgets/breadcrumbs.dart';
 
 export 'src/fondation/tfont.dart';
+export 'src/fondation/container/container.dart';
+export 'src/fondation/utils/tshadow.dart';
+export 'src/fondation/hex_color.dart';
