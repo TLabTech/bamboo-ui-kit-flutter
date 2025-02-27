@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class FloatingCircularNavbar extends StatefulWidget {
@@ -76,12 +77,7 @@ class _FloatingCircularNavbarState extends State<FloatingCircularNavbar>
         color: widget.backgroundColor ?? Colors.white,
         borderRadius: BorderRadius.circular(36),
         boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.3),
-            spreadRadius: 2,
-            blurRadius: 8,
-            offset: Offset(0, -2),
-          ),
+          TShadow.shadowS,
         ],
       ),
       child: Column(
@@ -89,7 +85,7 @@ class _FloatingCircularNavbarState extends State<FloatingCircularNavbar>
         children: [
           AnimatedContainer(
             color: Colors.transparent,
-            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+            padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
             duration: Duration(milliseconds: 300),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

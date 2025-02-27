@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/circular_navbar.dart';
+import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_dot_navbar.dart';
+import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_text_navbar.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_style_10.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_navbar.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_style_4.dart';
@@ -60,10 +62,17 @@ class TNavbarStyle {
 
   static Widget floating4(
       NavBarConfig navBarConfig, Color? activeColor, Color? backgroundColor) {
-    return FloatingStyle4NavBar(
+    return FloatingCircularTextNavbar(
       navBarConfig: navBarConfig,
-      backgroundColor: backgroundColor ?? Colors.white,
+      navBarDecoration: NavBarDecoration(
+        color: activeColor ?? HexColor('#00DE9C'), // Green for active circular indicator
+      ),
+      backgroundColor: backgroundColor ?? Colors.white.withValues(alpha: 0.9), // Semi-transparent white for frosted effect
     );
+    // return FloatingStyle4NavBar(
+    //   navBarConfig: navBarConfig,
+    //   backgroundColor: backgroundColor ?? Colors.white,
+    // );
   }
 
   static Widget floating5(

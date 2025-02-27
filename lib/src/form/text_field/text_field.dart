@@ -235,7 +235,6 @@ class TTextFieldState extends State<TTextField> {
                     hintStyle: TFontRegular.body.copyWith(
                       color: widget.hintColor ?? HexColor(neutral500),
                     ),
-                    errorText: hasError ? widget.errorMessage : null,
                     helperText: widget.helperText,
                     counterText: widget.counterText,
                   ),

@@ -28,12 +28,12 @@ class FloatingStyle4NavBar extends StatelessWidget {
         ],
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(40),
         child: Style7BottomNavBar(
           navBarConfig: navBarConfig,
           navBarDecoration: NavBarDecoration(
             color: backgroundColor,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            borderRadius: BorderRadius.all(Radius.circular(40)),
           ),
           itemAnimationProperties: const ItemAnimation(
             curve: Curves.easeOutQuad,
