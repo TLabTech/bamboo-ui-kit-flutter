@@ -14,6 +14,7 @@ class TTile extends StatelessWidget {
   final String? detail;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final EdgeInsets? padding;
 
   const TTile({
     super.key,
@@ -28,12 +29,13 @@ class TTile extends StatelessWidget {
     this.detail,
     this.prefixIcon,
     this.suffixIcon,
+    this.padding
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      padding: padding ?? const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
         color: enable == true
             ? backgroundColor ?? Colors.transparent
