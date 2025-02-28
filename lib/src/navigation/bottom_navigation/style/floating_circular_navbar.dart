@@ -77,7 +77,7 @@ class _FloatingCircularNavbarState extends State<FloatingCircularNavbar>
         color: widget.backgroundColor ?? Colors.white,
         borderRadius: BorderRadius.circular(36),
         boxShadow: [
-          TShadow.shadowS,
+          TShadow.shadowS(),
         ],
       ),
       child: Column(

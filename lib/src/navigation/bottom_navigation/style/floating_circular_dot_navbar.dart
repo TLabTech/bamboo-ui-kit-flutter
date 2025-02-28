@@ -77,7 +77,7 @@ class _FloatingCircularDotNavBarState extends State<FloatingCircularDotNavBar>
         color: widget.backgroundColor, // Semi-transparent white for frosted effect
         borderRadius: BorderRadius.circular(40), // Curved edges (20px radius)
         boxShadow: [
-          TShadow.shadowS, // Shadow
+          TShadow.shadowS(), // Shadow
         ],
       ),
       child: Row(

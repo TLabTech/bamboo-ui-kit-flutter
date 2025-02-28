@@ -94,7 +94,7 @@ class _FloatingCircularTextNavbarState extends State<FloatingCircularTextNavbar>
         color: widget.backgroundColor,
         borderRadius: BorderRadius.circular(40),
         boxShadow: [
-          TShadow.shadowS, // Shadow
+          TShadow.shadowS(), // Shadow
         ],
       ),
       child: Row(

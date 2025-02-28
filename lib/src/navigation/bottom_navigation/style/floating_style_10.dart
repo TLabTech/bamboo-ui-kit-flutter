@@ -23,7 +23,7 @@ class FloatingStyle10NavBar extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(40)),
           padding: EdgeInsets.only(top: 5, bottom: 5),
           boxShadow: [
-            TShadow.shadowS
+            TShadow.shadowS()
           ],
         ),
       ),

@@ -9,7 +9,7 @@ class TContainerWBoxDecoration extends StatelessWidget {
   final EdgeInsets padding;
   final double borderRadius;
   final Color backgroundColor;
-  final BoxShadow boxShadow;
+  final BoxShadow? boxShadow;
 
   TContainerWBoxDecoration({
     super.key,
@@ -20,8 +20,8 @@ class TContainerWBoxDecoration extends StatelessWidget {
     this.padding = const EdgeInsets.all(16),
     this.borderRadius = 8,
     this.backgroundColor = Colors.white,
-    BoxShadow? boxShadow, // Use nullable parameter
-  })  : boxShadow = boxShadow ?? TShadow.shadowM;
+    this.boxShadow,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class TContainerWBoxDecoration extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(borderRadius),
-        boxShadow: [boxShadow],
+        boxShadow: [boxShadow ?? TShadow.shadowM()],
       ),
       child: child,
     );
