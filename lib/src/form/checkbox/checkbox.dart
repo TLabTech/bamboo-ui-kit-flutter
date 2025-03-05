@@ -99,7 +99,9 @@ class _TCheckBoxState extends State<TCheckBox> {
                 style: TFontRegular.body.copyWith(
                   color: widget.isError
                       ? HexColor(danger500)
-                      : HexColor(neutral900),
+                      : !widget.isEnabled
+                          ? HexColor(neutral500)
+                          : HexColor(neutral900),
                 ),
               ),
               Text(
