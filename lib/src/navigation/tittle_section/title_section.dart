@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+
+class TTitleSection extends StatelessWidget {
+  final String title;
+  final String? description;
+  final Widget? icon;
+  final VoidCallback? onPressed;
+  final String? buttonText;
+  final Color? buttonColor;
+
+  const TTitleSection({
+    super.key,
+    required this.title,
+    this.description,
+    this.icon,
+    this.onPressed,
+    this.buttonText,
+    this.buttonColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Row(
+            children: [
+              if (icon != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: icon,
+                ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TFontBold.headline.copyWith(
+                        color: HexColor(
+                          neutral900,
+                        ),
+                      ),
+                    ),
+                    if (description != null)
+                      Text(
+                        description!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TFontRegular.caption2.copyWith(
+                          color: HexColor(
+                            neutral500,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Row(
+          children: [
+            TButtonGhost(
+              text: buttonText,
+              normalColor: buttonColor ?? HexColor(primary500),
+              pressedColor: Colors.black,
+              onPressed: onPressed,
+            ),
+            if (buttonText == null)
+              GestureDetector(
+                onTap: onPressed,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Icon(Icons.more_horiz),
+                ),
+              ),
+          ],
+        ),
+      ],
+    );
+  }
+}

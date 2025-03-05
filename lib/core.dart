@@ -21,6 +21,7 @@ export 'widgets/bottom_navigation.dart';
 export 'widgets/calendar.dart';
 export 'widgets/charts.dart';
 export 'widgets/breadcrumbs.dart';
+export 'widgets/title_section.dart';
 
 export 'src/fondation/tfont.dart';
 export 'src/fondation/container/container.dart';
