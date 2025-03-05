@@ -58,7 +58,9 @@ class TBarChart extends StatelessWidget {
             SizedBox(
               height: height,
               child: SfCartesianChart(
-                primaryXAxis: CategoryAxis(),
+                primaryXAxis: CategoryAxis(
+                  isInversed: direction == Axis.horizontal ? false : true,
+                ),
                 primaryYAxis: NumericAxis(
                   minimum: 0,
                   maximum: 100,

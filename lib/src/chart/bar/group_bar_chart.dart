@@ -57,7 +57,9 @@ class TGroupBarChart extends StatelessWidget {
             SizedBox(
               height: height,
               child: SfCartesianChart(
-                primaryXAxis: CategoryAxis(),
+                primaryXAxis: CategoryAxis(
+                  isInversed: direction == Axis.horizontal ? false : true,
+                ),
                 primaryYAxis:
                     NumericAxis(minimum: 0, maximum: 100, interval: 20),
                 series: seriesList.map((seriesData) {
@@ -120,8 +122,8 @@ class TGroupBarChart extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 data.label,
-                style: TFontRegular.caption2
-                    .copyWith(color: HexColor(neutral900)),
+                style:
+                    TFontRegular.caption2.copyWith(color: HexColor(neutral900)),
               ),
             ],
           );
