@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bamboo_ui_kit/gen/assets.gen.dart';
-import 'package:flutter_bamboo_ui_kit/src/form/calendar/event_data.dart';
 import 'package:flutter_bamboo_ui_kit/src/form/calendar/year_selector.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -342,8 +341,9 @@ class TCalendarState extends State<TCalendar> {
     );
   }
 
-  void _handleDayTap(DateTime day) {
-    final events = _eventsMap[day] ?? [];
+  void _handleDayTap(DateTime date) {
+    final normalizedDate = DateTime(date.year, date.month, date.day);
+    final events = _eventsMap[normalizedDate] ?? [];
     if (events.isNotEmpty && widget.onEventTap != null) {
       widget.onEventTap!(events.first);
     }
