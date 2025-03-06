@@ -24,6 +24,7 @@ class _ChartScreenState extends State<ChartScreen> {
                 LegendLabel(label: "Series 2", color: Colors.blue),
                 LegendLabel(label: "Series 3", color: Colors.red),
                 LegendLabel(label: "Series 4", color: Colors.yellow),
+                LegendLabel(label: "Series 5", color: Colors.black),
               ],
               data: [
                 [
@@ -57,10 +58,20 @@ class _ChartScreenState extends State<ChartScreen> {
                   LineChartData(x: "D", y: 18, color: Colors.yellow),
                   LineChartData(x: "E", y: 47, color: Colors.yellow),
                   LineChartData(x: "F", y: 27, color: Colors.yellow),
-                ]
+                ],
+                [
+                  LineChartData(x: "A", y: 29, color: Colors.black),
+                  LineChartData(x: "B", y: 15, color: Colors.black),
+                  LineChartData(x: "C", y: 45, color: Colors.black),
+                  LineChartData(x: "D", y: 22, color: Colors.black),
+                  LineChartData(x: "E", y: 35, color: Colors.black),
+                  LineChartData(x: "F", y: 89, color: Colors.black),
+                ],
               ],
             ),
-            SizedBox(height: 12,),
+            SizedBox(
+              height: 12,
+            ),
             TLineChart(
               title: "Line Chart",
               data: [
@@ -111,7 +122,9 @@ class _ChartScreenState extends State<ChartScreen> {
                 ChartData("F", 37),
               ],
             ),
-            SizedBox(height: 12,),
+            SizedBox(
+              height: 12,
+            ),
             TBarChart(
               title: "Bar Chart",
               direction: Axis.vertical,
@@ -170,7 +183,9 @@ class _ChartScreenState extends State<ChartScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 12,),
+            SizedBox(
+              height: 12,
+            ),
             TGroupBarChart(
               title: "Group bar",
               direction: Axis.vertical,
@@ -214,6 +229,18 @@ class _ChartScreenState extends State<ChartScreen> {
                 ChartSeriesData(
                   label: "Series 4",
                   color: Colors.red,
+                  data: [
+                    ChartData("A", 25),
+                    ChartData("B", 45),
+                    ChartData("C", 20),
+                    ChartData("D", 62),
+                    ChartData("E", 88),
+                    ChartData("F", 32),
+                  ],
+                ),
+                ChartSeriesData(
+                  label: "Series 5",
+                  color: Colors.black,
                   data: [
                     ChartData("A", 25),
                     ChartData("B", 45),
