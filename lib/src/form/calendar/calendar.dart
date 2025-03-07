@@ -101,7 +101,7 @@ class TCalendarState extends State<TCalendar> {
     if (_currentView == CalendarView.date) {
       return _focusedDay.isAfter(widget.firstDay);
     } else if (_currentView == CalendarView.year) {
-     return _hasPreviousYear;
+      return _hasPreviousYear;
     }
     return false;
   }
@@ -130,7 +130,6 @@ class TCalendarState extends State<TCalendar> {
     });
   }
 
-
   void _onMonthSelected(int month) {
     setState(() {
       _focusedDay = DateTime(_focusedDay.year, month);
@@ -152,6 +151,20 @@ class TCalendarState extends State<TCalendar> {
     });
   }
 
+  void jumpToDate(DateTime date) {
+    setState(() {
+      _focusedDay = date;
+    });
+  }
+
+  void animateToDate(DateTime date) {
+    if (!date.isAtSameMomentAs(_focusedDay)) {
+      setState(() {
+        _focusedDay = date;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final today = DateTime.now();
@@ -159,77 +172,64 @@ class TCalendarState extends State<TCalendar> {
         today.month == _focusedDay.month && today.year == _focusedDay.year;
     final isCurrentYear = today.year == _focusedDay.year;
 
-    return Container(
-      padding: EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: HexColor(neutral200)),
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap:
-                      _currentView != CalendarView.month ? _goToPrevious : null,
-                  child: SvgPicture.asset(
-                    Assets.svg.previousCircle,
-                    colorFilter: ColorFilter.mode(
-                      _hasPrevious
-                          ? HexColor(neutral900)
-                          : HexColor(neutral300),
-                      BlendMode.srcIn,
-                    ),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap:
+                    _currentView != CalendarView.month ? _goToPrevious : null,
+                child: SvgPicture.asset(
+                  Assets.svg.previousCircle,
+                  colorFilter: ColorFilter.mode(
+                    _hasPrevious ? HexColor(neutral900) : HexColor(neutral300),
+                    BlendMode.srcIn,
                   ),
                 ),
-                GestureDetector(
-                  onTap: _onHeaderTap,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    spacing: 6,
-                    children: [
-                      Text(
-                        DateFormat('MMMM yyyy').format(_focusedDay),
-                        style: TFontRegular.body.copyWith(
-                          color: HexColor(neutral900),
-                        ),
+              ),
+              GestureDetector(
+                onTap: _onHeaderTap,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: 6,
+                  children: [
+                    Text(
+                      DateFormat('MMMM yyyy').format(_focusedDay),
+                      style: TFontRegular.body.copyWith(
+                        color: HexColor(neutral900),
                       ),
-                      SvgPicture.asset(
-                        Assets.svg.chevronDown,
-                        colorFilter: ColorFilter.mode(
-                          HexColor(neutral900),
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: _currentView != CalendarView.month ? _goToNext : null,
-                  child: SvgPicture.asset(
-                    Assets.svg.nextCircle,
-                    colorFilter: ColorFilter.mode(
-                      _hasNext ? HexColor(neutral900) : HexColor(neutral300),
-                      BlendMode.srcIn,
                     ),
+                    Icon(
+                      Icons.keyboard_arrow_down,
+                      color: HexColor(neutral900),
+                    ),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: _currentView != CalendarView.month ? _goToNext : null,
+                child: SvgPicture.asset(
+                  Assets.svg.nextCircle,
+                  colorFilter: ColorFilter.mode(
+                    _hasNext ? HexColor(neutral900) : HexColor(neutral300),
+                    BlendMode.srcIn,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          SizedBox(
-            height: 24,
-          ),
-          _buildCalendarContent(
-            isCurrentMonth: isCurrentMonth,
-            isCurrentYear: isCurrentYear,
-          ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: 24,
+        ),
+        _buildCalendarContent(
+          isCurrentMonth: isCurrentMonth,
+          isCurrentYear: isCurrentYear,
+        ),
+      ],
     );
   }
 
