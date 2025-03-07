@@ -54,18 +54,38 @@ class TPieChart extends StatelessWidget {
             const SizedBox(height: 10),
             SizedBox(
               height: height,
+              width: double.infinity,
               child: SfCircularChart(
+                margin: EdgeInsets.zero,
                 series: <PieSeries<PieChartData, String>>[
                   PieSeries<PieChartData, String>(
                     dataSource: data,
                     xValueMapper: (PieChartData data, _) => data.label,
                     yValueMapper: (PieChartData data, _) => data.value,
                     pointColorMapper: (PieChartData data, _) => data.color,
-                    dataLabelMapper: (PieChartData data, _) =>
-                        "${data.label}\n${data.value}",
                     dataLabelSettings: DataLabelSettings(
                       isVisible: true,
-                      textStyle: TFontBold.body.copyWith(color: Colors.white),
+                      labelPosition: ChartDataLabelPosition.inside,
+                      builder: (dynamic data, dynamic point, dynamic series,
+                          int pointIndex, int seriesIndex) {
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              data.label,
+                              style: TFontRegular.caption2.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              "${data.value}",
+                              style: TFontBold.body.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                     explode: true,
                   ),
@@ -99,8 +119,9 @@ class TPieChart extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 data.label,
-                style: TFontRegular.caption2
-                    .copyWith(color: HexColor(neutral900)),
+                style: TFontRegular.caption2.copyWith(
+                  color: HexColor(neutral900),
+                ),
               ),
             ],
           );

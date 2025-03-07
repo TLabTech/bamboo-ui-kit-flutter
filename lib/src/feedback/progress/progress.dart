@@ -68,7 +68,7 @@ class TProgress extends StatelessWidget {
           "${(value * 100).toInt()}%",
           style: TFontRegular.body.copyWith(
             color: valueColor ?? HexColor(neutral500),
-            fontSize: size * 0.3,
+            fontSize: size * 0.2,
           ),
         ),
       ],

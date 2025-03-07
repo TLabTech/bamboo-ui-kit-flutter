@@ -55,16 +55,37 @@ class TDoughnutChart extends StatelessWidget {
             SizedBox(
               height: height ?? 250,
               child: SfCircularChart(
+                margin: EdgeInsets.zero,
                 series: <DoughnutSeries<DoughnutChartData, String>>[
                   DoughnutSeries<DoughnutChartData, String>(
                     dataSource: data,
                     xValueMapper: (DoughnutChartData data, _) => data.label,
                     yValueMapper: (DoughnutChartData data, _) => data.value,
                     pointColorMapper: (DoughnutChartData data, _) => data.color,
-                    dataLabelMapper: (DoughnutChartData data, _) => "${data.label}\n${data.value}",
                     dataLabelSettings: DataLabelSettings(
                       isVisible: true,
-                      textStyle: TFontRegular.callOut.copyWith(color: Colors.white),
+                      labelPosition: ChartDataLabelPosition.inside,
+                      labelIntersectAction: LabelIntersectAction.hide,
+                      builder: (dynamic data, dynamic point, dynamic series,
+                          int pointIndex, int seriesIndex) {
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              data.label,
+                              style: TFontRegular.caption2.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              "${data.value}",
+                              style: TFontBold.body.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                     innerRadius: '30%',
                   ),
