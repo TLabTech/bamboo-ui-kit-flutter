@@ -32,6 +32,10 @@ class TCalendarState extends State<TCalendar> {
   late Map<DateTime, List<EventData>> _eventsMap;
   CalendarView _currentView = CalendarView.date;
   DateTime _selectedDate = DateTime.now();
+  bool _hasPreviousYear = true;
+  bool _hasNextYear = true;
+
+  final GlobalKey<YearSelectorState> _yearSelectorKey = GlobalKey();
 
   @override
   void initState() {
@@ -40,8 +44,7 @@ class TCalendarState extends State<TCalendar> {
     _selectedDay = _focusedDay;
   }
 
-  Map<DateTime, List<EventData>> _groupEventsByDate(
-      List<EventData> events) {
+  Map<DateTime, List<EventData>> _groupEventsByDate(List<EventData> events) {
     final Map<DateTime, List<EventData>> grouped = {};
     for (var event in events) {
       final date = DateTime(event.date.year, event.date.month, event.date.day);
@@ -58,22 +61,75 @@ class TCalendarState extends State<TCalendar> {
   }
 
   void _goToPrevious() {
-    if (_focusedDay.isAfter(widget.firstDay)) {
-      setState(() {
-        _focusedDay =
-            DateTime(_focusedDay.year, _focusedDay.month - 1, _focusedDay.day);
-      });
+    if (_currentView == CalendarView.date) {
+      // Navigate to the previous month
+      final previousMonth =
+          DateTime(_focusedDay.year, _focusedDay.month - 1, 1);
+      if (previousMonth.isAfter(widget.firstDay)) {
+        setState(() {
+          _focusedDay = previousMonth;
+        });
+      }
+    } else if (_currentView == CalendarView.year) {
+      // Navigate to the next year
+      final yearSelectorState = _yearSelectorKey.currentState;
+      if (yearSelectorState != null) {
+        yearSelectorState.previousPage();
+      }
     }
   }
 
   void _goToNext() {
-    if (_focusedDay.isBefore(widget.lastDay)) {
-      setState(() {
-        _focusedDay =
-            DateTime(_focusedDay.year, _focusedDay.month + 1, _focusedDay.day);
-      });
+    if (_currentView == CalendarView.date) {
+      // Navigate to the next month
+      final nextMonth = DateTime(_focusedDay.year, _focusedDay.month + 1, 1);
+      if (nextMonth.isBefore(widget.lastDay)) {
+        setState(() {
+          _focusedDay = nextMonth;
+        });
+      }
+    } else if (_currentView == CalendarView.year) {
+      // Navigate to the next year
+      final yearSelectorState = _yearSelectorKey.currentState;
+      if (yearSelectorState != null) {
+        yearSelectorState.nextPage();
+      }
     }
   }
+
+  bool get _hasPrevious {
+    if (_currentView == CalendarView.date) {
+      return _focusedDay.isAfter(widget.firstDay);
+    } else if (_currentView == CalendarView.year) {
+     return _hasPreviousYear;
+    }
+    return false;
+  }
+
+  bool get _hasNext {
+    if (_currentView == CalendarView.date) {
+      return _focusedDay.isBefore(widget.lastDay);
+    } else if (_currentView == CalendarView.year) {
+      return _hasNextYear;
+    }
+    return false;
+  }
+
+  void _updateYearNavigationState() {
+    final yearSelectorState = _yearSelectorKey.currentState;
+    if (yearSelectorState == null || !yearSelectorState.mounted) {
+      return;
+    }
+
+    final currentPage = yearSelectorState.pageController.page ?? 0;
+    final totalPages = yearSelectorState.totalPages;
+
+    setState(() {
+      _hasPreviousYear = currentPage > 0;
+      _hasNextYear = currentPage < totalPages - 1;
+    });
+  }
+
 
   void _onMonthSelected(int month) {
     setState(() {
@@ -119,8 +175,16 @@ class TCalendarState extends State<TCalendar> {
               children: [
                 GestureDetector(
                   onTap:
-                      _currentView == CalendarView.date ? _goToPrevious : null,
-                  child: SvgPicture.asset(Assets.svg.previousCircle),
+                      _currentView != CalendarView.month ? _goToPrevious : null,
+                  child: SvgPicture.asset(
+                    Assets.svg.previousCircle,
+                    colorFilter: ColorFilter.mode(
+                      _hasPrevious
+                          ? HexColor(neutral900)
+                          : HexColor(neutral300),
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ),
                 GestureDetector(
                   onTap: _onHeaderTap,
@@ -145,8 +209,14 @@ class TCalendarState extends State<TCalendar> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: _currentView == CalendarView.date ? _goToNext : null,
-                  child: SvgPicture.asset(Assets.svg.nextCircle),
+                  onTap: _currentView != CalendarView.month ? _goToNext : null,
+                  child: SvgPicture.asset(
+                    Assets.svg.nextCircle,
+                    colorFilter: ColorFilter.mode(
+                      _hasNext ? HexColor(neutral900) : HexColor(neutral300),
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -170,10 +240,12 @@ class TCalendarState extends State<TCalendar> {
     switch (_currentView) {
       case CalendarView.year:
         return YearSelector(
+          key: _yearSelectorKey,
           selectedYear: _selectedDate.year,
           onYearSelected: _onYearSelected,
           startYear: widget.firstDay.year,
           endYear: widget.lastDay.year,
+          onPageChanged: _updateYearNavigationState,
         );
       case CalendarView.month:
         return _buildMonthSelector();
