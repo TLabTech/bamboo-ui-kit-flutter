@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/widgets/radio.dart';
 
-class TTile extends StatelessWidget {
+
+class TTile<T> extends StatelessWidget {
   final String title;
   final TextStyle? titleStyle;
   final Color? backgroundColor;
@@ -15,6 +17,10 @@ class TTile extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final EdgeInsets? padding;
+  final T? value;
+  final T? groupValue;
+  final ValueChanged<T>? onChanged;
+  final bool showRadio;
 
   const TTile({
     super.key,
@@ -29,7 +35,11 @@ class TTile extends StatelessWidget {
     this.detail,
     this.prefixIcon,
     this.suffixIcon,
-    this.padding
+    this.padding,
+    this.value,
+    this.groupValue,
+    this.onChanged,
+    this.showRadio = false,
   });
 
   @override
@@ -90,14 +100,23 @@ class TTile extends StatelessWidget {
               ],
             ),
           ],
+          if (showRadio && value != null) ...[
+            const SizedBox(width: 8),
+            TRadioButton<T>(
+              value: value!,
+              groupValue: groupValue,
+              onChanged: onChanged,
+              label: '',
+            ),
+          ],
         ],
       ),
     );
   }
 }
 
-extension TTileCopy on TTile {
-  TTile copyWith({
+extension TTileCopy<T> on TTile<T> {
+  TTile<T> copyWith({
     String? title,
     Color? backgroundColor,
     Color? borderColor,
@@ -107,8 +126,12 @@ extension TTileCopy on TTile {
     String? detail,
     Widget? prefixIcon,
     Widget? suffixIcon,
+    bool? showRadio,
+    T? value,
+    T? groupValue,
+    ValueChanged<T?>? onChanged,
   }) {
-    return TTile(
+    return TTile<T>(
       title: title ?? this.title,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       borderColor: borderColor ?? this.borderColor,
@@ -118,6 +141,10 @@ extension TTileCopy on TTile {
       detail: detail ?? this.detail,
       prefixIcon: prefixIcon ?? this.prefixIcon,
       suffixIcon: suffixIcon ?? this.suffixIcon,
+      showRadio: showRadio ?? this.showRadio,
+      value: value ?? this.value,
+      groupValue: groupValue ?? this.groupValue,
+      onChanged: onChanged ?? this.onChanged,
     );
   }
 }

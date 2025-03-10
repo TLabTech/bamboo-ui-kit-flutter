@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 
-class TGroupTile extends StatelessWidget {
+class TGroupTile<T> extends StatefulWidget {
   final String? title;
-  final List<TTile> tiles;
+  final List<TTile<T>> tiles;
   final Color? backgroundColor;
   final Color? borderColor;
   final bool enable;
   final bool enableBorder;
+  final bool enableRadio;
+  final T? initialValue;
+  final ValueChanged<T?>? onChanged;
 
   const TGroupTile({
     super.key,
@@ -19,18 +20,41 @@ class TGroupTile extends StatelessWidget {
     this.borderColor,
     this.enable = true,
     this.enableBorder = true,
+    this.enableRadio = false,
+    this.initialValue,
+    this.onChanged,
   });
+
+  @override
+  State<TGroupTile<T>> createState() => _TGroupTileState<T>();
+}
+
+class _TGroupTileState<T> extends State<TGroupTile<T>> {
+  T? selectedValue;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedValue = widget.initialValue;
+  }
+
+  void _handleSelection(T? value) {
+    setState(() {
+      selectedValue = value;
+    });
+    widget.onChanged?.call(value);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (title != null)
+        if (widget.title != null)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             child: Text(
-              title!,
+              widget.title!,
               style: TFontRegular.body.copyWith(
                 color: HexColor(neutral700),
                 fontWeight: FontWeight.bold,
@@ -39,23 +63,30 @@ class TGroupTile extends StatelessWidget {
           ),
         Container(
           decoration: BoxDecoration(
-            color: enable
-                ? backgroundColor ?? Colors.transparent
+            color: widget.enable
+                ? widget.backgroundColor ?? Colors.transparent
                 : HexColor(neutral050),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: borderColor ?? HexColor(neutral300)),
+            border: Border.all(
+              color: widget.borderColor ?? HexColor(neutral300),
+            ),
           ),
           child: Column(
             children: [
-              for (int i = 0; i < tiles.length; i++) ...[
-                tiles[i].copyWith(borderColor: Colors.transparent),
-                if (enableBorder)
-                  if (i != tiles.length - 1)
-                    Divider(
-                      color: HexColor(neutral300),
-                      height: 1,
-                      thickness: 1,
-                    ),
+              for (int i = 0; i < widget.tiles.length; i++) ...[
+                widget.tiles[i].copyWith(
+                  borderColor: Colors.transparent,
+                  showRadio: widget.enableRadio,
+                  value: widget.tiles[i].value,
+                  groupValue: selectedValue,
+                  onChanged: widget.enableRadio ? _handleSelection : null,
+                ),
+                if (widget.enableBorder && i != widget.tiles.length - 1)
+                  Divider(
+                    color: HexColor(neutral300),
+                    height: 1,
+                    thickness: 1,
+                  ),
               ],
             ],
           ),
