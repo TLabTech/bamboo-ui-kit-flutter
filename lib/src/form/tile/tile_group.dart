@@ -74,12 +74,15 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
           child: Column(
             children: [
               for (int i = 0; i < widget.tiles.length; i++) ...[
-                widget.tiles[i].copyWith(
-                  borderColor: Colors.transparent,
-                  showRadio: widget.enableRadio,
-                  value: widget.tiles[i].value,
-                  groupValue: selectedValue,
-                  onChanged: widget.enableRadio ? _handleSelection : null,
+                GestureDetector(
+                  onTap: widget.tiles[i].onPress,
+                  child: widget.tiles[i].copyWith(
+                    borderColor: Colors.transparent,
+                    showRadio: widget.enableRadio,
+                    value: widget.tiles[i].value,
+                    groupValue: selectedValue,
+                    onChanged: widget.enableRadio ? _handleSelection : null,
+                  ),
                 ),
                 if (widget.enableBorder && i != widget.tiles.length - 1)
                   Divider(

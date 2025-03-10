@@ -3,7 +3,6 @@ import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 import 'package:flutter_bamboo_ui_kit/widgets/radio.dart';
 
-
 class TTile<T> extends StatelessWidget {
   final String title;
   final TextStyle? titleStyle;
@@ -21,6 +20,7 @@ class TTile<T> extends StatelessWidget {
   final T? groupValue;
   final ValueChanged<T>? onChanged;
   final bool showRadio;
+  final VoidCallback? onPress;
 
   const TTile({
     super.key,
@@ -40,76 +40,101 @@ class TTile<T> extends StatelessWidget {
     this.groupValue,
     this.onChanged,
     this.showRadio = false,
+    this.onPress,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: padding ?? const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-      decoration: BoxDecoration(
-        color: enable == true
-            ? backgroundColor ?? Colors.transparent
-            : HexColor(neutral050),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: borderColor ?? HexColor(neutral300)),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          if (prefixIcon != null) ...[
-            prefixIcon!,
-            const SizedBox(width: 12),
-          ],
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: titleStyle ?? TFontRegular.body.copyWith(color: HexColor(neutral900)),
-                  overflow: TextOverflow.clip,
-                  maxLines: 2,
-                ),
-                if (subtitle != null)
+    return GestureDetector(
+      onTap: enable == true ? onPress : null,
+      child: Container(
+        padding: padding ??
+            const EdgeInsets.symmetric(
+              horizontal: 14,
+              vertical: 12,
+            ),
+        decoration: BoxDecoration(
+          color: enable == true
+              ? backgroundColor ?? Colors.transparent
+              : HexColor(neutral050),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: borderColor ?? HexColor(neutral300)),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if (prefixIcon != null) ...[
+              IconTheme(
+                data: IconThemeData(
+                    color: enable == true ? null : HexColor(neutral500)),
+                child: prefixIcon!,
+              ),
+              const SizedBox(width: 12),
+            ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
-                    subtitle!,
-                    style: subtitleStyle ?? TFontRegular.caption2.copyWith(color: HexColor(neutral500)),
-                    overflow: TextOverflow.visible,
+                    title,
+                    style: titleStyle ??
+                        TFontRegular.body.copyWith(
+                          color: enable == true
+                              ? HexColor(neutral900)
+                              : HexColor(neutral500),
+                        ),
+                    overflow: TextOverflow.clip,
+                    maxLines: 2,
                   ),
-              ],
-            ),
-          ),
-          if (detail != null || suffixIcon != null) ...[
-            const SizedBox(width: 8),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (detail != null)
-                  Flexible(
-                    child: Text(
-                      detail!,
-                      style: TFontRegular.body.copyWith(color: HexColor(neutral500)),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                  if (subtitle != null)
+                    Text(
+                      subtitle!,
+                      style: subtitleStyle ??
+                          TFontRegular.caption2.copyWith(
+                            color: HexColor(neutral500),
+                          ),
+                      overflow: TextOverflow.visible,
                     ),
-                  ),
-                if (suffixIcon != null) ...[
-                  const SizedBox(width: 8),
-                  suffixIcon!,
                 ],
-              ],
+              ),
             ),
+            if (detail != null || suffixIcon != null) ...[
+              const SizedBox(width: 8),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (detail != null)
+                    Flexible(
+                      child: Text(
+                        detail!,
+                        style: TFontRegular.body
+                            .copyWith(color: HexColor(neutral500)),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  if (suffixIcon != null) ...[
+                    const SizedBox(width: 8),
+                    IconTheme(
+                      data: IconThemeData(
+                          color: enable == true ? null : HexColor(neutral500)),
+                      child: suffixIcon!,
+                    ),
+                  ],
+                ],
+              ),
+            ],
+            if (showRadio && value != null) ...[
+              const SizedBox(width: 8),
+              TRadioButton<T>(
+                value: value!,
+                groupValue: groupValue,
+                onChanged: onChanged,
+                label: '',
+              ),
+            ],
           ],
-          if (showRadio && value != null) ...[
-            const SizedBox(width: 8),
-            TRadioButton<T>(
-              value: value!,
-              groupValue: groupValue,
-              onChanged: onChanged,
-              label: '',
-            ),
-          ],
-        ],
+        ),
       ),
     );
   }
