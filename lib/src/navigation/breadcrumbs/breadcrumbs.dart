@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 
 enum BreadcrumbDirection { left, right }
 

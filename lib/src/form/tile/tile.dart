@@ -119,7 +119,8 @@ class TTile<T> extends StatelessWidget {
                     const SizedBox(width: 8),
                     IconTheme(
                       data: IconThemeData(
-                          color: enable == true ? null : HexColor(neutral500)),
+                        color: enable == true ? null : HexColor(neutral500),
+                      ),
                       child: suffixIcon!,
                     ),
                   ],
@@ -129,7 +130,7 @@ class TTile<T> extends StatelessWidget {
             if (showRadio && value != null) ...[
               const SizedBox(width: 8),
               TRadioButton<T>(
-                value: value!,
+                value: value as T,
                 groupValue: groupValue,
                 onChanged: onChanged,
                 label: '',

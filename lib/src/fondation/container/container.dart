@@ -11,7 +11,7 @@ class TContainerWBoxDecoration extends StatelessWidget {
   final Color backgroundColor;
   final BoxShadow? boxShadow;
 
-  TContainerWBoxDecoration({
+  const TContainerWBoxDecoration({
     super.key,
     this.child = const SizedBox(),
     this.height = 40,

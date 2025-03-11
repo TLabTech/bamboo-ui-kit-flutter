@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/circular_navbar.dart';
-import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_dot_navbar.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_text_navbar.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_style_10.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_navbar.dart';
-import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_style_4.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class TNavbarStyle {

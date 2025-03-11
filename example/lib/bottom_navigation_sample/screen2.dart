@@ -1,9 +1,6 @@
-import 'package:example/bottom_navigation_sample/screen3.dart';
 import 'package:example/bottom_navigation_sample/screen4.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/bottom_navigation.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/button.dart';
 
 class Screen2 extends StatefulWidget {
   const Screen2({super.key});

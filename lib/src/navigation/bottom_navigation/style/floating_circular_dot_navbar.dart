@@ -22,8 +22,6 @@ class FloatingCircularDotNavBar extends StatefulWidget {
 class _FloatingCircularDotNavBarState extends State<FloatingCircularDotNavBar>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late Animation<double> _scaleAnimation;
-  late Animation<double> _opacityAnimation;
 
   @override
   void initState() {
@@ -32,20 +30,6 @@ class _FloatingCircularDotNavBarState extends State<FloatingCircularDotNavBar>
       vsync: this,
       duration: const Duration(milliseconds: 300),
       reverseDuration: const Duration(milliseconds: 200),
-    );
-
-    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeOutBack,
-      ),
-    );
-
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
     );
 
     if (widget.navBarConfig.selectedIndex >= 0) {

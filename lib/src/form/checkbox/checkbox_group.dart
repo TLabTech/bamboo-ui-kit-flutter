@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/checkbox.dart';
 
 class TCheckBoxGroup extends StatefulWidget {
   final String? label;
