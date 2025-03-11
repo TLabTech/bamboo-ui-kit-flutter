@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   bool _isChecked = false;
   String? _selectedValue;
+  String? cashOnDelivery;
   bool _isFeatureEnabled = true;
   late List<Map<String, String>> items;
 
@@ -48,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String? selectedItem;
 
   double sliderValue = 0.5;
+  String? selectedOption;
 
   @override
   void initState() {
@@ -59,25 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
       {"label": "4", "value": "Keyboard"},
       {"label": "5", "value": "Monitor"},
     ];
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      calendarKey.currentState?.addEvents([
-        EventData(
-          title: "New Year's Day",
-          date: DateTime(2025, 1, 1),
-          description: "Celebrate the new year!",
-          startTime: DateTime(2024, 1, 1, 0, 0),
-          endTime: DateTime(2024, 1, 1, 23, 59),
-        ),
-        EventData(
-          title: "Christmas Day",
-          date: DateTime(2025, 2, 20),
-          description: "Celebrate Christmas with family.",
-          startTime: DateTime(2024, 12, 25, 0, 0),
-          endTime: DateTime(2024, 12, 25, 23, 59),
-        ),
-      ]);
-    });
   }
 
   @override
@@ -98,6 +81,31 @@ class _MyHomePageState extends State<MyHomePage> {
             spacing: 12,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              Text(
+                'Tittle Section',
+                style: TFontBold.headline,
+              ),
+              TTitleSection(
+                title: 'Recent Activity',
+                onPressed: () {},
+              ),
+              TTitleSection(
+                title: 'Recent Activity',
+                buttonText: "Button",
+                onPressed: () {},
+              ),
+              TTitleSection(
+                title: 'Recent Activity',
+                icon: Icon(Icons.person_outline),
+                onPressed: () {},
+              ),
+              TTitleSection(
+                title: 'Recent Activity',
+                description: "with button and icon",
+                icon: Icon(Icons.person_outline),
+                buttonText: "Button",
+                onPressed: () {},
+              ),
               /**
                * Button
                */
@@ -120,7 +128,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   TButtonPrimary(
                     text: "Primary with icon",
                     onPressed: () {},
-                    suffixIcon: Icon(Icons.add),
+                    suffixIcon: Icon(
+                      Icons.add,
+                    ),
                     prefixIcon: Icon(Icons.ac_unit),
                   ),
                   TButtonPrimary.icon(
@@ -137,6 +147,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                     },
                   ),
+                  TButtonSecondary.icon(
+                    icon: Icon(Icons.add),
+                    onPressed: () {},
+                  ),
                   TButtonDestructive(
                     text: "Destructive - bottom navigation fixed 4",
                     onPressed: () {
@@ -149,6 +163,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                     },
                   ),
+                  TButtonDestructive.icon(
+                    icon: Icon(Icons.access_time_filled_rounded),
+                    onPressed: () {},
+                  ),
                   TButtonOutline(
                     text: "outline - bottom navigation fixed 5",
                     onPressed: () {
@@ -159,6 +177,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     navbarStyle: NavbarStyle.fixed5,
                                   )));
                     },
+                  ),
+                  TButtonOutline.icon(
+                    icon: Icon(Icons.ac_unit),
+                    onPressed: () {},
                   ),
                   TButtonPrimary(
                     text: "bottom navigation floating 3",
@@ -176,6 +198,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {},
                     normalColor: Colors.black,
                     pressedColor: Colors.green,
+                  ),
+                  TButtonGhost.icon(
+                    icon: Icon(Icons.access_time_filled_rounded),
+                    onPressed: () {},
                   ),
                   TButtonPrimary(
                     text: "Bottom navigation floating 4",
@@ -204,6 +230,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                   TButtonDisable(text: "Disable", onPressed: () {}),
+                  TButtonDisable.icon(
+                      icon: Icon(Icons.ac_unit), onPressed: () {}),
                   TButtonPrimary(
                     text: "Loading",
                     onPressed: () {},
@@ -295,28 +323,31 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Calendar',
                 style: TFontBold.headline,
               ),
-              SizedBox(
-                height: 400,
+              Container(
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: HexColor(neutral200)),
+                ),
                 child: TCalendar(
-                  key: calendarKey,
-                  // Assign the GlobalKey
-                  onTitleTapped: (selectedDate) {
-                    print("Title tapped: $selectedDate");
-                  },
-                  onNextMonth: (currentDate) {
-                    print("Next month: $currentDate");
-                  },
-                  onPreviousMonth: (currentDate) {
-                    print("Previous month: $currentDate");
-                  },
-                  onCellTap: (events, date) {
-                    print("Cell tapped: $date with events: $events");
-                  },
-                  onEventTap: (event, date) {
-                    print("Event tapped: $event on $date");
-                  },
-                  onEventLongTap: (event, date) {
-                    print("Event long-pressed: $event on $date");
+                  firstDay: DateTime(2000, 4, 4),
+                  lastDay: DateTime(2030, 1, 2),
+                  events: [
+                    EventData(
+                      date: DateTime(2025, 2, 18),
+                      title: 'Meeting',
+                      description: 'Discuss project updates',
+                    ),
+                    EventData(
+                      date: DateTime(2025, 3, 1),
+                      title: 'Deadline',
+                    ),
+                  ],
+                  onEventTap: (event) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Tapped: ${event.title}')),
+                    );
                   },
                 ),
               ),
@@ -384,7 +415,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 12,
               ),
               Text(
-                'RadioButton',
+                'Checkbox Group',
+                style: TFontBold.headline,
+              ),
+              TCheckBoxGroup(
+                label: "Your option label",
+                items: ["Option 1", "Option 2", "Option 3"],
+                initialValues: null,
+                activeColor: Color(0xff00DE9C),
+                inactiveColor: Color(0xffF6F7F9),
+                onChanged: (selectedItems) {
+                  print("Selected items: $selectedItems");
+                },
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Text(
+                'Radio Button',
                 style: TFontBold.headline,
               ),
               Wrap(
@@ -394,7 +442,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     groupValue: _selectedValue ?? '',
                     onChanged: (newValue) {
                       setState(() {
-                        _selectedValue = newValue;
+                        if (_selectedValue == newValue) {
+                          _selectedValue = null;
+                        } else {
+                          _selectedValue = newValue;
+                        }
                       });
                     },
                     label: "Banana",
@@ -408,7 +460,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     groupValue: _selectedValue ?? '',
                     onChanged: (newValue) {
                       setState(() {
-                        _selectedValue = newValue;
+                        if (_selectedValue == newValue) {
+                          _selectedValue = null;
+                        } else {
+                          _selectedValue = newValue;
+                        }
                       });
                     },
                     label: "Banana",
@@ -418,6 +474,25 @@ class _MyHomePageState extends State<MyHomePage> {
                     isError: true,
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Text(
+                'Radio Group',
+                style: TFontBold.headline,
+              ),
+              TRadioGroup<String>(
+                label: "Your Radio Label",
+                values: ['Option 1', 'Option 2'],
+                items: ['Label', 'Label'],
+                selectedValue: selectedOption,
+                onChanged: (value) {
+                  setState(() {
+                    selectedOption = value;
+                    print('radioGroupValue $value');
+                  });
+                },
               ),
               SizedBox(
                 height: 12,
@@ -524,9 +599,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TFontBold.headline,
               ),
               TAccordion(
-                  title: "Lorem ipsum dolor sit amet",
-                  description:
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."),
+                title: "Lorem ipsum dolor sit amet",
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+                    style: TFontRegular.footNote
+                        .copyWith(color: HexColor(neutral500)),
+                  ),
+                ),
+              ),
+              TAccordion(
+                title: "Lorem ipsum dolor sit amet",
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+                    style: TFontRegular.footNote
+                        .copyWith(color: HexColor(neutral500)),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 12,
               ),
@@ -539,31 +632,56 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   TAvatar(
                     text: "sa",
-                    size: 80,
+                    predefinedSize: AvatarSize.large,
+                    type: AvatarType.online,
                     shape: AvatarShape.roundedSquare,
+                    backgroundColor: HexColor(primary500),
                   ),
                   TAvatar(
                     imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
-                    size: 80,
+                    predefinedSize: AvatarSize.large,
+                    type: AvatarType.notification,
+                    notificationCount: 5,
                     shape: AvatarShape.roundedSquare,
                   ),
                   TAvatar(
-                    icon: Icon(Icons.person_outline_rounded),
+                    icon: Icon(
+                      Icons.account_circle,
+                      color: HexColor('#677489'),
+                    ),
+                    predefinedSize: AvatarSize.medium,
                     shape: AvatarShape.roundedSquare,
                   ),
                   TAvatar(
                     text: "sa",
-                    size: 80,
                     shape: AvatarShape.circle,
+                    predefinedSize: AvatarSize.medium,
+                    type: AvatarType.online,
+                    backgroundColor: HexColor(primary500),
                   ),
                   TAvatar(
                     imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
-                    size: 80,
-                    shape: AvatarShape.circle,
+                    shape: AvatarShape.roundedSquare,
+                    type: AvatarType.notification,
+                    predefinedSize: AvatarSize.small,
+                    notificationCount: null,
                   ),
                   TAvatar(
-                    icon: Icon(Icons.person_outline_rounded),
+                    icon: Icon(
+                      Icons.account_circle,
+                      color: HexColor('#677489'),
+                      size: 12,
+                    ),
+                    predefinedSize: AvatarSize.small,
                     shape: AvatarShape.circle,
+                    type: AvatarType.online,
+                  ),
+                  TAvatar(
+                    text: "SA",
+                    backgroundColor: HexColor(primary500),
+                    predefinedSize: AvatarSize.small,
+                    shape: AvatarShape.circle,
+                    type: AvatarType.online,
                   ),
                 ],
               ),
@@ -597,6 +715,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 suffixIcon: Icon(Icons.chevron_right),
                 detail: "Forus labs (5G)",
                 enable: false,
+                onPress: () {
+                  print('pressing');
+                },
+              ),
+              TTile<String>(
+                title: "Cash On Delivery",
+                prefixIcon: const Icon(Icons.money, color: Colors.black54),
+                value: "cashOnDelivery",
+                groupValue: cashOnDelivery,
+                onChanged: (value) {
+                  setState(() {
+                    if (cashOnDelivery == value) {
+                      cashOnDelivery = null;
+                    } else {
+                      cashOnDelivery = value;
+                    }
+                  });
+                },
+                showRadio: true,
               ),
               TGroupTile(
                 enableBorder: false,
@@ -613,6 +750,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       Icons.chevron_right,
                       color: Colors.black54,
                     ),
+                    onPress: () {
+                      print('pressing profile');
+                    },
                   ),
                   TTile(
                     title: "Security",
@@ -626,6 +766,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       Icons.chevron_right,
                       color: Colors.black54,
                     ),
+                    onPress: () {
+                      print('pressing security');
+                    },
                   ),
                   TTile(
                     title: "Notifications",
@@ -642,6 +785,36 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
+              TGroupTile<String>(
+                title: "E-Wallet",
+                borderColor: Colors.white,
+                backgroundColor: Colors.white,
+                enableRadio: true,
+                // Enable radio button selection
+                initialValue: "paypall",
+                enableBorder: false,
+                onChanged: (value) {
+                  print("Selected: $value");
+                },
+                tiles: [
+                  TTile<String>(
+                    prefixIcon: Icon(Icons.monetization_on_outlined),
+                    title: "Paypall",
+                    value: "paypall",
+                  ),
+                  TTile<String>(
+                    title: "Gopay",
+                    prefixIcon: Icon(Icons.monetization_on),
+                    subtitle: "gopay",
+                    value: "gopay",
+                  ),
+                  TTile<String>(
+                    title: "Shopee Pay",
+                    prefixIcon: Icon(Icons.money),
+                    value: "shopee",
+                  ),
+                ],
+              ),
               SizedBox(
                 height: 12,
               ),
@@ -654,8 +827,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               TProgress.circular(
                 value: 0.7,
-                backgroundColor: Colors.redAccent,
-                valueColor: Colors.redAccent,
+                color: HexColor(primary500),
+                backgroundColor: HexColor(neutral200),
+                valueColor: Colors.black,
               ),
               SizedBox(
                 height: 12,

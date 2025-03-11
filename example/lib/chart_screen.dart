@@ -260,6 +260,9 @@ class _ChartScreenState extends State<ChartScreen> {
               data: [
                 PieChartData(label: "A", value: 80, color: Colors.green),
                 PieChartData(label: "B", value: 41, color: Colors.blue),
+                PieChartData(label: "C", value: 41, color: Colors.black),
+                PieChartData(label: "D", value: 41, color: Colors.red),
+                PieChartData(label: "E", value: 41, color: Colors.yellow),
               ],
               showLegends: true,
             ),
@@ -271,6 +274,9 @@ class _ChartScreenState extends State<ChartScreen> {
               data: [
                 DoughnutChartData(label: "A", value: 41, color: Colors.green),
                 DoughnutChartData(label: "B", value: 80, color: Colors.blue),
+                DoughnutChartData(label: "C", value: 22, color: Colors.black),
+                DoughnutChartData(label: "D", value: 65, color: Colors.red),
+                DoughnutChartData(label: "E", value: 12, color: Colors.yellow),
               ],
               showLegends: true,
             ),

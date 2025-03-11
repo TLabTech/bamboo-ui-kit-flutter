@@ -48,7 +48,7 @@ class _Screen1State extends State<Screen1> {
             TContainerWBoxDecoration(
               width: 200,
               height: 150,
-              boxShadow: TShadow.shadowS,
+              boxShadow: TShadow.shadowS(),
               child: Center(
                 child: Text("Container with box decoration Shadow 'S'"),
               ),
@@ -59,7 +59,7 @@ class _Screen1State extends State<Screen1> {
             TContainerWBoxDecoration(
               width: 200,
               height: 200,
-              boxShadow: TShadow.shadowM,
+              boxShadow: TShadow.shadowM(),
               child: Text("Container with box decoration Shadow 'M'"),
             ),
             SizedBox(
@@ -68,7 +68,7 @@ class _Screen1State extends State<Screen1> {
             TContainerWBoxDecoration(
               width: 200,
               height: 200,
-              boxShadow: TShadow.shadowL,
+              boxShadow: TShadow.shadowL(),
               child: Text("Container with box decoration Shadow 'L'"),
             ),
           ],
