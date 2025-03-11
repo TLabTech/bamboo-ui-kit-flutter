@@ -6,7 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class TAlert extends StatelessWidget {
   final String title;
+  final TextStyle? titleStyle;
   final String? subtitle;
+  final TextStyle? subtitleStyle;
   final Widget? icon;
   final Color titleColor;
   final Color subtitleColor;
@@ -18,6 +20,8 @@ class TAlert extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.icon,
+    this.titleStyle,
+    this.subtitleStyle,
   })  : titleColor = HexColor(neutral500),
         subtitleColor = HexColor(neutral400),
         borderColor = HexColor(neutral300),
@@ -28,6 +32,8 @@ class TAlert extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.icon,
+    this.titleStyle,
+    this.subtitleStyle,
   })  : titleColor = HexColor(primary500),
         subtitleColor = HexColor(primary400),
         borderColor = HexColor(primary300),
@@ -38,6 +44,8 @@ class TAlert extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.icon,
+    this.titleStyle,
+    this.subtitleStyle,
   })  : titleColor = HexColor(danger500),
         subtitleColor = HexColor(danger400),
         borderColor = HexColor(danger300),
@@ -48,6 +56,8 @@ class TAlert extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.icon,
+    this.titleStyle,
+    this.subtitleStyle,
   })  : titleColor = HexColor(info500),
         subtitleColor = HexColor(info400),
         borderColor = HexColor(info300),
@@ -84,12 +94,12 @@ class TAlert extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontRegular.body.copyWith(color: titleColor),
+                  style: titleStyle ?? TFontRegular.body.copyWith(color: titleColor),
                 ),
                 if (subtitle != null)
                   Text(
                     subtitle!,
-                    style: TFontRegular.footNote.copyWith(color: subtitleColor),
+                    style: subtitleStyle ?? TFontRegular.footNote.copyWith(color: subtitleColor),
                   ),
               ],
             ),

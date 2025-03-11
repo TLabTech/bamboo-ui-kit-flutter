@@ -7,6 +7,7 @@ class TTile<T> extends StatelessWidget {
   final String title;
   final TextStyle? titleStyle;
   final Color? backgroundColor;
+  final Color? disableBackgroundColor;
   final Color? borderColor;
   final Color? textColor;
   final bool? enable;
@@ -28,6 +29,7 @@ class TTile<T> extends StatelessWidget {
     this.titleStyle,
     this.subtitleStyle,
     this.backgroundColor,
+    this.disableBackgroundColor,
     this.borderColor,
     this.textColor,
     this.enable = true,
@@ -56,7 +58,7 @@ class TTile<T> extends StatelessWidget {
         decoration: BoxDecoration(
           color: enable == true
               ? backgroundColor ?? Colors.transparent
-              : HexColor(neutral050),
+              : disableBackgroundColor ?? HexColor(neutral050),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: borderColor ?? HexColor(neutral300)),
         ),
@@ -143,14 +145,17 @@ class TTile<T> extends StatelessWidget {
 extension TTileCopy<T> on TTile<T> {
   TTile<T> copyWith({
     String? title,
+    TextStyle? titleStyle,
     Color? backgroundColor,
     Color? borderColor,
     Color? textColor,
     bool? enable,
     String? subtitle,
+    TextStyle? subtitleStyle,
     String? detail,
     Widget? prefixIcon,
     Widget? suffixIcon,
+    EdgeInsets? padding,
     bool? showRadio,
     T? value,
     T? groupValue,
@@ -158,11 +163,13 @@ extension TTileCopy<T> on TTile<T> {
   }) {
     return TTile<T>(
       title: title ?? this.title,
+      titleStyle: titleStyle ?? this.titleStyle,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       borderColor: borderColor ?? this.borderColor,
       textColor: textColor ?? this.textColor,
       enable: enable ?? this.enable,
       subtitle: subtitle ?? this.subtitle,
+      subtitleStyle: subtitleStyle ?? this.subtitleStyle,
       detail: detail ?? this.detail,
       prefixIcon: prefixIcon ?? this.prefixIcon,
       suffixIcon: suffixIcon ?? this.suffixIcon,
@@ -170,6 +177,7 @@ extension TTileCopy<T> on TTile<T> {
       value: value ?? this.value,
       groupValue: groupValue ?? this.groupValue,
       onChanged: onChanged ?? this.onChanged,
+      padding: padding ?? this.padding,
     );
   }
 }
