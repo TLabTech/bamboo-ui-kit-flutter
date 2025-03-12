@@ -110,8 +110,7 @@ class _CircularNavbarState extends State<CircularNavbar>
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(12.0),
-                                  child:
-                                      isActive ? tab.icon : tab.inactiveIcon,
+                                  child: isActive ? tab.icon : tab.inactiveIcon,
                                 ),
                               ),
                             ),

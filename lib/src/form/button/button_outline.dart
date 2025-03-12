@@ -31,17 +31,17 @@ class TButtonOutline extends StatelessWidget {
     this.child,
   });
 
-  const TButtonOutline.icon({
-    super.key,
-    required Widget icon,
-    required this.onPressed,
-    this.backgroundColor = Colors.transparent,
-    this.borderRadius = 8,
-    this.borderColor,
-    this.padding,
-    this.textStyle,
-    this.loading = false
-  }) : child = icon,
+  const TButtonOutline.icon(
+      {super.key,
+      required Widget icon,
+      required this.onPressed,
+      this.backgroundColor = Colors.transparent,
+      this.borderRadius = 8,
+      this.borderColor,
+      this.padding,
+      this.textStyle,
+      this.loading = false})
+      : child = icon,
         text = null,
         suffixIcon = null,
         prefixIcon = null;
@@ -55,29 +55,30 @@ class TButtonOutline extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
-        side: BorderSide(width: 1.0, color: borderColor ?? HexColor(primary300)),
+        side:
+            BorderSide(width: 1.0, color: borderColor ?? HexColor(primary300)),
       ),
       onPressed: onPressed,
       child: loading
           ? Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            width: 18,
-            height: 18,
-            child: CircularProgressIndicator(
-              color: HexColor(neutral900),
-            ),
-          ),
-          if (text != null) SizedBox(width: 8),
-          if (text != null)
-            Text(
-              text!,
-              style: textStyle ??
-                  TFontBold.body.copyWith(color: HexColor(neutral900)),
-            ),
-        ],
-      )
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: 18,
+                  height: 18,
+                  child: CircularProgressIndicator(
+                    color: HexColor(neutral900),
+                  ),
+                ),
+                if (text != null) SizedBox(width: 8),
+                if (text != null)
+                  Text(
+                    text!,
+                    style: textStyle ??
+                        TFontBold.body.copyWith(color: HexColor(neutral900)),
+                  ),
+              ],
+            )
           : child ?? _buildContent(),
     );
   }
@@ -91,7 +92,8 @@ class TButtonOutline extends StatelessWidget {
         if (text != null)
           Text(
             text!,
-            style: textStyle ?? TFontBold.body.copyWith(color: HexColor(neutral900)),
+            style: textStyle ??
+                TFontBold.body.copyWith(color: HexColor(neutral900)),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),
         if (suffixIcon != null) suffixIcon!,

@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/src/chart/bar/chart_data.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/charts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+/// A grouped bar chart widget that displays multiple series of data.
 class TGroupBarChart extends StatelessWidget {
+  /// The title of the chart.
   final String title;
+
+  /// A list of series data to be displayed in the chart.
   final List<ChartSeriesData> seriesList;
+
+  /// Callback function triggered when the options button is tapped.
   final VoidCallback? optionTap;
+
+  /// The height of the chart.
   final double height;
+
+  /// Whether to display legends below the chart.
   final bool showLegends;
+
+  /// The orientation of the chart bars (horizontal or vertical).
   final Axis direction;
+
+  /// Whether to show the options button in the top-right corner.
   final bool showOption;
 
+  /// Creates a grouped bar chart widget.
   const TGroupBarChart({
     super.key,
     required this.title,
@@ -28,9 +43,7 @@ class TGroupBarChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(8),
-        ),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         color: HexColor(neutral050),
         border: Border.all(color: HexColor(neutral300), width: 1.0),
       ),
@@ -103,6 +116,7 @@ class TGroupBarChart extends StatelessWidget {
     );
   }
 
+  /// Builds a custom legend displaying series colors and labels.
   Widget _buildCustomLegend() {
     return Center(
       child: Wrap(

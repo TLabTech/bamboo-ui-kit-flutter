@@ -63,9 +63,12 @@ class TNavbarStyle {
     return FloatingCircularTextNavbar(
       navBarConfig: navBarConfig,
       navBarDecoration: NavBarDecoration(
-        color: activeColor ?? HexColor('#00DE9C'), // Green for active circular indicator
+        color: activeColor ??
+            HexColor('#00DE9C'), // Green for active circular indicator
       ),
-      backgroundColor: backgroundColor ?? Colors.white.withValues(alpha: 0.9), // Semi-transparent white for frosted effect
+      backgroundColor: backgroundColor ??
+          Colors.white.withValues(
+              alpha: 0.9), // Semi-transparent white for frosted effect
     );
     // return FloatingStyle4NavBar(
     //   navBarConfig: navBarConfig,

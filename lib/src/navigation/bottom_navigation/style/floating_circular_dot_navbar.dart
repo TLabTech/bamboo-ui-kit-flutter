@@ -56,16 +56,21 @@ class _FloatingCircularDotNavBarState extends State<FloatingCircularDotNavBar>
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0, bottom: 16.0), // Floating effect with padding
+      margin: EdgeInsets.only(
+        top: 8.0,
+        left: 16.0,
+        right: 16.0,
+        bottom: 16.0,
+      ), // Floating effect with padding
       decoration: BoxDecoration(
-        color: widget.backgroundColor, // Semi-transparent white for frosted effect
+        color: widget.backgroundColor,
         borderRadius: BorderRadius.circular(40), // Curved edges (20px radius)
         boxShadow: [
           TShadow.shadowS(), // Shadow
         ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Reduce spacing between items
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(widget.navBarConfig.items.length, (index) {
           final isActive = widget.navBarConfig.selectedIndex == index;
           final tab = widget.navBarConfig.items[index];

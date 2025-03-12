@@ -10,6 +10,6 @@ class EventData {
     required this.title,
     this.description,
     this.startTime,
-    this.endTime
+    this.endTime,
   });
 }

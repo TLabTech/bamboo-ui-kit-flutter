@@ -19,7 +19,8 @@ class _Screen3State extends State<Screen3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: THeader.brand(
-        icon: Image.network('https://banner2.cleanpng.com/20180806/oii/65b606cc249e8b0645b6ae3356fc358b.webp'),
+        icon: Image.network(
+            'https://banner2.cleanpng.com/20180806/oii/65b606cc249e8b0645b6ae3356fc358b.webp'),
         suffixAction: [
           THeaderAction(icon: Icon(Icons.add), onPress: () {}),
           THeaderAction(icon: Icon(Icons.notifications_active), onPress: () {}),

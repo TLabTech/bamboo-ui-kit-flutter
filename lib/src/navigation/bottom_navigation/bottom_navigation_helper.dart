@@ -50,7 +50,8 @@ class TBottomNavigationHelper {
       if (state != null) {
         state.controller.jumpToTab(index);
       } else {
-        throw Exception('TBottomNavigation not found in widget tree and controller not set');
+        throw Exception(
+            'TBottomNavigation not found in widget tree and controller not set');
       }
     } else {
       throw Exception('TBottomNavigation controller not initialized');
@@ -65,7 +66,8 @@ class TBottomNavigationHelper {
       if (state != null) {
         return state.controller.index;
       } else {
-        throw Exception('TBottomNavigation not found in widget tree and controller not set');
+        throw Exception(
+            'TBottomNavigation not found in widget tree and controller not set');
       }
     } else {
       throw Exception('TBottomNavigation controller not initialized');

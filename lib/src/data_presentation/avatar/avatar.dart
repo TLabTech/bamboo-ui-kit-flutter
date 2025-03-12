@@ -1,22 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 
+/// Defines the shape of the avatar.
 enum AvatarShape { circle, roundedSquare }
+
+/// Defines predefined sizes for the avatar.
 enum AvatarSize { small, medium, large }
+
+/// Defines the type of avatar, which affects additional indicators.
 enum AvatarType { notification, general, online }
 
+/// A customizable avatar widget that supports images, icons, text, and badges.
+///
+/// The `TAvatar` widget provides a profile/avatar display with flexible
+/// configuration options, including shape, size, and additional status indicators
+/// such as notifications and online status.
+///
+/// ### Example Usage:
+/// ```dart
+/// TAvatar(
+///   predefinedSize: AvatarSize.medium,
+///   shape: AvatarShape.circle,
+///   imageUrl: "https://example.com/avatar.jpg",
+///   type: AvatarType.online,
+/// )
+/// ```
+///
+/// This will create a medium-sized circular avatar with an image and an online indicator.
+///
+/// ### Features:
+/// - Customizable shape (circle or rounded square).
+/// - Supports predefined sizes or a custom size.
+/// - Can display an image, icon, or text initials.
+/// - Optional notification badge or online status indicator.
 class TAvatar extends StatelessWidget {
+  /// Custom size of the avatar (overrides predefined sizes if set).
   final double? size;
+
+  /// Predefined avatar size (`small`, `medium`, `large`).
   final AvatarSize? predefinedSize;
+
+  /// Type of avatar (general, with notification badge, or with online indicator).
   final AvatarType type;
+
+  /// Shape of the avatar (circle or rounded square).
   final AvatarShape shape;
+
+  /// Optional icon displayed inside the avatar.
   final Widget? icon;
+
+  /// URL of the image to display inside the avatar.
   final String? imageUrl;
+
+  /// Text to display inside the avatar (used if no image or icon is provided).
   final String? text;
+
+  /// Background color of the avatar.
   final Color backgroundColor;
+
+  /// Text style for the displayed text.
   final TextStyle? textStyle;
+
+  /// Notification count to display in the badge (only applies if `type` is `notification`).
   final int? notificationCount;
 
+  /// Creates an instance of `TAvatar`.
+  ///
+  /// - [size]: Custom size of the avatar.
+  /// - [predefinedSize]: Predefined size (`small`, `medium`, `large`).
+  /// - [type]: Defines avatar behavior (default is `general`).
+  /// - [shape]: Defines the shape (`circle` or `roundedSquare`).
+  /// - [icon]: Displays an icon inside the avatar.
+  /// - [imageUrl]: Displays an image inside the avatar.
+  /// - [text]: Displays text initials inside the avatar.
+  /// - [backgroundColor]: Background color when no image is present.
+  /// - [textStyle]: Custom text style for text initials.
+  /// - [notificationCount]: Number to display in the notification badge.
+  ///
+  /// **Note:** Only one of `icon`, `imageUrl`, or `text` must be provided.
   TAvatar({
     super.key,
     this.size,
@@ -35,6 +96,7 @@ class TAvatar extends StatelessWidget {
           'Provide either text, imageUrl, or icon.',
         );
 
+  /// Determines the avatar size based on the predefined size or custom size.
   double get avatarSize {
     if (size != null) return size!;
     switch (predefinedSize) {
@@ -49,6 +111,7 @@ class TAvatar extends StatelessWidget {
     }
   }
 
+  /// Determines the border radius for rounded square or circle shape.
   double get borderRadius {
     if (shape == AvatarShape.circle) {
       return avatarSize / 2;
@@ -65,6 +128,7 @@ class TAvatar extends StatelessWidget {
     }
   }
 
+  /// Determines the size of the notification or online badge.
   double get badgeSize {
     if (size != null) return size! * 0.2;
     switch (predefinedSize) {
@@ -79,6 +143,7 @@ class TAvatar extends StatelessWidget {
     }
   }
 
+  /// Extracts formatted text initials (first two letters).
   String? get formattedText {
     if (text == null || text!.trim().isEmpty) return null;
     final trimmed = text!.trim().toUpperCase();
@@ -106,6 +171,7 @@ class TAvatar extends StatelessWidget {
     );
   }
 
+  /// Builds the avatar content (icon, text, or image).
   Widget _buildContent() {
     if (icon != null) {
       return icon!;
@@ -136,6 +202,7 @@ class TAvatar extends StatelessWidget {
     }
   }
 
+  /// Builds a notification badge for the avatar.
   Widget _buildNotificationBadge() {
     return Positioned(
       top: -1,
@@ -143,7 +210,7 @@ class TAvatar extends StatelessWidget {
       child: Container(
         width: badgeSize,
         height: badgeSize,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.red,
           shape: BoxShape.circle,
         ),
@@ -158,6 +225,7 @@ class TAvatar extends StatelessWidget {
     );
   }
 
+  /// Builds an online status indicator for the avatar.
   Widget _buildOnlineIndicator() {
     return Positioned(
       bottom: 0,

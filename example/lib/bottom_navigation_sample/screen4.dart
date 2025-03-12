@@ -49,11 +49,15 @@ class _Screen4State extends State<Screen4> {
             //   start: DateTime(2000),
             //   end: DateTime(2030),
             // ),
-            SizedBox(height: 20,),
-            TButtonPrimary(text: "Goto", onPressed: (){
-              // _calendarKey.currentState?.animateToDate(DateTime(2025, 2, 18));
-              _calendarKey.currentState?.jumpToDate(DateTime(2025, 2, 18));
-            }),
+            SizedBox(
+              height: 20,
+            ),
+            TButtonPrimary(
+                text: "Goto",
+                onPressed: () {
+                  // _calendarKey.currentState?.animateToDate(DateTime(2025, 2, 18));
+                  _calendarKey.currentState?.jumpToDate(DateTime(2025, 2, 18));
+                }),
             Container(
               padding: EdgeInsets.all(12),
               child: TCalendar(
@@ -78,7 +82,9 @@ class _Screen4State extends State<Screen4> {
                 },
               ),
             ),
-            SizedBox(height: 40,)
+            SizedBox(
+              height: 40,
+            )
           ],
         ),
       ),

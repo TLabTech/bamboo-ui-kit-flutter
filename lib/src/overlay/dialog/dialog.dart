@@ -54,7 +54,8 @@ class TDialog extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TButtonSecondary(text: buttonNegative, onPressed: onNegativePressed),
+            TButtonSecondary(
+                text: buttonNegative, onPressed: onNegativePressed),
             const SizedBox(width: 8),
             TButtonPrimary(text: buttonPositive, onPressed: onPositivePressed),
           ],
@@ -80,12 +81,14 @@ class TDialog extends StatelessWidget {
         const SizedBox(height: 24),
         SizedBox(
           width: double.infinity,
-          child: TButtonPrimary(text: buttonPositive, onPressed: onPositivePressed),
+          child: TButtonPrimary(
+              text: buttonPositive, onPressed: onPositivePressed),
         ),
         const SizedBox(width: 8),
         SizedBox(
           width: double.infinity,
-          child: TButtonSecondary(text: buttonNegative, onPressed: onNegativePressed),
+          child: TButtonSecondary(
+              text: buttonNegative, onPressed: onNegativePressed),
         ),
       ],
     );

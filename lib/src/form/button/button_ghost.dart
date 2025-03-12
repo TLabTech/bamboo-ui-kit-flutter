@@ -110,10 +110,8 @@ class _TButtonGhostState extends State<TButtonGhost> {
             widget.text!,
             style: widget.textStyle ??
                 TFontBold.body.copyWith(
-                  color: _isPressed
-                      ? widget.pressedColor
-                      : widget.normalColor
-                ),
+                    color:
+                        _isPressed ? widget.pressedColor : widget.normalColor),
           ),
         if (widget.suffixIcon != null && widget.text != null)
           SizedBox(width: 10),

@@ -77,12 +77,13 @@ class TAlert extends StatelessWidget {
       ),
       child: Row(
         children: [
-          icon ?? SvgPicture.asset(
-            Assets.svg.informationCircle,
-            width: 24,
-            height: 24,
-            colorFilter: ColorFilter.mode(titleColor, BlendMode.srcIn),
-          ),
+          icon ??
+              SvgPicture.asset(
+                Assets.svg.informationCircle,
+                width: 24,
+                height: 24,
+                colorFilter: ColorFilter.mode(titleColor, BlendMode.srcIn),
+              ),
           SizedBox(
             width: 8,
           ),
@@ -94,12 +95,14 @@ class TAlert extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: titleStyle ?? TFontRegular.body.copyWith(color: titleColor),
+                  style: titleStyle ??
+                      TFontRegular.body.copyWith(color: titleColor),
                 ),
                 if (subtitle != null)
                   Text(
                     subtitle!,
-                    style: subtitleStyle ?? TFontRegular.footNote.copyWith(color: subtitleColor),
+                    style: subtitleStyle ??
+                        TFontRegular.footNote.copyWith(color: subtitleColor),
                   ),
               ],
             ),

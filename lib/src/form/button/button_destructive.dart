@@ -50,7 +50,8 @@ class TButtonDestructive extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? HexColor(primary500), // Default background
+        backgroundColor:
+            backgroundColor ?? HexColor(primary500), // Default background
         foregroundColor: Colors.white, // Default text/icon color
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8), // Increased rounded corners
@@ -59,9 +60,10 @@ class TButtonDestructive extends StatelessWidget {
         // padding: padding,
       ).copyWith(
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
-              (states) {
+          (states) {
             if (states.contains(WidgetState.pressed)) {
-              return onPressedBackgroundColor ?? HexColor(danger600); // Pressed state color
+              return onPressedBackgroundColor ??
+                  HexColor(danger600); // Pressed state color
             }
             return backgroundColor ?? HexColor(danger500); // Default color
           },
@@ -70,24 +72,24 @@ class TButtonDestructive extends StatelessWidget {
       onPressed: loading ? null : onPressed,
       child: loading
           ? Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            width: 18,
-            height: 18,
-            child: CircularProgressIndicator(
-              color: Colors.white,
-            ),
-          ),
-          if (text != null) SizedBox(width: 8),
-          if (text != null)
-            Text(
-              text!,
-              style: textStyle ??
-                  TFontBold.body.copyWith(color: Colors.white),
-            ),
-        ],
-      )
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: 18,
+                  height: 18,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+                ),
+                if (text != null) SizedBox(width: 8),
+                if (text != null)
+                  Text(
+                    text!,
+                    style: textStyle ??
+                        TFontBold.body.copyWith(color: Colors.white),
+                  ),
+              ],
+            )
           : child ?? _buildContent(),
     );
   }

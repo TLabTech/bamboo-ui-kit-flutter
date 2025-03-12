@@ -14,7 +14,7 @@ class YearSelector extends StatefulWidget {
     required this.onYearSelected,
     required this.startYear,
     required this.endYear,
-    this.onPageChanged
+    this.onPageChanged,
   });
 
   @override
@@ -28,6 +28,7 @@ class YearSelectorState extends State<YearSelector> {
   int _initialPage = 0;
 
   PageController get pageController => _pageController;
+
   int get totalPages => _totalPages;
 
   @override
@@ -86,7 +87,8 @@ class YearSelectorState extends State<YearSelector> {
             controller: _pageController,
             itemCount: _totalPages,
             itemBuilder: (context, pageIndex) {
-              int pageStartYear = widget.startYear + (pageIndex * _yearsPerPage);
+              int pageStartYear =
+                  widget.startYear + (pageIndex * _yearsPerPage);
               return GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -136,7 +138,7 @@ class YearSelectorState extends State<YearSelector> {
             },
           ),
         );
-      }
+      },
     );
   }
 }

@@ -22,9 +22,7 @@ class FloatingStyle10NavBar extends StatelessWidget {
           color: backgroundColor, // White background for Style10
           borderRadius: BorderRadius.all(Radius.circular(40)),
           padding: EdgeInsets.only(top: 5, bottom: 5),
-          boxShadow: [
-            TShadow.shadowS()
-          ],
+          boxShadow: [TShadow.shadowS()],
         ),
       ),
     );

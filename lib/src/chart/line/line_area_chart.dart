@@ -4,15 +4,62 @@ import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 import 'package:flutter_bamboo_ui_kit/widgets/charts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+/// A customizable line area chart widget.
+///
+/// This widget displays multiple series of data in a line area chart format.
+/// It supports legends, tooltip behavior, and an options button.
+///
+/// The chart uses `SfCartesianChart` from Syncfusion for rendering.
+///
+/// Example usage:
+/// ```dart
+/// TLineAreaChart(
+///   title: "Sales Performance",
+///   data: [
+///     [LineChartData(x: "Jan", y: 50, color: Colors.blue)],
+///     [LineChartData(x: "Feb", y: 80, color: Colors.green)],
+///   ],
+///   legendLabels: [LegendLabel(label: "Sales", color: Colors.blue)],
+///   showLegends: true,
+///   showOption: true,
+///   optionTap: () => print("Options tapped"),
+/// )
+/// ```
 class TLineAreaChart extends StatelessWidget {
+  /// The title of the chart.
   final String title;
+
+  /// A list of datasets representing the area chart series.
+  ///
+  /// Each list inside `data` represents a separate series.
   final List<List<LineChartData>> data;
+
+  /// Labels for the legends, showing the meaning of each dataset.
+  ///
+  /// If `null`, legends will not be displayed.
   final List<LegendLabel>? legendLabels;
+
+  /// Callback function triggered when the options button is tapped.
   final VoidCallback? optionTap;
+
+  /// Whether to display legends below the chart.
   final bool showLegends;
+
+  /// Whether to show the options button in the top-right corner.
   final bool showOption;
+
+  /// The height of the chart widget.
   final double height;
 
+  /// Creates a line area chart widget.
+  ///
+  /// - [title]: The chart's title.
+  /// - [data]: The series data for the chart.
+  /// - [legendLabels]: Labels for the chart legends.
+  /// - [optionTap]: A callback function for the options button.
+  /// - [showLegends]: Whether to show legends.
+  /// - [showOption]: Whether to show the options button.
+  /// - [height]: The height of the chart widget.
   const TLineAreaChart({
     super.key,
     required this.title,
@@ -49,11 +96,11 @@ class TLineAreaChart extends StatelessWidget {
                 if (showOption)
                   InkWell(
                     onTap: optionTap,
-                    child: Icon(Icons.more_horiz),
+                    child: const Icon(Icons.more_horiz),
                   ),
               ],
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10),
             SizedBox(
               height: height,
               child: SfCartesianChart(
@@ -72,14 +119,17 @@ class TLineAreaChart extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            const SizedBox(height: 10),
-            if (showLegends) legendLabels == null ? SizedBox() : _buildLegends()
+            if (showLegends)
+              legendLabels == null ? const SizedBox() : _buildLegends(),
           ],
         ),
       ),
     );
   }
 
+  /// Builds the series of the area chart.
+  ///
+  /// Each dataset is represented as a `SplineAreaSeries`.
   List<SplineAreaSeries<LineChartData, String>> _buildAreaSeries() {
     return List.generate(data.length, (index) {
       final Color baseColor = data[index].first.color;
@@ -102,6 +152,7 @@ class TLineAreaChart extends StatelessWidget {
     });
   }
 
+  /// Builds the legend widget displaying series colors and labels.
   Widget _buildLegends() {
     return Center(
       child: Wrap(
@@ -124,7 +175,7 @@ class TLineAreaChart extends StatelessWidget {
               Text(
                 data.label,
                 style:
-                TFontRegular.caption2.copyWith(color: HexColor(neutral900)),
+                    TFontRegular.caption2.copyWith(color: HexColor(neutral900)),
               ),
             ],
           );

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 
 class CustomSliderThumb extends SliderComponentShape {
-
   final Color? innerColor;
   final Color? outerColor;
   const CustomSliderThumb({this.innerColor, this.outerColor});
@@ -12,19 +11,19 @@ class CustomSliderThumb extends SliderComponentShape {
 
   @override
   void paint(
-      PaintingContext context,
-      Offset center, {
-        required Animation<double> activationAnimation,
-        required Animation<double> enableAnimation,
-        required bool isDiscrete,
-        required TextPainter labelPainter,
-        required RenderBox parentBox,
-        required SliderThemeData sliderTheme,
-        required TextDirection textDirection,
-        required double value,
-        required double textScaleFactor,
-        required Size sizeWithOverflow,
-      }) {
+    PaintingContext context,
+    Offset center, {
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    required bool isDiscrete,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required TextDirection textDirection,
+    required double value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
+  }) {
     final Canvas canvas = context.canvas;
 
     final Paint outerCirclePaint = Paint()

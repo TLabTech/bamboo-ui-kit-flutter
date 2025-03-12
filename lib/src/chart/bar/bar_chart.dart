@@ -1,29 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/charts.dart';
+import 'package:flutter_bamboo_ui_kit/widgets/bar_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+/// A widget that displays a bar chart using [SfCartesianChart].
+///
+/// This widget supports horizontal and vertical bar charts, optional legends,
+/// and an additional options button.
 class TBarChart extends StatelessWidget {
+  /// The title of the bar chart.
   final String title;
+
+  /// The data to be displayed in the chart.
   final List<ChartData> data;
+
+  /// Callback function triggered when the options button is tapped.
   final VoidCallback? optionTap;
+
+  /// Determines whether to show legends below the chart.
   final bool showLegends;
+
+  /// Determines whether to show the options button.
   final bool showOption;
+
+  /// The direction of the bar chart, either [Axis.horizontal] or [Axis.vertical].
   final Axis direction;
+
+  /// The height of the chart container.
   final double? height;
+
+  /// The color of the bars in the chart.
   final Color? barColor;
 
-  const TBarChart(
-      {super.key,
-      required this.title,
-      required this.data,
-      this.optionTap,
-      this.showLegends = true,
-      this.showOption = true,
-      this.direction = Axis.horizontal,
-      this.height = 300,
-      this.barColor});
+  /// Creates a [TBarChart] widget.
+  const TBarChart({
+    super.key,
+    required this.title,
+    required this.data,
+    this.optionTap,
+    this.showLegends = true,
+    this.showOption = true,
+    this.direction = Axis.horizontal,
+    this.height = 300,
+    this.barColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +71,7 @@ class TBarChart extends StatelessWidget {
                 if (showOption)
                   InkWell(
                     onTap: optionTap,
-                    child: Icon(Icons.more_horiz),
+                    child: const Icon(Icons.more_horiz),
                   ),
               ],
             ),
@@ -96,7 +117,7 @@ class TBarChart extends StatelessWidget {
                 legend: Legend(isVisible: false),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             if (showLegends)
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -106,7 +127,7 @@ class TBarChart extends StatelessWidget {
                     height: 12,
                     color: barColor ?? HexColor(primary500),
                   ),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   Text(
                     "1",
                     style: TFontRegular.caption2

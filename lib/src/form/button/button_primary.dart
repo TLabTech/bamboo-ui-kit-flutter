@@ -50,7 +50,8 @@ class TButtonPrimary extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? HexColor(primary500), // Default background
+        backgroundColor:
+            backgroundColor ?? HexColor(primary500), // Default background
         foregroundColor: Colors.white, // Default text/icon color
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8), // Increased rounded corners
@@ -59,9 +60,10 @@ class TButtonPrimary extends StatelessWidget {
         // padding: padding,
       ).copyWith(
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
-              (states) {
+          (states) {
             if (states.contains(WidgetState.pressed)) {
-              return onPressedBackgroundColor ?? HexColor(primary600); // Pressed state color
+              return onPressedBackgroundColor ??
+                  HexColor(primary600); // Pressed state color
             }
             return backgroundColor ?? HexColor(primary500); // Default color
           },

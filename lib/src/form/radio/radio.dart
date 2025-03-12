@@ -26,8 +26,7 @@ class TRadioButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isSelected =
-        groupValue != null && value == groupValue;
+    bool isSelected = groupValue != null && value == groupValue;
 
     return GestureDetector(
       onTap: isDisabled ? null : () => onChanged?.call(value),

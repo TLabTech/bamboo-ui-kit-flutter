@@ -71,7 +71,7 @@ class _TSwitchState extends State<TSwitch> {
                   _internalValue = newValue;
                 });
                 widget.onChanged(newValue);
-              } else if (!widget.isEnabled){
+              } else if (!widget.isEnabled) {
                 setState(() {
                   _internalValue = false;
                 });
@@ -96,9 +96,9 @@ class _TSwitchState extends State<TSwitch> {
               ),
               Text(
                 widget.description,
-                  style: TFontRegular.footNote.copyWith(
-                    color: HexColor(neutral500),
-                  ),
+                style: TFontRegular.footNote.copyWith(
+                  color: HexColor(neutral500),
+                ),
               ),
               if (widget.error != null) ...[
                 const SizedBox(height: 4),

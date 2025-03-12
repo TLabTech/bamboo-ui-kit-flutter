@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/chart/doughnut/doughnut_chart_data.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/widgets/charts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+/// A doughnut chart widget that displays proportional data in a circular format.
 class TDoughnutChart extends StatelessWidget {
+  /// The title of the chart.
   final String title;
+
+  /// A list of data points to be displayed in the chart.
   final List<DoughnutChartData> data;
+
+  /// Callback function triggered when the options button is tapped.
   final VoidCallback? optionTap;
+
+  /// Whether to display legends below the chart.
   final bool showLegends;
+
+  /// Whether to show the options button in the top-right corner.
   final bool showOption;
+
+  /// The height of the chart container.
   final double? height;
 
+  /// Creates a doughnut chart widget.
   const TDoughnutChart({
     super.key,
     required this.title,
@@ -26,9 +39,7 @@ class TDoughnutChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(8),
-        ),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         color: HexColor(neutral050),
         border: Border.all(color: HexColor(neutral300), width: 1.0),
       ),
@@ -92,14 +103,15 @@ class TDoughnutChart extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
-            if (showLegends) _buildCustomLegend()
+            const SizedBox(height: 10),
+            if (showLegends) _buildCustomLegend(),
           ],
         ),
       ),
     );
   }
 
+  /// Builds a custom legend displaying chart colors and corresponding labels.
   Widget _buildCustomLegend() {
     return Center(
       child: Wrap(
@@ -119,8 +131,8 @@ class TDoughnutChart extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 data.label,
-                style: TFontRegular.caption2
-                    .copyWith(color: HexColor(neutral900)),
+                style:
+                    TFontRegular.caption2.copyWith(color: HexColor(neutral900)),
               ),
             ],
           );

@@ -1,17 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/chart/pie/pie_chart_data.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/widgets/charts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+/// A customizable pie chart widget for Flutter applications.
+///
+/// The `TPieChart` widget displays a pie chart with optional legends and
+/// an action button. It uses the `SfCircularChart` from the
+/// `syncfusion_flutter_charts` package to render the chart.
+///
+/// ### Example Usage:
+/// ```dart
+/// TPieChart(
+///   title: "Sales Distribution",
+///   data: [
+///     PieChartData(label: "Product A", value: 30, color: Colors.blue),
+///     PieChartData(label: "Product B", value: 20, color: Colors.red),
+///   ],
+///   showLegends: true,
+///   showOption: true,
+///   optionTap: () => print("More options tapped"),
+/// )
+/// ```
 class TPieChart extends StatelessWidget {
+  /// The title displayed at the top of the pie chart.
   final String title;
+
+  /// The list of data points to be displayed in the pie chart.
   final List<PieChartData> data;
+
+  /// A callback function triggered when the options button is tapped.
   final VoidCallback? optionTap;
+
+  /// Whether to display the legend below the chart.
+  ///
+  /// Defaults to `true`.
   final bool showLegends;
+
+  /// Whether to display the options button (three dots).
+  ///
+  /// Defaults to `true`.
   final bool showOption;
+
+  /// The height of the chart container.
+  ///
+  /// Defaults to `300`.
   final double? height;
 
+  /// Creates a `TPieChart` instance.
+  ///
+  /// - [title]: The title of the pie chart.
+  /// - [data]: A list of `PieChartData` representing chart values.
+  /// - [optionTap]: An optional callback when the options button is tapped.
+  /// - [showLegends]: A flag to control the visibility of legends.
+  /// - [showOption]: A flag to control the visibility of the options button.
+  /// - [height]: The height of the pie chart.
   const TPieChart({
     super.key,
     required this.title,
@@ -92,7 +136,7 @@ class TPieChart extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             if (showLegends) _buildCustomLegend()
           ],
         ),
@@ -100,6 +144,9 @@ class TPieChart extends StatelessWidget {
     );
   }
 
+  /// Builds a custom legend for the pie chart.
+  ///
+  /// Each legend displays a color indicator alongside the corresponding label.
   Widget _buildCustomLegend() {
     return Center(
       child: Wrap(

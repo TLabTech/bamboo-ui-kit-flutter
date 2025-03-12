@@ -61,7 +61,8 @@ class TProgress extends StatelessWidget {
             value: value,
             strokeWidth: strokeWidth,
             backgroundColor: backgroundColor ?? HexColor(neutral200),
-            valueColor: AlwaysStoppedAnimation<Color>(color ?? HexColor(primary500)),
+            valueColor:
+                AlwaysStoppedAnimation<Color>(color ?? HexColor(primary500)),
           ),
         ),
         Text(
