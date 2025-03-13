@@ -7,6 +7,7 @@ class TDialog extends StatelessWidget {
   final String buttonPositive;
   final String buttonNegative;
   final Axis direction;
+  final Color? backgroundColor;
   final VoidCallback onPositivePressed;
   final VoidCallback onNegativePressed;
 
@@ -17,6 +18,7 @@ class TDialog extends StatelessWidget {
     required this.direction,
     required this.onPositivePressed,
     required this.onNegativePressed,
+    this.backgroundColor,
     this.buttonNegative = "Cancel",
     this.buttonPositive = "Yes",
   });
@@ -28,10 +30,14 @@ class TDialog extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
+        backgroundColor: backgroundColor ?? Colors.white,
         contentPadding: const EdgeInsets.all(20),
-        content: direction == Axis.horizontal
-            ? _buildHorizontalContent()
-            : _buildVerticalContent(),
+        content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: direction == Axis.horizontal
+              ? _buildHorizontalContent()
+              : _buildVerticalContent(),
+        ),
       ),
     );
   }
@@ -54,10 +60,19 @@ class TDialog extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TButtonSecondary(
-                text: buttonNegative, onPressed: onNegativePressed),
+            Expanded(
+              child: TButtonSecondary(
+                text: buttonNegative,
+                onPressed: onNegativePressed,
+              ),
+            ),
             const SizedBox(width: 8),
-            TButtonPrimary(text: buttonPositive, onPressed: onPositivePressed),
+            Expanded(
+              child: TButtonPrimary(
+                text: buttonPositive,
+                onPressed: onPositivePressed,
+              ),
+            ),
           ],
         ),
       ],
@@ -82,13 +97,17 @@ class TDialog extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: TButtonPrimary(
-              text: buttonPositive, onPressed: onPositivePressed),
+            text: buttonPositive,
+            onPressed: onPositivePressed,
+          ),
         ),
         const SizedBox(width: 8),
         SizedBox(
           width: double.infinity,
           child: TButtonSecondary(
-              text: buttonNegative, onPressed: onNegativePressed),
+            text: buttonNegative,
+            onPressed: onNegativePressed,
+          ),
         ),
       ],
     );

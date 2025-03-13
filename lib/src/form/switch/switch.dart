@@ -79,7 +79,8 @@ class _TSwitchState extends State<TSwitch> {
               }
             },
             activeColor: HexColor(neutral050),
-            activeTrackColor: HexColor(primary500),
+            activeTrackColor:
+                widget.isError ? HexColor(danger500) : HexColor(primary500),
           ),
           const SizedBox(width: 8),
           Column(

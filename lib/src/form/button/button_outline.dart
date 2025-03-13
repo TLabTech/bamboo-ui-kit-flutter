@@ -15,6 +15,8 @@ class TButtonOutline extends StatelessWidget {
   final Widget? prefixIcon;
   final bool loading;
   final Widget? child;
+  final double minWidth;
+  final double minHeight;
 
   const TButtonOutline({
     super.key,
@@ -29,19 +31,23 @@ class TButtonOutline extends StatelessWidget {
     this.prefixIcon,
     this.loading = false,
     this.child,
+    this.minWidth = 44.0,
+    this.minHeight = 44.0,
   });
 
-  const TButtonOutline.icon(
-      {super.key,
-      required Widget icon,
-      required this.onPressed,
-      this.backgroundColor = Colors.transparent,
-      this.borderRadius = 8,
-      this.borderColor,
-      this.padding,
-      this.textStyle,
-      this.loading = false})
-      : child = icon,
+  const TButtonOutline.icon({
+    super.key,
+    required Widget icon,
+    required this.onPressed,
+    this.backgroundColor = Colors.transparent,
+    this.borderRadius = 8,
+    this.borderColor,
+    this.padding,
+    this.textStyle,
+    this.loading = false,
+    this.minWidth = 44.0,
+    this.minHeight = 44.0,
+  })  : child = icon,
         text = null,
         suffixIcon = null,
         prefixIcon = null;
@@ -51,12 +57,15 @@ class TButtonOutline extends StatelessWidget {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         backgroundColor: backgroundColor,
-        padding: padding,
+        padding: padding ?? EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
-        side:
-            BorderSide(width: 1.0, color: borderColor ?? HexColor(primary300)),
+        side: BorderSide(
+          width: 1.0,
+          color: borderColor ?? HexColor(primary300),
+        ),
+        minimumSize: Size(minWidth, minHeight),
       ),
       onPressed: onPressed,
       child: loading
@@ -84,16 +93,23 @@ class TButtonOutline extends StatelessWidget {
   }
 
   Widget _buildContent() {
+    bool hasPrefix = prefixIcon != null;
+    bool hasSuffix = suffixIcon != null;
+    bool hasOnlyText = !hasPrefix && !hasSuffix;
+
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: [
         if (prefixIcon != null) prefixIcon!,
         if (prefixIcon != null && text != null) SizedBox(width: 10),
         if (text != null)
-          Text(
-            text!,
-            style: textStyle ??
-                TFontBold.body.copyWith(color: HexColor(neutral900)),
+          Expanded(
+            child: Text(
+              text!,
+              textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+              style: textStyle ??
+                  TFontBold.body.copyWith(color: HexColor(neutral900)),
+            ),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),
         if (suffixIcon != null) suffixIcon!,

@@ -68,7 +68,7 @@ class _TButtonGhostState extends State<TButtonGhost> {
       },
       child: Container(
         color: Colors.transparent,
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0, left: 22, right: 22),
         child: widget.loading
             ? Row(
                 mainAxisSize: MainAxisSize.min,
@@ -99,19 +99,26 @@ class _TButtonGhostState extends State<TButtonGhost> {
   }
 
   Widget _buildContent(bool isPressed) {
+    bool hasPrefix = widget.prefixIcon != null;
+    bool hasSuffix = widget.suffixIcon != null;
+    bool hasOnlyText = !hasPrefix && !hasSuffix;
+
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: [
         if (widget.prefixIcon != null) widget.prefixIcon!,
         if (widget.prefixIcon != null && widget.text != null)
           SizedBox(width: 10),
         if (widget.text != null)
-          Text(
-            widget.text!,
-            style: widget.textStyle ??
-                TFontBold.body.copyWith(
-                    color:
-                        _isPressed ? widget.pressedColor : widget.normalColor),
+          Expanded(
+            child: Text(
+              widget.text!,
+              textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+              style: widget.textStyle ??
+                  TFontBold.body.copyWith(
+                      color:
+                          _isPressed ? widget.pressedColor : widget.normalColor),
+            ),
           ),
         if (widget.suffixIcon != null && widget.text != null)
           SizedBox(width: 10),

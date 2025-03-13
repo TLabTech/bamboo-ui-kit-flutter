@@ -95,15 +95,22 @@ class TButtonPrimary extends StatelessWidget {
   }
 
   Widget _buildContent() {
+    bool hasPrefix = prefixIcon != null;
+    bool hasSuffix = suffixIcon != null;
+    bool hasOnlyText = !hasPrefix && !hasSuffix;
+
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: [
         if (prefixIcon != null) prefixIcon!,
         if (prefixIcon != null && text != null) SizedBox(width: 10),
         if (text != null)
-          Text(
-            text!,
-            style: textStyle ?? TFontBold.body.copyWith(color: Colors.white),
+          Expanded(
+            child: Text(
+              text!,
+              textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+              style: textStyle ?? TFontBold.body.copyWith(color: Colors.white),
+            ),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),
         if (suffixIcon != null) suffixIcon!,
