@@ -15,7 +15,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Calendar'),
+      appBar: THeader.nested(title: 'Calendar', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

@@ -63,23 +63,25 @@ class TTitleSection extends StatelessWidget {
             ],
           ),
         ),
-        Row(
-          children: [
-            TButtonGhost(
-              text: buttonText,
-              normalColor: buttonColor ?? HexColor(primary500),
-              pressedColor: Colors.black,
-              onPressed: onPressed,
-            ),
-            if (buttonText == null)
-              GestureDetector(
-                onTap: onPressed,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Icon(Icons.more_horiz),
+        Container(
+          padding: EdgeInsets.only(left: 12),
+          child: buttonText != null
+              ? GestureDetector(
+                  onTap: onPressed,
+                  child: Text(
+                    buttonText!,
+                    style: TFontBold.body.copyWith(
+                      color: buttonColor ?? HexColor(primary500),
+                    ),
+                  ),
+                )
+              : GestureDetector(
+                  onTap: onPressed,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Icon(Icons.more_horiz),
+                  ),
                 ),
-              ),
-          ],
         ),
       ],
     );

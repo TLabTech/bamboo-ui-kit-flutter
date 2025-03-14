@@ -17,7 +17,7 @@ class _RadioGroupScreenState extends State<RadioGroupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Radio Group'),
+      appBar: THeader.nested(title: 'Radio Group', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

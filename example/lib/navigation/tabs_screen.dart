@@ -3,19 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BadgeScreen extends StatefulWidget {
-  const BadgeScreen({super.key});
+class TabsScreen extends StatefulWidget {
+  const TabsScreen({super.key});
 
   @override
-  State<BadgeScreen> createState() => _BadgeScreenState();
+  State<TabsScreen> createState() => _TabsScreenState();
 }
 
-class _BadgeScreenState extends State<BadgeScreen> {
+class _TabsScreenState extends State<TabsScreen>
+    with SingleTickerProviderStateMixin {
+  late final TabController controller;
+  int index = 0;
+
+  @override
+  void initState() {
+    controller = TabController(length: 2, vsync: this);
+    controller.addListener((){
+      index = controller.index;
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Badge', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Tabs',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -30,11 +46,11 @@ class _BadgeScreenState extends State<BadgeScreen> {
                   ),
                   TBreadcrumbItem(
                     onTap: () {},
-                    label: 'Data Presentation',
+                    label: 'Navigation',
                   ),
                   TBreadcrumbItem(
                     onTap: () {},
-                    label: 'Badge',
+                    label: 'Tabs',
                   ),
                 ],
               ),
@@ -42,7 +58,7 @@ class _BadgeScreenState extends State<BadgeScreen> {
                 height: 8,
               ),
               TAccordion(
-                title: "Primary",
+                title: "2 Tabs",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
@@ -58,17 +74,19 @@ class _BadgeScreenState extends State<BadgeScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: Center(
-                    child: TBadge(
-                      label: "Badge",
-                      backgroundColor: HexColor(primary050),
-                      textColor: HexColor(primary500),
-                    ),
+                  child: TTabs(
+                    controller: controller,
+                    tabs: ['Tab 1', 'Tab 2'],
+                    onTabSelected: (index) {
+                      setState(() {
+                        this.index = index;
+                      });
+                    },
                   ),
                 ),
               ),
               TAccordion(
-                title: "Secondary",
+                title: "3 Tabs",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
@@ -84,15 +102,19 @@ class _BadgeScreenState extends State<BadgeScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: Center(
-                    child: TBadge.secondary(
-                      label: "Badge",
-                    ),
+                  child: TTabs(
+                    controller: controller,
+                    tabs: ['Tab 1', 'Tab 2', 'Tab 3'],
+                    onTabSelected: (index) {
+                      setState(() {
+                        this.index = index;
+                      });
+                    },
                   ),
                 ),
               ),
               TAccordion(
-                title: "Outline",
+                title: "4 Tabs",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
@@ -108,37 +130,14 @@ class _BadgeScreenState extends State<BadgeScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: Center(
-                    child: TBadge.outline(
-                      label: "Badge",
-                      borderColor: HexColor(primary300),
-                    ),
-                  ),
-                ),
-              ),
-              TAccordion(
-                title: "Destructive",
-                titleStyle: TFontBold.headline.copyWith(
-                  color: HexColor(neutral900),
-                ),
-                showDivider: false,
-                initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(24),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: HexColor(neutral300),
-                    ),
-                  ),
-                  child: Center(
-                    child: TBadge.destructive(
-                      label: "Badge",
-                      backgroundColor: HexColor(danger050),
-                      textColor: HexColor(danger500),
-                    ),
+                  child: TTabs(
+                    controller: controller,
+                    tabs: ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4'],
+                    onTabSelected: (index) {
+                      setState(() {
+                        this.index = index;
+                      });
+                    },
                   ),
                 ),
               ),

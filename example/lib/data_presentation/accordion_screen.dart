@@ -15,7 +15,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Accordion'),
+      appBar: THeader.nested(title: 'Accordion', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

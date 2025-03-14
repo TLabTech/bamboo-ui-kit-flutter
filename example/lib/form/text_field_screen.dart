@@ -42,7 +42,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Text Field'),
+      appBar: THeader.nested(title: 'Text Field', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

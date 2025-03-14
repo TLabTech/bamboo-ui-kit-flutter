@@ -18,7 +18,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Checkbox'),
+      appBar: THeader.nested(title: 'Checkbox', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

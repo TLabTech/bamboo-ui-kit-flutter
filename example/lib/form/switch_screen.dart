@@ -19,7 +19,7 @@ class _SwitchScreenState extends State<SwitchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Switch'),
+      appBar: THeader.nested(title: 'Switch', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

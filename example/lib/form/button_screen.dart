@@ -15,7 +15,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Button'),
+      appBar: THeader.nested(title: 'Button', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

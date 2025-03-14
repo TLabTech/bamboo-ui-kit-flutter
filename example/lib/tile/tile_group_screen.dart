@@ -15,7 +15,7 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Tile Group'),
+      appBar: THeader.nested(title: 'Tile Group', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

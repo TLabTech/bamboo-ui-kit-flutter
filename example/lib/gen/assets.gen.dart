@@ -16,6 +16,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/bell.svg
   String get bell => 'assets/svg/bell.svg';
 
+  /// File path: assets/svg/briefcase.svg
+  String get briefcase => 'assets/svg/briefcase.svg';
+
   /// File path: assets/svg/chevron-down.svg
   String get chevronDown => 'assets/svg/chevron-down.svg';
 
@@ -25,8 +28,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/home.svg
   String get home => 'assets/svg/home.svg';
 
+  /// File path: assets/svg/home_outline.svg
+  String get homeOutline => 'assets/svg/home_outline.svg';
+
+  /// File path: assets/svg/magnifying-glass.svg
+  String get magnifyingGlass => 'assets/svg/magnifying-glass.svg';
+
   /// File path: assets/svg/plus.svg
   String get plus => 'assets/svg/plus.svg';
+
+  /// File path: assets/svg/user-circle.svg
+  String get userCircle => 'assets/svg/user-circle.svg';
 
   /// File path: assets/svg/user.svg
   String get user => 'assets/svg/user.svg';
@@ -38,10 +50,14 @@ class $AssetsSvgGen {
   List<String> get values => [
     logo,
     bell,
+    briefcase,
     chevronDown,
     chevronRight,
     home,
+    homeOutline,
+    magnifyingGlass,
     plus,
+    userCircle,
     user,
     wifi,
   ];

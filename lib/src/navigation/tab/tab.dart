@@ -53,7 +53,7 @@ class _TTabsState extends State<TTabs> {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(widget.tabs.length, (index) {
           final isSelected = index == selectedIndex;
           return Expanded(
@@ -68,7 +68,7 @@ class _TTabsState extends State<TTabs> {
               child: AnimatedContainer(
                 duration: Duration(milliseconds: 200),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
+                  horizontal: 8,
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
@@ -85,6 +85,7 @@ class _TTabsState extends State<TTabs> {
                           ? HexColor(neutral900)
                           : HexColor(neutral500),
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),

@@ -3,21 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class TileScreen extends StatefulWidget {
-  const TileScreen({super.key});
+class TittleSectionScreen extends StatefulWidget {
+  const TittleSectionScreen({super.key});
 
   @override
-  State<TileScreen> createState() => _TileScreenState();
+  State<TittleSectionScreen> createState() => _TittleSectionScreenState();
 }
 
-class _TileScreenState extends State<TileScreen> {
-  String? wifiSelected;
-
+class _TittleSectionScreenState extends State<TittleSectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Tile', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Tittle Section',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -32,11 +33,11 @@ class _TileScreenState extends State<TileScreen> {
                   ),
                   TBreadcrumbItem(
                     onTap: () {},
-                    label: 'Tile',
+                    label: 'Navigation',
                   ),
                   TBreadcrumbItem(
                     onTap: () {},
-                    label: 'Tile',
+                    label: 'Tittle Section',
                   ),
                 ],
               ),
@@ -44,7 +45,7 @@ class _TileScreenState extends State<TileScreen> {
                 height: 8,
               ),
               TAccordion(
-                title: "UnTappable",
+                title: "Default",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
@@ -60,20 +61,16 @@ class _TileScreenState extends State<TileScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: TTile<String>(
-                    title: "Personalization",
-                    prefixIcon: SvgPicture.asset(Assets.svg.user),
-                    suffixIcon: SvgPicture.asset(Assets.svg.chevronRight),
-                  ),
+                  child: TTitleSection(title: "Placeholder"),
                 ),
               ),
               TAccordion(
-                title: "Disabled",
+                title: "With Description",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -84,33 +81,19 @@ class _TileScreenState extends State<TileScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: TTile<String>(
-                    title: "Personalization",
-                    prefixIcon: SvgPicture.asset(
-                      Assets.svg.user,
-                      colorFilter: ColorFilter.mode(
-                        HexColor(neutral500),
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    suffixIcon: SvgPicture.asset(
-                      Assets.svg.chevronRight,
-                      colorFilter: ColorFilter.mode(
-                        HexColor(neutral500),
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    enable: false,
+                  child: TTitleSection(
+                    title: "Placeholder",
+                    description: "Description.",
                   ),
                 ),
               ),
               TAccordion(
-                title: "With Subtitle",
+                title: "With Icon",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -121,25 +104,19 @@ class _TileScreenState extends State<TileScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: TTile<String>(
-                    title: "Notifications",
-                    subtitle: "Banner, sound, badges",
-                    prefixIcon: SvgPicture.asset(
-                      Assets.svg.bell,
-                    ),
-                    suffixIcon: SvgPicture.asset(
-                      Assets.svg.chevronRight,
-                    ),
+                  child: TTitleSection(
+                    title: "Placeholder",
+                    icon: SvgPicture.asset(Assets.svg.user),
                   ),
                 ),
               ),
               TAccordion(
-                title: "With Details",
+                title: "With Description & Icon",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -150,25 +127,20 @@ class _TileScreenState extends State<TileScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: TTile<String>(
-                    title: "Wifi",
-                    detail: "Forus labs (5G)",
-                    prefixIcon: SvgPicture.asset(
-                      Assets.svg.wifi,
-                    ),
-                    suffixIcon: SvgPicture.asset(
-                      Assets.svg.chevronRight,
-                    ),
+                  child: TTitleSection(
+                    title: "Placeholder",
+                    description: "Description.",
+                    icon: SvgPicture.asset(Assets.svg.user),
                   ),
                 ),
               ),
               TAccordion(
-                title: "With Radio",
+                title: "With Description & Icon",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -179,23 +151,59 @@ class _TileScreenState extends State<TileScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: TTile<String>(
-                    title: "Wifi",
-                    prefixIcon: SvgPicture.asset(
-                      Assets.svg.wifi,
+                  child: TTitleSection(
+                    title: "Placeholder",
+                    description: "Description.",
+                    icon: SvgPicture.asset(Assets.svg.user),
+                  ),
+                ),
+              ),
+              TAccordion(
+                title: "With Button",
+                titleStyle: TFontBold.headline.copyWith(
+                  color: HexColor(neutral900),
+                ),
+                showDivider: false,
+                initiallyExpanded: true,
+                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: HexColor(neutral300),
                     ),
-                    value: "wifi",
-                    groupValue: wifiSelected,
-                    onChanged: (value) {
-                      setState(() {
-                        if (wifiSelected == value) {
-                          wifiSelected = null;
-                        } else {
-                          wifiSelected = value;
-                        }
-                      });
-                    },
-                    showRadio: true,
+                  ),
+                  child: TTitleSection(
+                    title: "Placeholder",
+                    buttonText: "Button",
+                    icon: SvgPicture.asset(Assets.svg.user),
+                  ),
+                ),
+              ),
+              TAccordion(
+                title: "With Description & Button",
+                titleStyle: TFontBold.headline.copyWith(
+                  color: HexColor(neutral900),
+                ),
+                showDivider: false,
+                initiallyExpanded: true,
+                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: HexColor(neutral300),
+                    ),
+                  ),
+                  child: TTitleSection(
+                    title: "Placeholder",
+                    description: "Description.",
+                    buttonText: "Button",
+                    icon: SvgPicture.asset(Assets.svg.user),
                   ),
                 ),
               ),

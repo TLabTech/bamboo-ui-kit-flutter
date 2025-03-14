@@ -104,11 +104,7 @@ class TLineAreaChart extends StatelessWidget {
             SizedBox(
               height: height,
               child: SfCartesianChart(
-                primaryXAxis: CategoryAxis(
-                  labelPlacement: LabelPlacement.onTicks,
-                  minimum: -0.2,
-                  maximum: data.length + 0.1,
-                ),
+                primaryXAxis: CategoryAxis(),
                 primaryYAxis: NumericAxis(
                   minimum: 0,
                   maximum: 100,

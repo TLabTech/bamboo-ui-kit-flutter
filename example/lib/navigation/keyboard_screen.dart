@@ -3,19 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class DialogScreen extends StatefulWidget {
-  const DialogScreen({super.key});
+class KeyboardScreen extends StatefulWidget {
+  const KeyboardScreen({super.key});
 
   @override
-  State<DialogScreen> createState() => _DialogScreenState();
+  State<KeyboardScreen> createState() => _KeyboardScreenState();
 }
 
-class _DialogScreenState extends State<DialogScreen> {
+class _KeyboardScreenState extends State<KeyboardScreen> {
+  late TextEditingController controller = TextEditingController();
+  late TextEditingController numberController = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    numberController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Dialog', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Keyboard',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -30,11 +43,11 @@ class _DialogScreenState extends State<DialogScreen> {
                   ),
                   TBreadcrumbItem(
                     onTap: () {},
-                    label: 'Overlay',
+                    label: 'Navigation',
                   ),
                   TBreadcrumbItem(
                     onTap: () {},
-                    label: 'Dialog',
+                    label: 'Keyboard',
                   ),
                 ],
               ),
@@ -42,47 +55,7 @@ class _DialogScreenState extends State<DialogScreen> {
                 height: 8,
               ),
               TAccordion(
-                title: "Horizontal",
-                titleStyle: TFontBold.headline.copyWith(
-                  color: HexColor(neutral900),
-                ),
-                showDivider: false,
-                initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
-                child: Container(
-                  padding: EdgeInsets.all(24),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: HexColor(neutral300),
-                    ),
-                  ),
-                  child: TButtonPrimary(
-                    text: "Open Dialog",
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (builder) {
-                          return TDialog(
-                            title: 'Lorem ipsum dolor sit amet',
-                            content:
-                            "Lorem ipsum dolor sit amet consectetur. Sit sit scelerisque sed nisl sed egestas. Diam amet orci velit facilisis dui dui ullamcorper. Aliquam donec odio ipsum.",
-                            direction: Axis.horizontal,
-                            onPositivePressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            onNegativePressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ),
-              TAccordion(
-                title: "Vertical",
+                title: "Alphabetic",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
@@ -98,27 +71,36 @@ class _DialogScreenState extends State<DialogScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: TButtonPrimary(
-                    text: "Open Dialog",
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (builder) {
-                          return TDialog(
-                            title: 'Lorem ipsum dolor sit amet',
-                            content:
-                            "Lorem ipsum dolor sit amet consectetur. Sit sit scelerisque sed nisl sed egestas. Diam amet orci velit facilisis dui dui ullamcorper. Aliquam donec odio ipsum.",
-                            direction: Axis.vertical,
-                            onPositivePressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            onNegativePressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          );
-                        },
-                      );
-                    },
+                  child: TTextField(
+                    hintText: "write here",
+                    controller: controller,
+                    textInputType: TextInputType.text,
+                    onChange: (value) {},
+                  ),
+                ),
+              ),
+              TAccordion(
+                title: "Numeric",
+                titleStyle: TFontBold.headline.copyWith(
+                  color: HexColor(neutral900),
+                ),
+                showDivider: false,
+                initiallyExpanded: true,
+                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: HexColor(neutral300),
+                    ),
+                  ),
+                  child: TTextField(
+                    hintText: "write here",
+                    controller: numberController,
+                    textInputType: TextInputType.number,
+                    onChange: (value) {},
                   ),
                 ),
               ),

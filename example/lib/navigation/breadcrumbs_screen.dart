@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BadgeScreen extends StatefulWidget {
-  const BadgeScreen({super.key});
+class BreadcrumbsScreen extends StatefulWidget {
+  const BreadcrumbsScreen({super.key});
 
   @override
-  State<BadgeScreen> createState() => _BadgeScreenState();
+  State<BreadcrumbsScreen> createState() => _BreadcrumbsScreenState();
 }
 
-class _BadgeScreenState extends State<BadgeScreen> {
+class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Badge', enableCenterTitle: true,),
+      appBar: THeader.nested(title: 'Breadcrumbs', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -30,11 +30,11 @@ class _BadgeScreenState extends State<BadgeScreen> {
                   ),
                   TBreadcrumbItem(
                     onTap: () {},
-                    label: 'Data Presentation',
+                    label: 'Navigation',
                   ),
                   TBreadcrumbItem(
                     onTap: () {},
-                    label: 'Badge',
+                    label: 'Breadcrumbs',
                   ),
                 ],
               ),
@@ -42,7 +42,7 @@ class _BadgeScreenState extends State<BadgeScreen> {
                 height: 8,
               ),
               TAccordion(
-                title: "Primary",
+                title: "1 Page",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
@@ -58,17 +58,22 @@ class _BadgeScreenState extends State<BadgeScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: Center(
-                    child: TBadge(
-                      label: "Badge",
-                      backgroundColor: HexColor(primary050),
-                      textColor: HexColor(primary500),
-                    ),
+                  child: TBreadcrumbs(
+                    items: [
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        icon: SvgPicture.asset(Assets.svg.home),
+                      ),
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        label: 'Breadcrumb',
+                      ),
+                    ],
                   ),
                 ),
               ),
               TAccordion(
-                title: "Secondary",
+                title: "2 Page",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
@@ -84,15 +89,26 @@ class _BadgeScreenState extends State<BadgeScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: Center(
-                    child: TBadge.secondary(
-                      label: "Badge",
-                    ),
+                  child: TBreadcrumbs(
+                    items: [
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        icon: SvgPicture.asset(Assets.svg.home),
+                      ),
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        label: 'Breadcrumb',
+                      ),
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        label: 'Breadcrumb',
+                      ),
+                    ],
                   ),
                 ),
               ),
               TAccordion(
-                title: "Outline",
+                title: "More than 2 Page",
                 titleStyle: TFontBold.headline.copyWith(
                   color: HexColor(neutral900),
                 ),
@@ -108,37 +124,30 @@ class _BadgeScreenState extends State<BadgeScreen> {
                       color: HexColor(neutral300),
                     ),
                   ),
-                  child: Center(
-                    child: TBadge.outline(
-                      label: "Badge",
-                      borderColor: HexColor(primary300),
-                    ),
-                  ),
-                ),
-              ),
-              TAccordion(
-                title: "Destructive",
-                titleStyle: TFontBold.headline.copyWith(
-                  color: HexColor(neutral900),
-                ),
-                showDivider: false,
-                initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(24),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: HexColor(neutral300),
-                    ),
-                  ),
-                  child: Center(
-                    child: TBadge.destructive(
-                      label: "Badge",
-                      backgroundColor: HexColor(danger050),
-                      textColor: HexColor(danger500),
-                    ),
+                  child: TBreadcrumbs(
+                    maxVisibleItems: 4,
+                    items: [
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        icon: SvgPicture.asset(Assets.svg.home),
+                      ),
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        label: 'Breadcrumb',
+                      ),
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        label: 'Breadcrumb',
+                      ),
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        label: 'Breadcrumb',
+                      ),
+                      TBreadcrumbItem(
+                        onTap: () {},
+                        label: 'Breadcrumb',
+                      ),
+                    ],
                   ),
                 ),
               ),

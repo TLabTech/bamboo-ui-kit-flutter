@@ -15,7 +15,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Avatar'),
+      appBar: THeader.nested(title: 'Avatar', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

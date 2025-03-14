@@ -15,7 +15,7 @@ class _AlertScreenState extends State<AlertScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Alert'),
+      appBar: THeader.nested(title: 'Alert', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

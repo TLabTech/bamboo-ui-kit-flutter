@@ -1,4 +1,8 @@
 import 'package:example/bottom_navigation_sample/bottom_navigation_sample.dart';
+import 'package:example/chart/bar_chart_screen.dart';
+import 'package:example/chart/doughnut_chart_screen.dart';
+import 'package:example/chart/line_chart_screen.dart';
+import 'package:example/chart/pie_chart_screen.dart';
 import 'package:example/chart_screen.dart';
 import 'package:example/data_presentation/accordion_screen.dart';
 import 'package:example/data_presentation/avatar_screen.dart';
@@ -15,6 +19,15 @@ import 'package:example/form/slider_screen.dart';
 import 'package:example/form/switch_screen.dart';
 import 'package:example/form/text_field_screen.dart';
 import 'package:example/gen/assets.gen.dart';
+import 'package:example/navigation/bottom_navigation_screen.dart';
+import 'package:example/navigation/breadcrumbs_screen.dart';
+import 'package:example/navigation/header_screen.dart';
+import 'package:example/navigation/home_indicator_screen.dart';
+import 'package:example/navigation/keyboard_screen.dart';
+import 'package:example/navigation/status_bar_screen.dart';
+import 'package:example/navigation/stepper_screen.dart';
+import 'package:example/navigation/tabs_screen.dart';
+import 'package:example/navigation/tittle_section_screen.dart';
 import 'package:example/overlay/dialog_screen.dart';
 import 'package:example/tile/tile_group_screen.dart';
 import 'package:example/tile/tile_screen.dart';
@@ -94,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       child: SafeArea(
         child: Scaffold(
+          backgroundColor: HexColor(neutral050),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(12.0),
@@ -396,6 +410,169 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   TAccordion(
+                    title: "Navigation",
+                    titleStyle: TFontBold.headline.copyWith(
+                      color: HexColor(neutral900),
+                    ),
+                    showDivider: false,
+                    initiallyExpanded: false,
+                    trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: TGroupTile(
+                        enableBorder: false,
+                        tiles: [
+                          TTile(
+                            title: "Bottom Navigation",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BottomNavigationScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Breadcrumbs",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BreadcrumbsScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Header",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HeaderScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Home Indicator",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeIndicatorScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Keyboard",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => KeyboardScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Status Bar",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => StatusBarScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Stepper",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => StepperScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Tab",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TabsScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Tittle Section",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TittleSectionScreen()),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  TAccordion(
                     title: "Feedback",
                     titleStyle: TFontBold.headline.copyWith(
                       color: HexColor(neutral900),
@@ -474,6 +651,89 @@ class _MyHomePageState extends State<MyHomePage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => DialogScreen()),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  TAccordion(
+                    title: "Chart",
+                    titleStyle: TFontBold.headline.copyWith(
+                      color: HexColor(neutral900),
+                    ),
+                    showDivider: false,
+                    initiallyExpanded: false,
+                    trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: TGroupTile(
+                        enableBorder: false,
+                        tiles: [
+                          TTile(
+                            title: "Bar",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BarChartScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Line",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LineChartScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Pie",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PieChartScreen()),
+                              );
+                            },
+                          ),
+                          TTile(
+                            title: "Donut",
+                            titleStyle: TFontRegular.body.copyWith(
+                              color: HexColor(neutral900),
+                            ),
+                            suffixIcon: SvgPicture.asset(
+                              Assets.svg.chevronRight,
+                            ),
+                            onPress: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DoughnutChartScreen()),
                               );
                             },
                           ),

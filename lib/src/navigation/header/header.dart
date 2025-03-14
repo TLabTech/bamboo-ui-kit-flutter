@@ -117,7 +117,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   State<THeader> createState() => _THeaderState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(88);
+  Size get preferredSize => const Size.fromHeight(56);
 }
 
 class _THeaderState extends State<THeader> {
