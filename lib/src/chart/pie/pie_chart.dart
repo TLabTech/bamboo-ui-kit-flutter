@@ -118,13 +118,13 @@ class TPieChart extends StatelessWidget {
                             Text(
                               data.label,
                               style: TFontRegular.caption2.copyWith(
-                                color: Colors.white,
+                                color: data.labelColor ?? Colors.white,
                               ),
                             ),
                             Text(
                               "${data.value}",
                               style: TFontBold.body.copyWith(
-                                color: Colors.white,
+                                color: data.valueColor ??Colors.white,
                               ),
                             ),
                           ],

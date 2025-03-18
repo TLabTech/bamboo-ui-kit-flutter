@@ -108,6 +108,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
                     borderColor: Colors.transparent,
                     label: "Label",
                     description: "Description",
+                    isEnabled: false,
                   ),
                 ),
               ),

@@ -22,7 +22,7 @@ class TButtonSecondary extends StatelessWidget {
     required this.onPressed,
     this.backgroundColor = Colors.transparent,
     this.borderRadius = 8,
-    this.padding,
+    this.padding = const EdgeInsets.symmetric(horizontal: 24),
     this.textStyle,
     this.suffixIcon,
     this.prefixIcon,
@@ -38,7 +38,7 @@ class TButtonSecondary extends StatelessWidget {
     required this.onPressed,
     this.backgroundColor = Colors.transparent,
     this.borderRadius = 8,
-    this.padding,
+    this.padding = EdgeInsets.zero,
     this.textStyle,
     this.loading = false,
     this.minWidth = 44.0,
@@ -53,7 +53,7 @@ class TButtonSecondary extends StatelessWidget {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         backgroundColor: backgroundColor,
-        padding: padding ?? EdgeInsets.zero,
+        padding: padding,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
@@ -104,7 +104,7 @@ class TButtonSecondary extends StatelessWidget {
                   TFontBold.body.copyWith(color: HexColor(neutral900)),
             ),
           ),
-        if (text != null && hasSuffix) Spacer(), // Push suffix icon to right
+        if (text != null && hasSuffix) Spacer(),
         if (suffixIcon != null) suffixIcon!,
       ],
     );

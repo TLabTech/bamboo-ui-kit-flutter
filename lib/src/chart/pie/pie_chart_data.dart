@@ -17,8 +17,14 @@ class PieChartData {
   /// The label associated with the pie chart segment.
   final String label;
 
+  /// An optional color for the label of the pie chart segment.
+  final Color? labelColor;
+
   /// The numeric value representing the size of the pie chart segment.
   final double value;
+
+  /// An optional color for the value of the pie chart segment.
+  final Color? valueColor;
 
   /// The color used to represent the pie chart segment.
   final Color color;
@@ -30,7 +36,9 @@ class PieChartData {
   /// - [color]: The color used for the segment in the chart.
   const PieChartData({
     required this.label,
+    this.labelColor,
     required this.value,
+    this.valueColor,
     required this.color,
   });
 }

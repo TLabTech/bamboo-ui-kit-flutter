@@ -25,7 +25,7 @@ class TButtonOutline extends StatelessWidget {
     this.backgroundColor = Colors.transparent,
     this.borderRadius = 8,
     this.borderColor,
-    this.padding,
+    this.padding = const EdgeInsets.symmetric(horizontal: 24),
     this.textStyle,
     this.suffixIcon,
     this.prefixIcon,
@@ -42,7 +42,7 @@ class TButtonOutline extends StatelessWidget {
     this.backgroundColor = Colors.transparent,
     this.borderRadius = 8,
     this.borderColor,
-    this.padding,
+    this.padding = EdgeInsets.zero,
     this.textStyle,
     this.loading = false,
     this.minWidth = 44.0,
@@ -57,7 +57,7 @@ class TButtonOutline extends StatelessWidget {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         backgroundColor: backgroundColor,
-        padding: padding ?? EdgeInsets.zero,
+        padding: padding,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),

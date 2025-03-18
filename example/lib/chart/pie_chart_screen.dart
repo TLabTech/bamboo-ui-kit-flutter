@@ -167,7 +167,9 @@ class _PieChartScreenState extends State<PieChartScreen> {
                     ),
                     PieChartData(
                       label: "E",
-                      value: 15,
+                      value: 25,
+                      labelColor: HexColor(neutral500),
+                      valueColor: HexColor(neutral500),
                       color: HexColor(neutral500),
                     ),
                   ],
