@@ -43,7 +43,7 @@ class _StepperScreenState extends State<StepperScreen> {
               ),
               TAccordion(
                 title: "3 Steps",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -63,7 +63,7 @@ class _StepperScreenState extends State<StepperScreen> {
               ),
               TAccordion(
                 title: "4 Steps",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -83,7 +83,7 @@ class _StepperScreenState extends State<StepperScreen> {
               ),
               TAccordion(
                 title: "5 Steps",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -103,7 +103,7 @@ class _StepperScreenState extends State<StepperScreen> {
               ),
               TAccordion(
                 title: "6 Steps",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

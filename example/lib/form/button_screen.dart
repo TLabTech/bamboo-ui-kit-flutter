@@ -44,7 +44,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
               ),
               TAccordion(
                 title: 'Button General',
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -90,14 +90,14 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         height: 48,
                         child: TButtonOutline(
                           text: "Button",
-                          textStyle: TFontBold.body
+                          textStyle: TFontBold.body(context)
                               .copyWith(color: HexColor(primary500)),
                           onPressed: () {},
                         ),
                       ),
                       TButtonGhost(
                         text: "Button",
-                        textStyle: TFontBold.body
+                        textStyle: TFontBold.body(context)
                             .copyWith(color: HexColor(primary500)),
                         onPressed: () {},
                       ),
@@ -115,7 +115,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
               ),
               TAccordion(
                 title: 'Button With Left Icon',
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -182,7 +182,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         height: 48,
                         child: TButtonOutline(
                           text: "Button",
-                          textStyle: TFontBold.body
+                          textStyle: TFontBold.body(context)
                               .copyWith(color: HexColor(primary500)),
                           prefixIcon: SvgPicture.asset(
                             Assets.svg.plus,
@@ -196,7 +196,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                       ),
                       TButtonGhost(
                         text: "Button",
-                        textStyle: TFontBold.body
+                        textStyle: TFontBold.body(context)
                             .copyWith(color: HexColor(primary500)),
                         prefixIcon: SvgPicture.asset(
                           Assets.svg.plus,
@@ -228,7 +228,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
               ),
               TAccordion(
                 title: 'Button With Right Icon',
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -295,7 +295,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         height: 48,
                         child: TButtonOutline(
                           text: "Button",
-                          textStyle: TFontBold.body
+                          textStyle: TFontBold.body(context)
                               .copyWith(color: HexColor(primary500)),
                           suffixIcon: SvgPicture.asset(
                             Assets.svg.plus,
@@ -309,7 +309,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                       ),
                       TButtonGhost(
                         text: "Button",
-                        textStyle: TFontBold.body
+                        textStyle: TFontBold.body(context)
                             .copyWith(color: HexColor(primary500)),
                         suffixIcon: SvgPicture.asset(
                           Assets.svg.plus,

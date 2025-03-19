@@ -43,7 +43,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               ),
               TAccordion(
                 title: "Progress Bar Default",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -63,7 +63,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               ),
               TAccordion(
                 title: "Progress Bar Progress",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -83,7 +83,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               ),
               TAccordion(
                 title: "Progress Bar Done",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -103,7 +103,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               ),
               TAccordion(
                 title: "Radial Bar Default",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -123,7 +123,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               ),
               TAccordion(
                 title: "Radial Bar 25%",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -143,7 +143,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               ),
               TAccordion(
                 title: "Radial Bar 50%",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -163,7 +163,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               ),
               TAccordion(
                 title: "Radial Bar 75%",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -183,7 +183,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               ),
               TAccordion(
                 title: "Radial Bar 100%",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

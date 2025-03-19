@@ -55,7 +55,7 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             child: Text(
               widget.title!,
-              style: TFontRegular.body.copyWith(
+              style: TFontRegular.body(context).copyWith(
                 color: HexColor(neutral700),
                 fontWeight: FontWeight.bold,
               ),

@@ -92,7 +92,7 @@ class TLineChart extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontBold.body.copyWith(color: HexColor(neutral900)),
+                  style: TFontBold.body(context).copyWith(color: HexColor(neutral900)),
                 ),
                 if (showOption)
                   InkWell(
@@ -117,7 +117,7 @@ class TLineChart extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             if (showLegends)
-              legendLabels == null ? const SizedBox() : _buildLegends(),
+              legendLabels == null ? const SizedBox() : _buildLegends(context),
           ],
         ),
       ),
@@ -141,7 +141,7 @@ class TLineChart extends StatelessWidget {
   }
 
   /// Builds the legend widget displaying series colors and labels.
-  Widget _buildLegends() {
+  Widget _buildLegends(BuildContext context) {
     return Center(
       child: Wrap(
         spacing: 10,
@@ -163,7 +163,7 @@ class TLineChart extends StatelessWidget {
               Text(
                 data.label,
                 style:
-                    TFontRegular.caption2.copyWith(color: HexColor(neutral900)),
+                    TFontRegular.caption2(context).copyWith(color: HexColor(neutral900)),
               ),
             ],
           );

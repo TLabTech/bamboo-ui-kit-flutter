@@ -43,7 +43,7 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
               ),
               TAccordion(
                 title: "Full Divider",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -112,7 +112,7 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
               ),
               TAccordion(
                 title: "No Divider",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

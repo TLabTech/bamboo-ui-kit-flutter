@@ -165,7 +165,7 @@ class TAvatar extends StatelessWidget {
             child: _buildContent(),
           ),
         ),
-        if (type == AvatarType.notification) _buildNotificationBadge(),
+        if (type == AvatarType.notification) _buildNotificationBadge(context),
         if (type == AvatarType.online) _buildOnlineIndicator(),
       ],
     );
@@ -203,7 +203,7 @@ class TAvatar extends StatelessWidget {
   }
 
   /// Builds a notification badge for the avatar.
-  Widget _buildNotificationBadge() {
+  Widget _buildNotificationBadge(BuildContext context) {
     return Positioned(
       top: -1,
       right: -1,
@@ -217,7 +217,7 @@ class TAvatar extends StatelessWidget {
         child: Center(
           child: Text(
             notificationCount == null ? "" : notificationCount.toString(),
-            style: TFontRegular.caption2
+            style: TFontRegular.caption2(context)
                 .copyWith(color: Colors.white, fontSize: badgeSize * 0.6),
           ),
         ),

@@ -43,7 +43,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
               ),
               TAccordion(
                 title: "1 Page",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -74,7 +74,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
               ),
               TAccordion(
                 title: "2 Page",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -109,7 +109,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
               ),
               TAccordion(
                 title: "More than 2 Page",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

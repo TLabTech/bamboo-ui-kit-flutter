@@ -45,7 +45,7 @@ class _TileScreenState extends State<TileScreen> {
               ),
               TAccordion(
                 title: "UnTappable",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -69,7 +69,7 @@ class _TileScreenState extends State<TileScreen> {
               ),
               TAccordion(
                 title: "Disabled",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -106,7 +106,7 @@ class _TileScreenState extends State<TileScreen> {
               ),
               TAccordion(
                 title: "With Subtitle",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -135,7 +135,7 @@ class _TileScreenState extends State<TileScreen> {
               ),
               TAccordion(
                 title: "With Details",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -164,7 +164,7 @@ class _TileScreenState extends State<TileScreen> {
               ),
               TAccordion(
                 title: "With Radio",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

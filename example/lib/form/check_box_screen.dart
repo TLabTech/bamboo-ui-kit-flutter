@@ -46,7 +46,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
               ),
               TAccordion(
                 title: "Default",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -81,7 +81,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
               ),
               TAccordion(
                 title: "Disabled",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -114,7 +114,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
               ),
               TAccordion(
                 title: "Error",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

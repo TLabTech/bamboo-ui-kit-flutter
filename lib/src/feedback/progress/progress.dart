@@ -45,12 +45,12 @@ class TProgress extends StatelessWidget {
       builder: (context, constraints) {
         return type == TProgressType.linear
             ? linearProgress(constraints, value)
-            : circularProgress(value);
+            : circularProgress(context, value);
       },
     );
   }
 
-  Widget circularProgress(double value) {
+  Widget circularProgress(BuildContext context,double value) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -67,7 +67,7 @@ class TProgress extends StatelessWidget {
         ),
         Text(
           "${(value * 100).toInt()}%",
-          style: TFontRegular.body.copyWith(
+          style: TFontRegular.body(context).copyWith(
             color: valueColor ?? HexColor(neutral500),
             fontSize: size * 0.2,
           ),

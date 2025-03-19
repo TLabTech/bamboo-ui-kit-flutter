@@ -40,6 +40,11 @@ flutter:
   assets:
     - assets/svg/
 
+  fonts:
+    - family: monserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+
 flutter_launcher_icons:
   android: "ic_launcher"
   ios: true

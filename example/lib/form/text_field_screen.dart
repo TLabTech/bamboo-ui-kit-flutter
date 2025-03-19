@@ -70,7 +70,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               ),
               TAccordion(
                 title: "Left Icon",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -94,12 +94,12 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                           children: [
                             TextSpan(
                               text: "Email",
-                              style: TFontBold.body
+                              style: TFontBold.body(context)
                                   .copyWith(color: HexColor(neutral900)),
                             ),
                             TextSpan(
                               text: " (Optional)",
-                              style: TFontRegular.body
+                              style: TFontRegular.body(context)
                                   .copyWith(color: HexColor(neutral500)),
                             ),
                           ],
@@ -116,7 +116,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               ),
               TAccordion(
                 title: "Right Icon",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -137,7 +137,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                     children: [
                       Text(
                         'Province',
-                        style: TFontBold.body
+                        style: TFontBold.body(context)
                             .copyWith(color: HexColor(neutral900)),
                       ),
                       TDropdown<Map<String, String>>(
@@ -161,7 +161,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               ),
               TAccordion(
                 title: "Password",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -181,7 +181,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                     children: [
                       Text(
                         'Password',
-                        style: TFontBold.body
+                        style: TFontBold.body(context)
                             .copyWith(color: HexColor(neutral900)),
                       ),
                       TTextField.password(
@@ -195,7 +195,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               ),
               TAccordion(
                 title: "Multiline",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -219,12 +219,12 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                           children: [
                             TextSpan(
                               text: "Description",
-                              style: TFontBold.body
+                              style: TFontBold.body(context)
                                   .copyWith(color: HexColor(neutral900)),
                             ),
                             TextSpan(
                               text: " (Optional)",
-                              style: TFontRegular.body
+                              style: TFontRegular.body(context)
                                   .copyWith(color: HexColor(neutral500)),
                             ),
                           ],

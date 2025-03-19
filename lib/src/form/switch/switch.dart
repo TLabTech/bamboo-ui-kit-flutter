@@ -89,7 +89,7 @@ class _TSwitchState extends State<TSwitch> {
             children: [
               Text(
                 widget.label,
-                style: TFontRegular.body.copyWith(
+                style: TFontRegular.body(context).copyWith(
                   color: widget.isError
                       ? HexColor(danger500)
                       : HexColor(neutral900),
@@ -97,7 +97,7 @@ class _TSwitchState extends State<TSwitch> {
               ),
               Text(
                 widget.description,
-                style: TFontRegular.footNote.copyWith(
+                style: TFontRegular.footNote(context).copyWith(
                   color: HexColor(neutral500),
                 ),
               ),
@@ -105,7 +105,7 @@ class _TSwitchState extends State<TSwitch> {
                 const SizedBox(height: 4),
                 Text(
                   widget.error!,
-                  style: TFontRegular.footNote.copyWith(
+                  style: TFontRegular.footNote(context).copyWith(
                     color: HexColor(danger500),
                   ),
                 ),

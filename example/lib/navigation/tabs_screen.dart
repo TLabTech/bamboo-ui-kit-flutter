@@ -59,7 +59,7 @@ class _TabsScreenState extends State<TabsScreen>
               ),
               TAccordion(
                 title: "2 Tabs",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -87,7 +87,7 @@ class _TabsScreenState extends State<TabsScreen>
               ),
               TAccordion(
                 title: "3 Tabs",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -115,7 +115,7 @@ class _TabsScreenState extends State<TabsScreen>
               ),
               TAccordion(
                 title: "4 Tabs",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

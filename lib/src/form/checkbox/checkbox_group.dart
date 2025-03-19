@@ -60,7 +60,7 @@ class _TCheckBoxGroupState extends State<TCheckBoxGroup> {
             child: Text(
               widget.label!,
               style: widget.labelStyle ??
-                  TFontBold.body.copyWith(
+                  TFontBold.body(context).copyWith(
                     color: HexColor(neutral900),
                   ),
             ),

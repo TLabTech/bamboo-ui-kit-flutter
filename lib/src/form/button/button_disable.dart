@@ -87,15 +87,15 @@ class TButtonDisable extends StatelessWidget {
                   Text(
                     text!,
                     style: textStyle ??
-                        TFontBold.body.copyWith(color: Colors.white),
+                        TFontBold.body(context).copyWith(color: Colors.white),
                   ),
               ],
             )
-          : child ?? _buildContent(),
+          : child ?? _buildContent(context),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     bool hasPrefix = prefixIcon != null;
     bool hasSuffix = suffixIcon != null;
     bool hasOnlyText = !hasPrefix && !hasSuffix;
@@ -110,7 +110,7 @@ class TButtonDisable extends StatelessWidget {
             child: Text(
               text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
-              style: textStyle ?? TFontBold.body.copyWith(color: Colors.white),
+              style: textStyle ?? TFontBold.body(context).copyWith(color: Colors.white),
             ),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),

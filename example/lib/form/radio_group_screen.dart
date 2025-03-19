@@ -45,7 +45,7 @@ class _RadioGroupScreenState extends State<RadioGroupScreen> {
               ),
               TAccordion(
                 title: "Default",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

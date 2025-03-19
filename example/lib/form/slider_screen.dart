@@ -45,7 +45,7 @@ class _SliderScreenState extends State<SliderScreen> {
               ),
               TAccordion(
                 title: "Default",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

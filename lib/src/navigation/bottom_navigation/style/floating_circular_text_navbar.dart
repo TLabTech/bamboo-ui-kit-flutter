@@ -136,7 +136,7 @@ class _FloatingCircularTextNavbarState extends State<FloatingCircularTextNavbar>
                         ),
                         Text(
                           tab.title ?? '',
-                          style: TFontRegular.caption1.copyWith(
+                          style: TFontRegular.caption1(context).copyWith(
                             color: isActive
                                 ? widget.navBarDecoration.color
                                 : Colors.grey.withValues(alpha: 0.6),

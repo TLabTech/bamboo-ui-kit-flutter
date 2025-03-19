@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../fondation/hex_color.dart';
 import '../../fondation/tfont.dart';
+import '../../fondation/theme/theme_provider.dart';
 
 class TButtonPrimary extends StatelessWidget {
   final String? text;
@@ -48,13 +49,13 @@ class TButtonPrimary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = TThemeProvider.of(context)?.theme;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor:
-            backgroundColor ?? HexColor(primary500), // Default background
-        foregroundColor: Colors.white, // Default text/icon color
+        backgroundColor: backgroundColor ?? theme?.buttonBackground,
+        foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8), // Increased rounded corners
+          borderRadius: BorderRadius.circular(8),
         ),
         padding: padding,
         // padding: padding,
@@ -63,9 +64,10 @@ class TButtonPrimary extends StatelessWidget {
           (states) {
             if (states.contains(WidgetState.pressed)) {
               return onPressedBackgroundColor ??
-                  HexColor(primary600); // Pressed state color
+                  (theme?.buttonPressed ?? HexColor(primary600));
             }
-            return backgroundColor ?? HexColor(primary500); // Default color
+            return backgroundColor ??
+                (theme?.buttonBackground ?? HexColor(primary500));
           },
         ),
       ),
@@ -86,15 +88,15 @@ class TButtonPrimary extends StatelessWidget {
                   Text(
                     text!,
                     style: textStyle ??
-                        TFontBold.body.copyWith(color: Colors.white),
+                        TFontBold.body(context).copyWith(color: Colors.white),
                   ),
               ],
             )
-          : child ?? _buildContent(),
+          : child ?? _buildContent(context),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     bool hasPrefix = prefixIcon != null;
     bool hasSuffix = suffixIcon != null;
     bool hasOnlyText = !hasPrefix && !hasSuffix;
@@ -109,7 +111,7 @@ class TButtonPrimary extends StatelessWidget {
             child: Text(
               text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
-              style: textStyle ?? TFontBold.body.copyWith(color: Colors.white),
+              style: textStyle ?? TFontBold.body(context).copyWith(color: Colors.white),
             ),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),

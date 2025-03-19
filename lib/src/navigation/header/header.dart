@@ -191,7 +191,7 @@ class _THeaderState extends State<THeader> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Text(
         widget.title,
-        style: widget.titleStyle ?? TFontRegular.title3,
+        style: widget.titleStyle ?? TFontRegular.title3(context),
         textAlign: TextAlign.center,
       ),
     );
@@ -212,14 +212,15 @@ class _THeaderState extends State<THeader> {
                 Text(
                   widget.title,
                   style: widget.titleStyle ??
-                      TFontRegular.title3.copyWith(color: HexColor(neutral900)),
+                      TFontRegular.title3(context)
+                          .copyWith(color: HexColor(neutral900)),
                   textAlign: TextAlign.center,
                 ),
                 if (widget.subtitle != null)
                   Text(
                     widget.subtitle!,
                     style: widget.subtitleStyle ??
-                        TFontRegular.caption2
+                        TFontRegular.caption2(context)
                             .copyWith(color: HexColor(neutral500)),
                     textAlign: TextAlign.center,
                   ),
@@ -252,7 +253,7 @@ class _THeaderState extends State<THeader> {
                       controller: _controller,
                       decoration: InputDecoration(
                         hintText: widget.hintText,
-                        hintStyle: TFontRegular.caption1
+                        hintStyle: TFontRegular.caption1(context)
                             .copyWith(color: HexColor(neutral500)),
                         border: InputBorder.none,
                       ),

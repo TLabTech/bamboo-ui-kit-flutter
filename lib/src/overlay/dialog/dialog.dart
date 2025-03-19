@@ -35,26 +35,26 @@ class TDialog extends StatelessWidget {
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: direction == Axis.horizontal
-              ? _buildHorizontalContent()
-              : _buildVerticalContent(),
+              ? _buildHorizontalContent(context)
+              : _buildVerticalContent(context),
         ),
       ),
     );
   }
 
-  Widget _buildHorizontalContent() {
+  Widget _buildHorizontalContent(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: TFontBold.title3.copyWith(color: HexColor(neutral900)),
+          style: TFontBold.title3(context).copyWith(color: HexColor(neutral900)),
         ),
         const SizedBox(height: 8),
         Text(
           content,
-          style: TFontRegular.body.copyWith(color: HexColor(neutral500)),
+          style: TFontRegular.body(context).copyWith(color: HexColor(neutral500)),
         ),
         const SizedBox(height: 24),
         Row(
@@ -79,19 +79,19 @@ class TDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildVerticalContent() {
+  Widget _buildVerticalContent(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           title,
-          style: TFontBold.title3.copyWith(color: HexColor(neutral900)),
+          style: TFontBold.title3(context).copyWith(color: HexColor(neutral900)),
         ),
         const SizedBox(height: 8),
         Text(
           content,
           textAlign: TextAlign.center,
-          style: TFontRegular.body.copyWith(color: HexColor(neutral500)),
+          style: TFontRegular.body(context).copyWith(color: HexColor(neutral500)),
         ),
         const SizedBox(height: 24),
         SizedBox(

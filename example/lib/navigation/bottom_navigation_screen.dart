@@ -93,7 +93,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "Icon Fixed",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -140,7 +140,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "With Text Fixed",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -187,7 +187,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "Circle Fixed",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -234,7 +234,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "Icon Floating",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -288,7 +288,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "With Text Floating",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -342,7 +342,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "Circle Floating",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -464,7 +464,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           ),
           Text(
             'Label',
-            style: TFontRegular.caption1.copyWith(
+            style: TFontRegular.caption1(context).copyWith(
               color: _selectedTextFixedIndex == index
                   ? activeColor
                   : inactiveColor,
@@ -570,7 +570,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           ),
           Text(
             'Label',
-            style: TFontRegular.caption1.copyWith(
+            style: TFontRegular.caption1(context).copyWith(
               color: _selectedTextFloatingIndex == index
                   ? activeColor
                   : inactiveColor,

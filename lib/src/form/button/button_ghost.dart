@@ -85,7 +85,7 @@ class _TButtonGhostState extends State<TButtonGhost> {
                     Text(
                       widget.text!,
                       style: widget.textStyle ??
-                          TFontBold.body.copyWith(
+                          TFontBold.body(context).copyWith(
                             color: _isPressed
                                 ? HexColor(primary500)
                                 : HexColor(primary600),
@@ -115,7 +115,7 @@ class _TButtonGhostState extends State<TButtonGhost> {
               widget.text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
               style: widget.textStyle ??
-                  TFontBold.body.copyWith(
+                  TFontBold.body(context).copyWith(
                       color:
                           _isPressed ? widget.pressedColor : widget.normalColor),
             ),

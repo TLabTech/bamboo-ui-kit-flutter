@@ -84,15 +84,15 @@ class TButtonOutline extends StatelessWidget {
                   Text(
                     text!,
                     style: textStyle ??
-                        TFontBold.body.copyWith(color: HexColor(neutral900)),
+                        TFontBold.body(context).copyWith(color: HexColor(neutral900)),
                   ),
               ],
             )
-          : child ?? _buildContent(),
+          : child ?? _buildContent(context),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     bool hasPrefix = prefixIcon != null;
     bool hasSuffix = suffixIcon != null;
     bool hasOnlyText = !hasPrefix && !hasSuffix;
@@ -108,7 +108,7 @@ class TButtonOutline extends StatelessWidget {
               text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
               style: textStyle ??
-                  TFontBold.body.copyWith(color: HexColor(neutral900)),
+                  TFontBold.body(context).copyWith(color: HexColor(neutral900)),
             ),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),

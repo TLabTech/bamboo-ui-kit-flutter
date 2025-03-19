@@ -40,7 +40,7 @@ class TTitleSection extends StatelessWidget {
                       title,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TFontBold.headline.copyWith(
+                      style: TFontBold.headline(context).copyWith(
                         color: HexColor(
                           neutral900,
                         ),
@@ -51,7 +51,7 @@ class TTitleSection extends StatelessWidget {
                         description!,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TFontRegular.caption2.copyWith(
+                        style: TFontRegular.caption2(context).copyWith(
                           color: HexColor(
                             neutral500,
                           ),
@@ -70,7 +70,7 @@ class TTitleSection extends StatelessWidget {
                   onTap: onPressed,
                   child: Text(
                     buttonText!,
-                    style: TFontBold.body.copyWith(
+                    style: TFontBold.body(context).copyWith(
                       color: buttonColor ?? HexColor(primary500),
                     ),
                   ),

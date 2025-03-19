@@ -181,7 +181,7 @@ class TTextFieldState extends State<TTextField> {
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
               widget.labelText!,
-              style: TFontRegular.body.copyWith(color: HexColor(neutral700)),
+              style: TFontRegular.body(context).copyWith(color: HexColor(neutral700)),
             ),
           ),
         Container(
@@ -225,14 +225,14 @@ class TTextFieldState extends State<TTextField> {
                   onChanged: widget.onChange,
                   keyboardType: widget.textInputType,
                   inputFormatters: widget.inputFormatter,
-                  style: TFontRegular.body,
+                  style: TFontRegular.body(context),
                   controller: widget.controller,
                   obscureText: _obscureText,
                   decoration: InputDecoration(
                     isDense: true,
                     border: InputBorder.none,
                     hintText: widget.hintText,
-                    hintStyle: TFontRegular.body.copyWith(
+                    hintStyle: TFontRegular.body(context).copyWith(
                       color: widget.hintColor ?? HexColor(neutral500),
                     ),
                     helperText: widget.helperText,
@@ -275,7 +275,7 @@ class TTextFieldState extends State<TTextField> {
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
               widget.description!,
-              style: TFontRegular.footNote.copyWith(
+              style: TFontRegular.footNote(context).copyWith(
                 color: HexColor(neutral500),
               ),
             ),
@@ -285,7 +285,7 @@ class TTextFieldState extends State<TTextField> {
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
               widget.errorMessage!,
-              style: TFontRegular.footNote.copyWith(
+              style: TFontRegular.footNote(context).copyWith(
                 color: HexColor(danger500),
               ),
             ),

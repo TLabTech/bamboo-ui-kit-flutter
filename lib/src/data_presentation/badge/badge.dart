@@ -107,7 +107,7 @@ class TBadge extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             label,
-            style: TFontBold.caption2.copyWith(color: textColor),
+            style: TFontBold.caption2(context).copyWith(color: textColor),
           ),
         ),
       ),

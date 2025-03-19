@@ -28,12 +28,12 @@ class TStepper extends StatelessWidget {
               children: [
                 TextSpan(
                   text: "Step $currentStep",
-                  style: TFontRegular.caption2
+                  style: TFontRegular.caption2(context)
                       .copyWith(color: activeColor ?? HexColor(primary500)),
                 ),
                 TextSpan(
                   text: " of $totalSteps",
-                  style: TFontRegular.caption2.copyWith(
+                  style: TFontRegular.caption2(context).copyWith(
                       color: currentStep == totalSteps
                           ? activeColor ?? HexColor(primary500)
                           : inactiveColor ?? HexColor(neutral500)),

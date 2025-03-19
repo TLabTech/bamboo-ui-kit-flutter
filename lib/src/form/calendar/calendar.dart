@@ -198,7 +198,7 @@ class TCalendarState extends State<TCalendar> {
                   children: [
                     Text(
                       DateFormat('MMMM yyyy').format(_focusedDay),
-                      style: TFontRegular.body.copyWith(
+                      style: TFontRegular.body(context).copyWith(
                         color: HexColor(neutral900),
                       ),
                     ),
@@ -290,7 +290,7 @@ class TCalendarState extends State<TCalendar> {
             ),
             child: Text(
               DateFormat('MMM').format(DateTime(2025, month)),
-              style: TFontRegular.body.copyWith(
+              style: TFontRegular.body(context).copyWith(
                 color: isCurrentMonth
                     ? Colors.white
                     : isSelected
@@ -323,8 +323,8 @@ class TCalendarState extends State<TCalendar> {
       onPageChanged: _onPageChanged,
       headerVisible: false,
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekdayStyle: TFontRegular.caption2.copyWith(color: Colors.grey),
-        weekendStyle: TFontRegular.caption2.copyWith(color: Colors.grey),
+        weekdayStyle: TFontRegular.caption2(context).copyWith(color: Colors.grey),
+        weekendStyle: TFontRegular.caption2(context).copyWith(color: Colors.grey),
         dowTextFormatter: (date, locale) =>
             ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'][date.weekday % 7],
       ),
@@ -366,7 +366,7 @@ class TCalendarState extends State<TCalendar> {
           return Center(
             child: Text(
               '${date.day}',
-              style: TFontRegular.body.copyWith(
+              style: TFontRegular.body(context).copyWith(
                 color: isSelected
                     ? HexColor(neutral500)
                     : isToday

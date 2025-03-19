@@ -57,7 +57,8 @@ class TGroupBarChart extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontBold.body.copyWith(color: HexColor(neutral900)),
+                  style: TFontBold.body(context)
+                      .copyWith(color: HexColor(neutral900)),
                 ),
                 if (showOption)
                   InkWell(
@@ -85,7 +86,7 @@ class TGroupBarChart extends StatelessWidget {
                       color: seriesData.color,
                       dataLabelSettings: DataLabelSettings(
                         isVisible: true,
-                        textStyle: TFontRegular.caption2
+                        textStyle: TFontRegular.caption2(context)
                             .copyWith(color: HexColor(neutral900)),
                         labelAlignment: ChartDataLabelAlignment.outer,
                       ),
@@ -99,7 +100,7 @@ class TGroupBarChart extends StatelessWidget {
                       color: seriesData.color,
                       dataLabelSettings: DataLabelSettings(
                         isVisible: true,
-                        textStyle: TFontRegular.caption2
+                        textStyle: TFontRegular.caption2(context)
                             .copyWith(color: HexColor(neutral900)),
                         labelAlignment: ChartDataLabelAlignment.outer,
                       ),
@@ -109,7 +110,7 @@ class TGroupBarChart extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            if (showLegends) _buildCustomLegend(),
+            if (showLegends) _buildCustomLegend(context),
           ],
         ),
       ),
@@ -117,7 +118,7 @@ class TGroupBarChart extends StatelessWidget {
   }
 
   /// Builds a custom legend displaying series colors and labels.
-  Widget _buildCustomLegend() {
+  Widget _buildCustomLegend(BuildContext context) {
     return Center(
       child: Wrap(
         spacing: 10,
@@ -136,8 +137,8 @@ class TGroupBarChart extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 data.label,
-                style:
-                    TFontRegular.caption2.copyWith(color: HexColor(neutral900)),
+                style: TFontRegular.caption2(context)
+                    .copyWith(color: HexColor(neutral900)),
               ),
             ],
           );

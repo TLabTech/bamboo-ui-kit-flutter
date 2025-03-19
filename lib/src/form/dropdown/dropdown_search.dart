@@ -75,7 +75,7 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                   isExpanded: true,
                   hint: Text(
                     widget.hint,
-                    style: TFontRegular.body.copyWith(
+                    style: TFontRegular.body(context).copyWith(
                       color: HexColor(neutral500),
                     ),
                   ),

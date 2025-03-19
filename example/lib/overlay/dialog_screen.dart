@@ -43,7 +43,7 @@ class _DialogScreenState extends State<DialogScreen> {
               ),
               TAccordion(
                 title: "Horizontal",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -83,7 +83,7 @@ class _DialogScreenState extends State<DialogScreen> {
               ),
               TAccordion(
                 title: "Vertical",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

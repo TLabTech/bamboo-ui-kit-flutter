@@ -96,7 +96,7 @@ class _TCheckBoxState extends State<TCheckBox> {
             children: [
               Text(
                 widget.label ?? '',
-                style: TFontRegular.body.copyWith(
+                style: TFontRegular.body(context).copyWith(
                   color: widget.isError
                       ? HexColor(danger500)
                       : !widget.isEnabled
@@ -106,7 +106,7 @@ class _TCheckBoxState extends State<TCheckBox> {
               ),
               Text(
                 widget.description ?? "",
-                style: TFontRegular.footNote.copyWith(
+                style: TFontRegular.footNote(context).copyWith(
                   color: HexColor(neutral500),
                 ),
               ),
@@ -114,7 +114,7 @@ class _TCheckBoxState extends State<TCheckBox> {
                 visible: widget.isError,
                 child: Text(
                   widget.error ?? "",
-                  style: TFontRegular.footNote.copyWith(
+                  style: TFontRegular.footNote(context).copyWith(
                     color: HexColor(danger500),
                   ),
                 ),

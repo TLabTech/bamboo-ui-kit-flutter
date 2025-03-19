@@ -43,7 +43,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 1 Data Horizontal",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -65,7 +65,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 2 Data Horizontal",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -104,7 +104,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 3 Data Horizontal",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -155,7 +155,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 4 Data Horizontal",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -218,7 +218,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 5 Data Horizontal",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -293,7 +293,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 1 Data Vertical",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -315,7 +315,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 2 Data Vertical",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -354,7 +354,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 3 Data Vertical",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -405,7 +405,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 4 Data Vertical",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -468,7 +468,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 5 Data Vertical",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

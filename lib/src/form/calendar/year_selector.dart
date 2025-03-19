@@ -121,7 +121,7 @@ class YearSelectorState extends State<YearSelector> {
                       ),
                       child: Text(
                         '$year',
-                        style: TFontRegular.body.copyWith(
+                        style: TFontRegular.body(context).copyWith(
                           color: isSelected
                               ? Colors.white
                               : isDisabled

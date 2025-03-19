@@ -66,7 +66,8 @@ class TBarChart extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontBold.body.copyWith(color: HexColor(neutral900)),
+                  style: TFontBold.body(context)
+                      .copyWith(color: HexColor(neutral900)),
                 ),
                 if (showOption)
                   InkWell(
@@ -95,7 +96,7 @@ class TBarChart extends StatelessWidget {
                           yValueMapper: (data, _) => data.value,
                           dataLabelSettings: DataLabelSettings(
                             isVisible: true,
-                            textStyle: TFontRegular.caption2
+                            textStyle: TFontRegular.caption2(context)
                                 .copyWith(color: HexColor(neutral900)),
                             labelAlignment: ChartDataLabelAlignment.outer,
                           ),
@@ -107,7 +108,7 @@ class TBarChart extends StatelessWidget {
                           yValueMapper: (data, _) => data.value,
                           dataLabelSettings: DataLabelSettings(
                             isVisible: true,
-                            textStyle: TFontRegular.caption2
+                            textStyle: TFontRegular.caption2(context)
                                 .copyWith(color: HexColor(neutral900)),
                             labelAlignment: ChartDataLabelAlignment.outer,
                           ),
@@ -130,7 +131,7 @@ class TBarChart extends StatelessWidget {
                   const SizedBox(width: 4),
                   Text(
                     "1",
-                    style: TFontRegular.caption2
+                    style: TFontRegular.caption2(context)
                         .copyWith(color: HexColor(neutral900)),
                   ),
                 ],

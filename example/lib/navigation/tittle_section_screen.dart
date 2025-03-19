@@ -46,7 +46,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               ),
               TAccordion(
                 title: "Default",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -66,7 +66,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               ),
               TAccordion(
                 title: "With Description",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -89,7 +89,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               ),
               TAccordion(
                 title: "With Icon",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -112,7 +112,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               ),
               TAccordion(
                 title: "With Description & Icon",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -136,7 +136,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               ),
               TAccordion(
                 title: "With Description & Icon",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -160,7 +160,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               ),
               TAccordion(
                 title: "With Button",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -184,7 +184,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               ),
               TAccordion(
                 title: "With Description & Button",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

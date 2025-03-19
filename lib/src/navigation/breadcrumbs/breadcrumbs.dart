@@ -32,13 +32,14 @@ class TBreadcrumbs extends StatelessWidget {
     List<Widget> displayedItems = [];
 
     if (items.length <= maxVisibleItems) {
-      displayedItems = _buildItems(items);
+      displayedItems = _buildItems(context, items);
     } else {
-      displayedItems.add(_buildSingleItem(items.first));
+      displayedItems.add(_buildSingleItem(context, items.first));
       displayedItems
           .add(const Text("...", style: TextStyle(color: Colors.grey)));
       displayedItems.addAll(
-        _buildItems(items.sublist(items.length - (maxVisibleItems - 2))),
+        _buildItems(
+            context, items.sublist(items.length - (maxVisibleItems - 2))),
       );
     }
 
@@ -61,14 +62,15 @@ class TBreadcrumbs extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildItems(List<TBreadcrumbItem> items) {
+  List<Widget> _buildItems(BuildContext context, List<TBreadcrumbItem> items) {
     return [
       for (int i = 0; i < items.length; i++)
-        _buildSingleItem(items[i], isActive: i == items.length - 1)
+        _buildSingleItem(context, items[i], isActive: i == items.length - 1)
     ];
   }
 
-  Widget _buildSingleItem(TBreadcrumbItem item, {bool isActive = false}) {
+  Widget _buildSingleItem(BuildContext context, TBreadcrumbItem item,
+      {bool isActive = false}) {
     return GestureDetector(
       onTap: item.onTap,
       child: Row(
@@ -81,7 +83,7 @@ class TBreadcrumbs extends StatelessWidget {
           if (item.label != null)
             Text(
               item.label!,
-              style: TFontRegular.caption2.copyWith(
+              style: TFontRegular.caption2(context).copyWith(
                 color: isActive ? HexColor(neutral900) : HexColor(neutral500),
               ),
             ),

@@ -43,7 +43,7 @@ class TRadioButton<T> extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: TFontRegular.body.copyWith(
+                style: TFontRegular.body(context).copyWith(
                   color: isDisabled
                       ? HexColor(neutral400)
                       : (isError ? HexColor(danger500) : HexColor(neutral500)),
@@ -52,7 +52,7 @@ class TRadioButton<T> extends StatelessWidget {
               if (description != null)
                 Text(
                   description!,
-                  style: TFontRegular.footNote.copyWith(
+                  style: TFontRegular.footNote(context).copyWith(
                     color: isDisabled
                         ? HexColor(neutral400)
                         : HexColor(neutral500),
@@ -61,7 +61,7 @@ class TRadioButton<T> extends StatelessWidget {
               if (isError && error != null)
                 Text(
                   error!,
-                  style: TFontRegular.footNote.copyWith(
+                  style: TFontRegular.footNote(context).copyWith(
                     color:
                         isDisabled ? HexColor(neutral400) : HexColor(danger500),
                   ),

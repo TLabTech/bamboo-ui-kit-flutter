@@ -43,7 +43,7 @@ class _BadgeScreenState extends State<BadgeScreen> {
               ),
               TAccordion(
                 title: "Primary",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -69,7 +69,7 @@ class _BadgeScreenState extends State<BadgeScreen> {
               ),
               TAccordion(
                 title: "Secondary",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -93,7 +93,7 @@ class _BadgeScreenState extends State<BadgeScreen> {
               ),
               TAccordion(
                 title: "Outline",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -118,7 +118,7 @@ class _BadgeScreenState extends State<BadgeScreen> {
               ),
               TAccordion(
                 title: "Destructive",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

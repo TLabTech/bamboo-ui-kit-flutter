@@ -56,7 +56,7 @@ class _KeyboardScreenState extends State<KeyboardScreen> {
               ),
               TAccordion(
                 title: "Alphabetic",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -81,7 +81,7 @@ class _KeyboardScreenState extends State<KeyboardScreen> {
               ),
               TAccordion(
                 title: "Numeric",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

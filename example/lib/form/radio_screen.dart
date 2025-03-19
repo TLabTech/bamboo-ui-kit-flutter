@@ -47,7 +47,7 @@ class _RadioScreenState extends State<RadioScreen> {
               ),
               TAccordion(
                 title: "Default",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -84,7 +84,7 @@ class _RadioScreenState extends State<RadioScreen> {
               ),
               TAccordion(
                 title: "Disabled",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -113,7 +113,7 @@ class _RadioScreenState extends State<RadioScreen> {
               ),
               TAccordion(
                 title: "Error",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

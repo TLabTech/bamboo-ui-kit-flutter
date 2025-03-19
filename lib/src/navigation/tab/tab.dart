@@ -80,7 +80,7 @@ class _TTabsState extends State<TTabs> {
                 child: Center(
                   child: Text(
                     widget.tabs[index],
-                    style: TFontRegular.subHeadline.copyWith(
+                    style: TFontRegular.subHeadline(context).copyWith(
                       color: isSelected
                           ? HexColor(neutral900)
                           : HexColor(neutral500),

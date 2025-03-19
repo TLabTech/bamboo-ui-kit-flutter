@@ -59,7 +59,7 @@ class TDropdown<T> extends StatelessWidget {
               value: item,
               child: Text(
                 itemLabel(item),
-                style: TFontRegular.body,
+                style: TFontRegular.body(context),
               ),
             );
           }).toList(),

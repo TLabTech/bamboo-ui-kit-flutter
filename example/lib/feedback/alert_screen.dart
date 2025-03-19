@@ -43,7 +43,7 @@ class _AlertScreenState extends State<AlertScreen> {
               ),
               TAccordion(
                 title: "Default",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -66,7 +66,7 @@ class _AlertScreenState extends State<AlertScreen> {
               ),
               TAccordion(
                 title: "Primary",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -89,7 +89,7 @@ class _AlertScreenState extends State<AlertScreen> {
               ),
               TAccordion(
                 title: "Destructive",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -112,7 +112,7 @@ class _AlertScreenState extends State<AlertScreen> {
               ),
               TAccordion(
                 title: "Info",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

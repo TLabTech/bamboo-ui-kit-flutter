@@ -46,7 +46,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               ),
               TAccordion(
                 title: "Donut 2 Data",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -71,7 +71,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               ),
               TAccordion(
                 title: "Donut 3 Data",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -101,7 +101,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               ),
               TAccordion(
                 title: "Donut 4 Data",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -136,7 +136,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               ),
               TAccordion(
                 title: "Donut 5 Data",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

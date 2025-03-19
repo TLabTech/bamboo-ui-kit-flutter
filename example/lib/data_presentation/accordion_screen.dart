@@ -43,7 +43,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
               ),
               TAccordion(
                 title: "Default",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -67,7 +67,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         trailing: SvgPicture.asset(Assets.svg.chevronDown),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
-                          style: TFontRegular.footNote.copyWith(
+                          style: TFontRegular.footNote(context).copyWith(
                             color: HexColor(neutral500),
                           ),
                         ),
@@ -78,7 +78,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         trailing: SvgPicture.asset(Assets.svg.chevronDown),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
-                          style: TFontRegular.footNote.copyWith(
+                          style: TFontRegular.footNote(context).copyWith(
                             color: HexColor(neutral500),
                           ),
                         ),
@@ -89,7 +89,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         trailing: SvgPicture.asset(Assets.svg.chevronDown),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
-                          style: TFontRegular.footNote.copyWith(
+                          style: TFontRegular.footNote(context).copyWith(
                             color: HexColor(neutral500),
                           ),
                         ),
@@ -100,7 +100,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         trailing: SvgPicture.asset(Assets.svg.chevronDown),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
-                          style: TFontRegular.footNote.copyWith(
+                          style: TFontRegular.footNote(context).copyWith(
                             color: HexColor(neutral500),
                           ),
                         ),
@@ -111,7 +111,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         trailing: SvgPicture.asset(Assets.svg.chevronDown),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
-                          style: TFontRegular.footNote.copyWith(
+                          style: TFontRegular.footNote(context).copyWith(
                             color: HexColor(neutral500),
                           ),
                         ),

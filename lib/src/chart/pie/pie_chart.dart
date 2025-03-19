@@ -86,7 +86,7 @@ class TPieChart extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontBold.body.copyWith(color: HexColor(neutral900)),
+                  style: TFontBold.body(context).copyWith(color: HexColor(neutral900)),
                 ),
                 if (showOption)
                   InkWell(
@@ -117,13 +117,13 @@ class TPieChart extends StatelessWidget {
                           children: [
                             Text(
                               data.label,
-                              style: TFontRegular.caption2.copyWith(
+                              style: TFontRegular.caption2(context).copyWith(
                                 color: data.labelColor ?? Colors.white,
                               ),
                             ),
                             Text(
                               "${data.value}",
-                              style: TFontBold.body.copyWith(
+                              style: TFontBold.body(context).copyWith(
                                 color: data.valueColor ??Colors.white,
                               ),
                             ),
@@ -137,7 +137,7 @@ class TPieChart extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            if (showLegends) _buildCustomLegend()
+            if (showLegends) _buildCustomLegend(context)
           ],
         ),
       ),
@@ -147,7 +147,7 @@ class TPieChart extends StatelessWidget {
   /// Builds a custom legend for the pie chart.
   ///
   /// Each legend displays a color indicator alongside the corresponding label.
-  Widget _buildCustomLegend() {
+  Widget _buildCustomLegend(BuildContext context) {
     return Center(
       child: Wrap(
         spacing: 10,
@@ -166,7 +166,7 @@ class TPieChart extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 data.label,
-                style: TFontRegular.caption2.copyWith(
+                style: TFontRegular.caption2(context).copyWith(
                   color: HexColor(neutral900),
                 ),
               ),

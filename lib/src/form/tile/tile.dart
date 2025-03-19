@@ -80,7 +80,7 @@ class TTile<T> extends StatelessWidget {
                   Text(
                     title,
                     style: titleStyle ??
-                        TFontRegular.body.copyWith(
+                        TFontRegular.body(context).copyWith(
                           color: enable == true
                               ? HexColor(neutral900)
                               : HexColor(neutral500),
@@ -92,7 +92,7 @@ class TTile<T> extends StatelessWidget {
                     Text(
                       subtitle!,
                       style: subtitleStyle ??
-                          TFontRegular.caption2.copyWith(
+                          TFontRegular.caption2(context).copyWith(
                             color: HexColor(neutral500),
                           ),
                       overflow: TextOverflow.visible,
@@ -109,7 +109,7 @@ class TTile<T> extends StatelessWidget {
                     Flexible(
                       child: Text(
                         detail!,
-                        style: TFontRegular.body
+                        style: TFontRegular.body(context)
                             .copyWith(color: HexColor(neutral500)),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

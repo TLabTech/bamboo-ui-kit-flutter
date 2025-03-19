@@ -53,7 +53,8 @@ class TDoughnutChart extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontBold.body.copyWith(color: HexColor(neutral900)),
+                  style: TFontBold.body(context)
+                      .copyWith(color: HexColor(neutral900)),
                 ),
                 if (showOption)
                   InkWell(
@@ -84,13 +85,13 @@ class TDoughnutChart extends StatelessWidget {
                           children: [
                             Text(
                               data.label,
-                              style: TFontRegular.caption2.copyWith(
+                              style: TFontRegular.caption2(context).copyWith(
                                 color: Colors.white,
                               ),
                             ),
                             Text(
                               "${data.value}",
-                              style: TFontBold.body.copyWith(
+                              style: TFontBold.body(context).copyWith(
                                 color: Colors.white,
                               ),
                             ),
@@ -104,7 +105,7 @@ class TDoughnutChart extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            if (showLegends) _buildCustomLegend(),
+            if (showLegends) _buildCustomLegend(context),
           ],
         ),
       ),
@@ -112,7 +113,7 @@ class TDoughnutChart extends StatelessWidget {
   }
 
   /// Builds a custom legend displaying chart colors and corresponding labels.
-  Widget _buildCustomLegend() {
+  Widget _buildCustomLegend(BuildContext context) {
     return Center(
       child: Wrap(
         spacing: 10,
@@ -132,7 +133,7 @@ class TDoughnutChart extends StatelessWidget {
               Text(
                 data.label,
                 style:
-                    TFontRegular.caption2.copyWith(color: HexColor(neutral900)),
+                    TFontRegular.caption2(context).copyWith(color: HexColor(neutral900)),
               ),
             ],
           );

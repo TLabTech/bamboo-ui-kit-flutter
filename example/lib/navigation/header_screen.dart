@@ -46,7 +46,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               ),
               TAccordion(
                 title: "Tittle",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -82,7 +82,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               ),
               TAccordion(
                 title: "Homepage",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -117,7 +117,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               ),
               TAccordion(
                 title: "Nested",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -146,7 +146,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               ),
               TAccordion(
                 title: "Search",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -168,7 +168,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               ),
               TAccordion(
                 title: "Brand",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

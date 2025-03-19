@@ -58,7 +58,7 @@ class _StatusBarScreenState extends State<StatusBarScreen> {
                 ),
                 TAccordion(
                   title: "Light",
-                  titleStyle: TFontBold.headline.copyWith(
+                  titleStyle: TFontBold.headline(context).copyWith(
                     color: HexColor(neutral900),
                   ),
                   showDivider: false,
@@ -83,7 +83,7 @@ class _StatusBarScreenState extends State<StatusBarScreen> {
                 ),
                 TAccordion(
                   title: "Dark",
-                  titleStyle: TFontBold.headline.copyWith(
+                  titleStyle: TFontBold.headline(context).copyWith(
                     color: HexColor(neutral900),
                   ),
                   showDivider: false,

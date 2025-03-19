@@ -43,7 +43,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Large Circle",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -91,7 +91,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Medium Circle",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -140,7 +140,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Small Circle",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -189,7 +189,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Circle With Notification",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -241,7 +241,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Circle With Online",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -290,7 +290,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Large Round",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -338,7 +338,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Medium Round",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -387,7 +387,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Small Round",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -436,7 +436,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Round With Notification",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -488,7 +488,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               ),
               TAccordion(
                 title: "Round With Online",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,

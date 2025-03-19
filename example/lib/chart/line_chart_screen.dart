@@ -43,7 +43,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 1 Data",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -68,7 +68,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 2 Data",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -102,7 +102,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 3 Data",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -145,7 +145,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 4 Data",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -201,7 +201,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 5 Data",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -267,7 +267,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 1 Data With Background",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -292,7 +292,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 2 Data With Background",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -326,7 +326,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 3 Data With Background",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -369,7 +369,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 4 Data With Background",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
@@ -425,7 +425,7 @@ class _LineChartScreenState extends State<LineChartScreen> {
               ),
               TAccordion(
                 title: "Line 5 Data With Background",
-                titleStyle: TFontBold.headline.copyWith(
+                titleStyle: TFontBold.headline(context).copyWith(
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
