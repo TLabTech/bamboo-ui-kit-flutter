@@ -65,7 +65,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonPrimary(
-                          text: "Button",
+                          text: "Button Primary",
                           onPressed: () {},
                         ),
                       ),
@@ -73,7 +73,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonSecondary(
-                          text: "Button",
+                          text: "Button Secondary",
                           onPressed: () {},
                         ),
                       ),
@@ -81,7 +81,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonDestructive(
-                          text: "Button",
+                          text: "Button Destructive",
                           onPressed: () {},
                         ),
                       ),
@@ -89,14 +89,14 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonOutline(
-                          text: "Button",
+                          text: "Button Outline",
                           textStyle: TFontBold.body(context)
                               .copyWith(color: HexColor(primary500)),
                           onPressed: () {},
                         ),
                       ),
                       TButtonGhost(
-                        text: "Button",
+                        text: "Button Ghost",
                         textStyle: TFontBold.body(context)
                             .copyWith(color: HexColor(primary500)),
                         onPressed: () {},
@@ -105,8 +105,8 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonDisable(
-                          text: "Button",
-                          onPressed: () {},
+                          text: "Button Disable",
+                          onPressed: null,
                         ),
                       ),
                     ],
@@ -119,7 +119,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   padding: EdgeInsets.all(12),
@@ -136,7 +136,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonPrimary(
-                          text: "Button",
+                          text: "Button Primary",
                           prefixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
@@ -151,7 +151,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonSecondary(
-                          text: "Button",
+                          text: "Button Secondary",
                           prefixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
@@ -166,7 +166,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonDestructive(
-                          text: "Button",
+                          text: "Button Destructive",
                           prefixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
@@ -181,7 +181,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonOutline(
-                          text: "Button",
+                          text: "Button Outline",
                           textStyle: TFontBold.body(context)
                               .copyWith(color: HexColor(primary500)),
                           prefixIcon: SvgPicture.asset(
@@ -195,7 +195,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         ),
                       ),
                       TButtonGhost(
-                        text: "Button",
+                        text: "Button Ghost",
                         textStyle: TFontBold.body(context)
                             .copyWith(color: HexColor(primary500)),
                         prefixIcon: SvgPicture.asset(
@@ -211,7 +211,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonDisable(
-                          text: "Button",
+                          text: "Button Disable",
                           prefixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
@@ -219,7 +219,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                               BlendMode.srcIn,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: null,
                         ),
                       ),
                     ],
@@ -232,7 +232,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   padding: EdgeInsets.all(12),
@@ -249,7 +249,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonPrimary(
-                          text: "Button",
+                          text: "Button Primary",
                           suffixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
@@ -264,7 +264,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonSecondary(
-                          text: "Button",
+                          text: "Button Secondary",
                           suffixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
@@ -279,7 +279,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonDestructive(
-                          text: "Button",
+                          text: "Button Destructive",
                           suffixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
@@ -294,7 +294,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonOutline(
-                          text: "Button",
+                          text: "Button Outline",
                           textStyle: TFontBold.body(context)
                               .copyWith(color: HexColor(primary500)),
                           suffixIcon: SvgPicture.asset(
@@ -308,7 +308,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         ),
                       ),
                       TButtonGhost(
-                        text: "Button",
+                        text: "Button Ghost",
                         textStyle: TFontBold.body(context)
                             .copyWith(color: HexColor(primary500)),
                         suffixIcon: SvgPicture.asset(
@@ -324,7 +324,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 48,
                         child: TButtonDisable(
-                          text: "Button",
+                          text: "Button Disable",
                           suffixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
@@ -342,6 +342,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
               TAccordion(
                 title: "Button Only Icon",
                 showDivider: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   padding: EdgeInsets.all(12),
@@ -440,6 +441,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
               TAccordion(
                 title: "Button with Button Spinner",
                 showDivider: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   padding: EdgeInsets.all(12),
@@ -457,7 +459,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         height: 48,
                         child: TButtonPrimary(
                           loading: true,
-                          text: "Button",
+                          text: "Button Primary",
                           prefixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(

@@ -88,7 +88,7 @@ class _RadioScreenState extends State<RadioScreen> {
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -117,7 +117,7 @@ class _RadioScreenState extends State<RadioScreen> {
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,

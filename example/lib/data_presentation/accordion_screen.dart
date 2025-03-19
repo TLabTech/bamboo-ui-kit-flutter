@@ -74,7 +74,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                       ),
                       TAccordion(
                         title: "Lorem ipsum dolor sit amet",
-                        initiallyExpanded: false,
+                        initiallyExpanded: true,
                         trailing: SvgPicture.asset(Assets.svg.chevronDown),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
@@ -85,7 +85,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                       ),
                       TAccordion(
                         title: "Lorem ipsum dolor sit amet",
-                        initiallyExpanded: false,
+                        initiallyExpanded: true,
                         trailing: SvgPicture.asset(Assets.svg.chevronDown),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
@@ -96,7 +96,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                       ),
                       TAccordion(
                         title: "Lorem ipsum dolor sit amet",
-                        initiallyExpanded: false,
+                        initiallyExpanded: true,
                         trailing: SvgPicture.asset(Assets.svg.chevronDown),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
@@ -107,7 +107,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                       ),
                       TAccordion(
                         title: "Lorem ipsum dolor sit amet",
-                        initiallyExpanded: false,
+                        initiallyExpanded: true,
                         trailing: SvgPicture.asset(Assets.svg.chevronDown),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',

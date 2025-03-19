@@ -73,7 +73,7 @@ class _TileScreenState extends State<TileScreen> {
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -110,7 +110,7 @@ class _TileScreenState extends State<TileScreen> {
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -139,7 +139,7 @@ class _TileScreenState extends State<TileScreen> {
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -168,7 +168,7 @@ class _TileScreenState extends State<TileScreen> {
                   color: HexColor(neutral900),
                 ),
                 showDivider: false,
-                initiallyExpanded: false,
+                initiallyExpanded: true,
                 trailing: SvgPicture.asset(Assets.svg.chevronDown),
                 child: Container(
                   width: MediaQuery.of(context).size.width,

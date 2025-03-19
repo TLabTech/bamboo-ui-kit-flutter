@@ -294,7 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: HexColor(neutral900),
                     ),
                     showDivider: false,
-                    initiallyExpanded: false,
+                    initiallyExpanded: true,
                     trailing: SvgPicture.asset(Assets.svg.chevronDown),
                     child: Container(
                       decoration: BoxDecoration(
@@ -361,7 +361,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: HexColor(neutral900),
                     ),
                     showDivider: false,
-                    initiallyExpanded: false,
+                    initiallyExpanded: true,
                     trailing: SvgPicture.asset(Assets.svg.chevronDown),
                     child: Container(
                       decoration: BoxDecoration(
@@ -412,7 +412,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: HexColor(neutral900),
                     ),
                     showDivider: false,
-                    initiallyExpanded: false,
+                    initiallyExpanded: true,
                     trailing: SvgPicture.asset(Assets.svg.chevronDown),
                     child: Container(
                       decoration: BoxDecoration(
@@ -578,7 +578,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: HexColor(neutral900),
                     ),
                     showDivider: false,
-                    initiallyExpanded: false,
+                    initiallyExpanded: true,
                     trailing: SvgPicture.asset(Assets.svg.chevronDown),
                     child: Container(
                       decoration: BoxDecoration(
@@ -629,7 +629,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: HexColor(neutral900),
                     ),
                     showDivider: false,
-                    initiallyExpanded: false,
+                    initiallyExpanded: true,
                     trailing: SvgPicture.asset(Assets.svg.chevronDown),
                     child: Container(
                       decoration: BoxDecoration(
@@ -664,7 +664,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: HexColor(neutral900),
                     ),
                     showDivider: false,
-                    initiallyExpanded: false,
+                    initiallyExpanded: true,
                     trailing: SvgPicture.asset(Assets.svg.chevronDown),
                     child: Container(
                       decoration: BoxDecoration(
