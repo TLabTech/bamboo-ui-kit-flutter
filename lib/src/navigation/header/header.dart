@@ -199,12 +199,11 @@ class _THeaderState extends State<THeader> {
 
   Widget _buildHomepageHeader() {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0, right: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          if (widget.prefixAction != null)
-            SizedBox(height: 40, width: 40, child: widget.prefixAction),
-          const SizedBox(width: 18),
+          if (widget.prefixAction != null) widget.prefixAction!,
+          const SizedBox(width: 14),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
