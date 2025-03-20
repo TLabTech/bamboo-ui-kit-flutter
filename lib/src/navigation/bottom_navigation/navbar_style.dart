@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/circular_navbar.dart';
+import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_dot_navbar.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_text_navbar.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_style_10.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_navbar.dart';
@@ -52,10 +53,17 @@ class TNavbarStyle {
 
   static Widget floating3(
       NavBarConfig navBarConfig, Color? activeColor, Color? backgroundColor) {
-    return FloatingStyle10NavBar(
+    return FloatingCircularDotNavBar(
       navBarConfig: navBarConfig,
+      navBarDecoration: NavBarDecoration(
+        color: activeColor ?? HexColor('#00DE9C'),
+      ),
       backgroundColor: backgroundColor ?? Colors.white.withValues(alpha: 0.9),
     );
+    // return FloatingStyle10NavBar(
+    //   navBarConfig: navBarConfig,
+    //   backgroundColor: backgroundColor ?? Colors.white.withValues(alpha: 0.9),
+    // );
   }
 
   static Widget floating4(

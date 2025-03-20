@@ -6,12 +6,14 @@ class FloatingCircularTextNavbar extends StatefulWidget {
   final NavBarConfig navBarConfig;
   final NavBarDecoration navBarDecoration;
   final Color? backgroundColor;
+  final double itemSpacing;
 
   const FloatingCircularTextNavbar({
     super.key,
     required this.navBarConfig,
     this.navBarDecoration = const NavBarDecoration(),
     this.backgroundColor,
+    this.itemSpacing = 16,
   });
 
   @override
@@ -89,7 +91,8 @@ class _FloatingCircularTextNavbarState extends State<FloatingCircularTextNavbar>
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0, bottom: 16.0),
+      margin: EdgeInsets.only(top: 8.0, bottom: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
       decoration: BoxDecoration(
         color: widget.backgroundColor,
         borderRadius: BorderRadius.circular(40),
@@ -98,56 +101,61 @@ class _FloatingCircularTextNavbarState extends State<FloatingCircularTextNavbar>
         ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        // Reduce spacing between items
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(widget.navBarConfig.items.length, (index) {
           final isActive = widget.navBarConfig.selectedIndex == index;
           final tab = widget.navBarConfig.items[index];
 
-          return Expanded(
-            child: GestureDetector(
-              onTap: () {
-                widget.navBarConfig.onItemSelected(index);
-                setState(() {});
-              },
-              child: AnimatedBuilder(
-                animation: _bounceAnimation,
-                builder: (context, child) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Transform.scale(
-                          scale: isActive ? _bounceAnimation.value : 1.0,
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.transparent,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: isActive ? tab.icon : tab.inactiveIcon,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          tab.title ?? '',
-                          style: TFontRegular.caption1(context).copyWith(
-                            color: isActive
-                                ? widget.navBarDecoration.color
-                                : Colors.grey.withValues(alpha: 0.6),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  widget.navBarConfig.onItemSelected(index);
+                  setState(() {});
                 },
+                child: AnimatedBuilder(
+                  animation: _bounceAnimation,
+                  builder: (context, child) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Transform.scale(
+                            scale: isActive ? _bounceAnimation.value : 1.0,
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.transparent,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: isActive ? tab.icon : tab.inactiveIcon,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            tab.title ?? '',
+                            style: TFontRegular.caption1(context).copyWith(
+                              color: isActive
+                                  ? widget.navBarDecoration.color
+                                  : Colors.grey.withValues(alpha: 0.6),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
+              if (index < widget.navBarConfig.items.length - 1)
+                SizedBox(width: widget.itemSpacing),
+            ],
           );
         }),
       ),
