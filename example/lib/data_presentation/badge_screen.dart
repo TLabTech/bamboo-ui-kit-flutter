@@ -59,10 +59,8 @@ class _BadgeScreenState extends State<BadgeScreen> {
                     ),
                   ),
                   child: Center(
-                    child: TBadge(
+                    child: TBadge.primary(
                       label: "Badge",
-                      backgroundColor: HexColor(primary050),
-                      textColor: HexColor(primary500),
                     ),
                   ),
                 ),
@@ -136,8 +134,6 @@ class _BadgeScreenState extends State<BadgeScreen> {
                   child: Center(
                     child: TBadge.destructive(
                       label: "Badge",
-                      backgroundColor: HexColor(danger050),
-                      textColor: HexColor(danger500),
                     ),
                   ),
                 ),
