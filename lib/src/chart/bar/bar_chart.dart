@@ -53,8 +53,8 @@ class TBarChart extends StatelessWidget {
         borderRadius: const BorderRadius.all(
           Radius.circular(8),
         ),
-        color: HexColor(neutral050),
-        border: Border.all(color: HexColor(neutral300), width: 1.0),
+        color: HexColor(gray050),
+        border: Border.all(color: HexColor(gray300), width: 1.0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -67,7 +67,7 @@ class TBarChart extends StatelessWidget {
                 Text(
                   title,
                   style: TFontBold.body(context)
-                      .copyWith(color: HexColor(neutral900)),
+                      .copyWith(color: HexColor(gray900)),
                 ),
                 if (showOption)
                   InkWell(
@@ -97,7 +97,7 @@ class TBarChart extends StatelessWidget {
                           dataLabelSettings: DataLabelSettings(
                             isVisible: true,
                             textStyle: TFontRegular.caption2(context)
-                                .copyWith(color: HexColor(neutral900)),
+                                .copyWith(color: HexColor(gray900)),
                             labelAlignment: ChartDataLabelAlignment.outer,
                           ),
                           color: barColor ?? HexColor(primary500),
@@ -109,7 +109,7 @@ class TBarChart extends StatelessWidget {
                           dataLabelSettings: DataLabelSettings(
                             isVisible: true,
                             textStyle: TFontRegular.caption2(context)
-                                .copyWith(color: HexColor(neutral900)),
+                                .copyWith(color: HexColor(gray900)),
                             labelAlignment: ChartDataLabelAlignment.outer,
                           ),
                           color: barColor ?? HexColor(primary500),
@@ -132,7 +132,7 @@ class TBarChart extends StatelessWidget {
                   Text(
                     "1",
                     style: TFontRegular.caption2(context)
-                        .copyWith(color: HexColor(neutral900)),
+                        .copyWith(color: HexColor(gray900)),
                   ),
                 ],
               ),

@@ -14,7 +14,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Breadcrumbs', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -44,7 +44,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
               TAccordion(
                 title: "1 Page",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -55,7 +55,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TBreadcrumbs(
@@ -75,7 +75,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
               TAccordion(
                 title: "2 Page",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -86,7 +86,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TBreadcrumbs(
@@ -110,7 +110,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
               TAccordion(
                 title: "More than 2 Page",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -121,7 +121,7 @@ class _BreadcrumbsScreenState extends State<BreadcrumbsScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TBreadcrumbs(

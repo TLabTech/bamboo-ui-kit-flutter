@@ -49,12 +49,12 @@ class TDialog extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TFontBold.title3(context).copyWith(color: HexColor(neutral900)),
+          style: TFontBold.title3(context).copyWith(color: HexColor(gray900)),
         ),
         const SizedBox(height: 8),
         Text(
           content,
-          style: TFontRegular.body(context).copyWith(color: HexColor(neutral500)),
+          style: TFontRegular.body(context).copyWith(color: HexColor(gray500)),
         ),
         const SizedBox(height: 24),
         Row(
@@ -85,13 +85,13 @@ class TDialog extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TFontBold.title3(context).copyWith(color: HexColor(neutral900)),
+          style: TFontBold.title3(context).copyWith(color: HexColor(gray900)),
         ),
         const SizedBox(height: 8),
         Text(
           content,
           textAlign: TextAlign.center,
-          style: TFontRegular.body(context).copyWith(color: HexColor(neutral500)),
+          style: TFontRegular.body(context).copyWith(color: HexColor(gray500)),
         ),
         const SizedBox(height: 24),
         SizedBox(

@@ -42,7 +42,7 @@ class TTitleSection extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TFontBold.headline(context).copyWith(
                         color: HexColor(
-                          neutral900,
+                          gray900,
                         ),
                       ),
                     ),
@@ -53,7 +53,7 @@ class TTitleSection extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TFontRegular.caption2(context).copyWith(
                           color: HexColor(
-                            neutral500,
+                            gray500,
                           ),
                         ),
                       ),

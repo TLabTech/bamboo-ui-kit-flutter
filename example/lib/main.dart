@@ -19,7 +19,6 @@ import 'package:example/form/slider_screen.dart';
 import 'package:example/form/switch_screen.dart';
 import 'package:example/form/text_field_screen.dart';
 import 'package:example/gen/assets.gen.dart';
-import 'package:example/gen/fonts.gen.dart';
 import 'package:example/navigation/bottom_navigation_screen.dart';
 import 'package:example/navigation/breadcrumbs_screen.dart';
 import 'package:example/navigation/header_screen.dart';
@@ -30,41 +29,26 @@ import 'package:example/navigation/stepper_screen.dart';
 import 'package:example/navigation/tabs_screen.dart';
 import 'package:example/navigation/tittle_section_screen.dart';
 import 'package:example/overlay/dialog_screen.dart';
+import 'package:example/themes.dart';
 import 'package:example/tile/tile_group_screen.dart';
 import 'package:example/tile/tile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
-  /// Example usage:
-  /// final theme = TTheme(
-  ///   primary: HexColor('00D89C'),
-  ///   secondary: HexColor('049CFB'),
-  ///   background: HexColor('F6F7F9'),
-  ///  error: HexColor('E8463B'),
-  ///   text: HexColor('000000'),
-  ///   buttonBackground: Colors.blue,
-  ///   buttonPressed: Colors.black,
-  /// );
-
-  final theme = TTheme(primary: HexColor('00D89C'),
-    secondary: HexColor('00D89C'),
-    background: HexColor('00D89C'),
-    error: HexColor('00D89C'),
-    text: HexColor('00D89C'),
-    buttonBackground: HexColor('00D89C'),
-    buttonPressed: HexColor('00D89C'),
-    // fontFamily: FontFamily.monserrat,
-  );
-  // final theme = TTheme.light();
-
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    TThemeProvider(
-      theme: theme,
-      child: const MyApp(),
+    BlocProvider(
+      create: (context) => TThemeManager(
+        // lightTheme: ThemeConfig().customLightTheme, // Use custom light theme (disable it when using default)
+        // darkTheme: ThemeConfig().customDarkTheme, // Use custom dark theme (disable it when using default)
+      ),
+      child: TThemeProvider(
+        child: const MyApp(),
+      ),
     ),
   );
 }
@@ -74,12 +58,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      // home: BottomNavigationSample(),
-      // home: ChartScreen(),
-      home: MyHomePage(title: "Bamboo UI Kit"),
+    return BlocBuilder<TThemeManager, TTheme>(
+      builder: (context, theme) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: theme.themeData,
+          home: MyHomePage(title: "Bamboo UI Kit"),
+        );
+      },
     );
   }
 }
@@ -104,15 +91,35 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: HexColor(neutral050),
+          backgroundColor: HexColor(gray050),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
                 children: <Widget>[
-                  Text(
-                    'Bamboo UI Kit Mobile',
-                    style: TFontRegular.title1(context),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 8,
+                    children: [
+                      Text(
+                        'Bamboo UI Kit Mobile',
+                        style: TFontRegular.title1(context),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          context.read<TThemeManager>().toggleTheme();
+                        },
+                        child: BlocBuilder<TThemeManager, TTheme>(
+                          builder: (context, theme) {
+                            return SvgPicture.asset(
+                              theme == context.read<TThemeManager>().lightTheme
+                                  ? Assets.svg.moon
+                                  : Assets.svg.sun,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                   TBadge(
                     label: 'Version 1.0',
@@ -122,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TAccordion(
                     title: "Form",
                     titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(neutral900),
+                      color: HexColor(gray900),
                     ),
                     showDivider: false,
                     initiallyExpanded: true,
@@ -137,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Button",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -153,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Calendar",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -169,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Checkbox",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -185,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Checkbox Group",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -202,7 +209,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Radio",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -219,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Radio Group",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -236,7 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Slider",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -253,7 +260,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Switch",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -270,7 +277,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Text Field",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -291,7 +298,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TAccordion(
                     title: "Data Presentation",
                     titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(neutral900),
+                      color: HexColor(gray900),
                     ),
                     showDivider: false,
                     initiallyExpanded: true,
@@ -306,7 +313,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Accordion",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -322,7 +329,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Avatar",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -338,7 +345,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Badge",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -358,7 +365,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TAccordion(
                     title: "Tile",
                     titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(neutral900),
+                      color: HexColor(gray900),
                     ),
                     showDivider: false,
                     initiallyExpanded: true,
@@ -373,7 +380,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Tile",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -389,7 +396,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Tile Group",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -409,7 +416,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TAccordion(
                     title: "Navigation",
                     titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(neutral900),
+                      color: HexColor(gray900),
                     ),
                     showDivider: false,
                     initiallyExpanded: true,
@@ -424,7 +431,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Bottom Navigation",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -441,7 +448,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Breadcrumbs",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -457,7 +464,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Header",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -473,7 +480,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Home Indicator",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -490,7 +497,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Keyboard",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -506,7 +513,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Status Bar",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -522,7 +529,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Stepper",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -538,7 +545,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Tab",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -554,7 +561,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Tittle Section",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -575,7 +582,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TAccordion(
                     title: "Feedback",
                     titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(neutral900),
+                      color: HexColor(gray900),
                     ),
                     showDivider: false,
                     initiallyExpanded: true,
@@ -590,7 +597,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Alert",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -606,7 +613,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Progress",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -626,7 +633,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TAccordion(
                     title: "Overlay",
                     titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(neutral900),
+                      color: HexColor(gray900),
                     ),
                     showDivider: false,
                     initiallyExpanded: true,
@@ -641,7 +648,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Dialog",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -661,7 +668,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TAccordion(
                     title: "Chart",
                     titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(neutral900),
+                      color: HexColor(gray900),
                     ),
                     showDivider: false,
                     initiallyExpanded: true,
@@ -676,7 +683,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Bar",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -692,7 +699,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Line",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -708,7 +715,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Pie",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
@@ -724,7 +731,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TTile(
                             title: "Donut",
                             titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(neutral900),
+                              color: HexColor(gray900),
                             ),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,

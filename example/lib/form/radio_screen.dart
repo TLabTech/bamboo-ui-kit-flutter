@@ -18,7 +18,7 @@ class _RadioScreenState extends State<RadioScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Radio', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -48,7 +48,7 @@ class _RadioScreenState extends State<RadioScreen> {
               TAccordion(
                 title: "Default",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -59,7 +59,7 @@ class _RadioScreenState extends State<RadioScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TRadioButton<String>(
@@ -85,7 +85,7 @@ class _RadioScreenState extends State<RadioScreen> {
               TAccordion(
                 title: "Disabled",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -96,7 +96,7 @@ class _RadioScreenState extends State<RadioScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TRadioButton<String>(
@@ -114,7 +114,7 @@ class _RadioScreenState extends State<RadioScreen> {
               TAccordion(
                 title: "Error",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -125,7 +125,7 @@ class _RadioScreenState extends State<RadioScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TRadioButton<String>(

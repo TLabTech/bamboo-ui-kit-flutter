@@ -27,7 +27,7 @@ class _TabsScreenState extends State<TabsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(
         title: 'Tabs',
         enableCenterTitle: true,
@@ -60,7 +60,7 @@ class _TabsScreenState extends State<TabsScreen>
               TAccordion(
                 title: "2 Tabs",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -71,7 +71,7 @@ class _TabsScreenState extends State<TabsScreen>
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTabs(
@@ -88,7 +88,7 @@ class _TabsScreenState extends State<TabsScreen>
               TAccordion(
                 title: "3 Tabs",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -99,7 +99,7 @@ class _TabsScreenState extends State<TabsScreen>
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTabs(
@@ -116,7 +116,7 @@ class _TabsScreenState extends State<TabsScreen>
               TAccordion(
                 title: "4 Tabs",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -127,7 +127,7 @@ class _TabsScreenState extends State<TabsScreen>
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTabs(

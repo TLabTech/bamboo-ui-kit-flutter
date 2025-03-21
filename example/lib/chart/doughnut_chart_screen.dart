@@ -14,7 +14,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(
         title: 'Donut',
         enableCenterTitle: true,
@@ -47,7 +47,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               TAccordion(
                 title: "Donut 2 Data",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -72,7 +72,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               TAccordion(
                 title: "Donut 3 Data",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -93,7 +93,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
                     DoughnutChartData(
                       label: "C",
                       value: 22,
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                     ),
                   ],
                   showLegends: true,
@@ -102,7 +102,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               TAccordion(
                 title: "Donut 4 Data",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -123,12 +123,12 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
                     DoughnutChartData(
                       label: "C",
                       value: 22,
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                     ),
                     DoughnutChartData(
                       label: "D",
                       value: 65,
-                      color: HexColor(warning500),
+                      color: HexColor(yellow500),
                     ),
                   ],
                   showLegends: true,
@@ -137,7 +137,7 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               TAccordion(
                 title: "Donut 5 Data",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -158,17 +158,17 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
                     DoughnutChartData(
                       label: "C",
                       value: 22,
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                     ),
                     DoughnutChartData(
                       label: "D",
                       value: 65,
-                      color: HexColor(warning500),
+                      color: HexColor(yellow500),
                     ),
                     DoughnutChartData(
                       label: "E",
                       value: 12,
-                      color: HexColor(neutral500),
+                      color: HexColor(gray500),
                     ),
                   ],
                   showLegends: true,

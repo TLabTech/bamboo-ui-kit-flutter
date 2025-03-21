@@ -43,13 +43,13 @@ class TDropdown<T> extends StatelessWidget {
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                      color: borderColor ?? HexColor(neutral300),
+                      color: borderColor ?? HexColor(gray300),
                       width: borderWidth),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: borderColor ?? HexColor(neutral300),
+                    color: borderColor ?? HexColor(gray300),
                     width: borderWidth,
                   ),
                 ),

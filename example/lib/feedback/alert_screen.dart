@@ -14,7 +14,7 @@ class _AlertScreenState extends State<AlertScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Alert', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -44,7 +44,7 @@ class _AlertScreenState extends State<AlertScreen> {
               TAccordion(
                 title: "Default",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -55,7 +55,7 @@ class _AlertScreenState extends State<AlertScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TAlert(
@@ -67,7 +67,7 @@ class _AlertScreenState extends State<AlertScreen> {
               TAccordion(
                 title: "Primary",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -78,7 +78,7 @@ class _AlertScreenState extends State<AlertScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TAlert.primary(
@@ -90,7 +90,7 @@ class _AlertScreenState extends State<AlertScreen> {
               TAccordion(
                 title: "Destructive",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -101,7 +101,7 @@ class _AlertScreenState extends State<AlertScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TAlert.destructive(
@@ -113,7 +113,7 @@ class _AlertScreenState extends State<AlertScreen> {
               TAccordion(
                 title: "Info",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -124,7 +124,7 @@ class _AlertScreenState extends State<AlertScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TAlert.info(

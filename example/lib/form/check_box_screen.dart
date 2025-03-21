@@ -17,7 +17,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Checkbox', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -47,7 +47,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
               TAccordion(
                 title: "Default",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -58,7 +58,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TCheckBox(
@@ -82,7 +82,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
               TAccordion(
                 title: "Disabled",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -93,7 +93,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TCheckBox(
@@ -115,7 +115,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
               TAccordion(
                 title: "Error",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -126,7 +126,7 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TCheckBox(

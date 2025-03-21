@@ -14,7 +14,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Avatar', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -44,7 +44,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Large Circle",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -55,7 +55,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -64,7 +64,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                       TAvatar(
                         icon: Icon(
                           Icons.account_circle,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.large,
                         type: AvatarType.general,
@@ -92,7 +92,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Medium Circle",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -103,7 +103,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -113,7 +113,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         icon: Icon(
                           Icons.account_circle,
                           size: 15,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.general,
@@ -141,7 +141,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Small Circle",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -152,7 +152,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -162,7 +162,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         icon: Icon(
                           Icons.account_circle,
                           size: 13,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.small,
                         type: AvatarType.general,
@@ -190,7 +190,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Circle With Notification",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -201,7 +201,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -211,7 +211,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         icon: Icon(
                           Icons.account_circle,
                           size: 15,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.notification,
@@ -242,7 +242,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Circle With Online",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -253,7 +253,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -263,7 +263,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         icon: Icon(
                           Icons.account_circle,
                           size: 15,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.online,
@@ -291,7 +291,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Large Round",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -302,7 +302,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -311,7 +311,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                       TAvatar(
                         icon: Icon(
                           Icons.account_circle,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.large,
                         type: AvatarType.general,
@@ -339,7 +339,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Medium Round",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -350,7 +350,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -360,7 +360,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         icon: Icon(
                           Icons.account_circle,
                           size: 15,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.general,
@@ -388,7 +388,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Small Round",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -399,7 +399,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -409,7 +409,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         icon: Icon(
                           Icons.account_circle,
                           size: 13,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.small,
                         type: AvatarType.general,
@@ -437,7 +437,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Round With Notification",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -448,7 +448,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -458,7 +458,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         icon: Icon(
                           Icons.account_circle,
                           size: 15,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.notification,
@@ -489,7 +489,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
               TAccordion(
                 title: "Round With Online",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -500,7 +500,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Row(
@@ -510,7 +510,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         icon: Icon(
                           Icons.account_circle,
                           size: 15,
-                          color: HexColor(neutral500),
+                          color: HexColor(gray500),
                         ),
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.online,

@@ -96,15 +96,15 @@ class _TAccordionState extends State<TAccordion> {
   Widget build(BuildContext context) {
     return ExpansionTile(
       initiallyExpanded: widget.initiallyExpanded,
-      collapsedIconColor: HexColor(neutral700),
-      iconColor: HexColor(neutral700),
+      collapsedIconColor: HexColor(gray700),
+      iconColor: HexColor(gray700),
       shape: const RoundedRectangleBorder(
         side: BorderSide.none,
       ),
       title: Text(
         widget.title,
         style: widget.titleStyle ??
-            TFontBold.body(context).copyWith(color: HexColor(neutral900)),
+            TFontBold.body(context).copyWith(color: HexColor(gray900)),
       ),
       trailing: AnimatedRotation(
         turns: isExpanded ? 0.5 : 0.0,
@@ -125,7 +125,7 @@ class _TAccordionState extends State<TAccordion> {
         ),
         if (widget.showDivider)
           Divider(
-            color: widget.borderColor ?? HexColor(neutral300),
+            color: widget.borderColor ?? HexColor(gray300),
             thickness: widget.borderWidth,
           ),
       ],

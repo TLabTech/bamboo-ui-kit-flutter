@@ -64,9 +64,9 @@ class TButtonDisable extends StatelessWidget {
           (states) {
             if (states.contains(WidgetState.pressed)) {
               return onPressedBackgroundColor ??
-                  HexColor(neutral500); // Pressed state color
+                  HexColor(gray500); // Pressed state color
             }
-            return backgroundColor ?? HexColor(neutral400); // Default color
+            return backgroundColor ?? HexColor(gray400); // Default color
           },
         ),
       ),
@@ -79,7 +79,7 @@ class TButtonDisable extends StatelessWidget {
                   width: 18,
                   height: 18,
                   child: CircularProgressIndicator(
-                    color: HexColor(neutral500),
+                    color: HexColor(gray500),
                   ),
                 ),
                 if (text != null) SizedBox(width: 8),

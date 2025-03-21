@@ -78,9 +78,9 @@ class _TSwitchState extends State<TSwitch> {
                 widget.onChanged(_internalValue);
               }
             },
-            activeColor: HexColor(neutral050),
+            activeColor: HexColor(gray050),
             activeTrackColor:
-                widget.isError ? HexColor(danger500) : HexColor(primary500),
+                widget.isError ? HexColor(red500) : HexColor(primary500),
           ),
           const SizedBox(width: 8),
           Column(
@@ -91,14 +91,14 @@ class _TSwitchState extends State<TSwitch> {
                 widget.label,
                 style: TFontRegular.body(context).copyWith(
                   color: widget.isError
-                      ? HexColor(danger500)
-                      : HexColor(neutral900),
+                      ? HexColor(red500)
+                      : HexColor(gray900),
                 ),
               ),
               Text(
                 widget.description,
                 style: TFontRegular.footNote(context).copyWith(
-                  color: HexColor(neutral500),
+                  color: HexColor(gray500),
                 ),
               ),
               if (widget.error != null) ...[
@@ -106,7 +106,7 @@ class _TSwitchState extends State<TSwitch> {
                 Text(
                   widget.error!,
                   style: TFontRegular.footNote(context).copyWith(
-                    color: HexColor(danger500),
+                    color: HexColor(red500),
                   ),
                 ),
               ],

@@ -18,7 +18,7 @@ class TThemeProvider extends StatelessWidget {
     return BlocBuilder<TThemeManager, TTheme>(
       builder: (context, theme) {
         return Theme(
-          data: theme.themeData, // Make sure TTheme has a `themeData` method
+          data: theme.themeData,
           child: child,
         );
       },

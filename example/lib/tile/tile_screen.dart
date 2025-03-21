@@ -16,7 +16,7 @@ class _TileScreenState extends State<TileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Tile', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -46,7 +46,7 @@ class _TileScreenState extends State<TileScreen> {
               TAccordion(
                 title: "UnTappable",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -57,7 +57,7 @@ class _TileScreenState extends State<TileScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTile<String>(
@@ -70,7 +70,7 @@ class _TileScreenState extends State<TileScreen> {
               TAccordion(
                 title: "Disabled",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -81,7 +81,7 @@ class _TileScreenState extends State<TileScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTile<String>(
@@ -89,14 +89,14 @@ class _TileScreenState extends State<TileScreen> {
                     prefixIcon: SvgPicture.asset(
                       Assets.svg.user,
                       colorFilter: ColorFilter.mode(
-                        HexColor(neutral500),
+                        HexColor(gray500),
                         BlendMode.srcIn,
                       ),
                     ),
                     suffixIcon: SvgPicture.asset(
                       Assets.svg.chevronRight,
                       colorFilter: ColorFilter.mode(
-                        HexColor(neutral500),
+                        HexColor(gray500),
                         BlendMode.srcIn,
                       ),
                     ),
@@ -107,7 +107,7 @@ class _TileScreenState extends State<TileScreen> {
               TAccordion(
                 title: "With Subtitle",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -118,7 +118,7 @@ class _TileScreenState extends State<TileScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTile<String>(
@@ -136,7 +136,7 @@ class _TileScreenState extends State<TileScreen> {
               TAccordion(
                 title: "With Details",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -147,7 +147,7 @@ class _TileScreenState extends State<TileScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTile<String>(
@@ -165,7 +165,7 @@ class _TileScreenState extends State<TileScreen> {
               TAccordion(
                 title: "With Radio",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -176,7 +176,7 @@ class _TileScreenState extends State<TileScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTile<String>(

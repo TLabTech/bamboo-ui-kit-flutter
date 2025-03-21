@@ -14,7 +14,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(
         title: 'Header',
         enableCenterTitle: true,
@@ -47,7 +47,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               TAccordion(
                 title: "Tittle",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -58,7 +58,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: THeader(
@@ -83,7 +83,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               TAccordion(
                 title: "Homepage",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -94,7 +94,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: THeader.homepage(
@@ -118,7 +118,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               TAccordion(
                 title: "Nested",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -129,7 +129,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: THeader.nested(
@@ -147,7 +147,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               TAccordion(
                 title: "Search",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -158,7 +158,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: THeader.search(
@@ -169,7 +169,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
               TAccordion(
                 title: "Brand",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -180,7 +180,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: THeader.brand(

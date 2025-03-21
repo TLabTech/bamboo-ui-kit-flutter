@@ -76,7 +76,7 @@ class TButtonOutline extends StatelessWidget {
                   width: 18,
                   height: 18,
                   child: CircularProgressIndicator(
-                    color: HexColor(neutral900),
+                    color: HexColor(gray900),
                   ),
                 ),
                 if (text != null) SizedBox(width: 8),
@@ -84,7 +84,7 @@ class TButtonOutline extends StatelessWidget {
                   Text(
                     text!,
                     style: textStyle ??
-                        TFontBold.body(context).copyWith(color: HexColor(neutral900)),
+                        TFontBold.body(context).copyWith(color: HexColor(gray900)),
                   ),
               ],
             )
@@ -108,7 +108,7 @@ class TButtonOutline extends StatelessWidget {
               text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
               style: textStyle ??
-                  TFontBold.body(context).copyWith(color: HexColor(neutral900)),
+                  TFontBold.body(context).copyWith(color: HexColor(gray900)),
             ),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),

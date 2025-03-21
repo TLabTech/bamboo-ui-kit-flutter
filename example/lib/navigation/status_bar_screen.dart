@@ -26,7 +26,7 @@ class _StatusBarScreenState extends State<StatusBarScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: HexColor(neutral050),
+        backgroundColor: HexColor(gray050),
         appBar: THeader.nested(
           title: 'Status Bar',
           enableCenterTitle: true,
@@ -59,7 +59,7 @@ class _StatusBarScreenState extends State<StatusBarScreen> {
                 TAccordion(
                   title: "Light",
                   titleStyle: TFontBold.headline(context).copyWith(
-                    color: HexColor(neutral900),
+                    color: HexColor(gray900),
                   ),
                   showDivider: false,
                   initiallyExpanded: true,
@@ -70,7 +70,7 @@ class _StatusBarScreenState extends State<StatusBarScreen> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: HexColor(neutral300),
+                        color: HexColor(gray300),
                       ),
                     ),
                     child: TButtonPrimary(
@@ -84,7 +84,7 @@ class _StatusBarScreenState extends State<StatusBarScreen> {
                 TAccordion(
                   title: "Dark",
                   titleStyle: TFontBold.headline(context).copyWith(
-                    color: HexColor(neutral900),
+                    color: HexColor(gray900),
                   ),
                   showDivider: false,
                   initiallyExpanded: true,
@@ -95,7 +95,7 @@ class _StatusBarScreenState extends State<StatusBarScreen> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: HexColor(neutral300),
+                        color: HexColor(gray300),
                       ),
                     ),
                     child: TButtonPrimary(

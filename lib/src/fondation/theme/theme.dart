@@ -77,15 +77,6 @@ class TTheme {
   /// Input field background color
   final Color input;
 
-  /// Error color for errors, warnings, etc.
-  final Color error;
-
-  /// Button background color in default state
-  final Color buttonBackground;
-
-  /// Button background color when pressed
-  final Color buttonPressed;
-
   /// Font family for the app
   final String? fontFamily;
 
@@ -122,87 +113,78 @@ class TTheme {
     required this.popoverForeground,
     required this.border,
     required this.input,
-    required this.error,
-    required this.buttonBackground,
-    required this.buttonPressed,
     this.fontFamily = FontFamily.inter,
   });
 
   /// Default light theme
   static TTheme light() => TTheme(
-    primary: HexColor("22C55E"), // primary/500
-    primaryForeground: Colors.white,
-    primaryPressed: HexColor("16A34A"), // primary/600
-    secondary: HexColor("3B82F6"), // secondary/500
-    secondaryForeground: Colors.white,
-    secondaryPressed: HexColor("2563EB"), // secondary/600
-    accent: HexColor("FACC15"), // yellow/500
-    accentForeground: Colors.black,
-    destructive: HexColor("DC2626"), // red/600
-    destructiveForeground: Colors.white,
-    destructivePressed: HexColor("B91C1C"), // red/700
-    warning: HexColor("F59E0B"), // amber/500
-    warningForeground: Colors.black,
-    warningPressed: HexColor("D97706"), // amber/600
-    success: HexColor("22C55E"), // green/500
-    successForeground: Colors.white,
-    successPressed: HexColor("16A34A"), // green/600
-    info: HexColor("06B6D4"), // cyan/500
-    infoForeground: Colors.white,
-    ring: HexColor("E5E7EB"), // gray/200
-    active: HexColor("3B82F6"), // secondary/500
-    background: HexColor("FFFFFF"), // base/white
-    foreground: HexColor("030712"), // gray/950
-    muted: HexColor("F3F4F6"), // gray/100
-    mutedForeground: HexColor("6B7280"), // gray/500
-    card: HexColor("FFFFFF"), // base/white
-    cardForeground: HexColor("030712"), // gray/950
-    popover: HexColor("FFFFFF"), // base/white
-    popoverForeground: HexColor("030712"), // gray/950
-    border: HexColor("E5E7EB"), // gray/200
-    input: HexColor("FFFFFF"), // base/white
-    error: HexColor("EF4444"), // red/500
-    buttonBackground: HexColor("22C55E"), // primary/500
-    buttonPressed: HexColor("16A34A"), // primary/600
+    primary: HexColor(primary500),
+    primaryForeground: HexColor(primary050),
+    primaryPressed: HexColor(primary600),
+    secondary: HexColor(secondary500),
+    secondaryForeground: HexColor(secondary050),
+    secondaryPressed: HexColor(secondary600),
+    accent: HexColor(gray100),
+    accentForeground: HexColor(gray950),
+    destructive: HexColor(red500),
+    destructiveForeground: HexColor(red050),
+    destructivePressed: HexColor(red600),
+    warning: HexColor(yellow500),
+    warningForeground: HexColor(yellow050),
+    warningPressed: HexColor(yellow600),
+    success: HexColor(green500),
+    successForeground: HexColor(green050),
+    successPressed: HexColor(green600),
+    info: HexColor(blue500),
+    infoForeground: HexColor(blue050),
+    ring: HexColor(gray500),
+    active: HexColor(gray200),
+    background: HexColor(baseWhite),
+    foreground: HexColor(gray950),
+    muted: HexColor(gray100),
+    mutedForeground: HexColor(gray500),
+    card: HexColor(baseWhite),
+    cardForeground: HexColor(gray950),
+    popover: HexColor(baseWhite),
+    popoverForeground: HexColor(gray950),
+    border: HexColor(gray200),
+    input: HexColor(baseWhite),
     fontFamily: FontFamily.inter,
   );
 
   /// Default dark theme
   static TTheme dark() => TTheme(
-    primary: HexColor("22C55E"), // primary/500
-    primaryForeground: Colors.black,
-    primaryPressed: HexColor("16A34A"), // primary/600
-    secondary: HexColor("3B82F6"), // secondary/500
-    secondaryForeground: Colors.black,
-    secondaryPressed: HexColor("2563EB"), // secondary/600
-    accent: HexColor("FACC15"), // yellow/500
-    accentForeground: Colors.black,
-    destructive: HexColor("DC2626"), // red/600
-    destructiveForeground: Colors.white,
-    destructivePressed: HexColor("B91C1C"), // red/700
-    warning: HexColor("F59E0B"), // amber/500
-    warningForeground: Colors.black,
-    warningPressed: HexColor("D97706"), // amber/600
-    success: HexColor("22C55E"), // green/500
-    successForeground: Colors.white,
-    successPressed: HexColor("16A34A"), // green/600
-    info: HexColor("06B6D4"), // cyan/500
-    infoForeground: Colors.white,
-    ring: HexColor("374151"), // gray/700
-    active: HexColor("3B82F6"), // secondary/500
-    background: HexColor("000000"), // base/black
-    foreground: HexColor("F9FAFB"), // gray/50
-    muted: HexColor("030712"), // gray/950
-    mutedForeground: HexColor("9CA3AF"), // gray/400
-    card: HexColor("030712"), // gray/950
-    cardForeground: HexColor("EF4444"), // red/500
-    popover: HexColor("030712"), // gray/950
-    popoverForeground: HexColor("F9FAFB"), // gray/50
-    border: HexColor("374151"), // gray/700
-    input: HexColor("030712"), // gray/950
-    error: HexColor("EF4444"), // red/500
-    buttonBackground: HexColor("22C55E"), // primary/500
-    buttonPressed: HexColor("15803D"), // primary/900
+    primary: HexColor(primary500),
+    primaryForeground: HexColor(primary900),
+    primaryPressed: HexColor(primary600),
+    secondary: HexColor(secondary500),
+    secondaryForeground: HexColor(secondary900),
+    secondaryPressed: HexColor(secondary600),
+    accent: HexColor(gray800),
+    accentForeground: HexColor(gray050),
+    destructive: HexColor(red500),
+    destructiveForeground: HexColor(red900),
+    destructivePressed: HexColor(red600),
+    warning: HexColor(yellow500),
+    warningForeground:HexColor(yellow900),
+    warningPressed: HexColor(yellow600),
+    success: HexColor(green500),
+    successForeground: HexColor(primary900),
+    successPressed: HexColor(green600),
+    info: HexColor(blue500),
+    infoForeground: HexColor(blue900),
+    ring: HexColor(gray400),
+    active: HexColor(gray500),
+    background: HexColor(baseBlack),
+    foreground: HexColor(gray050),
+    muted: HexColor(gray950),
+    mutedForeground: HexColor(gray400),
+    card: HexColor(gray950),
+    cardForeground: HexColor(red050),
+    popover: HexColor(gray950),
+    popoverForeground: HexColor(gray050),
+    border: HexColor(gray700),
+    input: HexColor(gray950),
     fontFamily: FontFamily.inter,
   );
 
@@ -221,7 +203,7 @@ class TTheme {
         onSecondary: secondaryForeground,
         surface: background,
         onSurface: foreground,
-        error: error,
+        error: destructive,
         onError: destructiveForeground,
       ),
 
@@ -243,8 +225,8 @@ class TTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.resolveWith((states) {
-            if (states.contains(WidgetState.pressed)) return buttonPressed;
-            return buttonBackground;
+            if (states.contains(WidgetState.pressed)) return primaryPressed;
+            return primary;
           }),
           foregroundColor: WidgetStateProperty.all(primaryForeground),
         ),

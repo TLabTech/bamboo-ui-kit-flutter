@@ -60,7 +60,7 @@ class TProgress extends StatelessWidget {
           child: CircularProgressIndicator(
             value: value,
             strokeWidth: strokeWidth,
-            backgroundColor: backgroundColor ?? HexColor(neutral200),
+            backgroundColor: backgroundColor ?? HexColor(gray200),
             valueColor:
                 AlwaysStoppedAnimation<Color>(color ?? HexColor(primary500)),
           ),
@@ -68,7 +68,7 @@ class TProgress extends StatelessWidget {
         Text(
           "${(value * 100).toInt()}%",
           style: TFontRegular.body(context).copyWith(
-            color: valueColor ?? HexColor(neutral500),
+            color: valueColor ?? HexColor(gray500),
             fontSize: size * 0.2,
           ),
         ),
@@ -85,7 +85,7 @@ class TProgress extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: backgroundColor ?? HexColor(neutral200),
+              color: backgroundColor ?? HexColor(gray200),
             ),
             width: constraints.maxWidth,
           ),

@@ -14,7 +14,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(
         title: 'Tittle Section',
         enableCenterTitle: true,
@@ -47,7 +47,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               TAccordion(
                 title: "Default",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -58,7 +58,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTitleSection(title: "Placeholder"),
@@ -67,7 +67,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               TAccordion(
                 title: "With Description",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -78,7 +78,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTitleSection(
@@ -90,7 +90,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               TAccordion(
                 title: "With Icon",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -101,7 +101,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTitleSection(
@@ -113,7 +113,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               TAccordion(
                 title: "With Description & Icon",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -124,7 +124,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTitleSection(
@@ -137,7 +137,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               TAccordion(
                 title: "With Description & Icon",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -148,7 +148,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTitleSection(
@@ -161,7 +161,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               TAccordion(
                 title: "With Button",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -172,7 +172,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTitleSection(
@@ -185,7 +185,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
               TAccordion(
                 title: "With Description & Button",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -196,7 +196,7 @@ class _TittleSectionScreenState extends State<TittleSectionScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TTitleSection(

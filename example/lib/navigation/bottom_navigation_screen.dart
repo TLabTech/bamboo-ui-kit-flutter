@@ -20,7 +20,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int _selectedCircleFloatingIndex = 0;
 
   final Color activeColor = HexColor(primary500);
-  final Color inactiveColor = HexColor(neutral500);
+  final Color inactiveColor = HexColor(gray500);
 
   void _onItemIconFixedTapped(int index) {
     setState(() {
@@ -61,7 +61,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(
         title: 'Bottom Navigation',
         enableCenterTitle: true,
@@ -94,7 +94,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               TAccordion(
                 title: "Icon Fixed",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -105,7 +105,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Container(
@@ -141,7 +141,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               TAccordion(
                 title: "With Text Fixed",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -152,7 +152,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Container(
@@ -188,7 +188,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               TAccordion(
                 title: "Circle Fixed",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -199,7 +199,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Container(
@@ -235,7 +235,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               TAccordion(
                 title: "Icon Floating",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -246,7 +246,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Container(
@@ -289,7 +289,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               TAccordion(
                 title: "With Text Floating",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -300,7 +300,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Container(
@@ -343,7 +343,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               TAccordion(
                 title: "Circle Floating",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -354,7 +354,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Container(

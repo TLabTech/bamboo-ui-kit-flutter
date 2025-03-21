@@ -52,8 +52,8 @@ class TButtonPrimary extends StatelessWidget {
     final theme = context.watch<TThemeManager>().state;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? theme.buttonBackground,
-        foregroundColor: Colors.white,
+        backgroundColor: backgroundColor ?? theme.primary,
+        foregroundColor: theme.primaryForeground,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -63,9 +63,9 @@ class TButtonPrimary extends StatelessWidget {
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
           (states) {
             if (states.contains(WidgetState.pressed)) {
-              return onPressedBackgroundColor ?? theme.buttonPressed;
+              return onPressedBackgroundColor ?? theme.primaryPressed;
             }
-            return backgroundColor ?? theme.buttonBackground;
+            return backgroundColor ?? theme.primary;
           },
         ),
       ),
@@ -86,7 +86,8 @@ class TButtonPrimary extends StatelessWidget {
                   Text(
                     text!,
                     style: textStyle ??
-                        TFontBold.body(context).copyWith(color: Colors.white),
+                        TFontBold.body(context)
+                            .copyWith(color: theme.primaryForeground),
                   ),
               ],
             )
@@ -95,6 +96,7 @@ class TButtonPrimary extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     bool hasPrefix = prefixIcon != null;
     bool hasSuffix = suffixIcon != null;
     bool hasOnlyText = !hasPrefix && !hasSuffix;
@@ -109,7 +111,9 @@ class TButtonPrimary extends StatelessWidget {
             child: Text(
               text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
-              style: textStyle ?? TFontBold.body(context).copyWith(color: Colors.white),
+              style: textStyle ??
+                  TFontBold.body(context)
+                      .copyWith(color: theme.primaryForeground),
             ),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),

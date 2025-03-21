@@ -79,8 +79,8 @@ class TLineChart extends StatelessWidget {
         borderRadius: const BorderRadius.all(
           Radius.circular(8),
         ),
-        color: HexColor(neutral050),
-        border: Border.all(color: HexColor(neutral300), width: 1.0),
+        color: HexColor(gray050),
+        border: Border.all(color: HexColor(gray300), width: 1.0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -92,7 +92,7 @@ class TLineChart extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontBold.body(context).copyWith(color: HexColor(neutral900)),
+                  style: TFontBold.body(context).copyWith(color: HexColor(gray900)),
                 ),
                 if (showOption)
                   InkWell(
@@ -163,7 +163,7 @@ class TLineChart extends StatelessWidget {
               Text(
                 data.label,
                 style:
-                    TFontRegular.caption2(context).copyWith(color: HexColor(neutral900)),
+                    TFontRegular.caption2(context).copyWith(color: HexColor(gray900)),
               ),
             ],
           );

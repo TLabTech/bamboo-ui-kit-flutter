@@ -14,7 +14,7 @@ class _StepperScreenState extends State<StepperScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Stepper', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -44,7 +44,7 @@ class _StepperScreenState extends State<StepperScreen> {
               TAccordion(
                 title: "3 Steps",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -55,7 +55,7 @@ class _StepperScreenState extends State<StepperScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TStepper(currentStep: 1, totalSteps: 3),
@@ -64,7 +64,7 @@ class _StepperScreenState extends State<StepperScreen> {
               TAccordion(
                 title: "4 Steps",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -75,7 +75,7 @@ class _StepperScreenState extends State<StepperScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TStepper(currentStep: 1, totalSteps: 4),
@@ -84,7 +84,7 @@ class _StepperScreenState extends State<StepperScreen> {
               TAccordion(
                 title: "5 Steps",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -95,7 +95,7 @@ class _StepperScreenState extends State<StepperScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TStepper(currentStep: 1, totalSteps: 4),
@@ -104,7 +104,7 @@ class _StepperScreenState extends State<StepperScreen> {
               TAccordion(
                 title: "6 Steps",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -115,7 +115,7 @@ class _StepperScreenState extends State<StepperScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TStepper(currentStep: 1, totalSteps: 6),

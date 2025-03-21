@@ -14,7 +14,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Bar', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -44,7 +44,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 1 Data Horizontal",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -66,7 +66,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 2 Data Horizontal",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -105,7 +105,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 3 Data Horizontal",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -140,7 +140,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "3",
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                       data: [
                         ChartData("A", 45),
                         ChartData("B", 55),
@@ -156,7 +156,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 4 Data Horizontal",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -191,7 +191,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "3",
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                       data: [
                         ChartData("A", 45),
                         ChartData("B", 55),
@@ -203,7 +203,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "4",
-                      color: HexColor(warning500),
+                      color: HexColor(yellow500),
                       data: [
                         ChartData("A", 56),
                         ChartData("B", 11),
@@ -219,7 +219,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 5 Data Horizontal",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -254,7 +254,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "3",
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                       data: [
                         ChartData("A", 45),
                         ChartData("B", 55),
@@ -266,7 +266,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "4",
-                      color: HexColor(warning500),
+                      color: HexColor(yellow500),
                       data: [
                         ChartData("A", 56),
                         ChartData("B", 11),
@@ -278,7 +278,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "5",
-                      color: HexColor(neutral500),
+                      color: HexColor(gray500),
                       data: [
                         ChartData("A", 35),
                         ChartData("B", 26),
@@ -294,7 +294,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 1 Data Vertical",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -316,7 +316,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 2 Data Vertical",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -355,7 +355,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 3 Data Vertical",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -390,7 +390,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "3",
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                       data: [
                         ChartData("A", 45),
                         ChartData("B", 55),
@@ -406,7 +406,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 4 Data Vertical",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -441,7 +441,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "3",
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                       data: [
                         ChartData("A", 45),
                         ChartData("B", 55),
@@ -453,7 +453,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "4",
-                      color: HexColor(warning500),
+                      color: HexColor(yellow500),
                       data: [
                         ChartData("A", 56),
                         ChartData("B", 11),
@@ -469,7 +469,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
               TAccordion(
                 title: "Bar 5 Data Vertical",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -504,7 +504,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "3",
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                       data: [
                         ChartData("A", 45),
                         ChartData("B", 55),
@@ -516,7 +516,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "4",
-                      color: HexColor(warning500),
+                      color: HexColor(yellow500),
                       data: [
                         ChartData("A", 56),
                         ChartData("B", 11),
@@ -528,7 +528,7 @@ class _BarChartScreenState extends State<BarChartScreen> {
                     ),
                     ChartSeriesData(
                       label: "5",
-                      color: HexColor(neutral500),
+                      color: HexColor(gray500),
                       data: [
                         ChartData("A", 35),
                         ChartData("B", 26),

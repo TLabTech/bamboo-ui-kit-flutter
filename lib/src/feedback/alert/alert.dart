@@ -22,10 +22,10 @@ class TAlert extends StatelessWidget {
     this.icon,
     this.titleStyle,
     this.subtitleStyle,
-  })  : titleColor = HexColor(neutral500),
-        subtitleColor = HexColor(neutral400),
-        borderColor = HexColor(neutral300),
-        backgroundColor = HexColor(neutral050);
+  })  : titleColor = HexColor(gray500),
+        subtitleColor = HexColor(gray400),
+        borderColor = HexColor(gray300),
+        backgroundColor = HexColor(gray050);
 
   TAlert.primary({
     super.key,
@@ -46,10 +46,10 @@ class TAlert extends StatelessWidget {
     this.icon,
     this.titleStyle,
     this.subtitleStyle,
-  })  : titleColor = HexColor(danger500),
-        subtitleColor = HexColor(danger400),
-        borderColor = HexColor(danger300),
-        backgroundColor = HexColor(danger050);
+  })  : titleColor = HexColor(red500),
+        subtitleColor = HexColor(red400),
+        borderColor = HexColor(red300),
+        backgroundColor = HexColor(red050);
 
   TAlert.info({
     super.key,
@@ -58,10 +58,10 @@ class TAlert extends StatelessWidget {
     this.icon,
     this.titleStyle,
     this.subtitleStyle,
-  })  : titleColor = HexColor(info500),
-        subtitleColor = HexColor(info400),
-        borderColor = HexColor(info300),
-        backgroundColor = HexColor(info050);
+  })  : titleColor = HexColor(blue500),
+        subtitleColor = HexColor(blue400),
+        borderColor = HexColor(blue300),
+        backgroundColor = HexColor(blue050);
 
   @override
   Widget build(BuildContext context) {

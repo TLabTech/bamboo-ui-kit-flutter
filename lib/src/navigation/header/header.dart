@@ -149,7 +149,7 @@ class _THeaderState extends State<THeader> {
       surfaceTintColor: Colors.transparent,
       titleSpacing: 0,
       centerTitle: widget.enableCenterTitle,
-      iconTheme: IconThemeData(color: HexColor(neutral900)),
+      iconTheme: IconThemeData(color: HexColor(gray900)),
       elevation: 0,
       leading: widget.isBackButtonEnabled
           ? (widget.prefixAction ??
@@ -160,7 +160,7 @@ class _THeaderState extends State<THeader> {
                   child: SvgPicture.asset(
                     Assets.svg.chevronLeft,
                     colorFilter: ColorFilter.mode(
-                      widget.iconColor ?? HexColor(neutral900),
+                      widget.iconColor ?? HexColor(gray900),
                       BlendMode.srcIn,
                     ),
                   ),
@@ -212,7 +212,7 @@ class _THeaderState extends State<THeader> {
                   widget.title,
                   style: widget.titleStyle ??
                       TFontRegular.title3(context)
-                          .copyWith(color: HexColor(neutral900)),
+                          .copyWith(color: HexColor(gray900)),
                   textAlign: TextAlign.center,
                 ),
                 if (widget.subtitle != null)
@@ -220,7 +220,7 @@ class _THeaderState extends State<THeader> {
                     widget.subtitle!,
                     style: widget.subtitleStyle ??
                         TFontRegular.caption2(context)
-                            .copyWith(color: HexColor(neutral500)),
+                            .copyWith(color: HexColor(gray500)),
                     textAlign: TextAlign.center,
                   ),
               ],
@@ -240,7 +240,7 @@ class _THeaderState extends State<THeader> {
             child: Container(
               padding: const EdgeInsets.only(left: 12.0),
               decoration: BoxDecoration(
-                color: HexColor(neutral300).withValues(alpha: 0.2),
+                color: HexColor(gray300).withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Row(
@@ -253,7 +253,7 @@ class _THeaderState extends State<THeader> {
                       decoration: InputDecoration(
                         hintText: widget.hintText,
                         hintStyle: TFontRegular.caption1(context)
-                            .copyWith(color: HexColor(neutral500)),
+                            .copyWith(color: HexColor(gray500)),
                         border: InputBorder.none,
                       ),
                       onChanged: (value) {

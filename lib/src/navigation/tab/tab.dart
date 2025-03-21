@@ -49,7 +49,7 @@ class _TTabsState extends State<TTabs> {
     return Container(
       padding: EdgeInsets.all(4.0),
       decoration: BoxDecoration(
-        color: widget.backgroundColor ?? HexColor(neutral050),
+        color: widget.backgroundColor ?? HexColor(gray050),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -74,7 +74,7 @@ class _TTabsState extends State<TTabs> {
                 decoration: BoxDecoration(
                   color: isSelected
                       ? widget.activeColor ?? Colors.white
-                      : widget.inactiveColor ?? HexColor(neutral050),
+                      : widget.inactiveColor ?? HexColor(gray050),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Center(
@@ -82,8 +82,8 @@ class _TTabsState extends State<TTabs> {
                     widget.tabs[index],
                     style: TFontRegular.subHeadline(context).copyWith(
                       color: isSelected
-                          ? HexColor(neutral900)
-                          : HexColor(neutral500),
+                          ? HexColor(gray900)
+                          : HexColor(gray500),
                     ),
                     textAlign: TextAlign.center,
                   ),

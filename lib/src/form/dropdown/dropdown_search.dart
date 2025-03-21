@@ -57,7 +57,7 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
       decoration: BoxDecoration(
         color: widget.backgroundColor ?? Colors.transparent,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: widget.borderColor ?? HexColor(neutral300)),
+        border: Border.all(color: widget.borderColor ?? HexColor(gray300)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,7 +76,7 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                   hint: Text(
                     widget.hint,
                     style: TFontRegular.body(context).copyWith(
-                      color: HexColor(neutral500),
+                      color: HexColor(gray500),
                     ),
                   ),
                   items: _filteredList

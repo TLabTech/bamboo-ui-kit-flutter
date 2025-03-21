@@ -14,7 +14,7 @@ class _PieChartScreenState extends State<PieChartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(
         title: 'Pie',
         enableCenterTitle: true,
@@ -47,7 +47,7 @@ class _PieChartScreenState extends State<PieChartScreen> {
               TAccordion(
                 title: "Pie 2 Data",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -72,7 +72,7 @@ class _PieChartScreenState extends State<PieChartScreen> {
               TAccordion(
                 title: "Pie 3 Data",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -93,7 +93,7 @@ class _PieChartScreenState extends State<PieChartScreen> {
                     PieChartData(
                       label: "C",
                       value: 10,
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                     ),
                   ],
                   showLegends: true,
@@ -102,7 +102,7 @@ class _PieChartScreenState extends State<PieChartScreen> {
               TAccordion(
                 title: "Pie 4 Data",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -123,12 +123,12 @@ class _PieChartScreenState extends State<PieChartScreen> {
                     PieChartData(
                       label: "C",
                       value: 41,
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                     ),
                     PieChartData(
                       label: "D",
                       value: 28,
-                      color: HexColor(warning500),
+                      color: HexColor(yellow500),
                     ),
                   ],
                   showLegends: true,
@@ -137,7 +137,7 @@ class _PieChartScreenState extends State<PieChartScreen> {
               TAccordion(
                 title: "Pie 5 Data",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -158,19 +158,19 @@ class _PieChartScreenState extends State<PieChartScreen> {
                     PieChartData(
                       label: "C",
                       value: 41,
-                      color: HexColor(danger500),
+                      color: HexColor(red500),
                     ),
                     PieChartData(
                       label: "D",
                       value: 28,
-                      color: HexColor(warning500),
+                      color: HexColor(yellow500),
                     ),
                     PieChartData(
                       label: "E",
                       value: 25,
-                      labelColor: HexColor(neutral500),
-                      valueColor: HexColor(neutral500),
-                      color: HexColor(neutral500),
+                      labelColor: HexColor(gray500),
+                      valueColor: HexColor(gray500),
+                      color: HexColor(gray500),
                     ),
                   ],
                   showLegends: true,

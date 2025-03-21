@@ -185,7 +185,7 @@ class TCalendarState extends State<TCalendar> {
                 child: SvgPicture.asset(
                   Assets.svg.previousCircle,
                   colorFilter: ColorFilter.mode(
-                    _hasPrevious ? HexColor(neutral900) : HexColor(neutral300),
+                    _hasPrevious ? HexColor(gray900) : HexColor(gray300),
                     BlendMode.srcIn,
                   ),
                 ),
@@ -199,12 +199,12 @@ class TCalendarState extends State<TCalendar> {
                     Text(
                       DateFormat('MMMM yyyy').format(_focusedDay),
                       style: TFontRegular.body(context).copyWith(
-                        color: HexColor(neutral900),
+                        color: HexColor(gray900),
                       ),
                     ),
                     Icon(
                       Icons.keyboard_arrow_down,
-                      color: HexColor(neutral900),
+                      color: HexColor(gray900),
                     ),
                   ],
                 ),
@@ -214,7 +214,7 @@ class TCalendarState extends State<TCalendar> {
                 child: SvgPicture.asset(
                   Assets.svg.nextCircle,
                   colorFilter: ColorFilter.mode(
-                    _hasNext ? HexColor(neutral900) : HexColor(neutral300),
+                    _hasNext ? HexColor(gray900) : HexColor(gray300),
                     BlendMode.srcIn,
                   ),
                 ),
@@ -368,12 +368,12 @@ class TCalendarState extends State<TCalendar> {
               '${date.day}',
               style: TFontRegular.body(context).copyWith(
                 color: isSelected
-                    ? HexColor(neutral500)
+                    ? HexColor(gray500)
                     : isToday
-                        ? HexColor(neutral500)
+                        ? HexColor(gray500)
                         : isCurrentMonth || isCurrentYear
-                            ? HexColor(neutral500)
-                            : HexColor(neutral500),
+                            ? HexColor(gray500)
+                            : HexColor(gray500),
               ),
             ),
           );

@@ -168,10 +168,10 @@ class TTextFieldState extends State<TTextField> {
   Widget build(BuildContext context) {
     final hasError = widget.errorMessage != null;
     final borderColor = hasError
-        ? HexColor(danger500)
+        ? HexColor(red500)
         : (widget.focusNode?.hasFocus ?? false)
             ? (widget.focusedBorderColor ?? HexColor(primary500))
-            : (widget.borderColor ?? HexColor(neutral300));
+            : (widget.borderColor ?? HexColor(gray300));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,7 +181,7 @@ class TTextFieldState extends State<TTextField> {
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
               widget.labelText!,
-              style: TFontRegular.body(context).copyWith(color: HexColor(neutral700)),
+              style: TFontRegular.body(context).copyWith(color: HexColor(gray700)),
             ),
           ),
         Container(
@@ -233,7 +233,7 @@ class TTextFieldState extends State<TTextField> {
                     border: InputBorder.none,
                     hintText: widget.hintText,
                     hintStyle: TFontRegular.body(context).copyWith(
-                      color: widget.hintColor ?? HexColor(neutral500),
+                      color: widget.hintColor ?? HexColor(gray500),
                     ),
                     helperText: widget.helperText,
                     counterText: widget.counterText,
@@ -276,7 +276,7 @@ class TTextFieldState extends State<TTextField> {
             child: Text(
               widget.description!,
               style: TFontRegular.footNote(context).copyWith(
-                color: HexColor(neutral500),
+                color: HexColor(gray500),
               ),
             ),
           ),
@@ -286,7 +286,7 @@ class TTextFieldState extends State<TTextField> {
             child: Text(
               widget.errorMessage!,
               style: TFontRegular.footNote(context).copyWith(
-                color: HexColor(danger500),
+                color: HexColor(red500),
               ),
             ),
           ),

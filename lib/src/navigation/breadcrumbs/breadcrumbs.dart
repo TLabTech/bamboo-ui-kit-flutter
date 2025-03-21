@@ -84,7 +84,7 @@ class TBreadcrumbs extends StatelessWidget {
             Text(
               item.label!,
               style: TFontRegular.caption2(context).copyWith(
-                color: isActive ? HexColor(neutral900) : HexColor(neutral500),
+                color: isActive ? HexColor(gray900) : HexColor(gray500),
               ),
             ),
         ],

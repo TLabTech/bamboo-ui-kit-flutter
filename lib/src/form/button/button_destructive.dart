@@ -63,9 +63,9 @@ class TButtonDestructive extends StatelessWidget {
           (states) {
             if (states.contains(WidgetState.pressed)) {
               return onPressedBackgroundColor ??
-                  HexColor(danger600); // Pressed state color
+                  HexColor(red600); // Pressed state color
             }
-            return backgroundColor ?? HexColor(danger500); // Default color
+            return backgroundColor ?? HexColor(red500); // Default color
           },
         ),
       ),

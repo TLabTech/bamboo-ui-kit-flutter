@@ -32,7 +32,7 @@ class CustomSliderThumb extends SliderComponentShape {
       ..strokeWidth = 4;
 
     final Paint innerCirclePaint = Paint()
-      ..color = innerColor ?? HexColor(neutral050)
+      ..color = innerColor ?? HexColor(gray050)
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(center, 8, outerCirclePaint);

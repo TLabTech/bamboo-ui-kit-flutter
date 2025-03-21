@@ -57,7 +57,7 @@ class TButtonSecondary extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
-        side: BorderSide(width: 1.0, color: HexColor(neutral400)),
+        side: BorderSide(width: 1.0, color: HexColor(gray400)),
         minimumSize: Size(minWidth, minHeight),
       ),
       onPressed: onPressed,
@@ -69,7 +69,7 @@ class TButtonSecondary extends StatelessWidget {
             width: 18,
             height: 18,
             child: CircularProgressIndicator(
-              color: HexColor(neutral900),
+              color: HexColor(gray900),
             ),
           ),
           if (text != null) SizedBox(width: 8),
@@ -77,7 +77,7 @@ class TButtonSecondary extends StatelessWidget {
             Text(
               text!,
               style: textStyle ??
-                  TFontBold.body(context).copyWith(color: HexColor(neutral900)),
+                  TFontBold.body(context).copyWith(color: HexColor(gray900)),
             ),
         ],
       )
@@ -101,7 +101,7 @@ class TButtonSecondary extends StatelessWidget {
               text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
               style: textStyle ??
-                  TFontBold.body(context).copyWith(color: HexColor(neutral900)),
+                  TFontBold.body(context).copyWith(color: HexColor(gray900)),
             ),
           ),
         if (text != null && hasSuffix) Spacer(),

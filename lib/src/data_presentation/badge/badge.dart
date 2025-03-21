@@ -46,7 +46,7 @@ class TBadge extends StatelessWidget {
 
   /// Secondary badge style with a light background.
   ///
-  /// Defaults to `neutral050` background and `neutral500` text color.
+  /// Defaults to `gray050` background and `gray500` text color.
   TBadge.secondary({
     Key? key,
     required String label,
@@ -54,8 +54,8 @@ class TBadge extends StatelessWidget {
     Color? textColor,
   }) : this._(
           label: label,
-          backgroundColor: backgroundColor ?? HexColor(neutral050),
-          textColor: textColor ?? HexColor(neutral500),
+          backgroundColor: backgroundColor ?? HexColor(gray050),
+          textColor: textColor ?? HexColor(gray500),
         );
 
   /// Outlined badge style with a transparent background and a border.
@@ -75,14 +75,14 @@ class TBadge extends StatelessWidget {
 
   /// Destructive badge style with a red background, indicating a warning or error.
   ///
-  /// Defaults to `danger500` background and white text color.
+  /// Defaults to `red500` background and white text color.
   TBadge.destructive({
     Key? key,
     required String label,
   }) : this._(
           label: label,
-          backgroundColor: HexColor(danger050),
-          textColor: HexColor(danger500),
+          backgroundColor: HexColor(red050),
+          textColor: HexColor(red500),
         );
 
   /// Private constructor used internally by the named constructors.

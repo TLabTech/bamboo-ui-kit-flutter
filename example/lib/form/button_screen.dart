@@ -14,8 +14,11 @@ class _ButtonScreenState extends State<ButtonScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
-      appBar: THeader.nested(title: 'Button', enableCenterTitle: true,),
+      backgroundColor: HexColor(gray050),
+      appBar: THeader.nested(
+        title: 'Button',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -45,7 +48,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
               TAccordion(
                 title: 'Button General',
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -55,7 +58,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Column(
@@ -116,7 +119,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
               TAccordion(
                 title: 'Button With Left Icon',
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -126,7 +129,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Column(
@@ -229,7 +232,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
               TAccordion(
                 title: 'Button With Right Icon',
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -239,7 +242,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Column(
@@ -349,7 +352,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   width: MediaQuery.of(context).size.width,
@@ -377,7 +380,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                           icon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
-                              HexColor(neutral900),
+                              HexColor(gray900),
                               BlendMode.srcIn,
                             ),
                           ),
@@ -448,7 +451,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   width: MediaQuery.of(context).size.width,

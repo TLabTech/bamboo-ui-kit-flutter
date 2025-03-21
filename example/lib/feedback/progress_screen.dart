@@ -14,7 +14,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Progress', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -44,7 +44,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               TAccordion(
                 title: "Progress Bar Default",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -55,7 +55,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TProgress(value: 0),
@@ -64,7 +64,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               TAccordion(
                 title: "Progress Bar Progress",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -75,7 +75,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TProgress(value: 0.5),
@@ -84,7 +84,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               TAccordion(
                 title: "Progress Bar Done",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -95,7 +95,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TProgress(value: 1),
@@ -104,7 +104,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               TAccordion(
                 title: "Radial Bar Default",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -115,7 +115,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TProgress.circular(value: 0),
@@ -124,7 +124,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               TAccordion(
                 title: "Radial Bar 25%",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -135,7 +135,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TProgress.circular(value: 0.25),
@@ -144,7 +144,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               TAccordion(
                 title: "Radial Bar 50%",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -155,7 +155,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TProgress.circular(value: 0.5),
@@ -164,7 +164,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               TAccordion(
                 title: "Radial Bar 75%",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -175,7 +175,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TProgress.circular(value: 0.75),
@@ -184,7 +184,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
               TAccordion(
                 title: "Radial Bar 100%",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -195,7 +195,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TProgress.circular(value: 1),

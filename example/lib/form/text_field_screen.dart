@@ -41,7 +41,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Text Field', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -71,7 +71,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               TAccordion(
                 title: "Left Icon",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -82,7 +82,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Column(
@@ -95,12 +95,12 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                             TextSpan(
                               text: "Email",
                               style: TFontBold.body(context)
-                                  .copyWith(color: HexColor(neutral900)),
+                                  .copyWith(color: HexColor(gray900)),
                             ),
                             TextSpan(
                               text: " (Optional)",
                               style: TFontRegular.body(context)
-                                  .copyWith(color: HexColor(neutral500)),
+                                  .copyWith(color: HexColor(gray500)),
                             ),
                           ],
                         ),
@@ -117,7 +117,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               TAccordion(
                 title: "Right Icon",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -128,7 +128,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Column(
@@ -138,7 +138,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                       Text(
                         'Province',
                         style: TFontBold.body(context)
-                            .copyWith(color: HexColor(neutral900)),
+                            .copyWith(color: HexColor(gray900)),
                       ),
                       TDropdown<Map<String, String>>(
                         hintText: "Please select",
@@ -162,7 +162,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               TAccordion(
                 title: "Password",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -173,7 +173,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Column(
@@ -182,7 +182,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                       Text(
                         'Password',
                         style: TFontBold.body(context)
-                            .copyWith(color: HexColor(neutral900)),
+                            .copyWith(color: HexColor(gray900)),
                       ),
                       TTextField.password(
                         hintText: "write your password",
@@ -196,7 +196,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               TAccordion(
                 title: "Multiline",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -207,7 +207,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Column(
@@ -220,12 +220,12 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                             TextSpan(
                               text: "Description",
                               style: TFontBold.body(context)
-                                  .copyWith(color: HexColor(neutral900)),
+                                  .copyWith(color: HexColor(gray900)),
                             ),
                             TextSpan(
                               text: " (Optional)",
                               style: TFontRegular.body(context)
-                                  .copyWith(color: HexColor(neutral500)),
+                                  .copyWith(color: HexColor(gray500)),
                             ),
                           ],
                         ),

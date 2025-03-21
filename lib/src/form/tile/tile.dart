@@ -58,9 +58,9 @@ class TTile<T> extends StatelessWidget {
         decoration: BoxDecoration(
           color: enable == true
               ? backgroundColor ?? Colors.transparent
-              : disableBackgroundColor ?? HexColor(neutral050),
+              : disableBackgroundColor ?? HexColor(gray050),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: borderColor ?? HexColor(neutral300)),
+          border: Border.all(color: borderColor ?? HexColor(gray300)),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,7 +68,7 @@ class TTile<T> extends StatelessWidget {
             if (prefixIcon != null) ...[
               IconTheme(
                 data: IconThemeData(
-                    color: enable == true ? null : HexColor(neutral500)),
+                    color: enable == true ? null : HexColor(gray500)),
                 child: prefixIcon!,
               ),
               const SizedBox(width: 12),
@@ -82,8 +82,8 @@ class TTile<T> extends StatelessWidget {
                     style: titleStyle ??
                         TFontRegular.body(context).copyWith(
                           color: enable == true
-                              ? HexColor(neutral900)
-                              : HexColor(neutral500),
+                              ? HexColor(gray900)
+                              : HexColor(gray500),
                         ),
                     overflow: TextOverflow.clip,
                     maxLines: 2,
@@ -93,7 +93,7 @@ class TTile<T> extends StatelessWidget {
                       subtitle!,
                       style: subtitleStyle ??
                           TFontRegular.caption2(context).copyWith(
-                            color: HexColor(neutral500),
+                            color: HexColor(gray500),
                           ),
                       overflow: TextOverflow.visible,
                     ),
@@ -110,7 +110,7 @@ class TTile<T> extends StatelessWidget {
                       child: Text(
                         detail!,
                         style: TFontRegular.body(context)
-                            .copyWith(color: HexColor(neutral500)),
+                            .copyWith(color: HexColor(gray500)),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -119,7 +119,7 @@ class TTile<T> extends StatelessWidget {
                     const SizedBox(width: 8),
                     IconTheme(
                       data: IconThemeData(
-                        color: enable == true ? null : HexColor(neutral500),
+                        color: enable == true ? null : HexColor(gray500),
                       ),
                       child: suffixIcon!,
                     ),

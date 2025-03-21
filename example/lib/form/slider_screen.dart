@@ -16,7 +16,7 @@ class _SliderScreenState extends State<SliderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Slider', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -46,7 +46,7 @@ class _SliderScreenState extends State<SliderScreen> {
               TAccordion(
                 title: "Default",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -57,7 +57,7 @@ class _SliderScreenState extends State<SliderScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: TSlider(

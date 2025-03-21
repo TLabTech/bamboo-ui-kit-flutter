@@ -29,7 +29,7 @@ class TSlider extends StatelessWidget {
           innerColor: thumbInnerColor,
           outerColor: thumbOuterColor,
         ),
-        inactiveTrackColor: inactiveColor ?? HexColor(neutral200),
+        inactiveTrackColor: inactiveColor ?? HexColor(gray200),
         trackHeight: 6.0,
         overlayShape: SliderComponentShape.noOverlay,
       ),

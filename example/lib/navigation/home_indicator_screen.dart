@@ -23,7 +23,7 @@ class _HomeIndicatorScreenState extends State<HomeIndicatorScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: HexColor(neutral050),
+        backgroundColor: HexColor(gray050),
         appBar: THeader.nested(
           title: 'Home Indicator',
           enableCenterTitle: true,
@@ -56,7 +56,7 @@ class _HomeIndicatorScreenState extends State<HomeIndicatorScreen> {
                 TAccordion(
                   title: "Light",
                   titleStyle: TFontBold.headline(context).copyWith(
-                    color: HexColor(neutral900),
+                    color: HexColor(gray900),
                   ),
                   showDivider: false,
                   initiallyExpanded: true,
@@ -67,7 +67,7 @@ class _HomeIndicatorScreenState extends State<HomeIndicatorScreen> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: HexColor(neutral300),
+                        color: HexColor(gray300),
                       ),
                     ),
                     child: TButtonPrimary(
@@ -84,7 +84,7 @@ class _HomeIndicatorScreenState extends State<HomeIndicatorScreen> {
                 TAccordion(
                   title: "Dark",
                   titleStyle: TFontBold.headline(context).copyWith(
-                    color: HexColor(neutral900),
+                    color: HexColor(gray900),
                   ),
                   showDivider: false,
                   initiallyExpanded: true,
@@ -95,7 +95,7 @@ class _HomeIndicatorScreenState extends State<HomeIndicatorScreen> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: HexColor(neutral300),
+                        color: HexColor(gray300),
                       ),
                     ),
                     child: TButtonPrimary(

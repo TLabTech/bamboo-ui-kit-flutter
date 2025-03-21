@@ -56,7 +56,7 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
             child: Text(
               widget.title!,
               style: TFontRegular.body(context).copyWith(
-                color: HexColor(neutral700),
+                color: HexColor(gray700),
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -65,10 +65,10 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
           decoration: BoxDecoration(
             color: widget.enable
                 ? widget.backgroundColor ?? Colors.transparent
-                : HexColor(neutral050),
+                : HexColor(gray050),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: widget.borderColor ?? HexColor(neutral300),
+              color: widget.borderColor ?? HexColor(gray300),
             ),
           ),
           child: Column(
@@ -86,7 +86,7 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
                 ),
                 if (widget.enableBorder && i != widget.tiles.length - 1)
                   Divider(
-                    color: HexColor(neutral300),
+                    color: HexColor(gray300),
                     height: 1,
                     thickness: 1,
                   ),

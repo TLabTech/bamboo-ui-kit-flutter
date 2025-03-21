@@ -45,8 +45,8 @@ class TRadioButton<T> extends StatelessWidget {
                 label,
                 style: TFontRegular.body(context).copyWith(
                   color: isDisabled
-                      ? HexColor(neutral400)
-                      : (isError ? HexColor(danger500) : HexColor(neutral500)),
+                      ? HexColor(gray400)
+                      : (isError ? HexColor(red500) : HexColor(gray500)),
                 ),
               ),
               if (description != null)
@@ -54,8 +54,8 @@ class TRadioButton<T> extends StatelessWidget {
                   description!,
                   style: TFontRegular.footNote(context).copyWith(
                     color: isDisabled
-                        ? HexColor(neutral400)
-                        : HexColor(neutral500),
+                        ? HexColor(gray400)
+                        : HexColor(gray500),
                   ),
                 ),
               if (isError && error != null)
@@ -63,7 +63,7 @@ class TRadioButton<T> extends StatelessWidget {
                   error!,
                   style: TFontRegular.footNote(context).copyWith(
                     color:
-                        isDisabled ? HexColor(neutral400) : HexColor(danger500),
+                        isDisabled ? HexColor(gray400) : HexColor(red500),
                   ),
                 ),
             ],
@@ -84,16 +84,16 @@ class TRadioButton<T> extends StatelessWidget {
               ? Colors.grey
               : (isSelected
                   ? isError
-                      ? HexColor(danger500)
+                      ? HexColor(red500)
                       : HexColor(primary500)
                   : Colors.grey),
           width: 2,
         ),
         color: isSelected
             ? isError
-                ? HexColor(danger500)
+                ? HexColor(red500)
                 : HexColor(primary500)
-            : HexColor(neutral050),
+            : HexColor(gray050),
       ),
       child: isSelected
           ? Center(
@@ -102,7 +102,7 @@ class TRadioButton<T> extends StatelessWidget {
                 height: 6,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: HexColor(neutral050),
+                  color: HexColor(gray050),
                 ),
               ),
             )

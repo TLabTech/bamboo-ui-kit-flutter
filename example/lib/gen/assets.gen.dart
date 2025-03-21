@@ -34,8 +34,14 @@ class $AssetsSvgGen {
   /// File path: assets/svg/magnifying-glass.svg
   String get magnifyingGlass => 'assets/svg/magnifying-glass.svg';
 
+  /// File path: assets/svg/moon.svg
+  String get moon => 'assets/svg/moon.svg';
+
   /// File path: assets/svg/plus.svg
   String get plus => 'assets/svg/plus.svg';
+
+  /// File path: assets/svg/sun.svg
+  String get sun => 'assets/svg/sun.svg';
 
   /// File path: assets/svg/user-circle.svg
   String get userCircle => 'assets/svg/user-circle.svg';
@@ -56,7 +62,9 @@ class $AssetsSvgGen {
     home,
     homeOutline,
     magnifyingGlass,
+    moon,
     plus,
+    sun,
     userCircle,
     user,
     wifi,

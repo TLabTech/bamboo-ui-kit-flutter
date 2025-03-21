@@ -234,7 +234,7 @@ class TAvatar extends StatelessWidget {
         width: badgeSize,
         height: badgeSize,
         decoration: BoxDecoration(
-          color: HexColor(success500),
+          color: HexColor(green500),
           shape: BoxShape.circle,
         ),
       ),

@@ -14,7 +14,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(neutral050),
+      backgroundColor: HexColor(gray050),
       appBar: THeader.nested(title: 'Accordion', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -44,7 +44,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
               TAccordion(
                 title: "Default",
                 titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(neutral900),
+                  color: HexColor(gray900),
                 ),
                 showDivider: false,
                 initiallyExpanded: true,
@@ -55,7 +55,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: HexColor(neutral300),
+                      color: HexColor(gray300),
                     ),
                   ),
                   child: Column(
@@ -68,7 +68,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
                           style: TFontRegular.footNote(context).copyWith(
-                            color: HexColor(neutral500),
+                            color: HexColor(gray500),
                           ),
                         ),
                       ),
@@ -79,7 +79,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
                           style: TFontRegular.footNote(context).copyWith(
-                            color: HexColor(neutral500),
+                            color: HexColor(gray500),
                           ),
                         ),
                       ),
@@ -90,7 +90,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
                           style: TFontRegular.footNote(context).copyWith(
-                            color: HexColor(neutral500),
+                            color: HexColor(gray500),
                           ),
                         ),
                       ),
@@ -101,7 +101,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
                           style: TFontRegular.footNote(context).copyWith(
-                            color: HexColor(neutral500),
+                            color: HexColor(gray500),
                           ),
                         ),
                       ),
@@ -112,7 +112,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
                           style: TFontRegular.footNote(context).copyWith(
-                            color: HexColor(neutral500),
+                            color: HexColor(gray500),
                           ),
                         ),
                       ),

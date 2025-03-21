@@ -36,7 +36,7 @@ class TStepper extends StatelessWidget {
                   style: TFontRegular.caption2(context).copyWith(
                       color: currentStep == totalSteps
                           ? activeColor ?? HexColor(primary500)
-                          : inactiveColor ?? HexColor(neutral500)),
+                          : inactiveColor ?? HexColor(gray500)),
                 ),
               ],
             ),
@@ -53,7 +53,7 @@ class TStepper extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: isActive
                         ? activeColor ?? HexColor(primary500)
-                        : inactiveColor ?? HexColor(neutral300),
+                        : inactiveColor ?? HexColor(gray300),
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),

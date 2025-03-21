@@ -65,7 +65,7 @@ class _TCheckBoxState extends State<TCheckBox> {
               color: widget.isEnabled
                   ? _isChecked
                       ? widget.isError
-                          ? HexColor(danger500)
+                          ? HexColor(red500)
                           : widget.activeColor
                       : widget.inactiveColor
                   : widget.inactiveColor,
@@ -73,8 +73,8 @@ class _TCheckBoxState extends State<TCheckBox> {
                 color: widget.isEnabled
                     ? _isChecked
                         ? widget.borderColor ?? Colors.transparent
-                        : HexColor(neutral300)
-                    : HexColor(neutral300),
+                        : HexColor(gray300)
+                    : HexColor(gray300),
                 width: widget.borderColor == null ? 0 : 1,
               ),
               borderRadius: BorderRadius.circular(4),
@@ -98,16 +98,16 @@ class _TCheckBoxState extends State<TCheckBox> {
                 widget.label ?? '',
                 style: TFontRegular.body(context).copyWith(
                   color: widget.isError
-                      ? HexColor(danger500)
+                      ? HexColor(red500)
                       : !widget.isEnabled
-                          ? HexColor(neutral500)
-                          : HexColor(neutral900),
+                          ? HexColor(gray500)
+                          : HexColor(gray900),
                 ),
               ),
               Text(
                 widget.description ?? "",
                 style: TFontRegular.footNote(context).copyWith(
-                  color: HexColor(neutral500),
+                  color: HexColor(gray500),
                 ),
               ),
               Visibility(
@@ -115,7 +115,7 @@ class _TCheckBoxState extends State<TCheckBox> {
                 child: Text(
                   widget.error ?? "",
                   style: TFontRegular.footNote(context).copyWith(
-                    color: HexColor(danger500),
+                    color: HexColor(red500),
                   ),
                 ),
               ),
