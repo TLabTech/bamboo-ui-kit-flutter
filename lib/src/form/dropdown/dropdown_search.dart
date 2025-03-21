@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bamboo_ui_kit/gen/assets.gen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TDropdownSearch<T> extends StatefulWidget {
@@ -50,6 +51,7 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 46.0,
@@ -57,7 +59,7 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
       decoration: BoxDecoration(
         color: widget.backgroundColor ?? Colors.transparent,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: widget.borderColor ?? HexColor(gray300)),
+        border: Border.all(color: widget.borderColor ?? theme.border),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,7 +78,7 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                   hint: Text(
                     widget.hint,
                     style: TFontRegular.body(context).copyWith(
-                      color: HexColor(gray500),
+                      color: theme.mutedForeground,
                     ),
                   ),
                   items: _filteredList
@@ -88,10 +90,8 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             softWrap: true,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16.0,
+                            style: TFontRegular.body(context).copyWith(
+                              color: theme.foreground,
                             ),
                           ),
                         ),
@@ -141,15 +141,15 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                               Assets.svg.chevronDown,
                               width: 20.0,
                               height: 20.0,
-                              colorFilter: const ColorFilter.mode(
-                                Colors.black,
+                              colorFilter: ColorFilter.mode(
+                                theme.foreground,
                                 BlendMode.srcIn,
                               ),
                             ),
                           ),
                           iconSize: 14,
-                          iconEnabledColor: Colors.black,
-                          iconDisabledColor: Colors.grey,
+                          iconEnabledColor: theme.foreground,
+                          iconDisabledColor: theme.mutedForeground,
                         ),
                   onMenuStateChange: (isOpen) {
                     if (!isOpen) {

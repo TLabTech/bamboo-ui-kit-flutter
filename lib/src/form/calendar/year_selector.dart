@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class YearSelector extends StatefulWidget {
   final int selectedYear;
@@ -75,6 +76,7 @@ class YearSelectorState extends State<YearSelector> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return LayoutBuilder(
       builder: (context, constraints) {
         int rows = (_yearsPerPage / 3).ceil();
@@ -111,11 +113,11 @@ class YearSelectorState extends State<YearSelector> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? Color(0xFF00DE9C)
+                            ? theme.primaryForeground
                             : isDisabled
                                 ? Colors.transparent
                                 : isCurrentYear
-                                    ? Color(0xFFEAFFF6)
+                                    ? theme.primary
                                     : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -123,12 +125,12 @@ class YearSelectorState extends State<YearSelector> {
                         '$year',
                         style: TFontRegular.body(context).copyWith(
                           color: isSelected
-                              ? Colors.white
+                              ? theme.primary
                               : isDisabled
                                   ? Colors.grey
                                   : isCurrentYear
-                                      ? HexColor(primary500)
-                                      : Colors.black54,
+                                      ? theme.primaryForeground
+                                      : theme.foreground,
                         ),
                       ),
                     ),

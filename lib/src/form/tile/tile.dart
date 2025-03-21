@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/radio.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TTile<T> extends StatelessWidget {
   final String title;
@@ -47,6 +46,8 @@ class TTile<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
+
     return GestureDetector(
       onTap: enable == true ? onPress : null,
       child: Container(
@@ -57,10 +58,10 @@ class TTile<T> extends StatelessWidget {
             ),
         decoration: BoxDecoration(
           color: enable == true
-              ? backgroundColor ?? Colors.transparent
-              : disableBackgroundColor ?? HexColor(gray050),
+              ? backgroundColor ?? theme.background
+              : disableBackgroundColor ?? theme.muted,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: borderColor ?? HexColor(gray300)),
+          border: Border.all(color: borderColor ?? theme.border),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,7 +69,7 @@ class TTile<T> extends StatelessWidget {
             if (prefixIcon != null) ...[
               IconTheme(
                 data: IconThemeData(
-                    color: enable == true ? null : HexColor(gray500)),
+                    color: enable == true ? null : theme.mutedForeground),
                 child: prefixIcon!,
               ),
               const SizedBox(width: 12),
@@ -82,8 +83,8 @@ class TTile<T> extends StatelessWidget {
                     style: titleStyle ??
                         TFontRegular.body(context).copyWith(
                           color: enable == true
-                              ? HexColor(gray900)
-                              : HexColor(gray500),
+                              ? theme.foreground
+                              : theme.mutedForeground,
                         ),
                     overflow: TextOverflow.clip,
                     maxLines: 2,
@@ -93,7 +94,7 @@ class TTile<T> extends StatelessWidget {
                       subtitle!,
                       style: subtitleStyle ??
                           TFontRegular.caption2(context).copyWith(
-                            color: HexColor(gray500),
+                            color: theme.mutedForeground,
                           ),
                       overflow: TextOverflow.visible,
                     ),
@@ -110,7 +111,7 @@ class TTile<T> extends StatelessWidget {
                       child: Text(
                         detail!,
                         style: TFontRegular.body(context)
-                            .copyWith(color: HexColor(gray500)),
+                            .copyWith(color: theme.mutedForeground),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -119,7 +120,7 @@ class TTile<T> extends StatelessWidget {
                     const SizedBox(width: 8),
                     IconTheme(
                       data: IconThemeData(
-                        color: enable == true ? null : HexColor(gray500),
+                        color: enable == true ? null : theme.mutedForeground,
                       ),
                       child: suffixIcon!,
                     ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TRadioButton<T> extends StatelessWidget {
   final T value;
@@ -26,6 +26,7 @@ class TRadioButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     bool isSelected = groupValue != null && value == groupValue;
 
     return GestureDetector(
@@ -45,8 +46,8 @@ class TRadioButton<T> extends StatelessWidget {
                 label,
                 style: TFontRegular.body(context).copyWith(
                   color: isDisabled
-                      ? HexColor(gray400)
-                      : (isError ? HexColor(red500) : HexColor(gray500)),
+                      ? theme.mutedForeground
+                      : (isError ? theme.destructive : theme.foreground),
                 ),
               ),
               if (description != null)
@@ -54,16 +55,15 @@ class TRadioButton<T> extends StatelessWidget {
                   description!,
                   style: TFontRegular.footNote(context).copyWith(
                     color: isDisabled
-                        ? HexColor(gray400)
-                        : HexColor(gray500),
+                        ? theme.mutedForeground
+                        : theme.foreground,
                   ),
                 ),
               if (isError && error != null)
                 Text(
                   error!,
                   style: TFontRegular.footNote(context).copyWith(
-                    color:
-                        isDisabled ? HexColor(gray400) : HexColor(red500),
+                    color: theme.destructive,
                   ),
                 ),
             ],

@@ -93,8 +93,6 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         height: 48,
                         child: TButtonOutline(
                           text: "Button Outline",
-                          textStyle: TFontBold.body(context)
-                              .copyWith(color: HexColor(primary500)),
                           onPressed: () {},
                         ),
                       ),
@@ -218,7 +216,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                           prefixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
-                              Colors.white,
+                              HexColor('#23272E'),
                               BlendMode.srcIn,
                             ),
                           ),
@@ -331,11 +329,11 @@ class _ButtonScreenState extends State<ButtonScreen> {
                           suffixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
-                              Colors.white,
+                              HexColor('#23272E'),
                               BlendMode.srcIn,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: null,
                         ),
                       ),
                     ],
@@ -430,11 +428,11 @@ class _ButtonScreenState extends State<ButtonScreen> {
                           icon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
-                              Colors.white,
+                              HexColor('#23272E'),
                               BlendMode.srcIn,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: null,
                         ),
                       ),
                     ],

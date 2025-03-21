@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/charts.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 /// A doughnut chart widget that displays proportional data in a circular format.
@@ -37,11 +36,12 @@ class TDoughnutChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Container(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(8)),
-        color: HexColor(gray050),
-        border: Border.all(color: HexColor(gray300), width: 1.0),
+        color: theme.background,
+        border: Border.all(color: theme.border, width: 1.0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -53,8 +53,8 @@ class TDoughnutChart extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontBold.body(context)
-                      .copyWith(color: HexColor(gray900)),
+                  style:
+                      TFontBold.body(context).copyWith(color: theme.foreground),
                 ),
                 if (showOption)
                   InkWell(
@@ -105,7 +105,7 @@ class TDoughnutChart extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            if (showLegends) _buildCustomLegend(context),
+            if (showLegends) _buildCustomLegend(context, theme),
           ],
         ),
       ),
@@ -113,7 +113,7 @@ class TDoughnutChart extends StatelessWidget {
   }
 
   /// Builds a custom legend displaying chart colors and corresponding labels.
-  Widget _buildCustomLegend(BuildContext context) {
+  Widget _buildCustomLegend(BuildContext context, TTheme theme) {
     return Center(
       child: Wrap(
         spacing: 10,
@@ -132,8 +132,8 @@ class TDoughnutChart extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 data.label,
-                style:
-                    TFontRegular.caption2(context).copyWith(color: HexColor(gray900)),
+                style: TFontRegular.caption2(context)
+                    .copyWith(color: theme.foreground),
               ),
             ],
           );

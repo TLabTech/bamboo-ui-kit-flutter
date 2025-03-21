@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
 
 class CustomSliderThumb extends SliderComponentShape {
+  final TTheme theme;
   final Color? innerColor;
   final Color? outerColor;
-  const CustomSliderThumb({this.innerColor, this.outerColor});
+  const CustomSliderThumb({required this.theme, this.innerColor, this.outerColor});
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) => const Size(24, 24);
@@ -27,12 +28,12 @@ class CustomSliderThumb extends SliderComponentShape {
     final Canvas canvas = context.canvas;
 
     final Paint outerCirclePaint = Paint()
-      ..color = outerColor ?? HexColor(primary500)
+      ..color = theme.primary
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4;
 
     final Paint innerCirclePaint = Paint()
-      ..color = innerColor ?? HexColor(gray050)
+      ..color = innerColor ?? theme.primaryForeground
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(center, 8, outerCirclePaint);

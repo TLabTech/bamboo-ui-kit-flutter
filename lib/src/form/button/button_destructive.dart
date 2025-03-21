@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../fondation/hex_color.dart';
+import '../../../widgets/theme.dart';
 import '../../fondation/tfont.dart';
 
 class TButtonDestructive extends StatelessWidget {
@@ -48,13 +49,13 @@ class TButtonDestructive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor:
-            backgroundColor ?? HexColor(primary500), // Default background
-        foregroundColor: Colors.white, // Default text/icon color
+        backgroundColor: backgroundColor ?? theme.destructive,
+        foregroundColor: theme.destructiveForeground,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8), // Increased rounded corners
+          borderRadius: BorderRadius.circular(8),
         ),
         padding: padding,
         // padding: padding,
@@ -62,10 +63,9 @@ class TButtonDestructive extends StatelessWidget {
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
           (states) {
             if (states.contains(WidgetState.pressed)) {
-              return onPressedBackgroundColor ??
-                  HexColor(red600); // Pressed state color
+              return onPressedBackgroundColor ?? theme.destructivePressed;
             }
-            return backgroundColor ?? HexColor(red500); // Default color
+            return backgroundColor ?? theme.destructive;
           },
         ),
       ),
@@ -78,7 +78,7 @@ class TButtonDestructive extends StatelessWidget {
                   width: 18,
                   height: 18,
                   child: CircularProgressIndicator(
-                    color: Colors.white,
+                    color: theme.destructiveForeground,
                   ),
                 ),
                 if (text != null) SizedBox(width: 8),
@@ -86,7 +86,8 @@ class TButtonDestructive extends StatelessWidget {
                   Text(
                     text!,
                     style: textStyle ??
-                        TFontBold.body(context).copyWith(color: Colors.white),
+                        TFontBold.body(context)
+                            .copyWith(color: theme.destructiveForeground),
                   ),
               ],
             )
@@ -95,6 +96,7 @@ class TButtonDestructive extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     bool hasPrefix = prefixIcon != null;
     bool hasSuffix = suffixIcon != null;
     bool hasOnlyText = !hasPrefix && !hasSuffix;
@@ -109,7 +111,9 @@ class TButtonDestructive extends StatelessWidget {
             child: Text(
               text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
-              style: textStyle ?? TFontBold.body(context).copyWith(color: Colors.white),
+              style: textStyle ??
+                  TFontBold.body(context)
+                      .copyWith(color: theme.destructiveForeground),
             ),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TDialog extends StatelessWidget {
   final String title;
@@ -25,36 +26,39 @@ class TDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
+
     return Align(
       child: AlertDialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        backgroundColor: backgroundColor ?? Colors.white,
+        backgroundColor: backgroundColor ?? theme.background,
         contentPadding: const EdgeInsets.all(20),
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: direction == Axis.horizontal
-              ? _buildHorizontalContent(context)
-              : _buildVerticalContent(context),
+              ? _buildHorizontalContent(context, theme)
+              : _buildVerticalContent(context, theme),
         ),
       ),
     );
   }
 
-  Widget _buildHorizontalContent(BuildContext context) {
+  Widget _buildHorizontalContent(BuildContext context, TTheme theme) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: TFontBold.title3(context).copyWith(color: HexColor(gray900)),
+          style: TFontBold.title3(context).copyWith(color: theme.foreground),
         ),
         const SizedBox(height: 8),
         Text(
           content,
-          style: TFontRegular.body(context).copyWith(color: HexColor(gray500)),
+          style:
+              TFontRegular.body(context).copyWith(color: theme.mutedForeground),
         ),
         const SizedBox(height: 24),
         Row(
@@ -79,19 +83,20 @@ class TDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildVerticalContent(BuildContext context) {
+  Widget _buildVerticalContent(BuildContext context, TTheme theme) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           title,
-          style: TFontBold.title3(context).copyWith(color: HexColor(gray900)),
+          style: TFontBold.title3(context).copyWith(color: theme.foreground),
         ),
         const SizedBox(height: 8),
         Text(
           content,
           textAlign: TextAlign.center,
-          style: TFontRegular.body(context).copyWith(color: HexColor(gray500)),
+          style:
+              TFontRegular.body(context).copyWith(color: theme.mutedForeground),
         ),
         const SizedBox(height: 24),
         SizedBox(

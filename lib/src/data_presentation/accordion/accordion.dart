@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import '../../fondation/hex_color.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A customizable accordion (expansion tile) widget.
 ///
@@ -94,17 +94,18 @@ class _TAccordionState extends State<TAccordion> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return ExpansionTile(
       initiallyExpanded: widget.initiallyExpanded,
-      collapsedIconColor: HexColor(gray700),
-      iconColor: HexColor(gray700),
+      collapsedIconColor: theme.foreground,
+      iconColor: theme.foreground,
       shape: const RoundedRectangleBorder(
         side: BorderSide.none,
       ),
       title: Text(
         widget.title,
         style: widget.titleStyle ??
-            TFontBold.body(context).copyWith(color: HexColor(gray900)),
+            TFontBold.body(context).copyWith(color: theme.foreground),
       ),
       trailing: AnimatedRotation(
         turns: isExpanded ? 0.5 : 0.0,
@@ -125,7 +126,7 @@ class _TAccordionState extends State<TAccordion> {
         ),
         if (widget.showDivider)
           Divider(
-            color: widget.borderColor ?? HexColor(gray300),
+            color: widget.borderColor ?? theme.border,
             thickness: widget.borderWidth,
           ),
       ],

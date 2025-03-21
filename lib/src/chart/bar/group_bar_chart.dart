@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/chart/bar/chart_data.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 /// A grouped bar chart widget that displays multiple series of data.
@@ -41,11 +40,12 @@ class TGroupBarChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Container(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(8)),
-        color: HexColor(gray050),
-        border: Border.all(color: HexColor(gray300), width: 1.0),
+        color: theme.background,
+        border: Border.all(color: theme.border, width: 1.0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -58,7 +58,7 @@ class TGroupBarChart extends StatelessWidget {
                 Text(
                   title,
                   style: TFontBold.body(context)
-                      .copyWith(color: HexColor(gray900)),
+                      .copyWith(color: theme.foreground),
                 ),
                 if (showOption)
                   InkWell(
@@ -87,7 +87,7 @@ class TGroupBarChart extends StatelessWidget {
                       dataLabelSettings: DataLabelSettings(
                         isVisible: true,
                         textStyle: TFontRegular.caption2(context)
-                            .copyWith(color: HexColor(gray900)),
+                            .copyWith(color: theme.foreground),
                         labelAlignment: ChartDataLabelAlignment.outer,
                       ),
                     );
@@ -101,7 +101,7 @@ class TGroupBarChart extends StatelessWidget {
                       dataLabelSettings: DataLabelSettings(
                         isVisible: true,
                         textStyle: TFontRegular.caption2(context)
-                            .copyWith(color: HexColor(gray900)),
+                            .copyWith(color: theme.foreground),
                         labelAlignment: ChartDataLabelAlignment.outer,
                       ),
                     );
@@ -110,7 +110,7 @@ class TGroupBarChart extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            if (showLegends) _buildCustomLegend(context),
+            if (showLegends) _buildCustomLegend(context, theme),
           ],
         ),
       ),
@@ -118,7 +118,7 @@ class TGroupBarChart extends StatelessWidget {
   }
 
   /// Builds a custom legend displaying series colors and labels.
-  Widget _buildCustomLegend(BuildContext context) {
+  Widget _buildCustomLegend(BuildContext context, TTheme theme) {
     return Center(
       child: Wrap(
         spacing: 10,
@@ -138,7 +138,7 @@ class TGroupBarChart extends StatelessWidget {
               Text(
                 data.label,
                 style: TFontRegular.caption2(context)
-                    .copyWith(color: HexColor(gray900)),
+                    .copyWith(color: theme.foreground),
               ),
             ],
           );

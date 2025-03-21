@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum TProgressType { linear, circular }
 
@@ -35,6 +35,8 @@ class TProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
+
     final value = switch (this.value) {
       < 0.0 => 0.0,
       > 1.0 => 1.0,
@@ -44,13 +46,13 @@ class TProgress extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return type == TProgressType.linear
-            ? linearProgress(constraints, value)
-            : circularProgress(context, value);
+            ? linearProgress(constraints, value, theme)
+            : circularProgress(context, value, theme);
       },
     );
   }
 
-  Widget circularProgress(BuildContext context,double value) {
+  Widget circularProgress(BuildContext context, double value, TTheme theme) {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -60,15 +62,15 @@ class TProgress extends StatelessWidget {
           child: CircularProgressIndicator(
             value: value,
             strokeWidth: strokeWidth,
-            backgroundColor: backgroundColor ?? HexColor(gray200),
+            backgroundColor: backgroundColor ?? theme.border,
             valueColor:
-                AlwaysStoppedAnimation<Color>(color ?? HexColor(primary500)),
+                AlwaysStoppedAnimation<Color>(color ?? theme.primary),
           ),
         ),
         Text(
           "${(value * 100).toInt()}%",
           style: TFontRegular.body(context).copyWith(
-            color: valueColor ?? HexColor(gray500),
+            color: valueColor ?? theme.foreground,
             fontSize: size * 0.2,
           ),
         ),
@@ -76,7 +78,11 @@ class TProgress extends StatelessWidget {
     );
   }
 
-  Widget linearProgress(BoxConstraints constraints, double value) {
+  Widget linearProgress(
+    BoxConstraints constraints,
+    double value,
+    TTheme theme,
+  ) {
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: 6.0, maxHeight: 6.0),
       child: Stack(
@@ -85,7 +91,7 @@ class TProgress extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: backgroundColor ?? HexColor(gray200),
+              color: backgroundColor ?? theme.border,
             ),
             width: constraints.maxWidth,
           ),
@@ -94,7 +100,7 @@ class TProgress extends StatelessWidget {
             duration: const Duration(milliseconds: 500),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: color ?? HexColor(primary500),
+              color: color ?? theme.primary,
             ),
             width: value * constraints.maxWidth,
           ),

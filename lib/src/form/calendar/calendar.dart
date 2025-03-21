@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bamboo_ui_kit/gen/assets.gen.dart';
 import 'package:flutter_bamboo_ui_kit/src/form/calendar/year_selector.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -167,6 +168,7 @@ class TCalendarState extends State<TCalendar> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     final today = DateTime.now();
     final isCurrentMonth =
         today.month == _focusedDay.month && today.year == _focusedDay.year;
@@ -185,7 +187,7 @@ class TCalendarState extends State<TCalendar> {
                 child: SvgPicture.asset(
                   Assets.svg.previousCircle,
                   colorFilter: ColorFilter.mode(
-                    _hasPrevious ? HexColor(gray900) : HexColor(gray300),
+                    _hasPrevious ? theme.mutedForeground : HexColor(gray300),
                     BlendMode.srcIn,
                   ),
                 ),
@@ -199,12 +201,12 @@ class TCalendarState extends State<TCalendar> {
                     Text(
                       DateFormat('MMMM yyyy').format(_focusedDay),
                       style: TFontRegular.body(context).copyWith(
-                        color: HexColor(gray900),
+                        color: theme.mutedForeground,
                       ),
                     ),
                     Icon(
                       Icons.keyboard_arrow_down,
-                      color: HexColor(gray900),
+                      color: theme.mutedForeground,
                     ),
                   ],
                 ),
@@ -214,7 +216,7 @@ class TCalendarState extends State<TCalendar> {
                 child: SvgPicture.asset(
                   Assets.svg.nextCircle,
                   colorFilter: ColorFilter.mode(
-                    _hasNext ? HexColor(gray900) : HexColor(gray300),
+                    _hasNext ? theme.mutedForeground : HexColor(gray300),
                     BlendMode.srcIn,
                   ),
                 ),
@@ -226,6 +228,7 @@ class TCalendarState extends State<TCalendar> {
           height: 24,
         ),
         _buildCalendarContent(
+          theme: theme,
           isCurrentMonth: isCurrentMonth,
           isCurrentYear: isCurrentYear,
         ),
@@ -234,6 +237,7 @@ class TCalendarState extends State<TCalendar> {
   }
 
   Widget _buildCalendarContent({
+    required TTheme theme,
     required bool isCurrentMonth,
     required bool isCurrentYear,
   }) {
@@ -248,16 +252,17 @@ class TCalendarState extends State<TCalendar> {
           onPageChanged: _updateYearNavigationState,
         );
       case CalendarView.month:
-        return _buildMonthSelector();
+        return _buildMonthSelector(theme);
       case CalendarView.date:
         return _buildCalendarView(
+          theme: theme,
           isCurrentMonth: isCurrentMonth,
           isCurrentYear: isCurrentYear,
         );
     }
   }
 
-  Widget _buildMonthSelector() {
+  Widget _buildMonthSelector(TTheme theme) {
     int currentMonth = DateTime.now().month;
 
     return GridView.builder(
@@ -282,9 +287,9 @@ class TCalendarState extends State<TCalendar> {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: isCurrentMonth
-                  ? Color(0xFF00DE9C)
+                  ? theme.primary
                   : isSelected
-                      ? Color(0xFFEAFFF6)
+                      ? theme.primaryForeground
                       : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
             ),
@@ -292,10 +297,10 @@ class TCalendarState extends State<TCalendar> {
               DateFormat('MMM').format(DateTime(2025, month)),
               style: TFontRegular.body(context).copyWith(
                 color: isCurrentMonth
-                    ? Colors.white
+                    ? theme.primaryForeground
                     : isSelected
-                        ? Color(0xFF00DE9C)
-                        : Colors.black54,
+                        ? theme.primary
+                        : theme.foreground,
               ),
             ),
           ),
@@ -305,6 +310,7 @@ class TCalendarState extends State<TCalendar> {
   }
 
   Widget _buildCalendarView({
+    required TTheme theme,
     required bool isCurrentMonth,
     required bool isCurrentYear,
   }) {
@@ -323,8 +329,8 @@ class TCalendarState extends State<TCalendar> {
       onPageChanged: _onPageChanged,
       headerVisible: false,
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekdayStyle: TFontRegular.caption2(context).copyWith(color: Colors.grey),
-        weekendStyle: TFontRegular.caption2(context).copyWith(color: Colors.grey),
+        weekdayStyle: TFontRegular.caption2(context).copyWith(color: theme.mutedForeground),
+        weekendStyle: TFontRegular.caption2(context).copyWith(color: theme.mutedForeground),
         dowTextFormatter: (date, locale) =>
             ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'][date.weekday % 7],
       ),
@@ -332,21 +338,21 @@ class TCalendarState extends State<TCalendar> {
       calendarStyle: CalendarStyle(
         markersMaxCount: 3,
         todayDecoration: BoxDecoration(
-          color: HexColor(primary500),
+          color: theme.primary,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(6),
         ),
-        todayTextStyle: const TextStyle(
-          color: Colors.white,
+        todayTextStyle: TextStyle(
+          color: theme.primaryForeground,
           fontWeight: FontWeight.bold,
         ),
         selectedDecoration: BoxDecoration(
-          color: HexColor(primary050),
+          color: theme.primaryForeground,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(6),
         ),
         selectedTextStyle: TextStyle(
-          color: HexColor(primary500),
+          color: theme.primary,
           fontWeight: FontWeight.bold,
         ),
         defaultDecoration: const BoxDecoration(
@@ -356,7 +362,7 @@ class TCalendarState extends State<TCalendar> {
           shape: BoxShape.rectangle,
         ),
         outsideDaysVisible: true,
-        outsideTextStyle: const TextStyle(color: Colors.grey),
+        outsideTextStyle: TextStyle(color: theme.mutedForeground),
       ),
       calendarBuilders: CalendarBuilders(
         defaultBuilder: (context, date, events) {
@@ -368,12 +374,12 @@ class TCalendarState extends State<TCalendar> {
               '${date.day}',
               style: TFontRegular.body(context).copyWith(
                 color: isSelected
-                    ? HexColor(gray500)
+                    ? theme.foreground
                     : isToday
-                        ? HexColor(gray500)
+                        ? theme.foreground
                         : isCurrentMonth || isCurrentYear
-                            ? HexColor(gray500)
-                            : HexColor(gray500),
+                            ? theme.foreground
+                            : theme.foreground,
               ),
             ),
           );
@@ -382,7 +388,7 @@ class TCalendarState extends State<TCalendar> {
           return Center(
             child: Text(
               '${date.day}',
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: theme.mutedForeground),
             ),
           );
         },
@@ -399,7 +405,7 @@ class TCalendarState extends State<TCalendar> {
                     width: 6,
                     height: 6,
                     decoration: BoxDecoration(
-                      color: HexColor(primary500),
+                      color: theme.primary,
                       shape: BoxShape.circle,
                     ),
                   ),

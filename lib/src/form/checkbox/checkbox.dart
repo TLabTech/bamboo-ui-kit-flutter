@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-
-import '../../fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TCheckBox extends StatefulWidget {
   final bool initialValue;
@@ -44,6 +43,7 @@ class _TCheckBoxState extends State<TCheckBox> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -65,7 +65,7 @@ class _TCheckBoxState extends State<TCheckBox> {
               color: widget.isEnabled
                   ? _isChecked
                       ? widget.isError
-                          ? HexColor(red500)
+                          ? theme.destructive
                           : widget.activeColor
                       : widget.inactiveColor
                   : widget.inactiveColor,
@@ -73,8 +73,8 @@ class _TCheckBoxState extends State<TCheckBox> {
                 color: widget.isEnabled
                     ? _isChecked
                         ? widget.borderColor ?? Colors.transparent
-                        : HexColor(gray300)
-                    : HexColor(gray300),
+                        : theme.border
+                    : theme.border,
                 width: widget.borderColor == null ? 0 : 1,
               ),
               borderRadius: BorderRadius.circular(4),
@@ -83,7 +83,7 @@ class _TCheckBoxState extends State<TCheckBox> {
                 ? _isChecked
                     ? Icon(
                         Icons.check,
-                        color: Colors.white,
+                        color: theme.primaryForeground,
                         size: 18,
                       )
                     : null
@@ -98,16 +98,18 @@ class _TCheckBoxState extends State<TCheckBox> {
                 widget.label ?? '',
                 style: TFontRegular.body(context).copyWith(
                   color: widget.isError
-                      ? HexColor(red500)
+                      ? theme.destructive
                       : !widget.isEnabled
-                          ? HexColor(gray500)
-                          : HexColor(gray900),
+                          ? theme.mutedForeground
+                          : theme.foreground,
                 ),
               ),
               Text(
                 widget.description ?? "",
                 style: TFontRegular.footNote(context).copyWith(
-                  color: HexColor(gray500),
+                  color: !widget.isEnabled
+                      ? theme.mutedForeground
+                      : theme.foreground,
                 ),
               ),
               Visibility(
@@ -115,7 +117,7 @@ class _TCheckBoxState extends State<TCheckBox> {
                 child: Text(
                   widget.error ?? "",
                   style: TFontRegular.footNote(context).copyWith(
-                    color: HexColor(red500),
+                    color: theme.destructive,
                   ),
                 ),
               ),

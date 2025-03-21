@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import '../../fondation/hex_color.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../widgets/theme.dart';
 
 class TButtonSecondary extends StatelessWidget {
   final String? text;
@@ -50,42 +51,55 @@ class TButtonSecondary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        backgroundColor: backgroundColor,
+        backgroundColor: Colors.transparent,
         padding: padding,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
-        side: BorderSide(width: 1.0, color: HexColor(gray400)),
+        side: BorderSide(width: 1.0, color: theme.border),
         minimumSize: Size(minWidth, minHeight),
+      ).copyWith(
+        backgroundColor: WidgetStateProperty.resolveWith<Color>(
+          (states) {
+            if (states.contains(WidgetState.pressed)) {
+              return Colors.transparent;
+            }
+            return Colors.transparent;
+          },
+        ),
+        overlayColor: WidgetStateProperty.all(Colors.transparent),
       ),
       onPressed: onPressed,
       child: loading
           ? Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            width: 18,
-            height: 18,
-            child: CircularProgressIndicator(
-              color: HexColor(gray900),
-            ),
-          ),
-          if (text != null) SizedBox(width: 8),
-          if (text != null)
-            Text(
-              text!,
-              style: textStyle ??
-                  TFontBold.body(context).copyWith(color: HexColor(gray900)),
-            ),
-        ],
-      )
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: 18,
+                  height: 18,
+                  child: CircularProgressIndicator(
+                    color: theme.foreground,
+                  ),
+                ),
+                if (text != null) SizedBox(width: 8),
+                if (text != null)
+                  Text(
+                    text!,
+                    style: textStyle ??
+                        TFontBold.body(context)
+                            .copyWith(color: theme.foreground),
+                  ),
+              ],
+            )
           : child ?? _buildContent(context),
     );
   }
 
   Widget _buildContent(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     bool hasPrefix = prefixIcon != null;
     bool hasSuffix = suffixIcon != null;
     bool hasOnlyText = !hasPrefix && !hasSuffix;
@@ -101,7 +115,7 @@ class TButtonSecondary extends StatelessWidget {
               text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
               style: textStyle ??
-                  TFontBold.body(context).copyWith(color: HexColor(gray900)),
+                  TFontBold.body(context).copyWith(color: theme.foreground),
             ),
           ),
         if (text != null && hasSuffix) Spacer(),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/bar_chart.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 /// A widget that displays a bar chart using [SfCartesianChart].
@@ -48,13 +47,14 @@ class TBarChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Container(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(
           Radius.circular(8),
         ),
-        color: HexColor(gray050),
-        border: Border.all(color: HexColor(gray300), width: 1.0),
+        color: theme.background,
+        border: Border.all(color: theme.border, width: 1.0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -67,7 +67,7 @@ class TBarChart extends StatelessWidget {
                 Text(
                   title,
                   style: TFontBold.body(context)
-                      .copyWith(color: HexColor(gray900)),
+                      .copyWith(color: theme.foreground),
                 ),
                 if (showOption)
                   InkWell(
@@ -97,10 +97,10 @@ class TBarChart extends StatelessWidget {
                           dataLabelSettings: DataLabelSettings(
                             isVisible: true,
                             textStyle: TFontRegular.caption2(context)
-                                .copyWith(color: HexColor(gray900)),
+                                .copyWith(color: theme.foreground),
                             labelAlignment: ChartDataLabelAlignment.outer,
                           ),
-                          color: barColor ?? HexColor(primary500),
+                          color: barColor ?? theme.primary,
                         )
                       : BarSeries<dynamic, dynamic>(
                           dataSource: data,
@@ -109,10 +109,10 @@ class TBarChart extends StatelessWidget {
                           dataLabelSettings: DataLabelSettings(
                             isVisible: true,
                             textStyle: TFontRegular.caption2(context)
-                                .copyWith(color: HexColor(gray900)),
+                                .copyWith(color: theme.foreground),
                             labelAlignment: ChartDataLabelAlignment.outer,
                           ),
-                          color: barColor ?? HexColor(primary500),
+                          color: barColor ?? theme.primary,
                         )
                 ],
                 legend: Legend(isVisible: false),
@@ -126,13 +126,13 @@ class TBarChart extends StatelessWidget {
                   Container(
                     width: 12,
                     height: 12,
-                    color: barColor ?? HexColor(primary500),
+                    color: barColor ?? theme.primary,
                   ),
                   const SizedBox(width: 4),
                   Text(
                     "1",
                     style: TFontRegular.caption2(context)
-                        .copyWith(color: HexColor(gray900)),
+                        .copyWith(color: theme.foreground),
                   ),
                 ],
               ),

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/chart/line/legend_label.dart';
-import 'package:flutter_bamboo_ui_kit/src/chart/line/line_chart_data.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 /// A customizable line chart widget.
@@ -74,13 +72,14 @@ class TLineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Container(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(
           Radius.circular(8),
         ),
-        color: HexColor(gray050),
-        border: Border.all(color: HexColor(gray300), width: 1.0),
+        color: theme.background,
+        border: Border.all(color: theme.border, width: 1.0),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -92,7 +91,8 @@ class TLineChart extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontBold.body(context).copyWith(color: HexColor(gray900)),
+                  style:
+                      TFontBold.body(context).copyWith(color: theme.foreground),
                 ),
                 if (showOption)
                   InkWell(
@@ -117,7 +117,9 @@ class TLineChart extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             if (showLegends)
-              legendLabels == null ? const SizedBox() : _buildLegends(context),
+              legendLabels == null
+                  ? const SizedBox()
+                  : _buildLegends(context, theme),
           ],
         ),
       ),
@@ -141,7 +143,7 @@ class TLineChart extends StatelessWidget {
   }
 
   /// Builds the legend widget displaying series colors and labels.
-  Widget _buildLegends(BuildContext context) {
+  Widget _buildLegends(BuildContext context, TTheme theme) {
     return Center(
       child: Wrap(
         spacing: 10,
@@ -162,8 +164,8 @@ class TLineChart extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 data.label,
-                style:
-                    TFontRegular.caption2(context).copyWith(color: HexColor(gray900)),
+                style: TFontRegular.caption2(context)
+                    .copyWith(color: theme.foreground),
               ),
             ],
           );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TCheckBoxGroup extends StatefulWidget {
   final String? label;
@@ -51,6 +52,7 @@ class _TCheckBoxGroupState extends State<TCheckBoxGroup> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -61,7 +63,7 @@ class _TCheckBoxGroupState extends State<TCheckBoxGroup> {
               widget.label!,
               style: widget.labelStyle ??
                   TFontBold.body(context).copyWith(
-                    color: HexColor(gray900),
+                    color: theme.foreground,
                   ),
             ),
           ),

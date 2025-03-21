@@ -109,7 +109,6 @@ class _BadgeScreenState extends State<BadgeScreen> {
                   child: Center(
                     child: TBadge.outline(
                       label: "Badge",
-                      borderColor: HexColor(primary300),
                     ),
                   ),
                 ),

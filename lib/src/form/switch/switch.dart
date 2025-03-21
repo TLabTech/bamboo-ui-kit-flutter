@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-
-import '../../fondation/hex_color.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TSwitch extends StatefulWidget {
   final String label;
@@ -11,6 +10,8 @@ class TSwitch extends StatefulWidget {
   final String? error;
   final bool isEnabled;
   final bool isError;
+  final Color? inactiveTrackColor;
+  final Color? inactiveThumbColor;
 
   const TSwitch({
     super.key,
@@ -21,6 +22,8 @@ class TSwitch extends StatefulWidget {
     this.error,
     this.isEnabled = false,
     this.isError = false,
+    this.inactiveTrackColor,
+    this.inactiveThumbColor,
   });
 
   @override
@@ -28,7 +31,7 @@ class TSwitch extends StatefulWidget {
 }
 
 class _TSwitchState extends State<TSwitch> {
-  bool _internalValue = false; // To manage tap and error display
+  bool _internalValue = false;
 
   @override
   void initState() {
@@ -50,6 +53,8 @@ class _TSwitchState extends State<TSwitch> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
+
     return GestureDetector(
       onTap: () {
         if (widget.error == null && widget.isEnabled) {
@@ -63,24 +68,46 @@ class _TSwitchState extends State<TSwitch> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Switch(
-            value: _internalValue,
-            onChanged: (newValue) {
-              if (widget.isEnabled) {
-                setState(() {
-                  _internalValue = newValue;
-                });
-                widget.onChanged(newValue);
-              } else if (!widget.isEnabled) {
-                setState(() {
-                  _internalValue = false;
-                });
-                widget.onChanged(_internalValue);
-              }
-            },
-            activeColor: HexColor(gray050),
-            activeTrackColor:
-                widget.isError ? HexColor(red500) : HexColor(primary500),
+          SwitchTheme(
+            data: SwitchThemeData(
+              trackColor: WidgetStateProperty.resolveWith((states) {
+                if (!states.contains(WidgetState.selected)) {
+                  return widget.inactiveTrackColor ?? theme.background;
+                }
+                return widget.isError ? theme.destructive : theme.primary;
+              }),
+              thumbColor: WidgetStateProperty.resolveWith((states) {
+                if (!states.contains(WidgetState.selected)) {
+                  return widget.inactiveThumbColor ?? theme.border;
+                }
+                return HexColor(gray050);
+              }),
+              trackOutlineColor: WidgetStateProperty.resolveWith((states) {
+                if (!states.contains(WidgetState.selected)) {
+                  return theme.border;
+                }
+                return Colors.transparent;
+              }),
+            ),
+            child: Switch(
+              value: _internalValue,
+              onChanged: (newValue) {
+                if (widget.isEnabled) {
+                  setState(() {
+                    _internalValue = newValue;
+                  });
+                  widget.onChanged(newValue);
+                } else if (!widget.isEnabled) {
+                  setState(() {
+                    _internalValue = false;
+                  });
+                  widget.onChanged(_internalValue);
+                }
+              },
+              activeColor: HexColor(gray050),
+              activeTrackColor:
+                  widget.isError ? theme.destructive : theme.primary,
+            ),
           ),
           const SizedBox(width: 8),
           Column(
@@ -90,15 +117,13 @@ class _TSwitchState extends State<TSwitch> {
               Text(
                 widget.label,
                 style: TFontRegular.body(context).copyWith(
-                  color: widget.isError
-                      ? HexColor(red500)
-                      : HexColor(gray900),
+                  color: widget.isError ? theme.destructive : theme.foreground,
                 ),
               ),
               Text(
                 widget.description,
                 style: TFontRegular.footNote(context).copyWith(
-                  color: HexColor(gray500),
+                  color: theme.foreground,
                 ),
               ),
               if (widget.error != null) ...[
@@ -106,7 +131,7 @@ class _TSwitchState extends State<TSwitch> {
                 Text(
                   widget.error!,
                   style: TFontRegular.footNote(context).copyWith(
-                    color: HexColor(red500),
+                    color: theme.destructive,
                   ),
                 ),
               ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../fondation/hex_color.dart';
+import '../../../widgets/theme.dart';
 import '../../fondation/tfont.dart';
 
 class TButtonDisable extends StatelessWidget {
@@ -48,14 +49,13 @@ class TButtonDisable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? HexColor(primary500),
-        // Default background
-        foregroundColor: Colors.white,
-        // Default text/icon color
+        backgroundColor: backgroundColor ?? theme.accent,
+        foregroundColor: theme.foreground,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8), // Increased rounded corners
+          borderRadius: BorderRadius.circular(8),
         ),
         padding: padding,
         // padding: padding,
@@ -63,10 +63,9 @@ class TButtonDisable extends StatelessWidget {
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
           (states) {
             if (states.contains(WidgetState.pressed)) {
-              return onPressedBackgroundColor ??
-                  HexColor(gray500); // Pressed state color
+              return onPressedBackgroundColor ?? theme.accent;
             }
-            return backgroundColor ?? HexColor(gray400); // Default color
+            return backgroundColor ?? theme.accent;
           },
         ),
       ),
@@ -79,7 +78,7 @@ class TButtonDisable extends StatelessWidget {
                   width: 18,
                   height: 18,
                   child: CircularProgressIndicator(
-                    color: HexColor(gray500),
+                    color: theme.accent,
                   ),
                 ),
                 if (text != null) SizedBox(width: 8),
@@ -87,7 +86,7 @@ class TButtonDisable extends StatelessWidget {
                   Text(
                     text!,
                     style: textStyle ??
-                        TFontBold.body(context).copyWith(color: Colors.white),
+                        TFontBold.body(context).copyWith(color: theme.foreground),
                   ),
               ],
             )
@@ -96,6 +95,7 @@ class TButtonDisable extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     bool hasPrefix = prefixIcon != null;
     bool hasSuffix = suffixIcon != null;
     bool hasOnlyText = !hasPrefix && !hasSuffix;
@@ -110,7 +110,8 @@ class TButtonDisable extends StatelessWidget {
             child: Text(
               text!,
               textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
-              style: textStyle ?? TFontBold.body(context).copyWith(color: Colors.white),
+              style: textStyle ??
+                  TFontBold.body(context).copyWith(color: theme.foreground),
             ),
           ),
         if (suffixIcon != null && text != null) SizedBox(width: 10),

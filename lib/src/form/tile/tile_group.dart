@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TGroupTile<T> extends StatefulWidget {
   final String? title;
@@ -47,6 +48,7 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -56,19 +58,18 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
             child: Text(
               widget.title!,
               style: TFontRegular.body(context).copyWith(
-                color: HexColor(gray700),
-                fontWeight: FontWeight.bold,
+                color: theme.foreground,
               ),
             ),
           ),
         Container(
           decoration: BoxDecoration(
             color: widget.enable
-                ? widget.backgroundColor ?? Colors.transparent
+                ? widget.backgroundColor ?? theme.background
                 : HexColor(gray050),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: widget.borderColor ?? HexColor(gray300),
+              color: widget.borderColor ?? theme.border,
             ),
           ),
           child: Column(
@@ -86,7 +87,7 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
                 ),
                 if (widget.enableBorder && i != widget.tiles.length - 1)
                   Divider(
-                    color: HexColor(gray300),
+                    color: theme.border,
                     height: 1,
                     thickness: 1,
                   ),

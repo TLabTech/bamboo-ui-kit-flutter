@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/theme/theme_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../widgets/theme.dart';
 import '../../fondation/tfont.dart';
 
 class TButtonPrimary extends StatelessWidget {
@@ -78,7 +78,7 @@ class TButtonPrimary extends StatelessWidget {
                   width: 18,
                   height: 18,
                   child: CircularProgressIndicator(
-                    color: Colors.white,
+                    color: theme.primaryForeground,
                   ),
                 ),
                 if (text != null) SizedBox(width: 8),

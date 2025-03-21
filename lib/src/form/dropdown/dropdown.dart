@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TDropdown<T> extends StatelessWidget {
   final List<T> items;
@@ -28,6 +28,7 @@ class TDropdown<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,13 +44,14 @@ class TDropdown<T> extends StatelessWidget {
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                      color: borderColor ?? HexColor(gray300),
-                      width: borderWidth),
+                    color: borderColor ?? theme.border,
+                    width: borderWidth,
+                  ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: borderColor ?? HexColor(gray300),
+                    color: borderColor ?? theme.border,
                     width: borderWidth,
                   ),
                 ),

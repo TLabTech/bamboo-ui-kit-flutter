@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
-import 'package:flutter_bamboo_ui_kit/widgets/radio.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TRadioGroup<T> extends StatefulWidget {
   final String? label;
@@ -28,6 +27,7 @@ class TRadioGroup<T> extends StatefulWidget {
 class TRadioGroupState<T> extends State<TRadioGroup<T>> {
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -38,7 +38,7 @@ class TRadioGroupState<T> extends State<TRadioGroup<T>> {
               widget.label!,
               style: widget.labelStyle ??
                   TFontBold.body(context).copyWith(
-                    color: HexColor(gray900),
+                    color: theme.foreground,
                   ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// Defines the shape of the avatar.
 enum AvatarShape { circle, roundedSquare }
@@ -152,6 +153,7 @@ class TAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -162,17 +164,17 @@ class TAvatar extends StatelessWidget {
             height: avatarSize,
             color: backgroundColor,
             alignment: Alignment.center,
-            child: _buildContent(),
+            child: _buildContent(theme),
           ),
         ),
         if (type == AvatarType.notification) _buildNotificationBadge(context),
-        if (type == AvatarType.online) _buildOnlineIndicator(),
+        if (type == AvatarType.online) _buildOnlineIndicator(theme),
       ],
     );
   }
 
   /// Builds the avatar content (icon, text, or image).
-  Widget _buildContent() {
+  Widget _buildContent(TTheme theme) {
     if (icon != null) {
       return icon!;
     } else if (formattedText != null) {
@@ -180,7 +182,7 @@ class TAvatar extends StatelessWidget {
         formattedText!,
         style: textStyle ??
             TextStyle(
-              color: Colors.white,
+              color: theme.primaryForeground,
               fontSize: avatarSize * 0.3,
               fontWeight: FontWeight.bold,
             ),
@@ -193,32 +195,39 @@ class TAvatar extends StatelessWidget {
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) => Icon(
           Icons.error,
-          color: Colors.red,
+          color: theme.destructive,
           size: avatarSize * 0.4,
         ),
       );
     } else {
-      return Icon(Icons.person, color: Colors.white, size: avatarSize * 0.5);
+      return Icon(
+        Icons.person,
+        color: theme.primaryForeground,
+        size: avatarSize * 0.5,
+      );
     }
   }
 
   /// Builds a notification badge for the avatar.
   Widget _buildNotificationBadge(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Positioned(
       top: -1,
       right: -1,
       child: Container(
         width: badgeSize,
         height: badgeSize,
-        decoration: const BoxDecoration(
-          color: Colors.red,
+        decoration: BoxDecoration(
+          color: theme.destructive,
           shape: BoxShape.circle,
         ),
         child: Center(
           child: Text(
             notificationCount == null ? "" : notificationCount.toString(),
-            style: TFontRegular.caption2(context)
-                .copyWith(color: Colors.white, fontSize: badgeSize * 0.6),
+            style: TFontRegular.caption2(context).copyWith(
+              color: theme.destructiveForeground,
+              fontSize: badgeSize * 0.6,
+            ),
           ),
         ),
       ),
@@ -226,7 +235,7 @@ class TAvatar extends StatelessWidget {
   }
 
   /// Builds an online status indicator for the avatar.
-  Widget _buildOnlineIndicator() {
+  Widget _buildOnlineIndicator(TTheme theme) {
     return Positioned(
       bottom: 0,
       right: 0,
@@ -234,7 +243,7 @@ class TAvatar extends StatelessWidget {
         width: badgeSize,
         height: badgeSize,
         decoration: BoxDecoration(
-          color: HexColor(green500),
+          color: theme.success,
           shape: BoxShape.circle,
         ),
       ),

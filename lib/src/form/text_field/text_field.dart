@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bamboo_ui_kit/gen/assets.gen.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../fondation/hex_color.dart';
 
 enum TextFieldType { defaultType, multiline, password, email }
 
@@ -166,12 +166,13 @@ class TTextFieldState extends State<TTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     final hasError = widget.errorMessage != null;
     final borderColor = hasError
-        ? HexColor(red500)
+        ? theme.destructive
         : (widget.focusNode?.hasFocus ?? false)
-            ? (widget.focusedBorderColor ?? HexColor(primary500))
-            : (widget.borderColor ?? HexColor(gray300));
+            ? (widget.focusedBorderColor ?? theme.primary)
+            : (widget.borderColor ?? theme.border);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,7 +182,7 @@ class TTextFieldState extends State<TTextField> {
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
               widget.labelText!,
-              style: TFontRegular.body(context).copyWith(color: HexColor(gray700)),
+              style: TFontRegular.body(context).copyWith(color: theme.foreground),
             ),
           ),
         Container(
@@ -276,7 +277,7 @@ class TTextFieldState extends State<TTextField> {
             child: Text(
               widget.description!,
               style: TFontRegular.footNote(context).copyWith(
-                color: HexColor(gray500),
+                color: theme.foreground,
               ),
             ),
           ),
@@ -286,7 +287,7 @@ class TTextFieldState extends State<TTextField> {
             child: Text(
               widget.errorMessage!,
               style: TFontRegular.footNote(context).copyWith(
-                color: HexColor(red500),
+                color: theme.destructive,
               ),
             ),
           ),

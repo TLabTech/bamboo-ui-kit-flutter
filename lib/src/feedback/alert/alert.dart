@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bamboo_ui_kit/gen/assets.gen.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+enum TAlertType { raw, primary, destructive, info }
 
 class TAlert extends StatelessWidget {
   final String title;
@@ -10,68 +12,107 @@ class TAlert extends StatelessWidget {
   final String? subtitle;
   final TextStyle? subtitleStyle;
   final Widget? icon;
-  final Color titleColor;
-  final Color subtitleColor;
-  final Color borderColor;
-  final Color backgroundColor;
+  final Color? titleColor;
+  final Color? subtitleColor;
+  final Color? borderColor;
+  final Color? backgroundColor;
+  final TAlertType alertType;
 
-  TAlert({
+  const TAlert({
     super.key,
     required this.title,
     this.subtitle,
     this.icon,
     this.titleStyle,
     this.subtitleStyle,
-  })  : titleColor = HexColor(gray500),
-        subtitleColor = HexColor(gray400),
-        borderColor = HexColor(gray300),
-        backgroundColor = HexColor(gray050);
+    this.titleColor,
+    this.subtitleColor,
+    this.borderColor,
+    this.backgroundColor,
+  }) : alertType = TAlertType.raw;
 
-  TAlert.primary({
+  const TAlert.primary({
     super.key,
     required this.title,
     this.subtitle,
     this.icon,
     this.titleStyle,
     this.subtitleStyle,
-  })  : titleColor = HexColor(primary500),
-        subtitleColor = HexColor(primary400),
-        borderColor = HexColor(primary300),
-        backgroundColor = HexColor(primary050);
+  })  : titleColor = null,
+        subtitleColor = null,
+        borderColor = null,
+        backgroundColor = null,
+        alertType = TAlertType.primary;
 
-  TAlert.destructive({
+  const TAlert.destructive({
     super.key,
     required this.title,
     this.subtitle,
     this.icon,
     this.titleStyle,
     this.subtitleStyle,
-  })  : titleColor = HexColor(red500),
-        subtitleColor = HexColor(red400),
-        borderColor = HexColor(red300),
-        backgroundColor = HexColor(red050);
+  })  : titleColor = null,
+        subtitleColor = null,
+        borderColor = null,
+        backgroundColor = null,
+        alertType = TAlertType.destructive;
 
-  TAlert.info({
+  const TAlert.info({
     super.key,
     required this.title,
     this.subtitle,
     this.icon,
     this.titleStyle,
     this.subtitleStyle,
-  })  : titleColor = HexColor(blue500),
-        subtitleColor = HexColor(blue400),
-        borderColor = HexColor(blue300),
-        backgroundColor = HexColor(blue050);
+  })  : titleColor = null,
+        subtitleColor = null,
+        borderColor = null,
+        backgroundColor = null,
+        alertType = TAlertType.info;
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
+
+    Color alertTitleColor;
+    Color alertSubtitleColor;
+    Color alertBorderColor;
+    Color alertBackgroundColor;
+
+    switch (alertType) {
+      case TAlertType.primary:
+        alertTitleColor = titleColor ?? theme.primary;
+        alertSubtitleColor = subtitleColor ?? theme.primary;
+        alertBorderColor = borderColor ?? theme.primary;
+        alertBackgroundColor = backgroundColor ?? theme.primaryForeground;
+        break;
+      case TAlertType.destructive:
+        alertTitleColor = titleColor ?? theme.destructive;
+        alertSubtitleColor = subtitleColor ?? theme.destructive;
+        alertBorderColor = borderColor ?? theme.destructive;
+        alertBackgroundColor = backgroundColor ?? theme.destructiveForeground;
+        break;
+      case TAlertType.info:
+        alertTitleColor = titleColor ?? theme.info;
+        alertSubtitleColor = subtitleColor ?? theme.info;
+        alertBorderColor = borderColor ?? theme.info;
+        alertBackgroundColor = backgroundColor ?? theme.infoForeground;
+        break;
+      case TAlertType.raw:
+        alertTitleColor = titleColor ?? theme.foreground;
+        alertSubtitleColor = subtitleColor ?? theme.foreground;
+        alertBorderColor = borderColor ?? theme.border;
+        alertBackgroundColor = backgroundColor ?? theme.muted;
+        break;
+    }
+
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: alertBackgroundColor,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: borderColor,
+          color: alertBorderColor,
           width: 1,
         ),
       ),
@@ -82,11 +123,9 @@ class TAlert extends StatelessWidget {
                 Assets.svg.informationCircle,
                 width: 24,
                 height: 24,
-                colorFilter: ColorFilter.mode(titleColor, BlendMode.srcIn),
+                colorFilter: ColorFilter.mode(alertTitleColor, BlendMode.srcIn),
               ),
-          SizedBox(
-            width: 8,
-          ),
+          const SizedBox(width: 8),
           Expanded(
             child: Column(
               spacing: 2,
@@ -96,13 +135,13 @@ class TAlert extends StatelessWidget {
                 Text(
                   title,
                   style: titleStyle ??
-                      TFontRegular.body(context).copyWith(color: titleColor),
+                      TFontRegular.body(context).copyWith(color: alertTitleColor),
                 ),
                 if (subtitle != null)
                   Text(
                     subtitle!,
                     style: subtitleStyle ??
-                        TFontRegular.footNote(context).copyWith(color: subtitleColor),
+                        TFontRegular.footNote(context).copyWith(color: alertSubtitleColor),
                   ),
               ],
             ),
