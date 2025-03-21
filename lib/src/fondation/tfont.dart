@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/gen/fonts.gen.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/theme/theme_provider.dart';
+import 'package:flutter_bamboo_ui_kit/src/fondation/theme/theme_manager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 const String fontFamily = FontFamily.inter;
 
@@ -141,5 +142,5 @@ class TFontBold {
 }
 
 String _getFontFamily(BuildContext context) {
-  return TThemeProvider.of(context)?.theme.fontFamily ?? fontFamily;
+  return context.watch<TThemeManager>().state.fontFamily ?? fontFamily;
 }

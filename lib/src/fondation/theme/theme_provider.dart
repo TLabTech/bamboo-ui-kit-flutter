@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/theme/theme.dart';
+import 'package:flutter_bamboo_ui_kit/src/fondation/theme/theme_manager.dart';
 
-class TThemeProvider extends InheritedWidget {
-  final TTheme theme;
+class TThemeProvider extends StatelessWidget {
+  final Widget child;
 
-  const TThemeProvider({
-    super.key,
-    required this.theme,
-    required super.child,
-  });
+  const TThemeProvider({super.key, required this.child});
 
-  static TThemeProvider? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<TThemeProvider>();
+  /// Get the current theme
+  static TTheme of(BuildContext context) {
+    return context.watch<TThemeManager>().state;
   }
 
   @override
-  bool updateShouldNotify(TThemeProvider oldWidget) {
-    return theme != oldWidget.theme;
+  Widget build(BuildContext context) {
+    return BlocBuilder<TThemeManager, TTheme>(
+      builder: (context, theme) {
+        return Theme(
+          data: theme.themeData, // Make sure TTheme has a `themeData` method
+          child: child,
+        );
+      },
+    );
   }
 }

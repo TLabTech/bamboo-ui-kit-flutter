@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/src/fondation/theme/theme_manager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../fondation/hex_color.dart';
 import '../../fondation/tfont.dart';
-import '../../fondation/theme/theme_provider.dart';
 
 class TButtonPrimary extends StatelessWidget {
   final String? text;
@@ -49,10 +49,10 @@ class TButtonPrimary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = TThemeProvider.of(context)?.theme;
+    final theme = context.watch<TThemeManager>().state;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? theme?.buttonBackground,
+        backgroundColor: backgroundColor ?? theme.buttonBackground,
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
@@ -63,11 +63,9 @@ class TButtonPrimary extends StatelessWidget {
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
           (states) {
             if (states.contains(WidgetState.pressed)) {
-              return onPressedBackgroundColor ??
-                  (theme?.buttonPressed ?? HexColor(primary600));
+              return onPressedBackgroundColor ?? theme.buttonPressed;
             }
-            return backgroundColor ??
-                (theme?.buttonBackground ?? HexColor(primary500));
+            return backgroundColor ?? theme.buttonBackground;
           },
         ),
       ),

@@ -22,10 +22,12 @@ export 'widgets/calendar.dart';
 export 'widgets/charts.dart';
 export 'widgets/breadcrumbs.dart';
 export 'widgets/title_section.dart';
+export 'widgets/theme.dart';
 
 export 'src/fondation/tfont.dart';
 export 'src/fondation/container/container.dart';
 export 'src/fondation/utils/tshadow.dart';
 export 'src/fondation/hex_color.dart';
-export 'src/fondation/theme/theme.dart';
-export 'src/fondation/theme/theme_provider.dart';
+// export 'src/fondation/theme/theme.dart';
+// export 'src/fondation/theme/theme_provider.dart';
+// export 'src/fondation/theme/theme_manager.dart';
