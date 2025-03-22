@@ -61,22 +61,25 @@ class _HeaderScreenState extends State<HeaderScreen> {
                       color: HexColor(gray300),
                     ),
                   ),
-                  child: THeader(
-                    title: "Placeholder",
-                    suffixAction: [
-                      THeaderAction(
-                        icon: SvgPicture.asset(
-                          Assets.svg.magnifyingGlass,
-                          width: 18,
-                          height: 18,
+                  child: SizedBox(
+                    height: 80,
+                    child: THeader(
+                      title: "Placeholder",
+                      suffixAction: [
+                        THeaderAction(
+                          icon: SvgPicture.asset(
+                            Assets.svg.magnifyingGlass,
+                            width: 18,
+                            height: 18,
+                          ),
+                          onPress: () {},
                         ),
-                        onPress: () {},
-                      ),
-                      THeaderAction(
-                        icon: Icon(Icons.more_horiz_rounded),
-                        onPress: () {},
-                      ),
-                    ],
+                        THeaderAction(
+                          icon: Icon(Icons.more_horiz_rounded),
+                          onPress: () {},
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -97,21 +100,24 @@ class _HeaderScreenState extends State<HeaderScreen> {
                       color: HexColor(gray300),
                     ),
                   ),
-                  child: THeader.homepage(
-                    title: "Placeholder",
-                    subtitle: "description",
-                    prefixAction:  TAvatar(
-                      imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
-                      predefinedSize: AvatarSize.large,
-                      type: AvatarType.general,
-                      shape: AvatarShape.circle,
-                    ),
-                    suffixAction: [
-                      THeaderAction(
-                        icon: Icon(Icons.more_horiz_rounded),
-                        onPress: () {},
+                  child: SizedBox(
+                    height: 80,
+                    child: THeader.homepage(
+                      title: "Placeholder",
+                      subtitle: "description",
+                      prefixAction:  TAvatar(
+                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        predefinedSize: AvatarSize.large,
+                        type: AvatarType.general,
+                        shape: AvatarShape.circle,
                       ),
-                    ],
+                      suffixAction: [
+                        THeaderAction(
+                          icon: Icon(Icons.more_horiz_rounded),
+                          onPress: () {},
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -132,15 +138,18 @@ class _HeaderScreenState extends State<HeaderScreen> {
                       color: HexColor(gray300),
                     ),
                   ),
-                  child: THeader.nested(
-                    title: "Placeholder",
-                    enableCenterTitle: true,
-                    suffixAction: [
-                      THeaderAction(
-                        icon: Icon(Icons.more_horiz_rounded),
-                        onPress: () {},
-                      ),
-                    ],
+                  child: SizedBox(
+                    height: 80,
+                    child: THeader.nested(
+                      title: "Placeholder",
+                      enableCenterTitle: true,
+                      suffixAction: [
+                        THeaderAction(
+                          icon: Icon(Icons.more_horiz_rounded),
+                          onPress: () {},
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -161,8 +170,11 @@ class _HeaderScreenState extends State<HeaderScreen> {
                       color: HexColor(gray300),
                     ),
                   ),
-                  child: THeader.search(
-                    hintText: 'Placeholder',
+                  child: SizedBox(
+                    height: 80,
+                    child: THeader.search(
+                      hintText: 'Placeholder',
+                    ),
                   ),
                 ),
               ),
@@ -183,31 +195,34 @@ class _HeaderScreenState extends State<HeaderScreen> {
                       color: HexColor(gray300),
                     ),
                   ),
-                  child: THeader.brand(
-                    icon: SvgPicture.asset(Assets.svg.logo),
-                    backgroundColor: Colors.white,
-                    suffixAction: [
-                      THeaderAction(
-                        icon: TAvatar(
-                          imageUrl: "https://randomuser.me/api/portraits/women/2.jpg",
-                          shape: AvatarShape.circle,
-                          size: 40,
-                          backgroundColor: Colors.grey.shade100,
-                        ),
-                        onPress: () {},
-                      ),
-                      THeaderAction(
-                        icon: TAvatar(
-                          icon: Icon(
-                            Icons.more_horiz_rounded,
+                  child: SizedBox(
+                    height: 80,
+                    child: THeader.brand(
+                      icon: SvgPicture.asset(Assets.svg.logo),
+                      backgroundColor: Colors.white,
+                      suffixAction: [
+                        THeaderAction(
+                          icon: TAvatar(
+                            imageUrl: "https://randomuser.me/api/portraits/women/2.jpg",
+                            shape: AvatarShape.circle,
+                            size: 40,
+                            backgroundColor: Colors.grey.shade100,
                           ),
-                          shape: AvatarShape.circle,
-                          size: 40,
-                          backgroundColor: Colors.grey.shade100,
+                          onPress: () {},
                         ),
-                        onPress: () {},
-                      ),
-                    ],
+                        THeaderAction(
+                          icon: TAvatar(
+                            icon: Icon(
+                              Icons.more_horiz_rounded,
+                            ),
+                            shape: AvatarShape.circle,
+                            size: 40,
+                            backgroundColor: Colors.grey.shade100,
+                          ),
+                          onPress: () {},
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

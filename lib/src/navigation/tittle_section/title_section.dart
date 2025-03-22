@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TTitleSection extends StatelessWidget {
   final String title;
@@ -21,6 +22,7 @@ class TTitleSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -30,7 +32,12 @@ class TTitleSection extends StatelessWidget {
               if (icon != null)
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
-                  child: icon,
+                  child: IconTheme(
+                    data: IconThemeData(
+                      color: theme.foreground,
+                    ),
+                    child: icon!,
+                  ),
                 ),
               Expanded(
                 child: Column(
@@ -41,9 +48,7 @@ class TTitleSection extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TFontBold.headline(context).copyWith(
-                        color: HexColor(
-                          gray900,
-                        ),
+                        color: theme.foreground,
                       ),
                     ),
                     if (description != null)
@@ -52,9 +57,7 @@ class TTitleSection extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TFontRegular.caption2(context).copyWith(
-                          color: HexColor(
-                            gray500,
-                          ),
+                          color: theme.mutedForeground,
                         ),
                       ),
                   ],
@@ -71,7 +74,7 @@ class TTitleSection extends StatelessWidget {
                   child: Text(
                     buttonText!,
                     style: TFontBold.body(context).copyWith(
-                      color: buttonColor ?? HexColor(primary500),
+                      color: buttonColor ?? theme.primary,
                     ),
                   ),
                 )

@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/circular_navbar.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_dot_navbar.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_text_navbar.dart';
 import 'package:flutter_bamboo_ui_kit/src/navigation/bottom_navigation/style/floating_circular_navbar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class TNavbarStyle {
-  static Widget style3(NavBarConfig navBarConfig, Color? backgroundColor) {
+  static Widget style3(
+    BuildContext context,
+    NavBarConfig navBarConfig,
+    Color? backgroundColor,
+  ) {
+    final theme = context.watch<TThemeManager>().state;
     return Style3BottomNavBar(
       navBarConfig: navBarConfig,
       navBarDecoration: NavBarDecoration(
-        color: backgroundColor ?? Colors.white,
+        color: backgroundColor ?? theme.popover,
       ),
     );
   }
 
-  static Widget fixed4(NavBarConfig navBarConfig, Color? backgroundColor) {
+  static Widget fixed4(
+    BuildContext context,
+    NavBarConfig navBarConfig,
+    Color? backgroundColor,
+  ) {
+    final theme = context.watch<TThemeManager>().state;
     return Style7BottomNavBar(
       navBarConfig: navBarConfig,
       navBarDecoration: NavBarDecoration(
-        color: backgroundColor ?? Colors.white,
+        color: backgroundColor ?? theme.popover,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       itemAnimationProperties: const ItemAnimation(
@@ -30,34 +41,49 @@ class TNavbarStyle {
     );
   }
 
-  static Widget fixed3(NavBarConfig navBarConfig, Color? backgroundColor) {
+  static Widget fixed3(
+    BuildContext context,
+    NavBarConfig navBarConfig,
+    Color? backgroundColor,
+  ) {
+    final theme = context.watch<TThemeManager>().state;
     return Style10BottomNavBar(
       navBarConfig: navBarConfig,
       navBarDecoration: NavBarDecoration(
-        color: backgroundColor ?? Colors.white,
+        color: backgroundColor ?? theme.popover,
       ),
     );
   }
 
   static Widget fixed5(
-      NavBarConfig navBarConfig, Color? activeColor, Color? backgroundColor) {
+    BuildContext context,
+    NavBarConfig navBarConfig,
+    Color? activeColor,
+    Color? backgroundColor,
+  ) {
+    final theme = context.watch<TThemeManager>().state;
     return CircularNavbar(
       navBarConfig: navBarConfig,
       navBarDecoration: NavBarDecoration(
-        color: activeColor ?? HexColor('#00DE9C'),
+        color: activeColor ?? theme.primary,
       ),
       backgroundColor: backgroundColor,
     );
   }
 
   static Widget floating3(
-      NavBarConfig navBarConfig, Color? activeColor, Color? backgroundColor) {
+    BuildContext context,
+    NavBarConfig navBarConfig,
+    Color? activeColor,
+    Color? backgroundColor,
+  ) {
+    final theme = context.watch<TThemeManager>().state;
     return FloatingCircularDotNavBar(
       navBarConfig: navBarConfig,
       navBarDecoration: NavBarDecoration(
-        color: activeColor ?? HexColor('#00DE9C'),
+        color: activeColor ?? theme.primary,
       ),
-      backgroundColor: backgroundColor ?? Colors.white.withValues(alpha: 0.9),
+      backgroundColor: backgroundColor ?? theme.popover,
     );
     // return FloatingStyle10NavBar(
     //   navBarConfig: navBarConfig,
@@ -66,16 +92,19 @@ class TNavbarStyle {
   }
 
   static Widget floating4(
-      NavBarConfig navBarConfig, Color? activeColor, Color? backgroundColor) {
+    BuildContext context,
+    NavBarConfig navBarConfig,
+    Color? activeColor,
+    Color? backgroundColor,
+  ) {
+    final theme = context.watch<TThemeManager>().state;
     return FloatingCircularTextNavbar(
       navBarConfig: navBarConfig,
       navBarDecoration: NavBarDecoration(
-        color: activeColor ??
-            HexColor('#00DE9C'), // Green for active circular indicator
+        color: activeColor ?? theme.primary,
       ),
       backgroundColor: backgroundColor ??
-          Colors.white.withValues(
-              alpha: 0.9), // Semi-transparent white for frosted effect
+          theme.popover
     );
     // return FloatingStyle4NavBar(
     //   navBarConfig: navBarConfig,
@@ -84,13 +113,18 @@ class TNavbarStyle {
   }
 
   static Widget floating5(
-      NavBarConfig navBarConfig, Color? activeColor, Color? backgroundColor) {
+    BuildContext context,
+    NavBarConfig navBarConfig,
+    Color? activeColor,
+    Color? backgroundColor,
+  ) {
+    final theme = context.watch<TThemeManager>().state;
     return FloatingCircularNavbar(
       navBarConfig: navBarConfig,
       navBarDecoration: NavBarDecoration(
-        color: activeColor ?? HexColor('#00DE9C'),
+        color: activeColor ?? theme.primary,
       ),
-      backgroundColor: backgroundColor ?? Colors.white,
+      backgroundColor: backgroundColor ?? theme.popover,
     );
   }
 }

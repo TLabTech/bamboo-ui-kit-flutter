@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TTabs extends StatefulWidget {
   final TabController controller;
@@ -46,10 +46,11 @@ class _TTabsState extends State<TTabs> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Container(
       padding: EdgeInsets.all(4.0),
       decoration: BoxDecoration(
-        color: widget.backgroundColor ?? HexColor(gray050),
+        color: widget.backgroundColor ?? theme.accent,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -73,8 +74,8 @@ class _TTabsState extends State<TTabs> {
                 ),
                 decoration: BoxDecoration(
                   color: isSelected
-                      ? widget.activeColor ?? Colors.white
-                      : widget.inactiveColor ?? HexColor(gray050),
+                      ? widget.activeColor ?? theme.primary
+                      : widget.inactiveColor ?? theme.accent,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Center(
@@ -82,8 +83,8 @@ class _TTabsState extends State<TTabs> {
                     widget.tabs[index],
                     style: TFontRegular.subHeadline(context).copyWith(
                       color: isSelected
-                          ? HexColor(gray900)
-                          : HexColor(gray500),
+                          ? theme.primaryForeground
+                          : theme.mutedForeground,
                     ),
                     textAlign: TextAlign.center,
                   ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bamboo_ui_kit/gen/assets.gen.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../fondation/hex_color.dart';
 
 enum HeaderType { defaultType, nested, homepage, search, brand }
 
@@ -142,15 +142,16 @@ class _THeaderState extends State<THeader> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return AppBar(
       toolbarHeight: 88.0,
       automaticallyImplyLeading: false,
-      backgroundColor: widget.backgroundColor ?? Colors.white,
+      backgroundColor: widget.backgroundColor ?? theme.background,
       surfaceTintColor: Colors.transparent,
       titleSpacing: 0,
       centerTitle: widget.enableCenterTitle,
-      iconTheme: IconThemeData(color: HexColor(gray900)),
-      elevation: 0,
+      iconTheme: IconThemeData(color: theme.foreground),
+      elevation: 1,
       leading: widget.isBackButtonEnabled
           ? (widget.prefixAction ??
               GestureDetector(
@@ -160,33 +161,41 @@ class _THeaderState extends State<THeader> {
                   child: SvgPicture.asset(
                     Assets.svg.chevronLeft,
                     colorFilter: ColorFilter.mode(
-                      widget.iconColor ?? HexColor(gray900),
+                      widget.iconColor ?? theme.foreground,
                       BlendMode.srcIn,
                     ),
                   ),
                 ),
               ))
           : null,
-      title: _buildHeaderContent(),
+      title: _buildHeaderContent(theme),
       actions: widget.suffixAction,
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(1.0),
+        child: Container(
+          width: double.infinity,
+          color: theme.accent,
+          height: 1.0,
+        ),
+      ),
     );
   }
 
-  Widget _buildHeaderContent() {
+  Widget _buildHeaderContent(TTheme theme) {
     switch (widget.headerType) {
       case HeaderType.defaultType:
       case HeaderType.nested:
-        return _buildDefaultOrNestedHeader();
+        return _buildDefaultOrNestedHeader(theme);
       case HeaderType.homepage:
-        return _buildHomepageHeader();
+        return _buildHomepageHeader(theme);
       case HeaderType.search:
-        return _buildSearchHeader();
+        return _buildSearchHeader(theme);
       case HeaderType.brand:
         return _buildBrandHeader();
     }
   }
 
-  Widget _buildDefaultOrNestedHeader() {
+  Widget _buildDefaultOrNestedHeader(TTheme theme) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Text(
@@ -197,14 +206,14 @@ class _THeaderState extends State<THeader> {
     );
   }
 
-  Widget _buildHomepageHeader() {
+  Widget _buildHomepageHeader(TTheme theme) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
           if (widget.prefixAction != null) widget.prefixAction!,
           const SizedBox(width: 14),
-          Expanded(
+          Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -212,7 +221,7 @@ class _THeaderState extends State<THeader> {
                   widget.title,
                   style: widget.titleStyle ??
                       TFontRegular.title3(context)
-                          .copyWith(color: HexColor(gray900)),
+                          .copyWith(color: theme.foreground),
                   textAlign: TextAlign.center,
                 ),
                 if (widget.subtitle != null)
@@ -220,7 +229,7 @@ class _THeaderState extends State<THeader> {
                     widget.subtitle!,
                     style: widget.subtitleStyle ??
                         TFontRegular.caption2(context)
-                            .copyWith(color: HexColor(gray500)),
+                            .copyWith(color: theme.mutedForeground),
                     textAlign: TextAlign.center,
                   ),
               ],
@@ -231,16 +240,16 @@ class _THeaderState extends State<THeader> {
     );
   }
 
-  Widget _buildSearchHeader() {
+  Widget _buildSearchHeader(TTheme theme) {
     return Padding(
       padding: EdgeInsets.only(left: 8.0, right: 16.0),
       child: Row(
         children: [
-          Expanded(
+          Flexible(
             child: Container(
               padding: const EdgeInsets.only(left: 12.0),
               decoration: BoxDecoration(
-                color: HexColor(gray300).withValues(alpha: 0.2),
+                color: theme.accent,
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Row(
@@ -253,7 +262,7 @@ class _THeaderState extends State<THeader> {
                       decoration: InputDecoration(
                         hintText: widget.hintText,
                         hintStyle: TFontRegular.caption1(context)
-                            .copyWith(color: HexColor(gray500)),
+                            .copyWith(color: theme.mutedForeground),
                         border: InputBorder.none,
                       ),
                       onChanged: (value) {

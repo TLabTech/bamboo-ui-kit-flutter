@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class FloatingCircularTextNavbar extends StatefulWidget {
@@ -90,11 +91,12 @@ class _FloatingCircularTextNavbarState extends State<FloatingCircularTextNavbar>
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Container(
       margin: EdgeInsets.only(top: 8.0, bottom: 16.0),
       padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
       decoration: BoxDecoration(
-        color: widget.backgroundColor,
+        color: widget.backgroundColor ?? theme.popover,
         borderRadius: BorderRadius.circular(40),
         boxShadow: [
           TShadow.shadowS(), // Shadow
@@ -144,7 +146,7 @@ class _FloatingCircularTextNavbarState extends State<FloatingCircularTextNavbar>
                             style: TFontRegular.caption1(context).copyWith(
                               color: isActive
                                   ? widget.navBarDecoration.color
-                                  : Colors.grey.withValues(alpha: 0.6),
+                                  : theme.mutedForeground,
                             ),
                           ),
                         ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/hex_color.dart';
-import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TStepper extends StatelessWidget {
   final int currentStep;
@@ -18,6 +18,7 @@ class TStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Column(
       spacing: 8,
       children: [
@@ -29,14 +30,14 @@ class TStepper extends StatelessWidget {
                 TextSpan(
                   text: "Step $currentStep",
                   style: TFontRegular.caption2(context)
-                      .copyWith(color: activeColor ?? HexColor(primary500)),
+                      .copyWith(color: activeColor ?? theme.primary),
                 ),
                 TextSpan(
                   text: " of $totalSteps",
                   style: TFontRegular.caption2(context).copyWith(
                       color: currentStep == totalSteps
-                          ? activeColor ?? HexColor(primary500)
-                          : inactiveColor ?? HexColor(gray500)),
+                          ? activeColor ?? theme.primary
+                          : inactiveColor ?? theme.foreground),
                 ),
               ],
             ),
@@ -52,8 +53,8 @@ class TStepper extends StatelessWidget {
                   height: 4,
                   decoration: BoxDecoration(
                     color: isActive
-                        ? activeColor ?? HexColor(primary500)
-                        : inactiveColor ?? HexColor(gray300),
+                        ? activeColor ?? theme.primary
+                        : inactiveColor ?? theme.border,
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),

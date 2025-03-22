@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class CircularNavbar extends StatefulWidget {
@@ -69,11 +71,12 @@ class _CircularNavbarState extends State<CircularNavbar>
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         AnimatedContainer(
-          color: widget.backgroundColor ?? Colors.white,
+          color: widget.backgroundColor ?? theme.popover,
           padding: EdgeInsets.symmetric(vertical: 8.0),
           duration: Duration(milliseconds: 50),
           child: Row(

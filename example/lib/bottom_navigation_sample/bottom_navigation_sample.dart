@@ -130,24 +130,28 @@ class _BottomNavigationSampleState extends State<BottomNavigationSample> {
         navBarBuilder: (config) {
           switch (widget.navbarStyle) {
             case NavbarStyle.fixed3:
-              return TNavbarStyle.fixed3(config, Colors.white);
+              return TNavbarStyle.fixed3(context, config, Colors.white);
             case NavbarStyle.fixed4:
-              return TNavbarStyle.fixed4(config, Colors.white);
+              return TNavbarStyle.fixed4(context, config, Colors.white);
             case NavbarStyle.fixed5:
-              return TNavbarStyle.fixed5(config, Colors.green, Colors.white);
+              return TNavbarStyle.fixed5(
+                  context, config, Colors.green, Colors.white);
             case NavbarStyle.floating3:
-              return TNavbarStyle.floating3(config, Colors.green, Colors.white);
+              return TNavbarStyle.floating3(
+                  context, config, Colors.green, Colors.white);
             case NavbarStyle.floating4:
               return TNavbarStyle.floating4(
-                  config, Color(0xff00DE9C), Colors.white);
+                  context, config, Color(0xff00DE9C), Colors.white);
             case NavbarStyle.floating5:
               return TNavbarStyle.floating5(
+                context,
                 config,
                 Color(0xff00DE9C),
-                Colors.white,
+                null,
               );
             case NavbarStyle.style3:
               return TNavbarStyle.style3(
+                context,
                 config,
                 Colors.green,
               );

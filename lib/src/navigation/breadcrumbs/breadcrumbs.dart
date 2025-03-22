@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum BreadcrumbDirection { left, right }
 
@@ -27,6 +28,8 @@ class TBreadcrumbs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.watch<TThemeManager>().state;
+
     if (items.isEmpty) return const SizedBox();
 
     List<Widget> displayedItems = [];
@@ -36,7 +39,7 @@ class TBreadcrumbs extends StatelessWidget {
     } else {
       displayedItems.add(_buildSingleItem(context, items.first));
       displayedItems
-          .add(const Text("...", style: TextStyle(color: Colors.grey)));
+          .add(Text("...", style: TextStyle(color: theme.foreground)));
       displayedItems.addAll(
         _buildItems(
             context, items.sublist(items.length - (maxVisibleItems - 2))),
@@ -57,7 +60,7 @@ class TBreadcrumbs extends StatelessWidget {
             ? MainAxisAlignment.start
             : MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: _addSeparators(displayedItems),
+        children: _addSeparators(theme, displayedItems),
       ),
     );
   }
@@ -71,6 +74,7 @@ class TBreadcrumbs extends StatelessWidget {
 
   Widget _buildSingleItem(BuildContext context, TBreadcrumbItem item,
       {bool isActive = false}) {
+    final theme = context.watch<TThemeManager>().state;
     return GestureDetector(
       onTap: item.onTap,
       child: Row(
@@ -84,7 +88,7 @@ class TBreadcrumbs extends StatelessWidget {
             Text(
               item.label!,
               style: TFontRegular.caption2(context).copyWith(
-                color: isActive ? HexColor(gray900) : HexColor(gray500),
+                color: isActive ? theme.foreground : theme.mutedForeground,
               ),
             ),
         ],
@@ -92,12 +96,22 @@ class TBreadcrumbs extends StatelessWidget {
     );
   }
 
-  List<Widget> _addSeparators(List<Widget> items) {
+  List<Widget> _addSeparators(TTheme theme, List<Widget> items) {
     List<Widget> result = [];
     for (int i = 0; i < items.length; i++) {
       result.add(items[i]);
       if (i < items.length - 1) {
-        result.add(separator);
+        // change icon color
+        // bool isActive = i == items.length - 2;
+        result.add(
+          separator is Icon
+              ? Icon(
+                  (separator as Icon).icon,
+                  size: (separator as Icon).size,
+                  color: theme.mutedForeground,
+                )
+              : separator,
+        );
       }
     }
     return result;
