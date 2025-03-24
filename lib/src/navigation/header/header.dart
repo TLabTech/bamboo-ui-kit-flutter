@@ -18,6 +18,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   final List<Widget>? suffixAction;
   final Color? backgroundColor;
   final Color? iconColor;
+  final Color? bottomColor;
   final HeaderType headerType;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
@@ -31,6 +32,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.suffixAction,
     this.backgroundColor,
     this.iconColor,
+    this.bottomColor,
   })  : headerType = HeaderType.defaultType,
         isBackButtonEnabled = false,
         subtitle = null,
@@ -50,6 +52,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.prefixAction,
     this.iconColor,
+    this.bottomColor,
   })  : headerType = HeaderType.nested,
         subtitle = null,
         subtitleStyle = null,
@@ -69,6 +72,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.suffixAction,
     this.backgroundColor,
     this.prefixAction,
+    this.bottomColor,
   })  : headerType = HeaderType.homepage,
         isBackButtonEnabled = false,
         hintText = null,
@@ -85,6 +89,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.onChanged,
     this.prefixAction,
     this.iconColor,
+    this.bottomColor,
   })  : headerType = HeaderType.search,
         title = '',
         titleStyle = null,
@@ -100,6 +105,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     required this.icon,
     this.suffixAction,
     this.backgroundColor,
+    this.bottomColor,
   })  : headerType = HeaderType.brand,
         title = '',
         titleStyle = null,
@@ -174,7 +180,7 @@ class _THeaderState extends State<THeader> {
         preferredSize: const Size.fromHeight(1.0),
         child: Container(
           width: double.infinity,
-          color: theme.accent,
+          color: widget.bottomColor ?? theme.accent,
           height: 1.0,
         ),
       ),
