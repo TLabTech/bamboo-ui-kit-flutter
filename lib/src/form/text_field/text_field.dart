@@ -16,6 +16,7 @@ class TTextField extends StatefulWidget {
   final Widget? leading;
   final ValueChanged<String> onChange;
   final bool? enabled;
+  final bool readOnly;
   final Color? borderColor;
   final Color? focusedBorderColor;
   final FocusNode? focusNode;
@@ -47,6 +48,7 @@ class TTextField extends StatefulWidget {
     this.textInputType = TextInputType.text,
     this.leading,
     this.enabled,
+    this.readOnly = false,
     this.borderColor,
     this.focusedBorderColor,
     this.actionWidget,
@@ -76,6 +78,7 @@ class TTextField extends StatefulWidget {
     this.textInputType = TextInputType.text,
     this.leading,
     this.enabled,
+    this.readOnly = false,
     this.borderColor,
     this.focusedBorderColor,
     this.actionWidget,
@@ -105,6 +108,7 @@ class TTextField extends StatefulWidget {
     this.textInputType = TextInputType.text,
     this.leading,
     this.enabled,
+    this.readOnly = false,
     this.borderColor,
     this.focusedBorderColor,
     this.actionWidget,
@@ -132,6 +136,7 @@ class TTextField extends StatefulWidget {
     this.maxLines = 1,
     this.minLines = 1,
     this.enabled,
+    this.readOnly = false,
     this.borderColor,
     this.focusedBorderColor,
     this.actionWidget,
@@ -227,6 +232,7 @@ class TTextFieldState extends State<TTextField> {
                   keyboardType: widget.textInputType,
                   inputFormatters: widget.inputFormatter,
                   style: TFontRegular.body(context),
+                  readOnly: widget.readOnly,
                   controller: widget.controller,
                   obscureText: _obscureText,
                   decoration: InputDecoration(
