@@ -241,6 +241,7 @@ class _THeaderState extends State<THeader> {
   }
 
   Widget _buildSearchHeader(TTheme theme) {
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
     return Padding(
       padding: EdgeInsets.only(left: 8.0, right: 16.0),
       child: Row(
@@ -254,7 +255,13 @@ class _THeaderState extends State<THeader> {
               ),
               child: Row(
                 children: [
-                  SvgPicture.asset(Assets.svg.magnifyingGlass),
+                  SvgPicture.asset(
+                    Assets.svg.magnifyingGlass,
+                    colorFilter: ColorFilter.mode(
+                      isDarkMode ? Colors.white : Colors.black,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                   const SizedBox(width: 8.0),
                   Expanded(
                     child: TextField(
@@ -275,7 +282,13 @@ class _THeaderState extends State<THeader> {
                   ),
                   if (_isTextNotEmpty)
                     IconButton(
-                      icon: SvgPicture.asset(Assets.svg.xMark),
+                      icon: SvgPicture.asset(
+                        Assets.svg.xMark,
+                        colorFilter: ColorFilter.mode(
+                          isDarkMode ? Colors.white : Colors.black,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                       onPressed: () {
                         _controller.clear();
                       },

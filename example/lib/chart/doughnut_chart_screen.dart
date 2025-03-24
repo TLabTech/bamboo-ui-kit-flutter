@@ -1,6 +1,7 @@
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DoughnutChartScreen extends StatefulWidget {
@@ -13,8 +14,11 @@ class DoughnutChartScreen extends StatefulWidget {
 class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return Scaffold(
-      backgroundColor: HexColor(gray050),
+      backgroundColor: theme.background,
       appBar: THeader.nested(
         title: 'Donut',
         enableCenterTitle: true,
@@ -46,12 +50,16 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               ),
               TAccordion(
                 title: "Donut 2 Data",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TDoughnutChart(
                   title: "Donut Chart",
                   data: [
@@ -71,12 +79,16 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               ),
               TAccordion(
                 title: "Donut 3 Data",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TDoughnutChart(
                   title: "Donut Chart",
                   data: [
@@ -101,12 +113,16 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               ),
               TAccordion(
                 title: "Donut 4 Data",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TDoughnutChart(
                   title: "Donut Chart",
                   data: [
@@ -136,12 +152,16 @@ class _DoughnutChartScreenState extends State<DoughnutChartScreen> {
               ),
               TAccordion(
                 title: "Donut 5 Data",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TDoughnutChart(
                   title: "Donut Chart",
                   data: [

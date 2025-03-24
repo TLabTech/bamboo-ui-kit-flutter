@@ -1,6 +1,7 @@
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ButtonScreen extends StatefulWidget {
@@ -13,8 +14,11 @@ class ButtonScreen extends StatefulWidget {
 class _ButtonScreenState extends State<ButtonScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return Scaffold(
-      backgroundColor: HexColor(gray050),
+      backgroundColor: theme.background,
       appBar: THeader.nested(
         title: 'Button',
         enableCenterTitle: true,
@@ -47,12 +51,16 @@ class _ButtonScreenState extends State<ButtonScreen> {
               ),
               TAccordion(
                 title: 'Button General',
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
@@ -116,12 +124,16 @@ class _ButtonScreenState extends State<ButtonScreen> {
               ),
               TAccordion(
                 title: 'Button With Left Icon',
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
@@ -156,7 +168,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                           prefixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
-                              Colors.black,
+                              isDarkMode ? Colors.white : Colors.black,
                               BlendMode.srcIn,
                             ),
                           ),
@@ -229,12 +241,16 @@ class _ButtonScreenState extends State<ButtonScreen> {
               ),
               TAccordion(
                 title: 'Button With Right Icon',
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
@@ -269,7 +285,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                           suffixIcon: SvgPicture.asset(
                             Assets.svg.plus,
                             colorFilter: ColorFilter.mode(
-                              Colors.black,
+                              isDarkMode ? Colors.white : Colors.black,
                               BlendMode.srcIn,
                             ),
                           ),
@@ -344,7 +360,13 @@ class _ButtonScreenState extends State<ButtonScreen> {
                 title: "Button Only Icon",
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
@@ -443,7 +465,13 @@ class _ButtonScreenState extends State<ButtonScreen> {
                 title: "Button with Button Spinner",
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(

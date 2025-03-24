@@ -1,6 +1,7 @@
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HeaderScreen extends StatefulWidget {
@@ -13,8 +14,11 @@ class HeaderScreen extends StatefulWidget {
 class _HeaderScreenState extends State<HeaderScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return Scaffold(
-      backgroundColor: HexColor(gray050),
+      backgroundColor: theme.background,
       appBar: THeader.nested(
         title: 'Header',
         enableCenterTitle: true,
@@ -46,12 +50,16 @@ class _HeaderScreenState extends State<HeaderScreen> {
               ),
               TAccordion(
                 title: "Tittle",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -71,6 +79,10 @@ class _HeaderScreenState extends State<HeaderScreen> {
                             Assets.svg.magnifyingGlass,
                             width: 18,
                             height: 18,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
                           ),
                           onPress: () {},
                         ),
@@ -85,12 +97,16 @@ class _HeaderScreenState extends State<HeaderScreen> {
               ),
               TAccordion(
                 title: "Homepage",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -123,12 +139,16 @@ class _HeaderScreenState extends State<HeaderScreen> {
               ),
               TAccordion(
                 title: "Nested",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -155,12 +175,16 @@ class _HeaderScreenState extends State<HeaderScreen> {
               ),
               TAccordion(
                 title: "Search",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -174,18 +198,23 @@ class _HeaderScreenState extends State<HeaderScreen> {
                     height: 80,
                     child: THeader.search(
                       hintText: 'Placeholder',
+                      iconColor: isDarkMode ? Colors.white : Colors.black,
                     ),
                   ),
                 ),
               ),
               TAccordion(
                 title: "Brand",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -199,14 +228,13 @@ class _HeaderScreenState extends State<HeaderScreen> {
                     height: 80,
                     child: THeader.brand(
                       icon: SvgPicture.asset(Assets.svg.logo),
-                      backgroundColor: Colors.white,
                       suffixAction: [
                         THeaderAction(
                           icon: TAvatar(
                             imageUrl: "https://randomuser.me/api/portraits/women/2.jpg",
                             shape: AvatarShape.circle,
                             size: 40,
-                            backgroundColor: Colors.grey.shade100,
+                            backgroundColor: theme.accent,
                           ),
                           onPress: () {},
                         ),
@@ -214,10 +242,11 @@ class _HeaderScreenState extends State<HeaderScreen> {
                           icon: TAvatar(
                             icon: Icon(
                               Icons.more_horiz_rounded,
+                              color: theme.foreground,
                             ),
                             shape: AvatarShape.circle,
                             size: 40,
-                            backgroundColor: Colors.grey.shade100,
+                            backgroundColor: theme.accent,
                           ),
                           onPress: () {},
                         ),

@@ -1,6 +1,7 @@
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TileScreen extends StatefulWidget {
@@ -15,9 +16,15 @@ class _TileScreenState extends State<TileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return Scaffold(
-      backgroundColor: HexColor(gray050),
-      appBar: THeader.nested(title: 'Tile', enableCenterTitle: true,),
+      backgroundColor: theme.background,
+      appBar: THeader.nested(
+        title: 'Tile',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -45,12 +52,16 @@ class _TileScreenState extends State<TileScreen> {
               ),
               TAccordion(
                 title: "UnTappable",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -62,19 +73,35 @@ class _TileScreenState extends State<TileScreen> {
                   ),
                   child: TTile<String>(
                     title: "Personalization",
-                    prefixIcon: SvgPicture.asset(Assets.svg.user),
-                    suffixIcon: SvgPicture.asset(Assets.svg.chevronRight),
+                    prefixIcon: SvgPicture.asset(
+                      Assets.svg.user,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    suffixIcon: SvgPicture.asset(
+                      Assets.svg.chevronRight,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                   ),
                 ),
               ),
               TAccordion(
                 title: "Disabled",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -106,12 +133,16 @@ class _TileScreenState extends State<TileScreen> {
               ),
               TAccordion(
                 title: "With Subtitle",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -126,21 +157,33 @@ class _TileScreenState extends State<TileScreen> {
                     subtitle: "Banner, sound, badges",
                     prefixIcon: SvgPicture.asset(
                       Assets.svg.bell,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
                     ),
                     suffixIcon: SvgPicture.asset(
                       Assets.svg.chevronRight,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                 ),
               ),
               TAccordion(
                 title: "With Details",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -155,21 +198,33 @@ class _TileScreenState extends State<TileScreen> {
                     detail: "Forus labs (5G)",
                     prefixIcon: SvgPicture.asset(
                       Assets.svg.wifi,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
                     ),
                     suffixIcon: SvgPicture.asset(
                       Assets.svg.chevronRight,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                 ),
               ),
               TAccordion(
                 title: "With Radio",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -183,6 +238,10 @@ class _TileScreenState extends State<TileScreen> {
                     title: "Wifi",
                     prefixIcon: SvgPicture.asset(
                       Assets.svg.wifi,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
                     ),
                     value: "wifi",
                     groupValue: wifiSelected,

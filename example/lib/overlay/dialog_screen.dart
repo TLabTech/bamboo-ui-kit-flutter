@@ -1,6 +1,7 @@
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DialogScreen extends StatefulWidget {
@@ -13,8 +14,11 @@ class DialogScreen extends StatefulWidget {
 class _DialogScreenState extends State<DialogScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return Scaffold(
-      backgroundColor: HexColor(gray050),
+      backgroundColor: theme.background,
       appBar: THeader.nested(title: 'Dialog', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -43,12 +47,16 @@ class _DialogScreenState extends State<DialogScreen> {
               ),
               TAccordion(
                 title: "Horizontal",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   padding: EdgeInsets.all(24),
                   decoration: BoxDecoration(
@@ -83,12 +91,16 @@ class _DialogScreenState extends State<DialogScreen> {
               ),
               TAccordion(
                 title: "Vertical",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),

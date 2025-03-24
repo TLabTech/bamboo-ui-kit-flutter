@@ -6,12 +6,12 @@ class TThemeManager extends Cubit<TTheme> {
   final TTheme darkTheme;
 
   TThemeManager({TTheme? lightTheme, TTheme? darkTheme})
-      : lightTheme = lightTheme ?? TTheme.light(), // Use fallback if not provided
-        darkTheme = darkTheme ?? TTheme.dark(), // Use fallback if not provided
+      : lightTheme = lightTheme ?? TTheme.light(),
+        darkTheme = darkTheme ?? TTheme.dark(),
         super(lightTheme ?? TTheme.light());
 
-  void toggleTheme() {
-    emit(state == lightTheme ? darkTheme : lightTheme);
+  void toggleTheme(bool isDark) {
+    emit(isDark ? darkTheme : lightTheme);
   }
 
   /// Set a specific theme manually

@@ -1,6 +1,7 @@
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
@@ -60,8 +61,11 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return Scaffold(
-      backgroundColor: HexColor(gray050),
+      backgroundColor: theme.background,
       appBar: THeader.nested(
         title: 'Bottom Navigation',
         enableCenterTitle: true,
@@ -93,12 +97,16 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "Icon Fixed",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -112,7 +120,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                     padding: EdgeInsets.only(top: 20, bottom: 8),
                     margin: EdgeInsets.symmetric(horizontal: 4),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: theme.popover,
                     ),
                     child: Column(
                       children: [
@@ -124,7 +132,9 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                             _buildNavIconFixed(2),
                           ],
                         ),
-                        SizedBox(height: 25,),
+                        SizedBox(
+                          height: 25,
+                        ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: 3,
@@ -140,12 +150,16 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "With Text Fixed",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -159,7 +173,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                     padding: EdgeInsets.only(top: 20, bottom: 8),
                     margin: EdgeInsets.symmetric(horizontal: 4),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: theme.popover,
                     ),
                     child: Column(
                       children: [
@@ -171,7 +185,9 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                             _buildNavTextFixed(2),
                           ],
                         ),
-                        SizedBox(height: 25,),
+                        SizedBox(
+                          height: 25,
+                        ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: 3,
@@ -187,12 +203,16 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "Circle Fixed",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -206,7 +226,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                     padding: EdgeInsets.only(top: 20, bottom: 8),
                     margin: EdgeInsets.symmetric(horizontal: 4),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: theme.popover,
                     ),
                     child: Column(
                       children: [
@@ -218,7 +238,9 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                             _buildNavCircleFixed(2),
                           ],
                         ),
-                        SizedBox(height: 25,),
+                        SizedBox(
+                          height: 25,
+                        ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: 3,
@@ -234,12 +256,16 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "Icon Floating",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -260,7 +286,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                         Container(
                           padding: const EdgeInsets.symmetric(vertical: 24),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: theme.popover,
                             borderRadius: BorderRadius.circular(42),
                           ),
                           child: Row(
@@ -272,7 +298,9 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 25,),
+                        SizedBox(
+                          height: 25,
+                        ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: 3,
@@ -288,12 +316,16 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "With Text Floating",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -314,7 +346,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                         Container(
                           padding: const EdgeInsets.symmetric(vertical: 24),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: theme.popover,
                             borderRadius: BorderRadius.circular(42),
                           ),
                           child: Row(
@@ -326,7 +358,9 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 25,),
+                        SizedBox(
+                          height: 25,
+                        ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: 3,
@@ -342,12 +376,16 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               ),
               TAccordion(
                 title: "Circle Floating",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -368,7 +406,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                           margin: EdgeInsets.symmetric(horizontal: 55),
                           padding: const EdgeInsets.symmetric(vertical: 24),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: theme.popover,
                             borderRadius: BorderRadius.circular(55),
                           ),
                           child: Row(
@@ -380,7 +418,9 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 25,),
+                        SizedBox(
+                          height: 25,
+                        ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: 3,
@@ -474,7 +514,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
       ),
     );
   }
-  
+
   Widget _buildNavCircleFixed(int index) {
     String assets = Assets.svg.home;
     switch (index) {
@@ -605,7 +645,9 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         child: SvgPicture.asset(
           assets,
           colorFilter: ColorFilter.mode(
-            _selectedCircleFloatingIndex == index ? Colors.white : inactiveColor,
+            _selectedCircleFloatingIndex == index
+                ? Colors.white
+                : inactiveColor,
             BlendMode.srcIn,
           ),
         ),

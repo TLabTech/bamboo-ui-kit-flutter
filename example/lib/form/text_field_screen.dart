@@ -1,6 +1,7 @@
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TextFieldScreen extends StatefulWidget {
@@ -13,7 +14,8 @@ class TextFieldScreen extends StatefulWidget {
 class _TextFieldScreenState extends State<TextFieldScreen> {
   late final TextEditingController emailController = TextEditingController();
   late final TextEditingController passwordController = TextEditingController();
-  late final TextEditingController descriptionController = TextEditingController();
+  late final TextEditingController descriptionController =
+      TextEditingController();
 
   String? selectedItem;
   late List<Map<String, String>> items;
@@ -40,9 +42,15 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return Scaffold(
-      backgroundColor: HexColor(gray050),
-      appBar: THeader.nested(title: 'Text Field', enableCenterTitle: true,),
+      backgroundColor: theme.background,
+      appBar: THeader.nested(
+        title: 'Text Field',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -70,12 +78,16 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               ),
               TAccordion(
                 title: "Left Icon",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -94,8 +106,10 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                           children: [
                             TextSpan(
                               text: "Email",
-                              style: TFontBold.body(context)
-                                  .copyWith(color: HexColor(gray900)),
+                              style: isDarkMode
+                                  ? TFontBold.body(context)
+                                  : TFontBold.body(context)
+                                      .copyWith(color: HexColor(gray900)),
                             ),
                             TextSpan(
                               text: " (Optional)",
@@ -116,12 +130,16 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               ),
               TAccordion(
                 title: "Right Icon",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -137,8 +155,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                     children: [
                       Text(
                         'Province',
-                        style: TFontBold.body(context)
-                            .copyWith(color: HexColor(gray900)),
+                        style: TFontBold.body(context),
                       ),
                       TDropdown<Map<String, String>>(
                         hintText: "Please select",
@@ -161,12 +178,16 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               ),
               TAccordion(
                 title: "Password",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -181,8 +202,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                     children: [
                       Text(
                         'Password',
-                        style: TFontBold.body(context)
-                            .copyWith(color: HexColor(gray900)),
+                        style: TFontBold.body(context),
                       ),
                       TTextField.password(
                         hintText: "write your password",
@@ -195,12 +215,16 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
               ),
               TAccordion(
                 title: "Multiline",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -219,8 +243,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                           children: [
                             TextSpan(
                               text: "Description",
-                              style: TFontBold.body(context)
-                                  .copyWith(color: HexColor(gray900)),
+                              style: TFontBold.body(context),
                             ),
                             TextSpan(
                               text: " (Optional)",

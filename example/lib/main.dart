@@ -83,6 +83,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.white,
@@ -91,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: HexColor(gray050),
+          backgroundColor: theme.background,
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(12.0),
@@ -99,41 +102,62 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          'Bamboo Design System - Mobile',
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: TFontRegular.title1(context),overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     spacing: 8,
                     children: [
-                      Text(
-                        'Bamboo UI Kit Mobile',
-                        style: TFontRegular.title1(context),
+                      TBadge(
+                        label: 'Version 1.0',
+                        backgroundColor: HexColor(primary050),
+                        textColor: HexColor(primary500),
                       ),
                       GestureDetector(
                         onTap: () {
-                          context.read<TThemeManager>().toggleTheme();
+                          final isDarkMode = context.read<TThemeManager>().state == context.read<TThemeManager>().darkTheme;
+                          context.read<TThemeManager>().toggleTheme(!isDarkMode);
                         },
                         child: BlocBuilder<TThemeManager, TTheme>(
                           builder: (context, theme) {
+                            final themeManager = context.read<TThemeManager>();
+                            final isLightMode = theme == themeManager.lightTheme;
+                            print('Theme is light mode: $isLightMode');
+
                             return SvgPicture.asset(
-                              theme == context.read<TThemeManager>().lightTheme
-                                  ? Assets.svg.moon
-                                  : Assets.svg.sun,
+                              isLightMode ? Assets.svg.moon : Assets.svg.sun,
+                              colorFilter: ColorFilter.mode(
+                                isLightMode ? Colors.black : Colors.white,
+                                BlendMode.srcIn,
+                              ),
                             );
                           },
                         ),
                       ),
                     ],
                   ),
-                  TBadge(
-                    label: 'Version 1.0',
-                    backgroundColor: HexColor(primary050),
-                    textColor: HexColor(primary500),
-                  ),
                   TAccordion(
                     title: "Form",
-                    titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(gray900),
-                    ),
+                    titleStyle: TFontBold.headline(context),
                     showDivider: false,
                     initiallyExpanded: true,
-                    trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                    trailing: SvgPicture.asset(
+                      Assets.svg.chevronDown,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -143,11 +167,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         tiles: [
                           TTile(
                             title: "Button",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -159,11 +185,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Calendar",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -175,11 +203,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Checkbox",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -191,11 +221,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Checkbox Group",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -208,11 +240,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Radio",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -225,11 +259,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Radio Group",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -242,11 +278,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Slider",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -259,11 +297,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Switch",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -276,11 +316,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Text Field",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -297,12 +339,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TAccordion(
                     title: "Data Presentation",
-                    titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(gray900),
-                    ),
+                    titleStyle: TFontBold.headline(context),
                     showDivider: false,
                     initiallyExpanded: true,
-                    trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                    trailing: SvgPicture.asset(
+                      Assets.svg.chevronDown,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -312,11 +358,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         tiles: [
                           TTile(
                             title: "Accordion",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -328,11 +376,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Avatar",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -344,11 +394,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Badge",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -364,12 +416,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TAccordion(
                     title: "Tile",
-                    titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(gray900),
-                    ),
+                    titleStyle: TFontBold.headline(context),
                     showDivider: false,
                     initiallyExpanded: true,
-                    trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                    trailing: SvgPicture.asset(
+                      Assets.svg.chevronDown,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -379,11 +435,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         tiles: [
                           TTile(
                             title: "Tile",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -395,11 +453,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Tile Group",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -415,12 +475,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TAccordion(
                     title: "Navigation",
-                    titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(gray900),
-                    ),
+                    titleStyle: TFontBold.headline(context),
                     showDivider: false,
                     initiallyExpanded: true,
-                    trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                    trailing: SvgPicture.asset(
+                      Assets.svg.chevronDown,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -430,11 +494,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         tiles: [
                           TTile(
                             title: "Bottom Navigation",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -447,11 +513,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Breadcrumbs",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -463,11 +531,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Header",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -479,11 +549,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Home Indicator",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -496,11 +568,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Keyboard",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -512,11 +586,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Status Bar",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -528,11 +604,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Stepper",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -544,11 +622,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Tab",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -560,11 +640,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Tittle Section",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -581,12 +663,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TAccordion(
                     title: "Feedback",
-                    titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(gray900),
-                    ),
+                    titleStyle: TFontBold.headline(context),
                     showDivider: false,
                     initiallyExpanded: true,
-                    trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                    trailing: SvgPicture.asset(
+                      Assets.svg.chevronDown,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -596,11 +682,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         tiles: [
                           TTile(
                             title: "Alert",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -612,11 +700,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Progress",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -632,12 +722,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TAccordion(
                     title: "Overlay",
-                    titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(gray900),
-                    ),
+                    titleStyle: TFontBold.headline(context),
                     showDivider: false,
                     initiallyExpanded: true,
-                    trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                    trailing: SvgPicture.asset(
+                      Assets.svg.chevronDown,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -647,11 +741,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         tiles: [
                           TTile(
                             title: "Dialog",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -667,12 +763,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TAccordion(
                     title: "Chart",
-                    titleStyle: TFontBold.headline(context).copyWith(
-                      color: HexColor(gray900),
-                    ),
+                    titleStyle: TFontBold.headline(context),
                     showDivider: false,
                     initiallyExpanded: true,
-                    trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                    trailing: SvgPicture.asset(
+                      Assets.svg.chevronDown,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -682,11 +782,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         tiles: [
                           TTile(
                             title: "Bar",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -698,11 +800,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Line",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -714,11 +818,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Pie",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(
@@ -730,11 +836,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           TTile(
                             title: "Donut",
-                            titleStyle: TFontRegular.body(context).copyWith(
-                              color: HexColor(gray900),
-                            ),
+                            titleStyle: TFontRegular.body(context),
                             suffixIcon: SvgPicture.asset(
                               Assets.svg.chevronRight,
+                              colorFilter: ColorFilter.mode(
+                                isDarkMode ? Colors.white : Colors.black,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             onPress: () {
                               Navigator.push(

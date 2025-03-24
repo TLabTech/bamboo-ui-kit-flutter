@@ -1,6 +1,7 @@
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TileGroupScreen extends StatefulWidget {
@@ -13,8 +14,11 @@ class TileGroupScreen extends StatefulWidget {
 class _TileGroupScreenState extends State<TileGroupScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return Scaffold(
-      backgroundColor: HexColor(gray050),
+      backgroundColor: theme.background,
       appBar: THeader.nested(title: 'Tile Group', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -43,12 +47,16 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
               ),
               TAccordion(
                 title: "Full Divider",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -65,13 +73,13 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
                         title: "Profile",
                         subtitle: "Manage your profile",
                         detail: "Edit",
-                        prefixIcon: const Icon(
+                        prefixIcon: Icon(
                           Icons.person_outline,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
-                        suffixIcon: const Icon(
+                        suffixIcon: Icon(
                           Icons.chevron_right,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
                         onPress: () {
                           print('pressing profile');
@@ -81,13 +89,13 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
                         title: "Security",
                         subtitle: "Change password & security settings",
                         detail: "Update",
-                        prefixIcon: const Icon(
+                        prefixIcon: Icon(
                           Icons.lock_outline,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
-                        suffixIcon: const Icon(
+                        suffixIcon: Icon(
                           Icons.chevron_right,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
                         onPress: () {
                           print('pressing security');
@@ -97,13 +105,13 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
                         title: "Notifications",
                         subtitle: "Customize notification preferences",
                         detail: "Manage",
-                        prefixIcon: const Icon(
+                        prefixIcon: Icon(
                           Icons.notifications_outlined,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
-                        suffixIcon: const Icon(
+                        suffixIcon: Icon(
                           Icons.chevron_right,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
                       ),
                     ],
@@ -112,12 +120,16 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
               ),
               TAccordion(
                 title: "No Divider",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(24),
@@ -134,13 +146,13 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
                         title: "Profile",
                         subtitle: "Manage your profile",
                         detail: "Edit",
-                        prefixIcon: const Icon(
+                        prefixIcon: Icon(
                           Icons.person_outline,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
-                        suffixIcon: const Icon(
+                        suffixIcon: Icon(
                           Icons.chevron_right,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
                         onPress: () {
                           print('pressing profile');
@@ -150,13 +162,13 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
                         title: "Security",
                         subtitle: "Change password & security settings",
                         detail: "Update",
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
-                          color: Colors.black54,
+                        prefixIcon: Icon(
+                          Icons.person_outline,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
-                        suffixIcon: const Icon(
+                        suffixIcon: Icon(
                           Icons.chevron_right,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
                         onPress: () {
                           print('pressing security');
@@ -166,13 +178,13 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
                         title: "Notifications",
                         subtitle: "Customize notification preferences",
                         detail: "Manage",
-                        prefixIcon: const Icon(
+                        prefixIcon: Icon(
                           Icons.notifications_outlined,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
-                        suffixIcon: const Icon(
+                        suffixIcon: Icon(
                           Icons.chevron_right,
-                          color: Colors.black54,
+                          color: isDarkMode ? Colors.white : Colors.black54,
                         ),
                       ),
                     ],

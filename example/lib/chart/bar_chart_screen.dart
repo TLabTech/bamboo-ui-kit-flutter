@@ -1,6 +1,7 @@
 import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BarChartScreen extends StatefulWidget {
@@ -13,8 +14,11 @@ class BarChartScreen extends StatefulWidget {
 class _BarChartScreenState extends State<BarChartScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = context.read<TThemeManager>().state;
+    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+
     return Scaffold(
-      backgroundColor: HexColor(gray050),
+      backgroundColor: theme.background,
       appBar: THeader.nested(title: 'Bar', enableCenterTitle: true,),
       body: SingleChildScrollView(
         child: Padding(
@@ -43,12 +47,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 1 Data Horizontal",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TBarChart(
                   title: "Bar Chart",
                   direction: Axis.horizontal,
@@ -65,12 +73,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 2 Data Horizontal",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TGroupBarChart(
                   title: "Group bar",
                   direction: Axis.horizontal,
@@ -104,12 +116,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 3 Data Horizontal",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TGroupBarChart(
                   title: "Group bar",
                   direction: Axis.horizontal,
@@ -155,12 +171,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 4 Data Horizontal",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TGroupBarChart(
                   title: "Group bar",
                   direction: Axis.horizontal,
@@ -218,12 +238,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 5 Data Horizontal",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TGroupBarChart(
                   title: "Group bar",
                   direction: Axis.horizontal,
@@ -293,12 +317,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 1 Data Vertical",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TBarChart(
                   title: "Bar Chart",
                   direction: Axis.vertical,
@@ -315,12 +343,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 2 Data Vertical",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TGroupBarChart(
                   title: "Group bar",
                   direction: Axis.vertical,
@@ -354,12 +386,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 3 Data Vertical",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TGroupBarChart(
                   title: "Group bar",
                   direction: Axis.vertical,
@@ -405,12 +441,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 4 Data Vertical",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TGroupBarChart(
                   title: "Group bar",
                   direction: Axis.vertical,
@@ -468,12 +508,16 @@ class _BarChartScreenState extends State<BarChartScreen> {
               ),
               TAccordion(
                 title: "Bar 5 Data Vertical",
-                titleStyle: TFontBold.headline(context).copyWith(
-                  color: HexColor(gray900),
-                ),
+                titleStyle: TFontBold.headline(context),
                 showDivider: false,
                 initiallyExpanded: true,
-                trailing: SvgPicture.asset(Assets.svg.chevronDown),
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 child: TGroupBarChart(
                   title: "Group bar",
                   direction: Axis.vertical,
