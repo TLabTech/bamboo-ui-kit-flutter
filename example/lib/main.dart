@@ -92,773 +92,762 @@ class _MyHomePageState extends State<MyHomePage> {
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light,
       ),
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: theme.background,
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          'Bamboo Design System - Mobile',
-                          maxLines: 2,
-                          textAlign: TextAlign.center,
-                          style: TFontRegular.title1(context),overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 8,
-                    children: [
-                      TBadge(
-                        label: 'Version 1.0',
-                        backgroundColor: HexColor(primary050),
-                        textColor: HexColor(primary500),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          final isDarkMode = context.read<TThemeManager>().state == context.read<TThemeManager>().darkTheme;
-                          context.read<TThemeManager>().toggleTheme(!isDarkMode);
-                        },
-                        child: BlocBuilder<TThemeManager, TTheme>(
-                          builder: (context, theme) {
-                            final themeManager = context.read<TThemeManager>();
-                            final isLightMode = theme == themeManager.lightTheme;
-                            print('Theme is light mode: $isLightMode');
+      child: Scaffold(
+        backgroundColor: theme.background,
+        appBar: THeader(
+          title: 'Bamboo Design System - Mobile',
+          enableCenterTitle: true,
+          bottomColor: Colors.transparent,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0).copyWith(top: 0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 8,
+                  children: [
+                    TBadge(
+                      label: 'Version 1.0',
+                      backgroundColor: HexColor(primary050),
+                      textColor: HexColor(primary500),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        final isDarkMode = context.read<TThemeManager>().state == context.read<TThemeManager>().darkTheme;
+                        context.read<TThemeManager>().toggleTheme(!isDarkMode);
+                      },
+                      child: BlocBuilder<TThemeManager, TTheme>(
+                        builder: (context, theme) {
+                          final themeManager = context.read<TThemeManager>();
+                          final isLightMode = theme == themeManager.lightTheme;
+                          print('Theme is light mode: $isLightMode');
 
-                            return SvgPicture.asset(
-                              isLightMode ? Assets.svg.moon : Assets.svg.sun,
-                              colorFilter: ColorFilter.mode(
-                                isLightMode ? Colors.black : Colors.white,
-                                BlendMode.srcIn,
+                          return SvgPicture.asset(
+                            isLightMode ? Assets.svg.moon : Assets.svg.sun,
+                            colorFilter: ColorFilter.mode(
+                              isLightMode ? Colors.black : Colors.white,
+                              BlendMode.srcIn,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                TAccordion(
+                  title: "Form",
+                  titleStyle: TFontBold.headline(context),
+                  showDivider: false,
+                  initiallyExpanded: true,
+                  trailing: SvgPicture.asset(
+                    Assets.svg.chevronDown,
+                    colorFilter: ColorFilter.mode(
+                      isDarkMode ? Colors.white : Colors.black,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TGroupTile(
+                      enableBorder: false,
+                      tiles: [
+                        TTile(
+                          title: "Button",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ButtonScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Calendar",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CalendarScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Checkbox",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CheckBoxScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Checkbox Group",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CheckBoxGroupScreen(),
                               ),
                             );
                           },
                         ),
-                      ),
-                    ],
-                  ),
-                  TAccordion(
-                    title: "Form",
-                    titleStyle: TFontBold.headline(context),
-                    showDivider: false,
-                    initiallyExpanded: true,
-                    trailing: SvgPicture.asset(
-                      Assets.svg.chevronDown,
-                      colorFilter: ColorFilter.mode(
-                        isDarkMode ? Colors.white : Colors.black,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: TGroupTile(
-                        enableBorder: false,
-                        tiles: [
-                          TTile(
-                            title: "Button",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
+                        TTile(
+                          title: "Radio",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ButtonScreen()),
-                              );
-                            },
                           ),
-                          TTile(
-                            title: "Calendar",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RadioScreen(),
                               ),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Radio Group",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CalendarScreen()),
-                              );
-                            },
                           ),
-                          TTile(
-                            title: "Checkbox",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RadioGroupScreen(),
                               ),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Slider",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CheckBoxScreen()),
-                              );
-                            },
                           ),
-                          TTile(
-                            title: "Checkbox Group",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SliderScreen(),
                               ),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Switch",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CheckBoxGroupScreen(),
-                                ),
-                              );
-                            },
                           ),
-                          TTile(
-                            title: "Radio",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SwitchScreen(),
                               ),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Text Field",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => RadioScreen(),
-                                ),
-                              );
-                            },
                           ),
-                          TTile(
-                            title: "Radio Group",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TextFieldScreen(),
                               ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => RadioGroupScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Slider",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SliderScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Switch",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SwitchScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Text Field",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => TextFieldScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
-                  TAccordion(
-                    title: "Data Presentation",
-                    titleStyle: TFontBold.headline(context),
-                    showDivider: false,
-                    initiallyExpanded: true,
-                    trailing: SvgPicture.asset(
-                      Assets.svg.chevronDown,
-                      colorFilter: ColorFilter.mode(
-                        isDarkMode ? Colors.white : Colors.black,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: TGroupTile(
-                        enableBorder: false,
-                        tiles: [
-                          TTile(
-                            title: "Accordion",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AccordionScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Avatar",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AvatarScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Badge",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BadgeScreen()),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+                ),
+                TAccordion(
+                  title: "Data Presentation",
+                  titleStyle: TFontBold.headline(context),
+                  showDivider: false,
+                  initiallyExpanded: true,
+                  trailing: SvgPicture.asset(
+                    Assets.svg.chevronDown,
+                    colorFilter: ColorFilter.mode(
+                      isDarkMode ? Colors.white : Colors.black,
+                      BlendMode.srcIn,
                     ),
                   ),
-                  TAccordion(
-                    title: "Tile",
-                    titleStyle: TFontBold.headline(context),
-                    showDivider: false,
-                    initiallyExpanded: true,
-                    trailing: SvgPicture.asset(
-                      Assets.svg.chevronDown,
-                      colorFilter: ColorFilter.mode(
-                        isDarkMode ? Colors.white : Colors.black,
-                        BlendMode.srcIn,
-                      ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: TGroupTile(
-                        enableBorder: false,
-                        tiles: [
-                          TTile(
-                            title: "Tile",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
+                    child: TGroupTile(
+                      enableBorder: false,
+                      tiles: [
+                        TTile(
+                          title: "Accordion",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => TileScreen()),
-                              );
-                            },
                           ),
-                          TTile(
-                            title: "Tile Group",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AccordionScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Avatar",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => TileGroupScreen()),
-                              );
-                            },
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  TAccordion(
-                    title: "Navigation",
-                    titleStyle: TFontBold.headline(context),
-                    showDivider: false,
-                    initiallyExpanded: true,
-                    trailing: SvgPicture.asset(
-                      Assets.svg.chevronDown,
-                      colorFilter: ColorFilter.mode(
-                        isDarkMode ? Colors.white : Colors.black,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: TGroupTile(
-                        enableBorder: false,
-                        tiles: [
-                          TTile(
-                            title: "Bottom Navigation",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AvatarScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Badge",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        BottomNavigationScreen()),
-                              );
-                            },
                           ),
-                          TTile(
-                            title: "Breadcrumbs",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BreadcrumbsScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Header",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HeaderScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Home Indicator",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        HomeIndicatorScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Keyboard",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => KeyboardScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Status Bar",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => StatusBarScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Stepper",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => StepperScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Tab",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => TabsScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Tittle Section",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        TittleSectionScreen()),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BadgeScreen()),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
-                  TAccordion(
-                    title: "Feedback",
-                    titleStyle: TFontBold.headline(context),
-                    showDivider: false,
-                    initiallyExpanded: true,
-                    trailing: SvgPicture.asset(
-                      Assets.svg.chevronDown,
-                      colorFilter: ColorFilter.mode(
-                        isDarkMode ? Colors.white : Colors.black,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: TGroupTile(
-                        enableBorder: false,
-                        tiles: [
-                          TTile(
-                            title: "Alert",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AlertScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Progress",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ProgressScreen()),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+                ),
+                TAccordion(
+                  title: "Tile",
+                  titleStyle: TFontBold.headline(context),
+                  showDivider: false,
+                  initiallyExpanded: true,
+                  trailing: SvgPicture.asset(
+                    Assets.svg.chevronDown,
+                    colorFilter: ColorFilter.mode(
+                      isDarkMode ? Colors.white : Colors.black,
+                      BlendMode.srcIn,
                     ),
                   ),
-                  TAccordion(
-                    title: "Overlay",
-                    titleStyle: TFontBold.headline(context),
-                    showDivider: false,
-                    initiallyExpanded: true,
-                    trailing: SvgPicture.asset(
-                      Assets.svg.chevronDown,
-                      colorFilter: ColorFilter.mode(
-                        isDarkMode ? Colors.white : Colors.black,
-                        BlendMode.srcIn,
-                      ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: TGroupTile(
-                        enableBorder: false,
-                        tiles: [
-                          TTile(
-                            title: "Dialog",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
+                    child: TGroupTile(
+                      enableBorder: false,
+                      tiles: [
+                        TTile(
+                          title: "Tile",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DialogScreen()),
-                              );
-                            },
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  TAccordion(
-                    title: "Chart",
-                    titleStyle: TFontBold.headline(context),
-                    showDivider: false,
-                    initiallyExpanded: true,
-                    trailing: SvgPicture.asset(
-                      Assets.svg.chevronDown,
-                      colorFilter: ColorFilter.mode(
-                        isDarkMode ? Colors.white : Colors.black,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: TGroupTile(
-                        enableBorder: false,
-                        tiles: [
-                          TTile(
-                            title: "Bar",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TileScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Tile Group",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
                             ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BarChartScreen()),
-                              );
-                            },
                           ),
-                          TTile(
-                            title: "Line",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LineChartScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Pie",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PieChartScreen()),
-                              );
-                            },
-                          ),
-                          TTile(
-                            title: "Donut",
-                            titleStyle: TFontRegular.body(context),
-                            suffixIcon: SvgPicture.asset(
-                              Assets.svg.chevronRight,
-                              colorFilter: ColorFilter.mode(
-                                isDarkMode ? Colors.white : Colors.black,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            onPress: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        DoughnutChartScreen()),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TileGroupScreen()),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+                TAccordion(
+                  title: "Navigation",
+                  titleStyle: TFontBold.headline(context),
+                  showDivider: false,
+                  initiallyExpanded: true,
+                  trailing: SvgPicture.asset(
+                    Assets.svg.chevronDown,
+                    colorFilter: ColorFilter.mode(
+                      isDarkMode ? Colors.white : Colors.black,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TGroupTile(
+                      enableBorder: false,
+                      tiles: [
+                        TTile(
+                          title: "Bottom Navigation",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      BottomNavigationScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Breadcrumbs",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BreadcrumbsScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Header",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HeaderScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Home Indicator",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeIndicatorScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Keyboard",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => KeyboardScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Status Bar",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => StatusBarScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Stepper",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => StepperScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Tab",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TabsScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Tittle Section",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      TittleSectionScreen()),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                TAccordion(
+                  title: "Feedback",
+                  titleStyle: TFontBold.headline(context),
+                  showDivider: false,
+                  initiallyExpanded: true,
+                  trailing: SvgPicture.asset(
+                    Assets.svg.chevronDown,
+                    colorFilter: ColorFilter.mode(
+                      isDarkMode ? Colors.white : Colors.black,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TGroupTile(
+                      enableBorder: false,
+                      tiles: [
+                        TTile(
+                          title: "Alert",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AlertScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Progress",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProgressScreen()),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                TAccordion(
+                  title: "Overlay",
+                  titleStyle: TFontBold.headline(context),
+                  showDivider: false,
+                  initiallyExpanded: true,
+                  trailing: SvgPicture.asset(
+                    Assets.svg.chevronDown,
+                    colorFilter: ColorFilter.mode(
+                      isDarkMode ? Colors.white : Colors.black,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TGroupTile(
+                      enableBorder: false,
+                      tiles: [
+                        TTile(
+                          title: "Dialog",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DialogScreen()),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                TAccordion(
+                  title: "Chart",
+                  titleStyle: TFontBold.headline(context),
+                  showDivider: false,
+                  initiallyExpanded: true,
+                  trailing: SvgPicture.asset(
+                    Assets.svg.chevronDown,
+                    colorFilter: ColorFilter.mode(
+                      isDarkMode ? Colors.white : Colors.black,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TGroupTile(
+                      enableBorder: false,
+                      tiles: [
+                        TTile(
+                          title: "Bar",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BarChartScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Line",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LineChartScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Pie",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PieChartScreen()),
+                            );
+                          },
+                        ),
+                        TTile(
+                          title: "Donut",
+                          titleStyle: TFontRegular.body(context),
+                          suffixIcon: SvgPicture.asset(
+                            Assets.svg.chevronRight,
+                            colorFilter: ColorFilter.mode(
+                              isDarkMode ? Colors.white : Colors.black,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DoughnutChartScreen()),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

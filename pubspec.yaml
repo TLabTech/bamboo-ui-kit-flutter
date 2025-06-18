@@ -2,7 +2,7 @@ name: flutter_bamboo_ui_kit
 description: "A custom widget made from TLab for TLab."
 version: 0.0.1
 homepage: https://tlab.co.id/
-repository: ''
+repository: 'https://git.tlab.co.id/tlab-internal-system/standart-pattern/mobile-kickstart/custom-libraries-or-tools/flutter-component.git'
 
 #publish_to: none
 
