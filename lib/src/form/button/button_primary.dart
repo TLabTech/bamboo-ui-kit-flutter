@@ -16,6 +16,7 @@ class TButtonPrimary extends StatelessWidget {
   final Widget? prefixIcon;
   final bool loading;
   final Widget? child;
+  final bool centerContent;
 
   const TButtonPrimary({
     super.key,
@@ -30,6 +31,7 @@ class TButtonPrimary extends StatelessWidget {
     this.loading = false,
     this.child,
     this.padding,
+    this.centerContent = true,
   });
 
   const TButtonPrimary.icon({
@@ -41,6 +43,7 @@ class TButtonPrimary extends StatelessWidget {
     this.borderRadius = 8,
     this.textStyle,
     this.loading = false,
+    this.centerContent = true,
   })  : child = icon,
         text = null,
         suffixIcon = null,
@@ -55,10 +58,9 @@ class TButtonPrimary extends StatelessWidget {
         backgroundColor: backgroundColor ?? theme.primary,
         foregroundColor: theme.primaryForeground,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
         padding: padding,
-        // padding: padding,
       ).copyWith(
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
           (states) {
@@ -70,55 +72,118 @@ class TButtonPrimary extends StatelessWidget {
         ),
       ),
       onPressed: loading ? null : onPressed,
-      child: loading
-          ? Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: 18,
-                  height: 18,
-                  child: CircularProgressIndicator(
-                    color: theme.primaryForeground,
-                  ),
-                ),
-                if (text != null) SizedBox(width: 8),
-                if (text != null)
-                  Text(
-                    text!,
-                    style: textStyle ??
-                        TFontBold.body(context)
-                            .copyWith(color: theme.primaryForeground),
-                  ),
-              ],
-            )
-          : child ?? _buildContent(context),
+      child: _buildContent(context),
     );
   }
 
   Widget _buildContent(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
-    bool hasPrefix = prefixIcon != null;
-    bool hasSuffix = suffixIcon != null;
-    bool hasOnlyText = !hasPrefix && !hasSuffix;
 
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        if (prefixIcon != null) prefixIcon!,
-        if (prefixIcon != null && text != null) SizedBox(width: 10),
-        if (text != null)
+    if (child != null) {
+      return child!;
+    }
+
+    Widget? leadingIcon = loading
+        ? SizedBox(
+            width: 18,
+            height: 18,
+            child: CircularProgressIndicator(
+              color: theme.primaryForeground,
+            ),
+          )
+        : prefixIcon;
+
+    Widget? trailingIcon = loading ? null : suffixIcon;
+
+    List<Widget> children = [];
+
+    if (leadingIcon != null) {
+      children.add(leadingIcon);
+    }
+
+    if (leadingIcon != null && text != null) {
+      children.add(const SizedBox(width: 10));
+    }
+
+    if (text != null) {
+      children.add(
+        Text(
+          text!,
+          style: textStyle ??
+              TFontBold.body(context).copyWith(color: theme.primaryForeground),
+        ),
+      );
+    }
+
+    if (trailingIcon != null && text != null) {
+      children.add(const SizedBox(width: 10));
+    }
+
+    if (trailingIcon != null) {
+      children.add(trailingIcon);
+    }
+
+    bool hasLeading = leadingIcon != null;
+    bool hasTrailing = trailingIcon != null;
+    bool hasOnlyText = !hasLeading && !hasTrailing;
+
+    if (!centerContent) {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          if (hasLeading) children[0],
+
+          if (hasLeading && text != null) children[1],
+
+          if (text != null)
+            Expanded(
+              child: Text(
+                text!,
+                textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+                style: textStyle ??
+                    TFontBold.body(context)
+                        .copyWith(color: theme.primaryForeground),
+              ),
+            ),
+          if (hasTrailing && text != null) children[children.length - 2],
+
+          if (hasTrailing) children.last,
+        ],
+      );
+    }
+
+    if (hasOnlyText) {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
+      );
+    } else if (hasLeading && !hasTrailing) {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
+      );
+    } else if (!hasLeading && hasTrailing) {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
+      );
+    } else {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          children[0],
           Expanded(
-            child: Text(
-              text!,
-              textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
-              style: textStyle ??
-                  TFontBold.body(context)
-                      .copyWith(color: theme.primaryForeground),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: children.sublist(1, children.length - 1),
             ),
           ),
-        if (suffixIcon != null && text != null) SizedBox(width: 10),
-        if (suffixIcon != null) suffixIcon!,
-      ],
-    );
+          children.last,
+        ],
+      );
+    }
   }
 }

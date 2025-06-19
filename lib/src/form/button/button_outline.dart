@@ -18,6 +18,7 @@ class TButtonOutline extends StatelessWidget {
   final Widget? child;
   final double minWidth;
   final double minHeight;
+  final bool centerContent;
 
   const TButtonOutline({
     super.key,
@@ -34,6 +35,7 @@ class TButtonOutline extends StatelessWidget {
     this.child,
     this.minWidth = 44.0,
     this.minHeight = 44.0,
+    this.centerContent = true,
   });
 
   const TButtonOutline.icon({
@@ -48,6 +50,7 @@ class TButtonOutline extends StatelessWidget {
     this.loading = false,
     this.minWidth = 44.0,
     this.minHeight = 44.0,
+    this.centerContent = true,
   })  : child = icon,
         text = null,
         suffixIcon = null,
@@ -69,54 +72,119 @@ class TButtonOutline extends StatelessWidget {
         ),
         minimumSize: Size(minWidth, minHeight),
       ),
-      onPressed: onPressed,
-      child: loading
-          ? Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: 18,
-                  height: 18,
-                  child: CircularProgressIndicator(
-                    color: theme.primary,
-                  ),
-                ),
-                if (text != null) SizedBox(width: 8),
-                if (text != null)
-                  Text(
-                    text!,
-                    style: textStyle ??
-                        TFontBold.body(context).copyWith(color: theme.primary),
-                  ),
-              ],
-            )
-          : child ?? _buildContent(context),
+      onPressed: loading ? null : onPressed,
+      child: _buildContent(context),
     );
   }
 
   Widget _buildContent(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
-    bool hasPrefix = prefixIcon != null;
-    bool hasSuffix = suffixIcon != null;
-    bool hasOnlyText = !hasPrefix && !hasSuffix;
 
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        if (prefixIcon != null) prefixIcon!,
-        if (prefixIcon != null && text != null) SizedBox(width: 10),
-        if (text != null)
+    if (child != null) {
+      return child!;
+    }
+
+    // Determine what icons to show
+    Widget? leadingIcon = loading
+        ? SizedBox(
+      width: 18,
+      height: 18,
+      child: CircularProgressIndicator(
+        color: theme.primary,
+        strokeWidth: 2,
+      ),
+    )
+        : prefixIcon;
+
+    Widget? trailingIcon = loading ? null : suffixIcon;
+
+    List<Widget> children = [];
+
+    if (leadingIcon != null) {
+      children.add(leadingIcon);
+    }
+
+    if (leadingIcon != null && text != null) {
+      children.add(const SizedBox(width: 10));
+    }
+
+    if (text != null) {
+      children.add(
+        Text(
+          text!,
+          style: textStyle ??
+              TFontBold.body(context).copyWith(color: theme.primary),
+        ),
+      );
+    }
+
+    if (trailingIcon != null && text != null) {
+      children.add(const SizedBox(width: 10));
+    }
+
+    if (trailingIcon != null) {
+      children.add(trailingIcon);
+    }
+
+    bool hasLeading = leadingIcon != null;
+    bool hasTrailing = trailingIcon != null;
+    bool hasOnlyText = !hasLeading && !hasTrailing;
+
+    if (!centerContent) {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          if (hasLeading) children[0],
+          if (hasLeading && text != null) children[1],
+          if (text != null)
+            Expanded(
+              child: Text(
+                text!,
+                textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+                style: textStyle ??
+                    TFontBold.body(context).copyWith(color: theme.primary),
+              ),
+            ),
+          if (hasTrailing && text != null) children[children.length - 2],
+          if (hasTrailing) children.last,
+        ],
+      );
+    }
+
+    if (hasOnlyText) {
+      // Only text - center it
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
+      );
+    } else if (hasLeading && !hasTrailing) {
+      // Leading icon + text - center both together
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
+      );
+    } else if (!hasLeading && hasTrailing) {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
+      );
+    } else {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          children[0], // leading icon
           Expanded(
-            child: Text(
-              text!,
-              textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
-              style: textStyle ??
-                  TFontBold.body(context).copyWith(color: theme.primary),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: children.sublist(1, children.length - 1),
             ),
           ),
-        if (suffixIcon != null && text != null) SizedBox(width: 10),
-        if (suffixIcon != null) suffixIcon!,
-      ],
-    );
+          children.last, // trailing icon
+        ],
+      );
+    }
   }
 }
