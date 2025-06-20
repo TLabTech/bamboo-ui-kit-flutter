@@ -35,6 +35,11 @@ class TTextField extends StatefulWidget {
   final bool obscureText;
   final String? counterText;
   final TextFieldType type;
+  final Widget? passwordVisibilityIcon;
+  final Widget? passwordVisibilityOffIcon;
+  final bool showPasswordToggle;
+  final Widget? emailIcon;
+  final bool showEmailIcon;
 
   const TTextField({
     super.key,
@@ -64,6 +69,11 @@ class TTextField extends StatefulWidget {
     this.onEditingComplete,
     this.obscureText = false,
     this.counterText,
+    this.passwordVisibilityIcon,
+    this.passwordVisibilityOffIcon,
+    this.showPasswordToggle = true,
+    this.emailIcon,
+    this.showEmailIcon = true,
   }) : type = TextFieldType.defaultType;
 
   const TTextField.password({
@@ -94,6 +104,11 @@ class TTextField extends StatefulWidget {
     this.onEditingComplete,
     this.obscureText = true,
     this.counterText,
+    this.passwordVisibilityIcon,
+    this.passwordVisibilityOffIcon,
+    this.showPasswordToggle = true,
+    this.emailIcon,
+    this.showEmailIcon = true,
   }) : type = TextFieldType.password;
 
   const TTextField.multiline({
@@ -124,6 +139,11 @@ class TTextField extends StatefulWidget {
     this.onEditingComplete,
     this.obscureText = false,
     this.counterText,
+    this.passwordVisibilityIcon,
+    this.passwordVisibilityOffIcon,
+    this.showPasswordToggle = true,
+    this.emailIcon,
+    this.showEmailIcon = true,
   }) : type = TextFieldType.multiline;
 
   const TTextField.email({
@@ -154,6 +174,11 @@ class TTextField extends StatefulWidget {
     this.textInputType = TextInputType.emailAddress,
     this.leading,
     this.obscureText = false,
+    this.passwordVisibilityIcon,
+    this.passwordVisibilityOffIcon,
+    this.showPasswordToggle = true,
+    this.emailIcon,
+    this.showEmailIcon = true,
   }) : type = TextFieldType.email;
 
   @override
@@ -167,6 +192,23 @@ class TTextFieldState extends State<TTextField> {
   void initState() {
     super.initState();
     _obscureText = widget.obscureText;
+  }
+
+  Widget _buildEmailIcon() {
+    if (widget.emailIcon != null) {
+      return widget.emailIcon!;
+    }
+    return SvgPicture.asset(Assets.svg.envelope);
+  }
+
+  Widget _buildPasswordToggleIcon() {
+    if (_obscureText) {
+      return widget.passwordVisibilityOffIcon ??
+          SvgPicture.asset(Assets.svg.eyeSlash);
+    } else {
+      return widget.passwordVisibilityIcon ??
+          SvgPicture.asset(Assets.svg.eye);
+    }
   }
 
   @override
@@ -212,15 +254,17 @@ class TTextFieldState extends State<TTextField> {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: widget.leading!,
                 ),
-              widget.type == TextFieldType.email
-                  ? Padding(
-                      padding: EdgeInsets.only(right: 8.0),
-                      child: SvgPicture.asset(Assets.svg.envelope),
-                    )
-                  : Padding(
-                      padding: EdgeInsets.only(right: 8.0),
-                      child: SizedBox(),
-                    ),
+              if (widget.type == TextFieldType.email && widget.showEmailIcon)
+                Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: _buildEmailIcon(),
+                ),
+              if ((widget.leading == null && widget.type != TextFieldType.email) ||
+                  (widget.type == TextFieldType.email && !widget.showEmailIcon))
+                Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: SizedBox(),
+                ),
               Expanded(
                 child: TextFormField(
                   focusNode: widget.focusNode,
@@ -248,10 +292,9 @@ class TTextFieldState extends State<TTextField> {
                   onEditingComplete: widget.onEditingComplete,
                 ),
               ),
-              if (widget.obscureText) // Conditionally show the icon
+              if (widget.obscureText && widget.showPasswordToggle)
                 IconButton(
-                  icon: SvgPicture.asset(
-                      _obscureText ? Assets.svg.eyeSlash : Assets.svg.eye),
+                  icon: _buildPasswordToggleIcon(),
                   onPressed: () {
                     setState(() {
                       _obscureText = !_obscureText;

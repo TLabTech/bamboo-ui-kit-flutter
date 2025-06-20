@@ -243,7 +243,10 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                           children: [
                             TextSpan(
                               text: "Description",
-                              style: TFontBold.body(context),
+                              style: isDarkMode
+                                  ? TFontBold.body(context)
+                                  : TFontBold.body(context)
+                                  .copyWith(color: HexColor(gray900)),
                             ),
                             TextSpan(
                               text: " (Optional)",
