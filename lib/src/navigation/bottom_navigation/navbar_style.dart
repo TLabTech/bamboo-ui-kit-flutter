@@ -32,7 +32,6 @@ class TNavbarStyle {
       navBarConfig: navBarConfig,
       navBarDecoration: NavBarDecoration(
         color: backgroundColor ?? theme.popover,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       itemAnimationProperties: const ItemAnimation(
         curve: Curves.easeOutQuad,
