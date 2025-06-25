@@ -160,6 +160,34 @@ class _BadgeScreenState extends State<BadgeScreen> {
                   ),
                 ),
               ),
+              TAccordion(
+                title: "General",
+                titleStyle: TFontBold.headline(context),
+                showDivider: false,
+                initiallyExpanded: true,
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: HexColor(gray300),
+                    ),
+                  ),
+                  child: Center(
+                    child: TBadge.general(
+                      label: "Badge",
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

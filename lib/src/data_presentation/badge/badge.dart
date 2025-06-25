@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-enum TBadgeType { raw, primary, secondary, outline, destructive }
+enum TBadgeType { raw, primary, secondary, outline, destructive, general }
 
 /// A customizable badge widget for displaying labels with various styles.
 ///
@@ -72,6 +72,14 @@ class TBadge extends StatelessWidget {
           badgeType: TBadgeType.destructive,
         );
 
+  const TBadge.general({
+    Key? key,
+    required String label,
+  }) : this._(
+          label: label,
+          badgeType: TBadgeType.general,
+        );
+
   /// Private constructor used internally by the named constructors.
   const TBadge._({
     required this.label,
@@ -106,6 +114,11 @@ class TBadge extends StatelessWidget {
       case TBadgeType.destructive:
         backgroundColor = theme.destructiveForeground;
         textColor = theme.destructive;
+        break;
+      case TBadgeType.general:
+        backgroundColor = Colors.white;
+        textColor = theme.foreground;
+        borderColor = theme.border;
         break;
       default:
         backgroundColor = this.backgroundColor ?? theme.primaryForeground;
