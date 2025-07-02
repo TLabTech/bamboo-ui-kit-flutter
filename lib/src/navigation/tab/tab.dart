@@ -10,6 +10,8 @@ class TTabs extends StatefulWidget {
   final Color? backgroundColor;
   final Color? activeColor;
   final Color? inactiveColor;
+  final Color? activeTextColor;
+  final Color? inactiveTextColor;
 
   const TTabs({
     super.key,
@@ -20,6 +22,8 @@ class TTabs extends StatefulWidget {
     this.backgroundColor,
     this.activeColor,
     this.inactiveColor,
+    this.activeTextColor,
+    this.inactiveTextColor,
   });
 
   @override
@@ -47,6 +51,17 @@ class _TTabsState extends State<TTabs> {
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
+    Color activeTextColor = theme.primaryForeground;
+    Color inactiveTextColor = theme.mutedForeground;
+
+    if (widget.activeTextColor != null) {
+      activeTextColor = widget.activeTextColor!;
+    }
+
+    if (widget.inactiveTextColor != null) {
+      inactiveTextColor = widget.inactiveTextColor!;
+    }
+
     return Container(
       padding: EdgeInsets.all(4.0),
       decoration: BoxDecoration(
@@ -83,8 +98,8 @@ class _TTabsState extends State<TTabs> {
                     widget.tabs[index],
                     style: TFontRegular.subHeadline(context).copyWith(
                       color: isSelected
-                          ? theme.primaryForeground
-                          : theme.mutedForeground,
+                          ? activeTextColor
+                          : inactiveTextColor,
                     ),
                     textAlign: TextAlign.center,
                   ),
