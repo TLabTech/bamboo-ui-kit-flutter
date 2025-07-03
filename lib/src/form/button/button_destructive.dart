@@ -129,7 +129,7 @@ class TButtonDestructive extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: textStyle ??
                 TFontBold.body(context)
-                    .copyWith(color: theme.primaryForeground),
+                    .copyWith(color: theme.destructiveForeground),
           ),
         ),
       );
@@ -163,7 +163,7 @@ class TButtonDestructive extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: textStyle ??
                     TFontBold.body(context)
-                        .copyWith(color: theme.primaryForeground),
+                        .copyWith(color: theme.destructiveForeground),
               ),
             ),
           if (hasTrailing && text != null) children[children.length - 2],
