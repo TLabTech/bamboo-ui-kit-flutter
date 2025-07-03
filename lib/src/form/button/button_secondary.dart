@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,8 +16,9 @@ class TButtonSecondary extends StatelessWidget {
   final Widget? prefixIcon;
   final bool loading;
   final Widget? child;
-  final double minWidth;
-  final double minHeight;
+  final Size minimumSize;
+  final Size maximumSize;
+  final double minFontSize;
   final bool centerContent;
 
   const TButtonSecondary({
@@ -32,8 +34,9 @@ class TButtonSecondary extends StatelessWidget {
     this.prefixIcon,
     this.loading = false,
     this.child,
-    this.minWidth = 44.0,
-    this.minHeight = 44.0,
+    this.minimumSize = const Size(double.infinity, 48),
+    this.maximumSize = const Size(double.infinity, 48),
+    this.minFontSize = 12.0,
     this.centerContent = true,
   });
 
@@ -47,8 +50,9 @@ class TButtonSecondary extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.textStyle,
     this.loading = false,
-    this.minWidth = 44.0,
-    this.minHeight = 44.0,
+    this.minimumSize = const Size(48, 40),
+    this.maximumSize = const Size(48, 40),
+    this.minFontSize = 12.0,
     this.centerContent = true,
   })  : child = icon,
         text = null,
@@ -66,10 +70,11 @@ class TButtonSecondary extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         side: BorderSide(width: 1.0, color: theme.border),
-        minimumSize: Size(minWidth, minHeight),
+        minimumSize: minimumSize,
+        maximumSize: maximumSize,
       ).copyWith(
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
-              (states) {
+          (states) {
             if (states.contains(WidgetState.pressed)) {
               return onPressedBackgroundColor ?? Colors.transparent;
             }
@@ -92,12 +97,12 @@ class TButtonSecondary extends StatelessWidget {
 
     Widget? leadingIcon = loading
         ? SizedBox(
-      width: 18,
-      height: 18,
-      child: CircularProgressIndicator(
-        color: theme.foreground,
-      ),
-    )
+            width: 18,
+            height: 18,
+            child: CircularProgressIndicator(
+              color: theme.foreground,
+            ),
+          )
         : prefixIcon;
 
     Widget? trailingIcon = loading ? null : suffixIcon;
@@ -114,10 +119,17 @@ class TButtonSecondary extends StatelessWidget {
 
     if (text != null) {
       children.add(
-        Text(
-          text!,
-          style: textStyle ??
-              TFontBold.body(context).copyWith(color: theme.foreground),
+        Flexible(
+          fit: FlexFit.loose,
+          child: AutoSizeText(
+            text!,
+            maxLines: 1,
+            minFontSize: minFontSize,
+            stepGranularity: 0.5,
+            overflow: TextOverflow.ellipsis,
+            style: textStyle ??
+                TFontBold.body(context).copyWith(color: theme.foreground),
+          ),
         ),
       );
     }
@@ -142,12 +154,14 @@ class TButtonSecondary extends StatelessWidget {
           if (hasLeading && text != null) children[1],
           if (text != null)
             Expanded(
-              child: Text(
+              child: AutoSizeText(
                 text!,
+                maxLines: 1,
+                minFontSize: minFontSize,
                 textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+                overflow: TextOverflow.ellipsis,
                 style: textStyle ??
-                    TFontBold.body(context)
-                        .copyWith(color: theme.foreground),
+                    TFontBold.body(context).copyWith(color: theme.foreground),
               ),
             ),
           if (hasTrailing && text != null) children[children.length - 2],

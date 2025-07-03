@@ -38,35 +38,46 @@ class TRadioButton<T> extends StatelessWidget {
         children: [
           _buildRadio(isSelected, isError),
           const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 2,
-            children: [
-              Text(
-                label,
-                style: TFontRegular.body(context).copyWith(
-                  color: isDisabled
-                      ? theme.mutedForeground
-                      : (isError ? theme.destructive : theme.foreground),
-                ),
-              ),
-              if (description != null)
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 2,
+              children: [
                 Text(
-                  description!,
-                  style: TFontRegular.footNote(context).copyWith(
+                  label,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                  style: TFontRegular.body(context).copyWith(
                     color: isDisabled
                         ? theme.mutedForeground
-                        : theme.foreground,
+                        : (isError ? theme.destructive : theme.foreground),
                   ),
                 ),
-              if (isError && error != null)
-                Text(
-                  error!,
-                  style: TFontRegular.footNote(context).copyWith(
-                    color: theme.destructive,
+                if (description != null)
+                  Text(
+                    description!,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: true,
+                    style: TFontRegular.footNote(context).copyWith(
+                      color: isDisabled
+                          ? theme.mutedForeground
+                          : theme.foreground,
+                    ),
                   ),
-                ),
-            ],
+                if (isError && error != null)
+                  Text(
+                    error!,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: true,
+                    style: TFontRegular.footNote(context).copyWith(
+                      color: theme.destructive,
+                    ),
+                  ),
+              ],
+            ),
           ),
         ],
       ),
