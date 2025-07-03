@@ -78,6 +78,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         child: TButtonPrimary(
                           text: "Button Primary",
                           onPressed: () {},
+                          loading: true,
                         ),
                       ),
                       SizedBox(
@@ -88,13 +89,9 @@ class _ButtonScreenState extends State<ButtonScreen> {
                           onPressed: () {},
                         ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonDestructive(
-                          text: "Button Destructive",
-                          onPressed: () {},
-                        ),
+                      TButtonDestructive(
+                        text: "Button Destructive",
+                        onPressed: () {},
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
@@ -110,13 +107,9 @@ class _ButtonScreenState extends State<ButtonScreen> {
                             .copyWith(color: HexColor(primary500)),
                         onPressed: () {},
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonDisable(
-                          text: "Button Disable",
-                          onPressed: null,
-                        ),
+                      TButtonDisable(
+                        text: "Button Disable",
+                        onPressed: null,
                       ),
                     ],
                   ),
@@ -145,67 +138,51 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   child: Column(
                     spacing: 16,
                     children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonPrimary(
-                          text: "Button Primary",
-                          prefixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white,
-                              BlendMode.srcIn,
-                            ),
+                      TButtonPrimary(
+                        text: "Button Primary",
+                        prefixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonSecondary(
-                          text: "Button Secondary",
-                          prefixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              isDarkMode ? Colors.white : Colors.black,
-                              BlendMode.srcIn,
-                            ),
+                      TButtonSecondary(
+                        text: "Button Secondary",
+                        prefixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            isDarkMode ? Colors.white : Colors.black,
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonDestructive(
-                          text: "Button Destructive",
-                          prefixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white,
-                              BlendMode.srcIn,
-                            ),
+                      TButtonDestructive(
+                        text: "Button Destructive",
+                        prefixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonOutline(
-                          text: "Button Outline",
-                          textStyle: TFontBold.body(context)
-                              .copyWith(color: HexColor(primary500)),
-                          prefixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              HexColor(primary500),
-                              BlendMode.srcIn,
-                            ),
+                      TButtonOutline(
+                        text: "Button Outline",
+                        textStyle: TFontBold.body(context)
+                            .copyWith(color: HexColor(primary500)),
+                        prefixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            HexColor(primary500),
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
                       TButtonGhost(
                         text: "Button Ghost",
@@ -220,20 +197,16 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         ),
                         onPressed: () {},
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonDisable(
-                          text: "Button Disable",
-                          prefixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              HexColor('#23272E'),
-                              BlendMode.srcIn,
-                            ),
+                      TButtonDisable(
+                        text: "Button Disable",
+                        prefixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            HexColor('#23272E'),
+                            BlendMode.srcIn,
                           ),
-                          onPressed: null,
                         ),
+                        onPressed: null,
                       ),
                     ],
                   ),
@@ -262,67 +235,51 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   child: Column(
                     spacing: 16,
                     children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonPrimary(
-                          text: "Button Primary",
-                          suffixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white,
-                              BlendMode.srcIn,
-                            ),
+                      TButtonPrimary(
+                        text: "Button Primary",
+                        suffixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonSecondary(
-                          text: "Button Secondary",
-                          suffixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              isDarkMode ? Colors.white : Colors.black,
-                              BlendMode.srcIn,
-                            ),
+                      TButtonSecondary(
+                        text: "Button Secondary",
+                        suffixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            isDarkMode ? Colors.white : Colors.black,
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonDestructive(
-                          text: "Button Destructive",
-                          suffixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white,
-                              BlendMode.srcIn,
-                            ),
+                      TButtonDestructive(
+                        text: "Button Destructive",
+                        suffixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonOutline(
-                          text: "Button Outline",
-                          textStyle: TFontBold.body(context)
-                              .copyWith(color: HexColor(primary500)),
-                          suffixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              HexColor(primary500),
-                              BlendMode.srcIn,
-                            ),
+                      TButtonOutline(
+                        text: "Button Outline",
+                        textStyle: TFontBold.body(context)
+                            .copyWith(color: HexColor(primary500)),
+                        suffixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            HexColor(primary500),
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
                       TButtonGhost(
                         text: "Button Ghost",
@@ -337,20 +294,16 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         ),
                         onPressed: () {},
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 48,
-                        child: TButtonDisable(
-                          text: "Button Disable",
-                          suffixIcon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              HexColor('#23272E'),
-                              BlendMode.srcIn,
-                            ),
+                      TButtonDisable(
+                        text: "Button Disable",
+                        suffixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            HexColor('#23272E'),
+                            BlendMode.srcIn,
                           ),
-                          onPressed: null,
                         ),
+                        onPressed: null,
                       ),
                     ],
                   ),
@@ -379,49 +332,35 @@ class _ButtonScreenState extends State<ButtonScreen> {
                   child: Column(
                     spacing: 16,
                     children: [
-                      SizedBox(
-                        width: 44,
-                        height: 44,
-                        child: TButtonPrimary.icon(
-                          icon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white,
-                              BlendMode.srcIn,
-                            ),
+                      TButtonPrimary.icon(
+                        icon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
-                      SizedBox(
-                        width: 44,
-                        height: 44,
-                        child: TButtonSecondary.icon(
-                          icon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              HexColor(gray900),
-                              BlendMode.srcIn,
-                            ),
+                      TButtonSecondary.icon(
+                        icon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            HexColor(gray900),
+                            BlendMode.srcIn,
                           ),
-                          minWidth: 40,
-                          minHeight: 40,
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
-                      SizedBox(
-                        width: 44,
-                        height: 44,
-                        child: TButtonDestructive.icon(
-                          icon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white,
-                              BlendMode.srcIn,
-                            ),
+                      TButtonDestructive.icon(
+                        icon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
                           ),
-                          onPressed: () {},
                         ),
+                        onPressed: () {},
                       ),
                       TButtonOutline.icon(
                         icon: SvgPicture.asset(
@@ -443,19 +382,15 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         ),
                         onPressed: () {},
                       ),
-                      SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: TButtonDisable.icon(
-                          icon: SvgPicture.asset(
-                            Assets.svg.plus,
-                            colorFilter: ColorFilter.mode(
-                              HexColor('#23272E'),
-                              BlendMode.srcIn,
-                            ),
+                      TButtonDisable.icon(
+                        icon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            HexColor('#23272E'),
+                            BlendMode.srcIn,
                           ),
-                          onPressed: null,
                         ),
+                        onPressed: null,
                       ),
                     ],
                   ),

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,9 @@ class TButtonDestructive extends StatelessWidget {
   final bool loading;
   final Widget? child;
   final bool centerContent;
+  final Size minimumSize;
+  final Size maximumSize;
+  final double minFontSize;
 
   const TButtonDestructive({
     super.key,
@@ -31,7 +35,10 @@ class TButtonDestructive extends StatelessWidget {
     this.loading = false,
     this.child,
     this.padding,
-    this.centerContent = true
+    this.centerContent = true,
+    this.minimumSize = const Size(double.infinity, 48),
+    this.maximumSize = const Size(double.infinity, 48),
+    this.minFontSize = 12.0,
   });
 
   const TButtonDestructive.icon({
@@ -44,6 +51,9 @@ class TButtonDestructive extends StatelessWidget {
     this.textStyle,
     this.loading = false,
     this.centerContent = true,
+    this.minimumSize = const Size(48, 40),
+    this.maximumSize = const Size(48, 40),
+    this.minFontSize = 12.0,
   })  : child = icon,
         text = null,
         suffixIcon = null,
@@ -61,7 +71,8 @@ class TButtonDestructive extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         padding: padding,
-        // padding: padding,
+        minimumSize: minimumSize,
+        maximumSize: maximumSize,
       ).copyWith(
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
           (states) {
@@ -86,12 +97,12 @@ class TButtonDestructive extends StatelessWidget {
 
     Widget? leadingIcon = loading
         ? SizedBox(
-      width: 18,
-      height: 18,
-      child: CircularProgressIndicator(
-        color: theme.destructiveForeground,
-      ),
-    )
+            width: 18,
+            height: 18,
+            child: CircularProgressIndicator(
+              color: theme.destructiveForeground,
+            ),
+          )
         : prefixIcon;
 
     Widget? trailingIcon = loading ? null : suffixIcon;
@@ -108,10 +119,18 @@ class TButtonDestructive extends StatelessWidget {
 
     if (text != null) {
       children.add(
-        Text(
-          text!,
-          style: textStyle ??
-              TFontBold.body(context).copyWith(color: theme.destructiveForeground),
+        Flexible(
+          fit: FlexFit.loose,
+          child: AutoSizeText(
+            text!,
+            maxLines: 1,
+            minFontSize: minFontSize,
+            stepGranularity: 0.5,
+            overflow: TextOverflow.ellipsis,
+            style: textStyle ??
+                TFontBold.body(context)
+                    .copyWith(color: theme.primaryForeground),
+          ),
         ),
       );
     }
@@ -133,21 +152,21 @@ class TButtonDestructive extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           if (hasLeading) children[0],
-
           if (hasLeading && text != null) children[1],
-
           if (text != null)
             Expanded(
-              child: Text(
+              child: AutoSizeText(
                 text!,
+                maxLines: 1,
+                minFontSize: minFontSize,
                 textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+                overflow: TextOverflow.ellipsis,
                 style: textStyle ??
                     TFontBold.body(context)
-                        .copyWith(color: theme.destructiveForeground),
+                        .copyWith(color: theme.primaryForeground),
               ),
             ),
           if (hasTrailing && text != null) children[children.length - 2],
-
           if (hasTrailing) children.last,
         ],
       );

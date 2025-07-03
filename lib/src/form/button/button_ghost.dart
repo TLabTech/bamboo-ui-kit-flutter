@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,6 +17,9 @@ class TButtonGhost extends StatefulWidget {
   final Color? normalColor;
   final Color? pressedColor;
   final bool centerContent;
+  final Size minimumSize;
+  final Size maximumSize;
+  final double minFontSize;
 
   const TButtonGhost({
     super.key,
@@ -30,6 +34,9 @@ class TButtonGhost extends StatefulWidget {
     this.pressedColor,
     this.padding,
     this.centerContent = true,
+    this.minimumSize = const Size(double.infinity, 48),
+    this.maximumSize = const Size(double.infinity, 48),
+    this.minFontSize = 12.0,
   });
 
   const TButtonGhost.icon({
@@ -41,6 +48,9 @@ class TButtonGhost extends StatefulWidget {
     this.normalColor,
     this.pressedColor,
     this.centerContent = true,
+    this.minimumSize = const Size(48, 40),
+    this.maximumSize = const Size(48, 40),
+    this.minFontSize = 12.0,
   })  : child = icon,
         text = null,
         suffixIcon = null,
@@ -126,14 +136,20 @@ class _TButtonGhostState extends State<TButtonGhost> {
 
     if (widget.text != null) {
       children.add(
-        Text(
-          widget.text!,
-          style: widget.textStyle ??
-              TFontBold.body(context).copyWith(
-                color: _isPressed
-                    ? (widget.pressedColor ?? theme.primaryPressed)
-                    : (widget.normalColor ?? theme.primary),
-              ),
+        Flexible(
+          child: AutoSizeText(
+            widget.text!,
+            maxLines: 1,
+            minFontSize: widget.minFontSize,
+            stepGranularity: 0.5,
+            overflow: TextOverflow.ellipsis,
+            style: widget.textStyle ??
+                TFontBold.body(context).copyWith(
+                  color: _isPressed
+                      ? (widget.pressedColor ?? theme.primaryPressed)
+                      : (widget.normalColor ?? theme.primary),
+                ),
+          ),
         ),
       );
     }
@@ -160,9 +176,13 @@ class _TButtonGhostState extends State<TButtonGhost> {
           // spacing
           if (widget.text != null)
             Expanded(
-              child: Text(
+              child: AutoSizeText(
                 widget.text!,
+                maxLines: 1,
+                minFontSize: widget.minFontSize,
+                stepGranularity: 0.5,
                 textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+                overflow: TextOverflow.ellipsis,
                 style: widget.textStyle ??
                     TFontBold.body(context).copyWith(
                       color: _isPressed
