@@ -9,39 +9,88 @@ class TBottomNavigationHelper {
     _controller = controller;
   }
 
-  void pushNewScreen(
-    BuildContext context, {
-    required Widget screen,
-    required bool withNavBar,
-  }) {
-    pushScreen(
+  /// Pushes a new screen with transition, optionally with nav bar
+  Future<T?> pushNewScreen<T extends Object?>(
+      BuildContext context, {
+        required Widget screen,
+        bool withNavBar = false,
+        PageTransitionAnimation pageTransitionAnimation =
+            PageTransitionAnimation.platform,
+        PageRoute<T>? customPageRoute,
+        RouteSettings? settings,
+      }) {
+    return pushScreen<T>(
       context,
       screen: screen,
       withNavBar: withNavBar,
+      pageTransitionAnimation: pageTransitionAnimation,
+      customPageRoute: customPageRoute,
+      settings: settings,
     );
   }
 
-  void pushNewScreenWithNavBar(BuildContext context, MaterialPageRoute route) {
-    pushWithNavBar(
+  /// Push a raw route with nav bar
+  Future<T?> pushNewScreenWithNavBar<T>(
+      BuildContext context, Route<T> route) {
+    return pushWithNavBar(context, route);
+  }
+
+  /// Push a raw route without nav bar
+  Future<T?> pushNewScreenWithoutNavBar<T>(
+      BuildContext context, Route<T> route) {
+    return pushWithoutNavBar(context, route);
+  }
+
+  /// Push a screen with nav bar, using built-in animation
+  Future<T?> pushScreenWithNavBar<T>(BuildContext context, Widget screen) {
+    return pushScreen<T>(
+      context,
+      screen: screen,
+      withNavBar: true,
+    );
+  }
+
+  /// Push a screen without nav bar, using built-in animation
+  Future<T?> pushScreenWithoutNavBar<T>(BuildContext context, Widget screen) {
+    return pushScreen<T>(
+      context,
+      screen: screen,
+      withNavBar: false,
+    );
+  }
+
+  /// Replace current route with one with nav bar
+  Future<T?> pushReplacementWithNavBar<T extends Object?, TO extends Object?>(
+      BuildContext context,
+      Route<T> route, {
+        TO? result,
+      }) {
+    return pushReplacementWithNavBar<T, TO>(
       context,
       route,
+      result: result,
     );
   }
 
-  void pushNewScreenWithoutNavBar(
-    BuildContext context,
-    MaterialPageRoute route,
-  ) {
-    pushWithoutNavBar(
+  /// Replace current route with one without nav bar
+  Future<T?> pushReplacementWithoutNavBar<T extends Object?, TO extends Object?>(
+      BuildContext context,
+      Route<T> route, {
+        TO? result,
+      }) {
+    return pushReplacementWithoutNavBar<T, TO>(
       context,
       route,
+      result: result,
     );
   }
 
+  /// Pop the current route
   void popScreen(BuildContext context) {
     Navigator.of(context).pop();
   }
 
+  /// Jump to a specific tab index
   void jumpToTab(int index, BuildContext? context) {
     if (_controller != null) {
       _controller!.jumpToTab(index);
@@ -58,6 +107,7 @@ class TBottomNavigationHelper {
     }
   }
 
+  /// Get the current tab index
   int getCurrentIndex({BuildContext? context}) {
     if (_controller != null) {
       return _controller!.index;
