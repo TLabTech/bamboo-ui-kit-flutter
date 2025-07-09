@@ -1,3 +1,4 @@
+import 'package:example/bottom_navigation_sample/screen1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,6 +12,7 @@ class Screen4 extends StatefulWidget {
 
 class _Screen4State extends State<Screen4> {
   final GlobalKey<TCalendarState> _calendarKey = GlobalKey<TCalendarState>();
+  final helper = TBottomNavigationHelper();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,12 @@ class _Screen4State extends State<Screen4> {
               size: 40,
               backgroundColor: Colors.grey.shade100,
             ),
-            onPress: () {},
+            onPress: () {
+              helper.pushNewScreenWithNavBar(
+                context,
+                MaterialPageRoute(builder: (_) => Screen1())
+              );
+            },
           ),
         ],
       ),

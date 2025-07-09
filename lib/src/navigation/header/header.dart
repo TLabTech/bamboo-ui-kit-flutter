@@ -14,6 +14,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   final String? hintText;
   final bool enableCenterTitle;
   final bool isBackButtonEnabled;
+  final Widget? leadingAvatar;
   final Widget? prefixAction;
   final List<Widget>? suffixAction;
   final Color? backgroundColor;
@@ -35,6 +36,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.bottomColor,
   })  : headerType = HeaderType.defaultType,
         isBackButtonEnabled = false,
+        leadingAvatar = null,
         subtitle = null,
         subtitleStyle = null,
         prefixAction = null,
@@ -54,6 +56,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.iconColor,
     this.bottomColor,
   })  : headerType = HeaderType.nested,
+        leadingAvatar = null,
         subtitle = null,
         subtitleStyle = null,
         isBackButtonEnabled = true,
@@ -69,6 +72,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.subtitle,
     this.subtitleStyle,
     this.enableCenterTitle = false,
+    this.leadingAvatar,
     this.suffixAction,
     this.backgroundColor,
     this.prefixAction,
@@ -98,6 +102,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         suffixAction = null,
         enableCenterTitle = false,
         isBackButtonEnabled = true,
+        leadingAvatar = null,
         icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
 
   const THeader.brand({
@@ -110,6 +115,7 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         title = '',
         titleStyle = null,
         isBackButtonEnabled = false,
+        leadingAvatar = null,
         subtitle = null,
         subtitleStyle = null,
         prefixAction = null,
@@ -217,8 +223,14 @@ class _THeaderState extends State<THeader> {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          if (widget.prefixAction != null) widget.prefixAction!,
-          const SizedBox(width: 14),
+          if (widget.prefixAction != null) ...[
+            widget.prefixAction!,
+            const SizedBox(width: 14),
+          ],
+          if (widget.leadingAvatar != null) ...[
+            widget.leadingAvatar!,
+            const SizedBox(width: 12),
+          ],
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
