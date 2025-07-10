@@ -259,7 +259,9 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                       TTextField.multiline(
                         hintText: "write your description",
                         controller: descriptionController,
+                        maxLines: null,
                         onChange: (value) {},
+                        onSubmitted: (value) {},
                       ),
                     ],
                   ),
