@@ -32,7 +32,7 @@ class TButtonGhost extends StatefulWidget {
     this.child,
     this.normalColor,
     this.pressedColor,
-    this.padding,
+    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.centerContent = true,
     this.minimumSize = const Size(double.infinity, 48),
     this.maximumSize = const Size(double.infinity, 48),
@@ -48,14 +48,14 @@ class TButtonGhost extends StatefulWidget {
     this.normalColor,
     this.pressedColor,
     this.centerContent = true,
-    this.minimumSize = const Size(48, 40),
-    this.maximumSize = const Size(48, 40),
+    this.minimumSize = const Size(48, 48),
+    this.maximumSize = const Size(48, 48),
     this.minFontSize = 12.0,
+    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
   })  : child = icon,
         text = null,
         suffixIcon = null,
-        prefixIcon = null,
-        padding = EdgeInsets.zero;
+        prefixIcon = null;
 
   @override
   State<TButtonGhost> createState() => _TButtonGhostState();
