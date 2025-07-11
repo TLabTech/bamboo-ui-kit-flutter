@@ -19,6 +19,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
 
   String? selectedItem;
   late List<Map<String, String>> items;
+  late FocusNode focusNode = FocusNode();
 
   @override
   void initState() {
@@ -207,6 +208,8 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                       TTextField.password(
                         hintText: "write your password",
                         controller: passwordController,
+                        focusedBorderColor: Colors.black,
+                        focusNode: focusNode,
                         onChange: (value) {},
                       ),
                     ],

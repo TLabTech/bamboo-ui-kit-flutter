@@ -192,11 +192,44 @@ class TTextField extends StatefulWidget {
 
 class TTextFieldState extends State<TTextField> {
   late bool _obscureText;
+  late FocusNode _internalFocusNode;
 
   @override
   void initState() {
     super.initState();
     _obscureText = widget.obscureText;
+    _internalFocusNode = widget.focusNode ?? FocusNode();
+
+    _internalFocusNode.addListener(_handleFocusChange);
+  }
+
+  @override
+  void didUpdateWidget(covariant TTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.focusNode != oldWidget.focusNode) {
+      _internalFocusNode.removeListener(_handleFocusChange);
+      if (oldWidget.focusNode == null) {
+        _internalFocusNode.dispose();
+      }
+      _internalFocusNode = widget.focusNode ?? FocusNode();
+      _internalFocusNode.addListener(_handleFocusChange);
+    }
+    if (widget.obscureText != oldWidget.obscureText) {
+      _obscureText = widget.obscureText;
+    }
+  }
+
+  @override
+  void dispose() {
+    _internalFocusNode.removeListener(_handleFocusChange);
+    if (widget.focusNode == null) {
+      _internalFocusNode.dispose();
+    }
+    super.dispose();
+  }
+
+  void _handleFocusChange() {
+    setState(() {});
   }
 
   Widget _buildEmailIcon() {
