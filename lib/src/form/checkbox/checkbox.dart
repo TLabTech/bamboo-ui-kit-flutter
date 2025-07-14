@@ -58,9 +58,10 @@ class _TCheckBoxState extends State<TCheckBox> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedContainer(
+            margin: EdgeInsets.only(top: 2),
             duration: const Duration(milliseconds: 300),
-            width: 24,
-            height: 24,
+            width: 16,
+            height: 16,
             decoration: BoxDecoration(
               color: widget.isEnabled
                   ? _isChecked
@@ -84,7 +85,7 @@ class _TCheckBoxState extends State<TCheckBox> {
                     ? Icon(
                         Icons.check,
                         color: theme.primaryForeground,
-                        size: 18,
+                        size: 10,
                       )
                     : null
                 : null,
