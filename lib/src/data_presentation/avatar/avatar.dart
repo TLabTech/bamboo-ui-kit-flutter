@@ -67,6 +67,8 @@ class TAvatar extends StatelessWidget {
 
   final Widget? errorIcon;
 
+  final Widget? loadingIndicator;
+
   /// Creates an instance of `TAvatar`.
   ///
   /// - [size]: Custom size of the avatar.
@@ -94,6 +96,7 @@ class TAvatar extends StatelessWidget {
     this.textStyle,
     this.notificationCount,
     this.errorIcon,
+    this.loadingIndicator,
   }) : assert(
           [icon, text, imageUrl].where((element) => element != null).length ==
               1,
@@ -196,12 +199,29 @@ class TAvatar extends StatelessWidget {
         width: avatarSize,
         height: avatarSize,
         fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) {
+            return child;
+          }
+
+          return loadingIndicator ??
+              SizedBox(
+                width: 120,
+                height: 120,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: theme.primary,
+                  ),
+                ),
+              );
+        },
         errorBuilder: (context, error, stackTrace) {
-          return errorIcon ?? Icon(
-            Icons.error,
-            color: theme.destructive,
-            size: avatarSize * 0.4,
-          );
+          return errorIcon ??
+              Icon(
+                Icons.error,
+                color: theme.destructive,
+                size: avatarSize * 0.4,
+              );
         },
       );
     } else {

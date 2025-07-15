@@ -2,70 +2,66 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// A customizable accordion (expansion tile) widget.
+/// A customizable Accordion (ExpansionTile) widget for Flutter UI.
 ///
-/// The `TAccordion` widget provides an expandable panel that can show or hide
-/// content when tapped. It allows customization of its appearance, including
-/// title styling, border properties, and trailing widget.
+/// The `TAccordion` provides a collapsible panel that expands or collapses
+/// when tapped, revealing or hiding the provided `child` widget.
 ///
-/// ### Example Usage:
+/// ### Features:
+/// - Customizable title and trailing icon
+/// - Optional border and background decoration
+/// - Animated icon rotation to indicate expansion
+/// - Supports dynamic theming via `TThemeManager`
+/// - Optional divider at the bottom of the expanded content
+///
+/// ### Parameters:
+/// - `title`: The main label displayed in the accordion header.
+/// - `child`: The widget displayed when the accordion is expanded.
+/// - `initiallyExpanded`: Whether the accordion starts in expanded state.
+/// - `borderColor`: Color of the bottom divider when expanded (optional).
+/// - `borderWidth`: Thickness of the bottom divider when expanded (default is `0.5`).
+/// - `showDivider`: Whether to display a divider below the `child` content (default is `true`).
+/// - `enableDecoration`: If `true`, wraps the accordion with a decorated container (e.g., border, background color).
+/// - `decoration`: Custom `BoxDecoration` for the container (used if `enableDecoration` is `true`).
+/// - `trailing`: Custom trailing widget (e.g., custom arrow icon). Defaults to an animated `Icons.keyboard_arrow_up`.
+/// - `titleStyle`: Custom `TextStyle` for the title.
+/// - `padding`: Reserved for future use (currently unused).
+///
+/// ### Example:
 /// ```dart
 /// TAccordion(
-///   title: "Accordion Title",
-///   child: Padding(
-///     padding: EdgeInsets.all(8.0),
-///     child: Text("This is the expanded content"),
+///   title: "Order Details",
+///   child: Column(
+///     children: [
+///       Text("Order ID: 12345"),
+///       Text("Status: Shipped"),
+///     ],
 ///   ),
 ///   initiallyExpanded: false,
-///   borderColor: Colors.grey,
-///   borderWidth: 1.0,
-///   showDivider: true,
-///   trailing: Icon(Icons.arrow_drop_down),
-///   titleStyle: TextStyle(fontWeight: FontWeight.bold),
-///   padding: EdgeInsets.all(8.0),
+///   enableDecoration: true,
+///   trailing: Icon(Icons.expand_more),
 /// )
 /// ```
 ///
-/// The accordion expands or collapses when tapped, showing or hiding its child widget.
+/// ### Notes:
+/// - The trailing icon automatically rotates when expanded/collapsed.
+/// - The widget integrates with `TThemeManager` for dynamic theming support.
+/// - `padding` is included for API consistency but currently not applied.
+///
+/// ---
 class TAccordion extends StatefulWidget {
-  /// The title text displayed on the accordion header.
   final String title;
-
-  /// The widget displayed when the accordion is expanded.
   final Widget? child;
-
-  /// Determines whether the accordion starts in an expanded state.
   final bool initiallyExpanded;
-
-  /// The border color of the accordion when expanded.
   final Color? borderColor;
-
-  /// The border width of the accordion when expanded.
   final double borderWidth;
-
-  /// Whether to show a divider line at the bottom of the expanded content.
   final bool showDivider;
-
-  /// A widget displayed on the right side of the accordion header.
+  final bool enableDecoration;
+  final BoxDecoration? decoration;
   final Widget? trailing;
-
-  /// The style of the title text.
   final TextStyle? titleStyle;
-
-  /// Padding for the expanded content.
   final EdgeInsets? padding;
 
-  /// Creates an instance of `TAccordion`.
-  ///
-  /// - [title]: The header text of the accordion (required).
-  /// - [child]: The content displayed when expanded.
-  /// - [initiallyExpanded]: If `true`, the accordion starts expanded (default: `false`).
-  /// - [borderColor]: Color of the border when expanded (default: `null`).
-  /// - [borderWidth]: Thickness of the border (default: `0.5`).
-  /// - [showDivider]: Whether to show a divider at the bottom (default: `true`).
-  /// - [trailing]: A widget displayed on the right side (default: expand/collapse icon).
-  /// - [titleStyle]: Custom text style for the title.
-  /// - [padding]: Padding for the expanded content.
   const TAccordion({
     super.key,
     required this.title,
@@ -74,6 +70,8 @@ class TAccordion extends StatefulWidget {
     this.borderColor,
     this.borderWidth = 0.5,
     this.showDivider = true,
+    this.enableDecoration = false,
+    this.decoration,
     this.titleStyle,
     this.trailing,
     this.padding,
@@ -95,41 +93,56 @@ class _TAccordionState extends State<TAccordion> {
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
-    return ExpansionTile(
-      initiallyExpanded: widget.initiallyExpanded,
-      collapsedIconColor: theme.foreground,
-      iconColor: theme.foreground,
-      shape: const RoundedRectangleBorder(
-        side: BorderSide.none,
-      ),
-      title: Text(
-        widget.title,
-        style: widget.titleStyle ??
-            TFontBold.body(context).copyWith(color: theme.foreground),
-      ),
-      trailing: AnimatedRotation(
-        turns: isExpanded ? 0.5 : 0.0,
-        duration: const Duration(milliseconds: 200),
-        child: widget.trailing ?? const Icon(Icons.expand_more),
-      ),
-      tilePadding: const EdgeInsets.symmetric(horizontal: 0),
-      childrenPadding: const EdgeInsets.symmetric(horizontal: 0),
-      onExpansionChanged: (expanded) {
-        setState(() {
-          isExpanded = expanded;
-        });
-      },
-      children: [
-        Padding(
-          padding: widget.padding ?? EdgeInsets.zero,
-          child: widget.child,
+    BoxDecoration? boxDecoration;
+    if (widget.enableDecoration) {
+      boxDecoration = widget.decoration ??
+          BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            border: Border.all(
+              color: HexColor(gray200),
+              width: 1.0,
+            ),
+            color: theme.background,
+          );
+    }
+
+    return Container(
+      decoration: boxDecoration,
+      margin: EdgeInsets.zero,
+      child: ExpansionTile(
+        initiallyExpanded: widget.initiallyExpanded,
+        collapsedIconColor: theme.foreground,
+        iconColor: theme.foreground,
+        shape: const RoundedRectangleBorder(
+          side: BorderSide.none,
         ),
-        if (widget.showDivider)
-          Divider(
-            color: widget.borderColor ?? theme.border,
-            thickness: widget.borderWidth,
-          ),
-      ],
+        title: Text(
+          widget.title,
+          style: widget.titleStyle ??
+              TFontBold.body(context)
+                  .copyWith(color: theme.foreground),
+        ),
+        trailing: AnimatedRotation(
+          turns: isExpanded ? 0.5 : 0.0,
+          duration: const Duration(milliseconds: 200),
+          child: widget.trailing ?? const Icon(Icons.keyboard_arrow_up),
+        ),
+        tilePadding: const EdgeInsets.symmetric(horizontal: 18.0),
+        childrenPadding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+        onExpansionChanged: (expanded) {
+          setState(() {
+            isExpanded = expanded;
+          });
+        },
+        children: [
+          widget.child ?? const SizedBox.shrink(),
+          if (widget.showDivider)
+            Divider(
+              color: widget.borderColor ?? theme.border,
+              thickness: widget.borderWidth,
+            ),
+        ],
+      ),
     );
   }
 }

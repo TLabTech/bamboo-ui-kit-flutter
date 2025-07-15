@@ -59,7 +59,7 @@ class _AccordionScreenState extends State<AccordionScreen> {
                 ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(24),
+                  padding: EdgeInsets.all(0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
