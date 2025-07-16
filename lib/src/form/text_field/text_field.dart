@@ -15,6 +15,7 @@ class TTextField extends StatefulWidget {
   final TextInputType textInputType;
   final Widget? leading;
   final ValueChanged<String> onChange;
+  final ValueChanged<String>? onSubmitted;
   final bool? enabled;
   final bool readOnly;
   final Color? borderColor;
@@ -23,7 +24,7 @@ class TTextField extends StatefulWidget {
   final Widget? actionWidget;
   final Color? hintColor;
   final bool? autoFocus;
-  final int maxLines;
+  final int? maxLines;
   final int minLines;
   final String? errorMessage;
   final String? description;
@@ -47,6 +48,7 @@ class TTextField extends StatefulWidget {
     required this.hintText,
     required this.controller,
     required this.onChange,
+    this.onSubmitted,
     this.enableInstantDelete = false,
     this.maxLines = 1,
     this.minLines = 1,
@@ -82,6 +84,7 @@ class TTextField extends StatefulWidget {
     required this.hintText,
     required this.controller,
     required this.onChange,
+    this.onSubmitted,
     this.enableInstantDelete = false,
     this.maxLines = 1,
     this.minLines = 1,
@@ -117,10 +120,11 @@ class TTextField extends StatefulWidget {
     required this.hintText,
     required this.controller,
     required this.onChange,
+    this.onSubmitted,
     this.enableInstantDelete = false,
-    this.maxLines = 4,
+    this.maxLines,
     this.minLines = 4,
-    this.textInputType = TextInputType.text,
+    this.textInputType = TextInputType.multiline,
     this.leading,
     this.enabled,
     this.readOnly = false,
@@ -152,6 +156,7 @@ class TTextField extends StatefulWidget {
     required this.hintText,
     required this.controller,
     required this.onChange,
+    this.onSubmitted,
     this.enableInstantDelete = false,
     this.maxLines = 1,
     this.minLines = 1,
@@ -187,11 +192,44 @@ class TTextField extends StatefulWidget {
 
 class TTextFieldState extends State<TTextField> {
   late bool _obscureText;
+  late FocusNode _internalFocusNode;
 
   @override
   void initState() {
     super.initState();
     _obscureText = widget.obscureText;
+    _internalFocusNode = widget.focusNode ?? FocusNode();
+
+    _internalFocusNode.addListener(_handleFocusChange);
+  }
+
+  @override
+  void didUpdateWidget(covariant TTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.focusNode != oldWidget.focusNode) {
+      _internalFocusNode.removeListener(_handleFocusChange);
+      if (oldWidget.focusNode == null) {
+        _internalFocusNode.dispose();
+      }
+      _internalFocusNode = widget.focusNode ?? FocusNode();
+      _internalFocusNode.addListener(_handleFocusChange);
+    }
+    if (widget.obscureText != oldWidget.obscureText) {
+      _obscureText = widget.obscureText;
+    }
+  }
+
+  @override
+  void dispose() {
+    _internalFocusNode.removeListener(_handleFocusChange);
+    if (widget.focusNode == null) {
+      _internalFocusNode.dispose();
+    }
+    super.dispose();
+  }
+
+  void _handleFocusChange() {
+    setState(() {});
   }
 
   Widget _buildEmailIcon() {
@@ -206,8 +244,7 @@ class TTextFieldState extends State<TTextField> {
       return widget.passwordVisibilityOffIcon ??
           SvgPicture.asset(Assets.svg.eyeSlash);
     } else {
-      return widget.passwordVisibilityIcon ??
-          SvgPicture.asset(Assets.svg.eye);
+      return widget.passwordVisibilityIcon ?? SvgPicture.asset(Assets.svg.eye);
     }
   }
 
@@ -221,6 +258,15 @@ class TTextFieldState extends State<TTextField> {
             ? (widget.focusedBorderColor ?? theme.primary)
             : (widget.borderColor ?? theme.border);
 
+    TextInputAction textInputAction;
+    if (widget.type == TextFieldType.multiline) {
+      textInputAction = TextInputAction.newline;
+    } else {
+      textInputAction = widget.onSubmitted != null
+          ? TextInputAction.done
+          : TextInputAction.done;
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -229,12 +275,14 @@ class TTextFieldState extends State<TTextField> {
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
               widget.labelText!,
-              style: TFontRegular.body(context).copyWith(color: theme.foreground),
+              style:
+                  TFontRegular.body(context).copyWith(color: theme.foreground),
             ),
           ),
         Container(
-          constraints:
-              widget.maxLines > 1 ? const BoxConstraints(minHeight: 40) : null,
+          constraints: (widget.maxLines ?? 0) > 1
+              ? const BoxConstraints(minHeight: 40)
+              : null,
           decoration: BoxDecoration(
             color: widget.backgroundColor ?? Colors.transparent,
             borderRadius: BorderRadius.circular(8),
@@ -245,7 +293,7 @@ class TTextFieldState extends State<TTextField> {
             vertical: widget.obscureText ? 0 : 6,
           ),
           child: Row(
-            crossAxisAlignment: widget.maxLines > 1
+            crossAxisAlignment: (widget.maxLines ?? 0) > 1
                 ? CrossAxisAlignment.start
                 : CrossAxisAlignment.center,
             children: [
@@ -259,7 +307,8 @@ class TTextFieldState extends State<TTextField> {
                   padding: EdgeInsets.only(right: 8.0),
                   child: _buildEmailIcon(),
                 ),
-              if ((widget.leading == null && widget.type != TextFieldType.email) ||
+              if ((widget.leading == null &&
+                      widget.type != TextFieldType.email) ||
                   (widget.type == TextFieldType.email && !widget.showEmailIcon))
                 Padding(
                   padding: EdgeInsets.only(right: 8.0),
@@ -273,6 +322,7 @@ class TTextFieldState extends State<TTextField> {
                   enabled: widget.enabled,
                   autofocus: widget.autoFocus ?? false,
                   onChanged: widget.onChange,
+                  onFieldSubmitted: widget.onSubmitted,
                   keyboardType: widget.textInputType,
                   inputFormatters: widget.inputFormatter,
                   style: TFontRegular.body(context),
@@ -290,6 +340,7 @@ class TTextFieldState extends State<TTextField> {
                     counterText: widget.counterText,
                   ),
                   onEditingComplete: widget.onEditingComplete,
+                  textInputAction: textInputAction,
                 ),
               ),
               if (widget.obscureText && widget.showPasswordToggle)

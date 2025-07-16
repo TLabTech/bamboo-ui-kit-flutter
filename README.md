@@ -1,35 +1,42 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A custom widget made from TLab for TLab.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Berikut fitur-fitur utama yang tersedia dalam package ini:
+
+- **Button**: Beragam tombol dengan style dan fungsi berbeda.
+- **Checkbox, Radio, Switch**: Komponen input untuk pilihan dan toggle.
+- **Text Field & Dropdown**: Form input dan pilihan dropdown.
+- **Accordion**: Widget untuk konten yang dapat diperluas.
+- **Avatar & Badge**: Tampilan avatar dan badge untuk identitas atau notifikasi.
+- **Tile & Header**: Komponen tata letak dan header.
+- **Tab & Stepper**: Navigasi tab dan stepper untuk proses bertahap.
+- **Alert & Dialog**: Komponen untuk notifikasi dan dialog interaktif.
+- **Progress & Slider**: Indikator progres dan slider nilai.
+- **Bottom Navigation**: Navigasi bawah dengan berbagai style.
+- **Calendar**: Widget kalender.
+- **Charts**: Bar chart, pie chart, doughnut chart, line chart, dan lainnya untuk visualisasi data.
+- **Breadcrumbs**: Navigasi breadcrumbs.
+- **Title Section & Theme**: Komponen judul dan pengelolaan tema.
+- **Fondation**: Utilitas seperti font, container, shadow, dan warna hex.
+- **Overlay, Feedback, Form, Data Presentation**: Modul tambahan untuk kebutuhan aplikasi modern.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Tambahkan package ini ke `pubspec.yaml` Anda dan import widget yang dibutuhkan.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Contoh penggunaan Text Field:
 
 ```dart
-const like = 'sample';
+TTextField(
+  label: "Nama Lengkap",
+  hintText: "Masukkan nama Anda",
+  onChanged: (value) {
+    print("Nama: $value");
+  },
+)
 ```
 
 ## Additional information
