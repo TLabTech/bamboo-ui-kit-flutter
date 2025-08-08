@@ -1,3 +1,4 @@
+# TLab Bamboo DLS
 A custom widget made from TLab for TLab.
 
 ## Features
@@ -23,7 +24,11 @@ Berikut fitur-fitur utama yang tersedia dalam package ini:
 
 ## Getting started
 
-Tambahkan package ini ke `pubspec.yaml` Anda dan import widget yang dibutuhkan.
+Tambahkan package ke `pubspec.yaml`.
+```dart
+dependencies:
+  flutter_bamboo_ui_kit:
+```
 
 ## Usage
 
@@ -39,11 +44,9 @@ TTextField(
 )
 ```
 
-## Additional information
+## Developer Notes
 
-### Run Flutter Gen
-
-- Setelah menambahkan assets (font, svg, png, dll) jalankan perintah berikut:
+Setelah menambahkan assets (font, svg, png, dll), jalankan **FlutterGen**
 ```
 dart run build_runner build --delete-conflicting-outputs
 ```
