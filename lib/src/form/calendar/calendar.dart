@@ -12,6 +12,8 @@ enum CalendarView { year, month, date }
 class TCalendar extends StatefulWidget {
   final List<EventData> events;
   final Function(EventData)? onEventTap;
+  final Function(Set<DateTime>)? onSelectionChanged;
+  final bool enableMultiSelection;
   final DateTime firstDay;
   final DateTime lastDay;
 
@@ -19,6 +21,8 @@ class TCalendar extends StatefulWidget {
     super.key,
     this.events = const [],
     this.onEventTap,
+    this.onSelectionChanged,
+    this.enableMultiSelection = false,
     required this.firstDay,
     required this.lastDay,
   });
@@ -29,7 +33,8 @@ class TCalendar extends StatefulWidget {
 
 class TCalendarState extends State<TCalendar> {
   DateTime _focusedDay = DateTime.now();
-  DateTime? _selectedDay;
+  Set<DateTime> _selectedDays = {};
+
   late Map<DateTime, List<EventData>> _eventsMap;
   CalendarView _currentView = CalendarView.date;
   DateTime _selectedDate = DateTime.now();
@@ -42,7 +47,11 @@ class TCalendarState extends State<TCalendar> {
   void initState() {
     super.initState();
     _eventsMap = _groupEventsByDate(widget.events);
-    _selectedDay = _focusedDay;
+    _selectedDays = {_focusedDay};
+    // Notify parent about initial selection
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.onSelectionChanged?.call(_selectedDays);
+    });
   }
 
   Map<DateTime, List<EventData>> _groupEventsByDate(List<EventData> events) {
@@ -166,6 +175,91 @@ class TCalendarState extends State<TCalendar> {
     }
   }
 
+  // method to jump to date AND auto-select it
+  void jumpToAndSelectDate(DateTime date) {
+    setState(() {
+      _focusedDay = date;
+      if (widget.enableMultiSelection) {
+        // Add to existing selection in multi-select mode
+        _selectedDays.add(date);
+      } else {
+        // Replace selection in single-select mode
+        _selectedDays = {date};
+      }
+    });
+    widget.onSelectionChanged?.call(_selectedDays);
+  }
+
+  // method to animate to date AND auto-select it
+  void animateToAndSelectDate(DateTime date) {
+    setState(() {
+      if (!date.isAtSameMomentAs(_focusedDay)) {
+        _focusedDay = date;
+      }
+      if (widget.enableMultiSelection) {
+        // Add to existing selection in multi-select mode
+        _selectedDays.add(date);
+      } else {
+        // Replace selection in single-select mode
+        _selectedDays = {date};
+      }
+    });
+    widget.onSelectionChanged?.call(_selectedDays);
+  }
+
+  // Method to select date without navigating (if date is in current view)
+  void selectDate(DateTime date) {
+    setState(() {
+      if (widget.enableMultiSelection) {
+        _selectedDays.add(date);
+      } else {
+        _selectedDays = {date};
+      }
+    });
+    widget.onSelectionChanged?.call(_selectedDays);
+  }
+
+  // Method to select multiple dates at once (for multi-select mode)
+  void selectDates(List<DateTime> dates) {
+    setState(() {
+      if (widget.enableMultiSelection) {
+        _selectedDays.addAll(dates);
+      } else {
+        // In single-select mode, only select the first date
+        _selectedDays = dates.isEmpty ? {} : {dates.first};
+      }
+    });
+    widget.onSelectionChanged?.call(_selectedDays);
+  }
+
+  // Method to programmatically update selection
+  void updateSelection(Set<DateTime> selectedDates) {
+    setState(() {
+      if (widget.enableMultiSelection) {
+        _selectedDays = Set.from(selectedDates);
+      } else {
+        // For single selection, only keep the first date or clear if empty
+        _selectedDays = selectedDates.isEmpty ? {} : {selectedDates.first};
+      }
+    });
+    widget.onSelectionChanged?.call(_selectedDays);
+  }
+
+  // Method to clear all selections
+  void clearSelection() {
+    setState(() {
+      _selectedDays.clear();
+    });
+    widget.onSelectionChanged?.call(_selectedDays);
+  }
+
+  // Method to get current selection
+  Set<DateTime> get selectedDates => Set.from(_selectedDays);
+
+  // Method to get selected date for single selection mode
+  DateTime? get selectedDate =>
+      _selectedDays.isEmpty ? null : _selectedDays.first;
+
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
@@ -287,9 +381,9 @@ class TCalendarState extends State<TCalendar> {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: isCurrentMonth
-                  ? theme.primary
+                  ? theme.accent
                   : isSelected
-                      ? theme.primaryForeground
+                      ? theme.primary
                       : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
             ),
@@ -297,9 +391,9 @@ class TCalendarState extends State<TCalendar> {
               DateFormat('MMM').format(DateTime(2025, month)),
               style: TFontRegular.body(context).copyWith(
                 color: isCurrentMonth
-                    ? theme.primaryForeground
+                    ? theme.foreground
                     : isSelected
-                        ? theme.primary
+                        ? theme.primaryForeground
                         : theme.foreground,
               ),
             ),
@@ -318,19 +412,38 @@ class TCalendarState extends State<TCalendar> {
       firstDay: DateTime.utc(widget.firstDay.year, 1, 1),
       lastDay: DateTime.utc(widget.lastDay.year, 12, 31),
       focusedDay: _focusedDay,
-      selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+      selectedDayPredicate: (day) {
+        return _selectedDays.any((d) => isSameDay(d, day));
+      },
       onDaySelected: (selectedDay, focusedDay) {
         setState(() {
-          _selectedDay = selectedDay;
+          if (widget.enableMultiSelection) {
+            // Multi-selection logic
+            final alreadySelected =
+            _selectedDays.any((d) => isSameDay(d, selectedDay));
+            if (alreadySelected) {
+              _selectedDays.removeWhere((d) => isSameDay(d, selectedDay));
+            } else {
+              _selectedDays.add(selectedDay);
+            }
+          } else {
+            // Single selection logic
+            _selectedDays = {selectedDay};
+          }
           _focusedDay = focusedDay;
         });
+        // Notify parent about selection change
+        widget.onSelectionChanged?.call(_selectedDays);
+
         _handleDayTap(selectedDay);
       },
       onPageChanged: _onPageChanged,
       headerVisible: false,
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekdayStyle: TFontRegular.caption2(context).copyWith(color: theme.mutedForeground),
-        weekendStyle: TFontRegular.caption2(context).copyWith(color: theme.mutedForeground),
+        weekdayStyle: TFontRegular.caption2(context)
+            .copyWith(color: theme.mutedForeground),
+        weekendStyle: TFontRegular.caption2(context)
+            .copyWith(color: theme.mutedForeground),
         dowTextFormatter: (date, locale) =>
             ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'][date.weekday % 7],
       ),
@@ -338,21 +451,21 @@ class TCalendarState extends State<TCalendar> {
       calendarStyle: CalendarStyle(
         markersMaxCount: 3,
         todayDecoration: BoxDecoration(
-          color: theme.primary,
+          color: theme.accent,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(6),
         ),
         todayTextStyle: TextStyle(
-          color: theme.primaryForeground,
+          color: theme.foreground,
           fontWeight: FontWeight.bold,
         ),
         selectedDecoration: BoxDecoration(
-          color: theme.primaryForeground,
+          color: theme.primary,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(6),
         ),
         selectedTextStyle: TextStyle(
-          color: theme.primary,
+          color: theme.primaryForeground,
           fontWeight: FontWeight.bold,
         ),
         defaultDecoration: const BoxDecoration(
@@ -367,7 +480,9 @@ class TCalendarState extends State<TCalendar> {
       calendarBuilders: CalendarBuilders(
         defaultBuilder: (context, date, events) {
           final isToday = isSameDay(date, DateTime.now());
-          final isSelected = isSameDay(date, _selectedDay);
+          final isSelected = _selectedDays.any((d) => isSameDay(d, date));
+          final isCurrentMonth = date.month == _focusedDay.month;
+          final isCurrentYear = date.year == _focusedDay.year;
 
           return Center(
             child: Text(

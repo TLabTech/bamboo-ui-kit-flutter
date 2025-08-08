@@ -4,6 +4,8 @@ import 'package:flutter_bamboo_ui_kit/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+final GlobalKey<TCalendarState> calendarKey = GlobalKey<TCalendarState>();
+
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
 
@@ -75,8 +77,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       ),
                     ),
                     child: TCalendar(
+                      key: calendarKey,
                       firstDay: DateTime(2000, 4, 4),
                       lastDay: DateTime(2030, 1, 2),
+                      enableMultiSelection: true,
+                      onSelectionChanged: (selectedDates) {
+                        print('Selected ${selectedDates.length} dates: $selectedDates');
+                      },
                       events: [
                         EventData(
                           date: DateTime(2025, 2, 18),

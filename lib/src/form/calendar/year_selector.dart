@@ -113,11 +113,11 @@ class YearSelectorState extends State<YearSelector> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? theme.primaryForeground
+                            ? theme.primary
                             : isDisabled
                                 ? Colors.transparent
                                 : isCurrentYear
-                                    ? theme.primary
+                                    ? theme.accent
                                     : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -125,11 +125,11 @@ class YearSelectorState extends State<YearSelector> {
                         '$year',
                         style: TFontRegular.body(context).copyWith(
                           color: isSelected
-                              ? theme.primary
+                              ? theme.primaryForeground
                               : isDisabled
                                   ? Colors.grey
                                   : isCurrentYear
-                                      ? theme.primaryForeground
+                                      ? theme.foreground
                                       : theme.foreground,
                         ),
                       ),
