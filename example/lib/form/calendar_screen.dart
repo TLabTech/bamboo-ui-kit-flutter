@@ -80,8 +80,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       key: calendarKey,
                       firstDay: DateTime(2000, 4, 4),
                       lastDay: DateTime(2030, 1, 2),
-                      enableMultiSelection: true,
+                      selectionMode: SelectionMode.range,
                       onSelectionChanged: (selectedDates) {
+                        final state = calendarKey.currentState;
+                        if (state?.isRangeComplete == true) {
+                          print('Range: ${state?.rangeStart} to ${state?.rangeEnd}');
+                        }
                         print('Selected ${selectedDates.length} dates: $selectedDates');
                       },
                       events: [
