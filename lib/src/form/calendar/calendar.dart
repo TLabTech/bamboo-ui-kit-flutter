@@ -11,6 +11,8 @@ enum CalendarView { year, month, date }
 
 enum SelectionMode { single, multi, range }
 
+enum RangePosition { none, single, start, middle, end }
+
 class TCalendar extends StatefulWidget {
   final List<EventData> events;
   final Function(EventData)? onEventTap;
@@ -383,6 +385,24 @@ class TCalendarState extends State<TCalendar> {
   // Check if range is complete (has both start and end)
   bool get isRangeComplete => _rangeStart != null && _rangeEnd != null;
 
+  // Helper method to determine range position
+  RangePosition _getRangePosition(DateTime date) {
+    if (widget.selectionMode != SelectionMode.range) {
+      return RangePosition.none;
+    }
+
+    final isSelected = _selectedDays.any((d) => isSameDay(d, date));
+    if (!isSelected) return RangePosition.none;
+
+    final isRangeStart = _rangeStart != null && isSameDay(date, _rangeStart!);
+    final isRangeEnd = _rangeEnd != null && isSameDay(date, _rangeEnd!);
+
+    if (isRangeStart && isRangeEnd) return RangePosition.single;
+    if (isRangeStart) return RangePosition.start;
+    if (isRangeEnd) return RangePosition.end;
+    return RangePosition.middle;
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
@@ -631,44 +651,16 @@ class TCalendarState extends State<TCalendar> {
       ),
       calendarBuilders: CalendarBuilders(
         defaultBuilder: (context, date, events) {
-          final isToday = isSameDay(date, DateTime.now());
-          final isSelected = _selectedDays.any((d) => isSameDay(d, date));
-          final isCurrentMonth = date.month == _focusedDay.month;
-          final isCurrentYear = date.year == _focusedDay.year;
-
-          // Range selection styling
-          final isRangeStart =
-              _rangeStart != null && isSameDay(date, _rangeStart!);
-          final isRangeEnd = _rangeEnd != null && isSameDay(date, _rangeEnd!);
-          final isInRange = _rangeStart != null &&
-              _rangeEnd != null &&
-              date.isAfter(_rangeStart!) &&
-              date.isBefore(_rangeEnd!);
-
-          return Center(
-            child: Text(
-              '${date.day}',
-              style: TFontRegular.body(context).copyWith(
-                color: isRangeStart || isRangeEnd
-                    ? theme.primaryForeground
-                    : isSelected
-                        ? theme.foreground
-                        : isToday
-                            ? theme.foreground
-                            : isCurrentMonth || isCurrentYear
-                                ? theme.foreground
-                                : theme.foreground,
-              ),
-            ),
-          );
+          return _buildDayCell(context, date, theme);
         },
         outsideBuilder: (context, date, _) {
-          return Center(
-            child: Text(
-              '${date.day}',
-              style: TextStyle(color: theme.mutedForeground),
-            ),
-          );
+          return _buildDayCell(context, date, theme);
+        },
+        todayBuilder: (context, date, _) {
+          return _buildDayCell(context, date, theme);
+        },
+        selectedBuilder: (context, date, _) {
+          return _buildDayCell(context, date, theme);
         },
         markerBuilder: (context, date, events) {
           final normalizedDate = DateTime(date.year, date.month, date.day);
@@ -693,42 +685,91 @@ class TCalendarState extends State<TCalendar> {
           }
           return null;
         },
-        todayBuilder: (context, date, _) {
-          return Container(
-            decoration: BoxDecoration(
-              color: theme.accent,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Center(
-              child: Text(
-                '${date.day}',
-                style: TextStyle(
-                  color: theme.foreground,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          );
-        },
-        selectedBuilder: (context, date, _) {
-          return Container(
-            decoration: BoxDecoration(
+      ),
+    );
+  }
+
+  Widget _buildDayCell(BuildContext context, DateTime date, TTheme theme) {
+    final isToday = isSameDay(date, DateTime.now());
+    final isSelected = _selectedDays.any((d) => isSameDay(d, date));
+    final isCurrentMonth = date.month == _focusedDay.month;
+
+    // Determine range position for styling
+    final rangePosition = _getRangePosition(date);
+
+    // Determine background decoration based on selection mode
+    Decoration? backgroundDecoration;
+    Color textColor = isCurrentMonth ? theme.foreground : theme.mutedForeground;
+
+    if (isToday && !isSelected) {
+      // Today styling when not selected
+      backgroundDecoration = BoxDecoration(
+        color: theme.accent,
+        borderRadius: BorderRadius.circular(6),
+      );
+      textColor = theme.foreground;
+    } else if (isSelected) {
+      // Selected styling
+      if (widget.selectionMode == SelectionMode.range) {
+        // Range selection styling
+        switch (rangePosition) {
+          case RangePosition.single:
+            backgroundDecoration = BoxDecoration(
               color: theme.primary,
-              shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(6),
-            ),
-            child: Center(
-              child: Text(
-                '${date.day}',
-                style: TextStyle(
-                  color: theme.primaryForeground,
-                  fontWeight: FontWeight.bold,
-                ),
+            );
+            textColor = theme.primaryForeground;
+            break;
+          case RangePosition.start:
+            backgroundDecoration = BoxDecoration(
+              color: theme.primary,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(6),
+                bottomLeft: Radius.circular(6),
               ),
-            ),
-          );
-        },
+            );
+            textColor = theme.primaryForeground;
+            break;
+          case RangePosition.end:
+            backgroundDecoration = BoxDecoration(
+              color: theme.primary,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(6),
+                bottomRight: Radius.circular(6),
+              ),
+            );
+            textColor = theme.primaryForeground;
+            break;
+          case RangePosition.middle:
+            backgroundDecoration = BoxDecoration(
+              color: theme.primary,
+            );
+            textColor = theme.primaryForeground;
+            break;
+          case RangePosition.none:
+            break;
+        }
+      } else {
+        // Single or multi selection styling
+        backgroundDecoration = BoxDecoration(
+          color: theme.primary,
+          borderRadius: BorderRadius.circular(6),
+        );
+        textColor = theme.primaryForeground;
+      }
+    }
+
+    return Container(
+      decoration: backgroundDecoration,
+      child: Center(
+        child: Text(
+          '${date.day}',
+          style: TFontRegular.body(context).copyWith(
+            color: textColor,
+            fontWeight:
+                isToday || isSelected ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
       ),
     );
   }

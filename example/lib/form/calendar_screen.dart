@@ -80,7 +80,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       key: calendarKey,
                       firstDay: DateTime(2000, 4, 4),
                       lastDay: DateTime(2030, 1, 2),
-                      selectionMode: SelectionMode.range,
+                      selectionMode: SelectionMode.single,
                       onSelectionChanged: (selectedDates) {
                         final state = calendarKey.currentState;
                         if (state?.isRangeComplete == true) {
