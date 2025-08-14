@@ -45,9 +45,6 @@ class TRadioButton<T> extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: true,
                   style: TFontRegular.body(context).copyWith(
                     color: isDisabled
                         ? theme.mutedForeground
@@ -57,9 +54,6 @@ class TRadioButton<T> extends StatelessWidget {
                 if (description != null)
                   Text(
                     description!,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: true,
                     style: TFontRegular.footNote(context).copyWith(
                       color: isDisabled
                           ? theme.mutedForeground
@@ -69,9 +63,6 @@ class TRadioButton<T> extends StatelessWidget {
                 if (isError && error != null)
                   Text(
                     error!,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: true,
                     style: TFontRegular.footNote(context).copyWith(
                       color: theme.destructive,
                     ),

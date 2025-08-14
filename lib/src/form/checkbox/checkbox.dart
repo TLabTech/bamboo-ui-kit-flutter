@@ -91,25 +91,26 @@ class _TCheckBoxState extends State<TCheckBox> {
                 : null,
           ),
           const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 2,
-              children: [
-                Text(
-                  widget.label ?? '',
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: true,
-                  style: TFontRegular.body(context).copyWith(
-                    color: widget.isError
-                        ? theme.destructive
-                        : !widget.isEnabled
-                        ? theme.mutedForeground
-                        : theme.foreground,
-                  ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 2,
+            children: [
+              Text(
+                widget.label ?? '',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                softWrap: true,
+                style: TFontRegular.body(context).copyWith(
+                  color: widget.isError
+                      ? theme.destructive
+                      : !widget.isEnabled
+                      ? theme.mutedForeground
+                      : theme.foreground,
                 ),
-                Text(
+              ),
+              Visibility(
+                visible: widget.description != null,
+                child: Text(
                   widget.description ?? "",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -120,21 +121,21 @@ class _TCheckBoxState extends State<TCheckBox> {
                         : theme.foreground,
                   ),
                 ),
-                Visibility(
-                  visible: widget.isError,
-                  child: Text(
-                    widget.error ?? "",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: true,
-                    style: TFontRegular.footNote(context).copyWith(
-                      color: theme.destructive,
-                    ),
+              ),
+              Visibility(
+                visible: widget.isError || widget.error != null,
+                child: Text(
+                  widget.error ?? "",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                  style: TFontRegular.footNote(context).copyWith(
+                    color: theme.destructive,
                   ),
                 ),
-              ],
-            ),
-          )
+              ),
+            ],
+          ),
         ],
       ),
     );
