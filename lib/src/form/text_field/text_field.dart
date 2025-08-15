@@ -41,6 +41,8 @@ class TTextField extends StatefulWidget {
   final bool showPasswordToggle;
   final Widget? emailIcon;
   final bool showEmailIcon;
+  final VoidCallback? onLeadingPressed;
+  final VoidCallback? onActionPressed;
 
   const TTextField({
     super.key,
@@ -76,6 +78,8 @@ class TTextField extends StatefulWidget {
     this.showPasswordToggle = true,
     this.emailIcon,
     this.showEmailIcon = true,
+    this.onLeadingPressed,
+    this.onActionPressed,
   }) : type = TextFieldType.defaultType;
 
   const TTextField.password({
@@ -112,6 +116,8 @@ class TTextField extends StatefulWidget {
     this.showPasswordToggle = true,
     this.emailIcon,
     this.showEmailIcon = true,
+    this.onLeadingPressed,
+    this.onActionPressed,
   }) : type = TextFieldType.password;
 
   const TTextField.multiline({
@@ -148,6 +154,8 @@ class TTextField extends StatefulWidget {
     this.showPasswordToggle = true,
     this.emailIcon,
     this.showEmailIcon = true,
+    this.onLeadingPressed,
+    this.onActionPressed,
   }) : type = TextFieldType.multiline;
 
   const TTextField.email({
@@ -184,6 +192,8 @@ class TTextField extends StatefulWidget {
     this.showPasswordToggle = true,
     this.emailIcon,
     this.showEmailIcon = true,
+    this.onLeadingPressed,
+    this.onActionPressed,
   }) : type = TextFieldType.email;
 
   @override
@@ -300,7 +310,10 @@ class TTextFieldState extends State<TTextField> {
               if (widget.leading != null && widget.type != TextFieldType.email)
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
-                  child: widget.leading!,
+                  child: GestureDetector(
+                    onTap: widget.onLeadingPressed,
+                    child: widget.leading!,
+                  ),
                 ),
               if (widget.type == TextFieldType.email && widget.showEmailIcon)
                 Padding(
@@ -355,7 +368,10 @@ class TTextFieldState extends State<TTextField> {
               if (widget.actionWidget != null && !widget.obscureText)
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: widget.actionWidget!,
+                  child: GestureDetector(
+                    onTap: widget.onActionPressed,
+                    child: widget.actionWidget!,
+                  ),
                 ),
               if (widget.enableInstantDelete &&
                   widget.controller.text.isNotEmpty)

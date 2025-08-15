@@ -125,6 +125,19 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                         controller: emailController,
                         onChange: (value) {},
                       ),
+                      TTextField(
+                        controller: TextEditingController(),
+                        hintText: "Notification",
+                        onChange: (value) {},
+                        leading: SvgPicture.asset(
+                          Assets.svg.bell,
+                          colorFilter: ColorFilter.mode(
+                            theme.mutedForeground,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        onLeadingPressed: () {},
+                      ),
                     ],
                   ),
                 ),
@@ -172,6 +185,19 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                             selectedItem = newValue?["value"];
                           });
                         },
+                      ),
+                      TTextField(
+                        controller: TextEditingController(),
+                        hintText: "Notification",
+                        onChange: (value) {},
+                        actionWidget: SvgPicture.asset(
+                          Assets.svg.bell,
+                          colorFilter: ColorFilter.mode(
+                            theme.mutedForeground,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        onActionPressed: () {},
                       ),
                     ],
                   ),

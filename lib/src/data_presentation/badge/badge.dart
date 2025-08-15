@@ -23,33 +23,41 @@ class TBadge extends StatelessWidget {
   final Color? borderColor;
   final TBadgeType badgeType;
 
+  final double radius;
+
   /// Default primary badge constructor.
   const TBadge({
     Key? key,
     required String label,
     Color? backgroundColor,
     Color? textColor,
+    double radius = 8,
   }) : this._(
           label: label,
           backgroundColor: backgroundColor,
           textColor: textColor,
           badgeType: TBadgeType.raw,
+          radius: radius,
         );
 
   const TBadge.primary({
     Key? key,
     required String label,
+    double radius = 8,
   }) : this._(
           label: label,
           badgeType: TBadgeType.primary,
+          radius: radius,
         );
 
   const TBadge.secondary({
     Key? key,
     required String label,
+    double radius = 8,
   }) : this._(
           label: label,
           badgeType: TBadgeType.secondary,
+          radius: radius,
         );
 
   const TBadge.outline({
@@ -57,27 +65,33 @@ class TBadge extends StatelessWidget {
     required String label,
     Color? textColor,
     Color? borderColor,
+    double radius = 8,
   }) : this._(
           label: label,
           borderColor: borderColor,
           textColor: textColor,
           badgeType: TBadgeType.outline,
+          radius: radius,
         );
 
   const TBadge.destructive({
     Key? key,
     required String label,
+    double radius = 8,
   }) : this._(
           label: label,
           badgeType: TBadgeType.destructive,
+          radius: radius,
         );
 
   const TBadge.general({
     Key? key,
     required String label,
+    double radius = 8,
   }) : this._(
           label: label,
           badgeType: TBadgeType.general,
+          radius: radius,
         );
 
   /// Private constructor used internally by the named constructors.
@@ -86,6 +100,7 @@ class TBadge extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     this.borderColor,
+    this.radius = 8,
     required this.badgeType,
   });
 
@@ -134,7 +149,7 @@ class TBadge extends StatelessWidget {
         ),
         padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          borderRadius: BorderRadius.all(Radius.circular(radius)),
           color: backgroundColor,
           border: borderColor != null || borderColor != null
               ? Border.all(
