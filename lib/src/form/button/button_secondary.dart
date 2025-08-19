@@ -9,6 +9,7 @@ class TButtonSecondary extends StatelessWidget {
   final VoidCallback? onPressed;
   final Color? backgroundColor;
   final Color? onPressedBackgroundColor;
+  final Color? loadingColor;
   final double borderRadius;
   final TextStyle? textStyle;
   final EdgeInsetsGeometry? padding;
@@ -27,6 +28,7 @@ class TButtonSecondary extends StatelessWidget {
     required this.onPressed,
     this.backgroundColor,
     this.onPressedBackgroundColor,
+    this.loadingColor,
     this.borderRadius = 8,
     this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.textStyle,
@@ -46,6 +48,7 @@ class TButtonSecondary extends StatelessWidget {
     required this.onPressed,
     this.backgroundColor,
     this.onPressedBackgroundColor,
+    this.loadingColor,
     this.borderRadius = 8,
     this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.textStyle,
@@ -100,7 +103,7 @@ class TButtonSecondary extends StatelessWidget {
             width: 18,
             height: 18,
             child: CircularProgressIndicator(
-              color: theme.foreground,
+              color: loadingColor ?? theme.foreground,
             ),
           )
         : prefixIcon;

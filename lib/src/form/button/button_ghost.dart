@@ -16,6 +16,7 @@ class TButtonGhost extends StatefulWidget {
   final bool loading;
   final Color? normalColor;
   final Color? pressedColor;
+  final Color? loadingColor;
   final bool centerContent;
   final Size minimumSize;
   final Size maximumSize;
@@ -32,7 +33,9 @@ class TButtonGhost extends StatefulWidget {
     this.child,
     this.normalColor,
     this.pressedColor,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.loadingColor,
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.centerContent = true,
     this.minimumSize = const Size(double.infinity, 48),
     this.maximumSize = const Size(double.infinity, 48),
@@ -47,11 +50,13 @@ class TButtonGhost extends StatefulWidget {
     this.loading = false,
     this.normalColor,
     this.pressedColor,
+    this.loadingColor,
     this.centerContent = true,
     this.minimumSize = const Size(48, 48),
     this.maximumSize = const Size(48, 48),
     this.minFontSize = 12.0,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
   })  : child = icon,
         text = null,
         suffixIcon = null,
@@ -115,9 +120,11 @@ class _TButtonGhostState extends State<TButtonGhost> {
             width: 18,
             height: 18,
             child: CircularProgressIndicator(
-              color: _isPressed
-                  ? (widget.pressedColor ?? theme.primaryPressed)
-                  : (widget.normalColor ?? theme.primary),
+              color: widget.loadingColor != null
+                  ? widget.loadingColor!
+                  : _isPressed
+                      ? (widget.pressedColor ?? theme.primaryPressed)
+                      : (widget.normalColor ?? theme.primary),
             ),
           )
         : widget.prefixIcon;

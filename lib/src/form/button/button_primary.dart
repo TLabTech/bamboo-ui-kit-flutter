@@ -10,6 +10,7 @@ class TButtonPrimary extends StatelessWidget {
   final VoidCallback? onPressed;
   final Color? backgroundColor;
   final Color? onPressedBackgroundColor;
+  final Color? loadingColor;
   final double borderRadius;
   final TextStyle? textStyle;
   final EdgeInsetsGeometry? padding;
@@ -28,6 +29,7 @@ class TButtonPrimary extends StatelessWidget {
     required this.onPressed,
     this.backgroundColor,
     this.onPressedBackgroundColor,
+    this.loadingColor,
     this.borderRadius = 8,
     this.textStyle,
     this.suffixIcon,
@@ -47,6 +49,7 @@ class TButtonPrimary extends StatelessWidget {
     required this.onPressed,
     this.backgroundColor,
     this.onPressedBackgroundColor,
+    this.loadingColor,
     this.borderRadius = 8,
     this.textStyle,
     this.loading = false,
@@ -100,7 +103,7 @@ class TButtonPrimary extends StatelessWidget {
             width: 18,
             height: 18,
             child: CircularProgressIndicator(
-              color: theme.primaryForeground,
+              color: loadingColor ?? theme.primaryForeground,
             ),
           )
         : prefixIcon;
