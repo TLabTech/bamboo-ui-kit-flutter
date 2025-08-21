@@ -12,6 +12,8 @@ class TSwitch extends StatefulWidget {
   final bool isError;
   final Color? inactiveTrackColor;
   final Color? inactiveThumbColor;
+  final double? width;
+  final double? height;
 
   const TSwitch({
     super.key,
@@ -24,6 +26,8 @@ class TSwitch extends StatefulWidget {
     this.isError = false,
     this.inactiveTrackColor,
     this.inactiveThumbColor,
+    this.width,
+    this.height,
   });
 
   @override
@@ -89,25 +93,32 @@ class _TSwitchState extends State<TSwitch> {
                 return Colors.transparent;
               }),
             ),
-            child: Switch(
-              value: _internalValue,
-              onChanged: (newValue) {
-                if (widget.isEnabled) {
-                  setState(() {
-                    _internalValue = newValue;
-                  });
-                  widget.onChanged(newValue);
-                } else if (!widget.isEnabled) {
-                  setState(() {
-                    _internalValue = false;
-                  });
-                  widget.onChanged(_internalValue);
-                }
-              },
-              activeColor: HexColor(gray050),
-              activeTrackColor:
+            child: SizedBox(
+              width: widget.width,
+              height: widget.height,
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: Switch(
+                  value: _internalValue,
+                  onChanged: (newValue) {
+                    if (widget.isEnabled) {
+                      setState(() {
+                        _internalValue = newValue;
+                      });
+                      widget.onChanged(newValue);
+                    } else if (!widget.isEnabled) {
+                      setState(() {
+                        _internalValue = false;
+                      });
+                      widget.onChanged(_internalValue);
+                    }
+                  },
+                  activeColor: HexColor(gray050),
+                  activeTrackColor:
                   widget.isError ? theme.destructive : theme.primary,
-            ),
+                ),
+              ),
+            )
           ),
           const SizedBox(width: 8),
           Column(
