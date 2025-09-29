@@ -42,8 +42,22 @@ class _TCheckBoxState extends State<TCheckBox> {
   }
 
   @override
+  void didUpdateWidget(covariant TCheckBox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialValue != oldWidget.initialValue) {
+      _isChecked = widget.initialValue;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
+
+    final bool hasContent = widget.label != null || widget.description != null;
+    final CrossAxisAlignment rowAlignment = hasContent
+        ? CrossAxisAlignment.start
+        : CrossAxisAlignment.center;
+
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -54,7 +68,7 @@ class _TCheckBoxState extends State<TCheckBox> {
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: rowAlignment,
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedContainer(
