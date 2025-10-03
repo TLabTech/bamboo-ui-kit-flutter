@@ -11,6 +11,7 @@ class TButtonOutline extends StatelessWidget {
   final Color backgroundColor;
   final double borderRadius;
   final Color? borderColor;
+  final Color? loadingColor;
   final TextStyle? textStyle;
   final EdgeInsetsGeometry? padding;
   final Widget? suffixIcon;
@@ -29,6 +30,7 @@ class TButtonOutline extends StatelessWidget {
     this.backgroundColor = Colors.transparent,
     this.borderRadius = 8,
     this.borderColor,
+    this.loadingColor,
     this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.textStyle,
     this.suffixIcon,
@@ -48,6 +50,7 @@ class TButtonOutline extends StatelessWidget {
     this.backgroundColor = Colors.transparent,
     this.borderRadius = 8,
     this.borderColor,
+    this.loadingColor,
     this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.textStyle,
     this.loading = false,
@@ -95,7 +98,7 @@ class TButtonOutline extends StatelessWidget {
             width: 18,
             height: 18,
             child: CircularProgressIndicator(
-              color: theme.primary,
+              color: loadingColor ?? theme.primary,
               strokeWidth: 2,
             ),
           )
