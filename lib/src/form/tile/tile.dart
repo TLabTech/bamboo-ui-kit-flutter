@@ -8,6 +8,7 @@ class TTile<T> extends StatelessWidget {
   final Color? backgroundColor;
   final Color? disableBackgroundColor;
   final Color? borderColor;
+  final BorderRadius? borderRadius;
   final Color? textColor;
   final bool? enable;
   final String? subtitle;
@@ -30,6 +31,7 @@ class TTile<T> extends StatelessWidget {
     this.backgroundColor,
     this.disableBackgroundColor,
     this.borderColor,
+    this.borderRadius,
     this.textColor,
     this.enable = true,
     this.subtitle,
@@ -60,7 +62,7 @@ class TTile<T> extends StatelessWidget {
           color: enable == true
               ? backgroundColor ?? theme.background
               : disableBackgroundColor ?? theme.muted,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: borderRadius ?? BorderRadius.circular(8),
           border: Border.all(color: borderColor ?? theme.border),
         ),
         child: Row(
@@ -130,11 +132,18 @@ class TTile<T> extends StatelessWidget {
             ],
             if (showRadio && value != null) ...[
               const SizedBox(width: 8),
-              TRadioButton<T>(
-                value: value as T,
-                groupValue: groupValue,
-                onChanged: onChanged,
-                label: '',
+              _buildInlineRadio(
+                context,
+                isSelected: groupValue != null && value == groupValue,
+                isEnabled: enable == true,
+                isError: false,
+                onTap: enable == true
+                    ? () {
+                        if (onChanged != null) {
+                          onChanged!(value as T);
+                        }
+                      }
+                    : null,
               ),
             ],
           ],
@@ -144,12 +153,61 @@ class TTile<T> extends StatelessWidget {
   }
 }
 
+Widget _buildInlineRadio(
+  BuildContext context, {
+  required bool isSelected,
+  required bool isEnabled,
+  required bool isError,
+  VoidCallback? onTap,
+}) {
+  final theme = context.watch<TThemeManager>().state;
+
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 20,
+      height: 20,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: !isEnabled
+              ? Colors.grey
+              : (isSelected
+                  ? isError
+                      ? HexColor(red500)
+                      : HexColor(primary500)
+                  : theme.border),
+          width: 2,
+        ),
+        color: isSelected
+            ? isError
+                ? HexColor(red500)
+                : HexColor(primary500)
+            : HexColor(gray050),
+      ),
+      child: isSelected
+          ? Center(
+              child: Container(
+                width: 6,
+                height: 6,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: HexColor(gray050),
+                ),
+              ),
+            )
+          : null,
+    ),
+  );
+}
+
 extension TTileCopy<T> on TTile<T> {
   TTile<T> copyWith({
     String? title,
     TextStyle? titleStyle,
     Color? backgroundColor,
     Color? borderColor,
+    BorderRadius? borderRadius,
     Color? textColor,
     bool? enable,
     String? subtitle,
@@ -168,6 +226,7 @@ extension TTileCopy<T> on TTile<T> {
       titleStyle: titleStyle ?? this.titleStyle,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       borderColor: borderColor ?? this.borderColor,
+      borderRadius: borderRadius ?? this.borderRadius,
       textColor: textColor ?? this.textColor,
       enable: enable ?? this.enable,
       subtitle: subtitle ?? this.subtitle,

@@ -84,6 +84,7 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
                         onPress: () {
                           print('pressing profile');
                         },
+                        enable: false,
                       ),
                       TTile(
                         title: "Security",
@@ -186,6 +187,7 @@ class _TileGroupScreenState extends State<TileGroupScreen> {
                           Icons.chevron_right,
                           color: isDarkMode ? Colors.white : Colors.black54,
                         ),
+                        enable: false,
                       ),
                     ],
                   ),

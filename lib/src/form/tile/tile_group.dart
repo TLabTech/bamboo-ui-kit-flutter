@@ -79,6 +79,7 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
                   onTap: widget.tiles[i].onPress,
                   child: widget.tiles[i].copyWith(
                     borderColor: Colors.transparent,
+                    borderRadius: _getBorderRadius(i, widget.tiles.length),
                     showRadio: widget.enableRadio,
                     value: widget.tiles[i].value,
                     groupValue: selectedValue,
@@ -97,5 +98,23 @@ class _TGroupTileState<T> extends State<TGroupTile<T>> {
         ),
       ],
     );
+  }
+
+  BorderRadius _getBorderRadius(int index, int total) {
+    if (total == 1) {
+      return BorderRadius.circular(8);
+    } else if (index == 0) {
+      return BorderRadius.only(
+        topLeft: Radius.circular(8),
+        topRight: Radius.circular(8),
+      );
+    } else if (index == total - 1) {
+      return BorderRadius.only(
+        bottomLeft: Radius.circular(8),
+        bottomRight: Radius.circular(8),
+      );
+    } else {
+      return BorderRadius.zero;
+    }
   }
 }
