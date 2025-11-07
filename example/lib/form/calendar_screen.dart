@@ -84,7 +84,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       firstDay: DateTime(2000, 4, 4),
                       lastDay: DateTime(2030, 1, 2),
                       selectionMode: SelectionMode.range,
-                      maxRangeLength: 3,
+                      maxWorkingDays: 2,
+                      maxRangeLength: 5,
                       onSelectionChanged: (selectedDates) {
                         final state = calendarKey.currentState;
                         if (state?.isRangeComplete == true) {
@@ -93,6 +94,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         }
                         print(
                             'Selected ${selectedDates.length} dates: $selectedDates');
+
+                        final workingDays = selectedDates
+                            .where((d) => d.weekday >= DateTime.monday && d.weekday <= DateTime.friday)
+                            .toList();
+                        print('Selected: ${selectedDates.length} calendar days, ${workingDays.length} working days');
                       },
                       events: [
                         EventData(
