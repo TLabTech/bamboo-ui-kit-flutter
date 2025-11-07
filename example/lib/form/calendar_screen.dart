@@ -83,7 +83,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     child: TCalendar(
                       firstDay: DateTime(2000, 4, 4),
                       lastDay: DateTime(2030, 1, 2),
-                      selectionMode: SelectionMode.single,
+                      selectionMode: SelectionMode.range,
+                      maxRangeLength: 3,
                       onSelectionChanged: (selectedDates) {
                         final state = calendarKey.currentState;
                         if (state?.isRangeComplete == true) {

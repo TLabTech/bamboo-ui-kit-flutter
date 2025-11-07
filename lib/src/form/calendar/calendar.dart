@@ -21,6 +21,7 @@ class TCalendar extends StatefulWidget {
   final DateTime? initialDate;
   final DateTime firstDay;
   final DateTime lastDay;
+  final int? maxRangeLength;
 
   const TCalendar({
     super.key,
@@ -31,6 +32,7 @@ class TCalendar extends StatefulWidget {
     this.initialDate,
     required this.firstDay,
     required this.lastDay,
+    this.maxRangeLength,
   });
 
   @override
@@ -58,16 +60,13 @@ class TCalendarState extends State<TCalendar> {
     _eventsMap = _groupEventsByDate(widget.events);
     _focusedDay = widget.initialDate ?? DateTime.now();
     _selectedDate = widget.initialDate ?? DateTime.now();
-
-    _eventsMap = _groupEventsByDate(widget.events);
     _selectedDays = {_focusedDay};
-    // Notify parent about initial selection
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.onSelectionChanged?.call(_selectedDays);
     });
   }
 
-  // Helper method to generate date range
   Set<DateTime> _generateDateRange(DateTime start, DateTime end) {
     final range = <DateTime>{};
     var current = DateTime(start.year, start.month, start.day);
@@ -75,7 +74,7 @@ class TCalendarState extends State<TCalendar> {
 
     while (!current.isAfter(endDate)) {
       range.add(current);
-      current = current.add(Duration(days: 1));
+      current = current.add(const Duration(days: 1));
     }
 
     return range;
@@ -99,7 +98,6 @@ class TCalendarState extends State<TCalendar> {
 
   void _goToPrevious() {
     if (_currentView == CalendarView.date) {
-      // Navigate to the previous month
       final previousMonth =
           DateTime(_focusedDay.year, _focusedDay.month - 1, 1);
       if (previousMonth.isAfter(widget.firstDay)) {
@@ -108,7 +106,6 @@ class TCalendarState extends State<TCalendar> {
         });
       }
     } else if (_currentView == CalendarView.year) {
-      // Navigate to the next year
       final yearSelectorState = _yearSelectorKey.currentState;
       if (yearSelectorState != null) {
         yearSelectorState.previousPage();
@@ -118,7 +115,6 @@ class TCalendarState extends State<TCalendar> {
 
   void _goToNext() {
     if (_currentView == CalendarView.date) {
-      // Navigate to the next month
       final nextMonth = DateTime(_focusedDay.year, _focusedDay.month + 1, 1);
       if (nextMonth.isBefore(widget.lastDay)) {
         setState(() {
@@ -126,7 +122,6 @@ class TCalendarState extends State<TCalendar> {
         });
       }
     } else if (_currentView == CalendarView.year) {
-      // Navigate to the next year
       final yearSelectorState = _yearSelectorKey.currentState;
       if (yearSelectorState != null) {
         yearSelectorState.nextPage();
@@ -202,60 +197,24 @@ class TCalendarState extends State<TCalendar> {
     }
   }
 
-  // Method to jump to date AND auto-select it
   void jumpToAndSelectDate(DateTime date) {
-    setState(() {
-      _focusedDay = date;
-      switch (widget.selectionMode) {
-        case SelectionMode.single:
-          _selectedDays = {date};
-          _rangeStart = null;
-          _rangeEnd = null;
-          break;
-        case SelectionMode.multi:
-          _selectedDays.add(date);
-          _rangeStart = null;
-          _rangeEnd = null;
-          break;
-        case SelectionMode.range:
-          _rangeStart = date;
-          _rangeEnd = null;
-          _selectedDays = {date};
-          break;
-      }
-    });
-    widget.onSelectionChanged?.call(_selectedDays);
+    _selectDateInternal(date);
   }
 
-  // Method to animate to date AND auto-select it
   void animateToAndSelectDate(DateTime date) {
-    setState(() {
-      if (!date.isAtSameMomentAs(_focusedDay)) {
+    if (!date.isAtSameMomentAs(_focusedDay)) {
+      setState(() {
         _focusedDay = date;
-      }
-      switch (widget.selectionMode) {
-        case SelectionMode.single:
-          _selectedDays = {date};
-          _rangeStart = null;
-          _rangeEnd = null;
-          break;
-        case SelectionMode.multi:
-          _selectedDays.add(date);
-          _rangeStart = null;
-          _rangeEnd = null;
-          break;
-        case SelectionMode.range:
-          _rangeStart = date;
-          _rangeEnd = null;
-          _selectedDays = {date};
-          break;
-      }
-    });
-    widget.onSelectionChanged?.call(_selectedDays);
+      });
+    }
+    _selectDateInternal(date);
   }
 
-  // Method to select date without navigating (if date is in current view)
   void selectDate(DateTime date) {
+    _selectDateInternal(date);
+  }
+
+  void _selectDateInternal(DateTime date) {
     setState(() {
       switch (widget.selectionMode) {
         case SelectionMode.single:
@@ -278,12 +237,16 @@ class TCalendarState extends State<TCalendar> {
     widget.onSelectionChanged?.call(_selectedDays);
   }
 
-  // Method to select multiple dates at once (for multi-select mode)
   void selectDates(List<DateTime> dates) {
+    if (dates.isEmpty) {
+      clearSelection();
+      return;
+    }
+
     setState(() {
       switch (widget.selectionMode) {
         case SelectionMode.single:
-          _selectedDays = dates.isEmpty ? {} : {dates.first};
+          _selectedDays = {dates.first};
           _rangeStart = null;
           _rangeEnd = null;
           break;
@@ -295,8 +258,20 @@ class TCalendarState extends State<TCalendar> {
         case SelectionMode.range:
           if (dates.length >= 2) {
             final sortedDates = dates.toList()..sort();
-            _rangeStart = sortedDates.first;
-            _rangeEnd = sortedDates.last;
+            DateTime start = sortedDates.first;
+            DateTime end = sortedDates.last;
+
+            // Apply range limit
+            if (widget.maxRangeLength != null) {
+              final diff = end.difference(start).inDays;
+              if (diff >= widget.maxRangeLength!) {
+                end = start.add(Duration(days: widget.maxRangeLength! - 1));
+                if (end.isAfter(widget.lastDay)) end = widget.lastDay;
+              }
+            }
+
+            _rangeStart = start;
+            _rangeEnd = end;
             _selectedDays = _generateDateRange(_rangeStart!, _rangeEnd!);
           } else if (dates.length == 1) {
             _rangeStart = dates.first;
@@ -309,15 +284,30 @@ class TCalendarState extends State<TCalendar> {
     widget.onSelectionChanged?.call(_selectedDays);
   }
 
-  // Method to set date range programmatically
   void selectDateRange(DateTime start, DateTime end) {
-    setState(() {
-      if (start.isAfter(end)) {
-        // Swap if start is after end
-        final temp = start;
-        start = end;
-        end = temp;
+    if (start.isAfter(end)) {
+      final temp = start;
+      start = end;
+      end = temp;
+    }
+
+    // Apply maxRangeLength
+    if (widget.maxRangeLength != null) {
+      final diff = end.difference(start).inDays;
+      if (diff >= widget.maxRangeLength!) {
+        end = start.add(Duration(days: widget.maxRangeLength! - 1));
+        if (end.isAfter(widget.lastDay)) {
+          end = widget.lastDay;
+        }
       }
+    }
+
+    // Ensure start <= end after clamping
+    if (start.isAfter(end)) {
+      start = end;
+    }
+
+    setState(() {
       _rangeStart = start;
       _rangeEnd = end;
       _selectedDays = _generateDateRange(start, end);
@@ -325,12 +315,16 @@ class TCalendarState extends State<TCalendar> {
     widget.onSelectionChanged?.call(_selectedDays);
   }
 
-  // Method to programmatically update selection
   void updateSelection(Set<DateTime> selectedDates) {
+    if (selectedDates.isEmpty) {
+      clearSelection();
+      return;
+    }
+
     setState(() {
       switch (widget.selectionMode) {
         case SelectionMode.single:
-          _selectedDays = selectedDates.isEmpty ? {} : {selectedDates.first};
+          _selectedDays = {selectedDates.first};
           _rangeStart = null;
           _rangeEnd = null;
           break;
@@ -342,8 +336,19 @@ class TCalendarState extends State<TCalendar> {
         case SelectionMode.range:
           if (selectedDates.length >= 2) {
             final sortedDates = selectedDates.toList()..sort();
-            _rangeStart = sortedDates.first;
-            _rangeEnd = sortedDates.last;
+            DateTime start = sortedDates.first;
+            DateTime end = sortedDates.last;
+
+            if (widget.maxRangeLength != null) {
+              final diff = end.difference(start).inDays;
+              if (diff >= widget.maxRangeLength!) {
+                end = start.add(Duration(days: widget.maxRangeLength! - 1));
+                if (end.isAfter(widget.lastDay)) end = widget.lastDay;
+              }
+            }
+
+            _rangeStart = start;
+            _rangeEnd = end;
             _selectedDays = _generateDateRange(_rangeStart!, _rangeEnd!);
           } else if (selectedDates.length == 1) {
             _rangeStart = selectedDates.first;
@@ -360,7 +365,6 @@ class TCalendarState extends State<TCalendar> {
     widget.onSelectionChanged?.call(_selectedDays);
   }
 
-  // Method to clear all selections
   void clearSelection() {
     setState(() {
       _selectedDays.clear();
@@ -370,22 +374,17 @@ class TCalendarState extends State<TCalendar> {
     widget.onSelectionChanged?.call(_selectedDays);
   }
 
-  // Method to get current selection
   Set<DateTime> get selectedDates => Set.from(_selectedDays);
 
-  // Method to get selected date for single selection mode
   DateTime? get selectedDate =>
       _selectedDays.isEmpty ? null : _selectedDays.first;
 
-  // Methods for range selection
   DateTime? get rangeStart => _rangeStart;
 
   DateTime? get rangeEnd => _rangeEnd;
 
-  // Check if range is complete (has both start and end)
   bool get isRangeComplete => _rangeStart != null && _rangeEnd != null;
 
-  // Helper method to determine range position
   RangePosition _getRangePosition(DateTime date) {
     if (widget.selectionMode != SelectionMode.range) {
       return RangePosition.none;
@@ -461,9 +460,7 @@ class TCalendarState extends State<TCalendar> {
             ],
           ),
         ),
-        SizedBox(
-          height: 24,
-        ),
+        const SizedBox(height: 24),
         _buildCalendarContent(
           theme: theme,
           isCurrentMonth: isCurrentMonth,
@@ -504,9 +501,9 @@ class TCalendarState extends State<TCalendar> {
 
     return GridView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
@@ -559,54 +556,91 @@ class TCalendarState extends State<TCalendar> {
         return _selectedDays.any((d) => isSameDay(d, day));
       },
       onDaySelected: (selectedDay, focusedDay) {
-        setState(() {
-          switch (widget.selectionMode) {
-            case SelectionMode.single:
-              // Single selection logic
-              _selectedDays = {selectedDay};
-              _rangeStart = null;
-              _rangeEnd = null;
-              break;
-
-            case SelectionMode.multi:
-              // Multi-selection logic
-              final alreadySelected =
-                  _selectedDays.any((d) => isSameDay(d, selectedDay));
-              if (alreadySelected) {
-                _selectedDays.removeWhere((d) => isSameDay(d, selectedDay));
-              } else {
-                _selectedDays.add(selectedDay);
-              }
-              _rangeStart = null;
-              _rangeEnd = null;
-              break;
-
-            case SelectionMode.range:
-              // Range selection logic
-              if (_rangeStart == null ||
-                  (_rangeStart != null && _rangeEnd != null)) {
-                // Start new range
+        if (widget.selectionMode != SelectionMode.range) {
+          setState(() {
+            switch (widget.selectionMode) {
+              case SelectionMode.single:
+                _selectedDays = {selectedDay};
+                _rangeStart = null;
+                _rangeEnd = null;
+                break;
+              case SelectionMode.multi:
+                final alreadySelected =
+                    _selectedDays.any((d) => isSameDay(d, selectedDay));
+                if (alreadySelected) {
+                  _selectedDays.removeWhere((d) => isSameDay(d, selectedDay));
+                } else {
+                  _selectedDays.add(selectedDay);
+                }
+                _rangeStart = null;
+                _rangeEnd = null;
+                break;
+              case SelectionMode.range:
+                // Should not happen, but safe
+                _selectedDays = {selectedDay};
                 _rangeStart = selectedDay;
                 _rangeEnd = null;
-                _selectedDays = {selectedDay};
-              } else if (_rangeStart != null && _rangeEnd == null) {
-                // Complete the range
-                if (selectedDay.isBefore(_rangeStart!)) {
-                  _rangeEnd = _rangeStart;
-                  _rangeStart = selectedDay;
-                } else {
-                  _rangeEnd = selectedDay;
-                }
-                _selectedDays = _generateDateRange(_rangeStart!, _rangeEnd!);
-              }
-              break;
+                break;
+            }
+            _focusedDay = focusedDay;
+          });
+          widget.onSelectionChanged?.call(_selectedDays);
+          _handleDayTap(selectedDay);
+          return;
+        }
+
+        // === RANGE MODE ===
+        DateTime? newStart, newEnd;
+        Set<DateTime> newSelected = {};
+
+        if (_rangeStart == null || (_rangeStart != null && _rangeEnd != null)) {
+          // Start new range
+          newStart = selectedDay;
+          newEnd = null;
+          newSelected = {selectedDay};
+        } else if (_rangeStart != null && _rangeEnd == null) {
+          // Complete range
+          DateTime potentialStart = _rangeStart!;
+          DateTime potentialEnd = selectedDay;
+
+          if (selectedDay.isBefore(potentialStart)) {
+            potentialEnd = potentialStart;
+            potentialStart = selectedDay;
           }
+
+          // Apply maxRangeLength
+          if (widget.maxRangeLength != null) {
+            final diff = potentialEnd.difference(potentialStart).inDays;
+            if (diff >= widget.maxRangeLength!) {
+              potentialEnd = potentialStart
+                  .add(Duration(days: widget.maxRangeLength! - 1));
+              if (potentialEnd.isAfter(widget.lastDay)) {
+                potentialEnd = widget.lastDay;
+              }
+            }
+          }
+
+          // Final validation
+          if (potentialStart.isAfter(potentialEnd)) {
+            // Fallback: treat as new start
+            newStart = selectedDay;
+            newEnd = null;
+            newSelected = {selectedDay};
+          } else {
+            newStart = potentialStart;
+            newEnd = potentialEnd;
+            newSelected = _generateDateRange(newStart, newEnd);
+          }
+        }
+
+        setState(() {
+          _rangeStart = newStart;
+          _rangeEnd = newEnd;
+          _selectedDays = newSelected;
           _focusedDay = focusedDay;
         });
 
-        // Notify parent about selection change
         widget.onSelectionChanged?.call(_selectedDays);
-
         _handleDayTap(selectedDay);
       },
       onPageChanged: _onPageChanged,
@@ -640,12 +674,8 @@ class TCalendarState extends State<TCalendar> {
           color: theme.primaryForeground,
           fontWeight: FontWeight.bold,
         ),
-        defaultDecoration: const BoxDecoration(
-          shape: BoxShape.rectangle,
-        ),
-        weekendDecoration: const BoxDecoration(
-          shape: BoxShape.rectangle,
-        ),
+        defaultDecoration: const BoxDecoration(shape: BoxShape.rectangle),
+        weekendDecoration: const BoxDecoration(shape: BoxShape.rectangle),
         outsideDaysVisible: true,
         outsideTextStyle: TextStyle(color: theme.mutedForeground),
       ),
@@ -664,7 +694,7 @@ class TCalendarState extends State<TCalendar> {
         },
         markerBuilder: (context, date, events) {
           final normalizedDate = DateTime(date.year, date.month, date.day);
-          if (_eventsMap[normalizedDate]?.isNotEmpty ?? false) {
+          if ((_eventsMap[normalizedDate]?.isNotEmpty ?? false)) {
             return Stack(
               clipBehavior: Clip.none,
               children: [
@@ -694,24 +724,19 @@ class TCalendarState extends State<TCalendar> {
     final isSelected = _selectedDays.any((d) => isSameDay(d, date));
     final isCurrentMonth = date.month == _focusedDay.month;
 
-    // Determine range position for styling
     final rangePosition = _getRangePosition(date);
 
-    // Determine background decoration based on selection mode
     Decoration? backgroundDecoration;
     Color textColor = isCurrentMonth ? theme.foreground : theme.mutedForeground;
 
     if (isToday && !isSelected) {
-      // Today styling when not selected
       backgroundDecoration = BoxDecoration(
         color: theme.accent,
         borderRadius: BorderRadius.circular(6),
       );
       textColor = theme.foreground;
     } else if (isSelected) {
-      // Selected styling
       if (widget.selectionMode == SelectionMode.range) {
-        // Range selection styling
         switch (rangePosition) {
           case RangePosition.single:
             backgroundDecoration = BoxDecoration(
@@ -741,16 +766,13 @@ class TCalendarState extends State<TCalendar> {
             textColor = theme.primaryForeground;
             break;
           case RangePosition.middle:
-            backgroundDecoration = BoxDecoration(
-              color: theme.primary,
-            );
+            backgroundDecoration = BoxDecoration(color: theme.primary);
             textColor = theme.primaryForeground;
             break;
           case RangePosition.none:
             break;
         }
       } else {
-        // Single or multi selection styling
         backgroundDecoration = BoxDecoration(
           color: theme.primary,
           borderRadius: BorderRadius.circular(6),
