@@ -10,7 +10,7 @@ class TButtonSecondary extends StatefulWidget {
   final String? text;
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
-  final Duration? longPressDuration;
+  final Duration longPressDuration;
   final Color? backgroundColor;
   final Color? onPressedBackgroundColor;
   final Color? loadingColor;
@@ -31,7 +31,7 @@ class TButtonSecondary extends StatefulWidget {
     required this.text,
     required this.onPressed,
     this.onLongPress,
-    this.longPressDuration,
+    this.longPressDuration = const Duration(seconds: 1),
     this.backgroundColor,
     this.onPressedBackgroundColor,
     this.loadingColor,
@@ -53,7 +53,7 @@ class TButtonSecondary extends StatefulWidget {
     required Widget icon,
     required this.onPressed,
     this.onLongPress,
-    this.longPressDuration,
+    this.longPressDuration = const Duration(seconds: 1),
     this.backgroundColor,
     this.onPressedBackgroundColor,
     this.loadingColor,
@@ -83,9 +83,9 @@ class _TButtonSecondaryState extends State<TButtonSecondary> {
 
     setState(() => _isPressed = true);
 
-    if (widget.onLongPress != null && widget.longPressDuration != null) {
-      _longPressTimer = Timer(widget.longPressDuration!, () {
-        _cancelTimer();
+    if (widget.onLongPress != null) {
+      _longPressTimer = Timer(widget.longPressDuration, () {
+        _longPressTimer = null;
         widget.onLongPress?.call();
       });
     }
@@ -94,8 +94,10 @@ class _TButtonSecondaryState extends State<TButtonSecondary> {
   void _handleTapUp(TapUpDetails details) {
     setState(() => _isPressed = false);
 
-    if (_longPressTimer?.isActive ?? false) {
+    if (widget.onLongPress != null && _longPressTimer != null) {
       _cancelTimer();
+      widget.onPressed?.call();
+    } else if (widget.onLongPress == null) {
       widget.onPressed?.call();
     }
   }
@@ -232,13 +234,15 @@ class _TButtonSecondaryState extends State<TButtonSecondary> {
                 widget.text!,
                 maxLines: 1,
                 minFontSize: widget.minFontSize,
-                textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+                textAlign:
+                hasOnlyText ? TextAlign.center : TextAlign.left,
                 overflow: TextOverflow.ellipsis,
                 style: widget.textStyle ??
                     TFontBold.body(context).copyWith(color: theme.foreground),
               ),
             ),
-          if (hasTrailing && widget.text != null) children[children.length - 2],
+          if (hasTrailing && widget.text != null)
+            children[children.length - 2],
           if (hasTrailing) children.last,
         ],
       );

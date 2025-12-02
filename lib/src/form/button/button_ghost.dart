@@ -11,7 +11,7 @@ class TButtonGhost extends StatefulWidget {
   final String? text;
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
-  final Duration? longPressDuration;
+  final Duration longPressDuration;
   final TextStyle? textStyle;
   final EdgeInsetsGeometry? padding;
   final Widget? suffixIcon;
@@ -31,7 +31,7 @@ class TButtonGhost extends StatefulWidget {
     required this.text,
     required this.onPressed,
     this.onLongPress,
-    this.longPressDuration,
+    this.longPressDuration = const Duration(seconds: 1),
     this.textStyle,
     this.suffixIcon,
     this.prefixIcon,
@@ -53,7 +53,7 @@ class TButtonGhost extends StatefulWidget {
     required Widget icon,
     required this.onPressed,
     this.onLongPress,
-    this.longPressDuration,
+    this.longPressDuration = const Duration(seconds: 1),
     this.textStyle,
     this.loading = false,
     this.normalColor,
@@ -83,9 +83,9 @@ class _TButtonGhostState extends State<TButtonGhost> {
 
     setState(() => _isPressed = true);
 
-    if (widget.onLongPress != null && widget.longPressDuration != null) {
-      _longPressTimer = Timer(widget.longPressDuration!, () {
-        _cancelTimer();
+    if (widget.onLongPress != null) {
+      _longPressTimer = Timer(widget.longPressDuration, () {
+        _longPressTimer = null; // mark as consumed
         widget.onLongPress?.call();
       });
     }
@@ -94,8 +94,10 @@ class _TButtonGhostState extends State<TButtonGhost> {
   void _handleTapUp(TapUpDetails details) {
     setState(() => _isPressed = false);
 
-    if (_longPressTimer?.isActive ?? false) {
+    if (widget.onLongPress != null && _longPressTimer != null) {
       _cancelTimer();
+      widget.onPressed?.call();
+    } else if (widget.onLongPress == null) {
       widget.onPressed?.call();
     }
   }

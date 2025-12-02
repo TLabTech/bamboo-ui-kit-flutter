@@ -79,7 +79,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
                           text: "Button Primary",
                           onPressed: () {},
                           onLongPress: () {},
-                          loading: true,
+                          loading: false,
                           longPressDuration: Duration(seconds: 3),
                         ),
                       ),
