@@ -43,10 +43,3 @@ TTextField(
   },
 )
 ```
-
-## Developer Notes
-
-Setelah menambahkan assets (font, svg, png, dll), jalankan **FlutterGen**
-```
-dart run build_runner build --delete-conflicting-outputs
-```
