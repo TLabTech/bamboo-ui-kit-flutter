@@ -1,0 +1,12 @@
+stages:
+  - mirror
+
+mirror_to_github:
+  image: alpine/git
+  stage: mirror
+  script:
+    - git remote remove github 2>/dev/null || true
+    - git remote add github "https://${GITHUB_TOKEN}@github.com/TLabTech/bamboo-ui-kit-flutter.git"
+    - git fetch --all --tags
+    - git push github refs/remotes/origin/*:refs/heads/* --force
+    - git push github --tags --force
