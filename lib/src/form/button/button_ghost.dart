@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +10,8 @@ import '../../fondation/tfont.dart';
 class TButtonGhost extends StatefulWidget {
   final String? text;
   final VoidCallback? onPressed;
+  final VoidCallback? onLongPress;
+  final Duration longPressDuration;
   final TextStyle? textStyle;
   final EdgeInsetsGeometry? padding;
   final Widget? suffixIcon;
@@ -26,6 +30,8 @@ class TButtonGhost extends StatefulWidget {
     super.key,
     required this.text,
     required this.onPressed,
+    this.onLongPress,
+    this.longPressDuration = const Duration(seconds: 1),
     this.textStyle,
     this.suffixIcon,
     this.prefixIcon,
@@ -46,6 +52,8 @@ class TButtonGhost extends StatefulWidget {
     super.key,
     required Widget icon,
     required this.onPressed,
+    this.onLongPress,
+    this.longPressDuration = const Duration(seconds: 1),
     this.textStyle,
     this.loading = false,
     this.normalColor,
@@ -67,42 +75,59 @@ class TButtonGhost extends StatefulWidget {
 }
 
 class _TButtonGhostState extends State<TButtonGhost> {
+  Timer? _longPressTimer;
   bool _isPressed = false;
+
+  void _handleTapDown(TapDownDetails details) {
+    if (widget.loading || widget.onPressed == null) return;
+
+    setState(() => _isPressed = true);
+
+    if (widget.onLongPress != null) {
+      _longPressTimer = Timer(widget.longPressDuration, () {
+        _longPressTimer = null; // mark as consumed
+        widget.onLongPress?.call();
+      });
+    }
+  }
+
+  void _handleTapUp(TapUpDetails details) {
+    setState(() => _isPressed = false);
+
+    if (widget.onLongPress != null && _longPressTimer != null) {
+      _cancelTimer();
+      widget.onPressed?.call();
+    } else if (widget.onLongPress == null) {
+      widget.onPressed?.call();
+    }
+  }
+
+  void _handleTapCancel() {
+    setState(() => _isPressed = false);
+    _cancelTimer();
+  }
+
+  void _cancelTimer() {
+    _longPressTimer?.cancel();
+    _longPressTimer = null;
+  }
+
+  @override
+  void dispose() {
+    _cancelTimer();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: widget.loading
-          ? null
-          : (_) {
-              setState(() {
-                _isPressed = true;
-              });
-            },
-      onTapUp: widget.loading
-          ? null
-          : (_) {
-              setState(() {
-                _isPressed = false;
-              });
-              widget.onPressed?.call();
-            },
-      onTapCancel: widget.loading
-          ? null
-          : () {
-              setState(() {
-                _isPressed = false;
-              });
-            },
+      onTapDown: widget.loading ? null : _handleTapDown,
+      onTapUp: widget.loading ? null : _handleTapUp,
+      onTapCancel: widget.loading ? null : _handleTapCancel,
       child: Container(
         color: Colors.transparent,
         padding: widget.padding ??
-            const EdgeInsets.only(
-              top: 16.0,
-              bottom: 16.0,
-              left: 22,
-              right: 22,
-            ),
+            const EdgeInsets.only(top: 16, bottom: 16, left: 22, right: 22),
         child: _buildContent(context),
       ),
     );
@@ -178,9 +203,7 @@ class _TButtonGhostState extends State<TButtonGhost> {
         mainAxisSize: MainAxisSize.max,
         children: [
           if (hasLeading) children[0],
-          // leading icon
           if (hasLeading && widget.text != null) children[1],
-          // spacing
           if (widget.text != null)
             Expanded(
               child: AutoSizeText(
@@ -199,9 +222,7 @@ class _TButtonGhostState extends State<TButtonGhost> {
               ),
             ),
           if (hasTrailing && widget.text != null) children[children.length - 2],
-          // spacing
           if (hasTrailing) children.last,
-          // trailing icon
         ],
       );
     }

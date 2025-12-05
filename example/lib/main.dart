@@ -3,7 +3,7 @@ import 'package:example/chart/bar_chart_screen.dart';
 import 'package:example/chart/doughnut_chart_screen.dart';
 import 'package:example/chart/line_chart_screen.dart';
 import 'package:example/chart/pie_chart_screen.dart';
-import 'package:example/chart_screen.dart';
+import 'package:example/chart/chart_screen.dart';
 import 'package:example/data_presentation/accordion_screen.dart';
 import 'package:example/data_presentation/avatar_screen.dart';
 import 'package:example/data_presentation/badge_screen.dart';

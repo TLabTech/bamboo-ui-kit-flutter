@@ -18,6 +18,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
       TextEditingController();
 
   String? selectedItem;
+  Map<String, String>? selectedProvince;
   late List<Map<String, String>> items;
   late FocusNode focusNode = FocusNode();
 
@@ -275,7 +276,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                               style: isDarkMode
                                   ? TFontBold.body(context)
                                   : TFontBold.body(context)
-                                  .copyWith(color: HexColor(gray900)),
+                                      .copyWith(color: HexColor(gray900)),
                             ),
                             TextSpan(
                               text: " (Optional)",
@@ -292,6 +293,58 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
                         onChange: (value) {},
                         onSubmitted: (value) {},
                       ),
+                    ],
+                  ),
+                ),
+              ),
+              TAccordion(
+                title: "Dropdown Search",
+                titleStyle: TFontBold.headline(context),
+                showDivider: false,
+                initiallyExpanded: true,
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: HexColor(gray300),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 12,
+                    children: [
+                      Text(
+                        'Province',
+                        style: TFontBold.body(context),
+                      ),
+                      TDropdownSearch<Map<String, String>>(
+                        hint: "Select province",
+                        list: items,
+                        value: selectedItem != null
+                            ? items.firstWhere(
+                                (item) => item["value"] == selectedItem,
+                              )
+                            : null,
+                        textEditingController: TextEditingController(),
+                        displayText: (Map<String, String> province) =>
+                            province["value"] ?? '',
+                        onChanged: (Map<String, String> province) {
+                          setState(() {
+                            selectedItem = province["value"];
+                          });
+                        },
+                        backgroundColor: HexColor(baseWhite),
+                        borderColor: theme.border,
+                      )
                     ],
                   ),
                 ),

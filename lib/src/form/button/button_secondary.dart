@@ -1,12 +1,16 @@
+import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bamboo_ui_kit/src/fondation/tfont.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/theme.dart';
 
-class TButtonSecondary extends StatelessWidget {
+class TButtonSecondary extends StatefulWidget {
   final String? text;
   final VoidCallback? onPressed;
+  final VoidCallback? onLongPress;
+  final Duration longPressDuration;
   final Color? backgroundColor;
   final Color? onPressedBackgroundColor;
   final Color? loadingColor;
@@ -26,6 +30,8 @@ class TButtonSecondary extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
+    this.onLongPress,
+    this.longPressDuration = const Duration(seconds: 1),
     this.backgroundColor,
     this.onPressedBackgroundColor,
     this.loadingColor,
@@ -46,6 +52,8 @@ class TButtonSecondary extends StatelessWidget {
     super.key,
     required Widget icon,
     required this.onPressed,
+    this.onLongPress,
+    this.longPressDuration = const Duration(seconds: 1),
     this.backgroundColor,
     this.onPressedBackgroundColor,
     this.loadingColor,
@@ -63,52 +71,117 @@ class TButtonSecondary extends StatelessWidget {
         prefixIcon = null;
 
   @override
+  State<TButtonSecondary> createState() => _TButtonSecondaryState();
+}
+
+class _TButtonSecondaryState extends State<TButtonSecondary> {
+  Timer? _longPressTimer;
+  bool _isPressed = false;
+
+  void _handleTapDown(TapDownDetails details) {
+    if (widget.loading || widget.onPressed == null) return;
+
+    setState(() => _isPressed = true);
+
+    if (widget.onLongPress != null) {
+      _longPressTimer = Timer(widget.longPressDuration, () {
+        _longPressTimer = null;
+        widget.onLongPress?.call();
+      });
+    }
+  }
+
+  void _handleTapUp(TapUpDetails details) {
+    setState(() => _isPressed = false);
+
+    if (widget.onLongPress != null && _longPressTimer != null) {
+      _cancelTimer();
+      widget.onPressed?.call();
+    } else if (widget.onLongPress == null) {
+      widget.onPressed?.call();
+    }
+  }
+
+  void _handleTapCancel() {
+    setState(() => _isPressed = false);
+    _cancelTimer();
+  }
+
+  void _cancelTimer() {
+    _longPressTimer?.cancel();
+    _longPressTimer = null;
+  }
+
+  @override
+  void dispose() {
+    _cancelTimer();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
-    return OutlinedButton(
-      style: OutlinedButton.styleFrom(
-        backgroundColor: backgroundColor ?? Colors.transparent,
-        padding: padding,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+
+    return GestureDetector(
+      onTapDown: widget.loading ? null : _handleTapDown,
+      onTapUp: widget.loading ? null : _handleTapUp,
+      onTapCancel: widget.loading ? null : _handleTapCancel,
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          backgroundColor: _getBackgroundColor(theme),
+          padding: widget.padding,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+          ),
+          side: BorderSide(width: 1.0, color: theme.border),
+          minimumSize: widget.minimumSize,
+          maximumSize: widget.maximumSize,
+          foregroundColor: _getTextColor(theme),
+        ).copyWith(
+          backgroundColor: WidgetStateProperty.all(_getBackgroundColor(theme)),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
         ),
-        side: BorderSide(width: 1.0, color: theme.border),
-        minimumSize: minimumSize,
-        maximumSize: maximumSize,
-      ).copyWith(
-        backgroundColor: WidgetStateProperty.resolveWith<Color>(
-          (states) {
-            if (states.contains(WidgetState.pressed)) {
-              return onPressedBackgroundColor ?? Colors.transparent;
-            }
-            return backgroundColor ?? Colors.transparent;
-          },
-        ),
-        overlayColor: WidgetStateProperty.all(Colors.transparent),
+        onPressed: null,
+        child: _buildContent(context),
       ),
-      onPressed: loading ? null : onPressed,
-      child: _buildContent(context),
     );
+  }
+
+  Color _getBackgroundColor(TTheme theme) {
+    if (widget.loading) return widget.backgroundColor ?? Colors.transparent;
+    return _isPressed
+        ? (widget.onPressedBackgroundColor ?? Colors.transparent)
+        : (widget.backgroundColor ?? Colors.transparent);
+  }
+
+  Color _getTextColor(TTheme theme) {
+    if (widget.loading) {
+      return theme.foreground;
+    }
+    return _isPressed
+        ? theme.foreground.withValues(alpha: 0.7)
+        : theme.foreground;
   }
 
   Widget _buildContent(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
+    final textColor = _getTextColor(theme);
 
-    if (child != null) {
-      return child!;
+    if (widget.child != null) {
+      return widget.child!;
     }
 
-    Widget? leadingIcon = loading
+    Widget? leadingIcon = widget.loading
         ? SizedBox(
-            width: 18,
-            height: 18,
-            child: CircularProgressIndicator(
-              color: loadingColor ?? theme.foreground,
-            ),
-          )
-        : prefixIcon;
+      width: 18,
+      height: 18,
+      child: CircularProgressIndicator(
+        color: widget.loadingColor ?? theme.foreground,
+      ),
+    )
+        : widget.prefixIcon;
 
-    Widget? trailingIcon = loading ? null : suffixIcon;
+    Widget? trailingIcon = widget.loading ? null : widget.suffixIcon;
 
     List<Widget> children = [];
 
@@ -116,28 +189,28 @@ class TButtonSecondary extends StatelessWidget {
       children.add(leadingIcon);
     }
 
-    if (leadingIcon != null && text != null) {
+    if (leadingIcon != null && widget.text != null) {
       children.add(const SizedBox(width: 10));
     }
 
-    if (text != null) {
+    if (widget.text != null) {
       children.add(
         Flexible(
           fit: FlexFit.loose,
           child: AutoSizeText(
-            text!,
+            widget.text!,
             maxLines: 1,
-            minFontSize: minFontSize,
+            minFontSize: widget.minFontSize,
             stepGranularity: 0.5,
             overflow: TextOverflow.ellipsis,
-            style: textStyle ??
-                TFontBold.body(context).copyWith(color: theme.foreground),
+            style: widget.textStyle ??
+                TFontBold.body(context).copyWith(color: textColor),
           ),
         ),
       );
     }
 
-    if (trailingIcon != null && text != null) {
+    if (trailingIcon != null && widget.text != null) {
       children.add(const SizedBox(width: 10));
     }
 
@@ -149,25 +222,27 @@ class TButtonSecondary extends StatelessWidget {
     bool hasTrailing = trailingIcon != null;
     bool hasOnlyText = !hasLeading && !hasTrailing;
 
-    if (!centerContent) {
+    if (!widget.centerContent) {
       return Row(
         mainAxisSize: MainAxisSize.max,
         children: [
           if (hasLeading) children[0],
-          if (hasLeading && text != null) children[1],
-          if (text != null)
+          if (hasLeading && widget.text != null) children[1],
+          if (widget.text != null)
             Expanded(
               child: AutoSizeText(
-                text!,
+                widget.text!,
                 maxLines: 1,
-                minFontSize: minFontSize,
-                textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
+                minFontSize: widget.minFontSize,
+                textAlign:
+                hasOnlyText ? TextAlign.center : TextAlign.left,
                 overflow: TextOverflow.ellipsis,
-                style: textStyle ??
+                style: widget.textStyle ??
                     TFontBold.body(context).copyWith(color: theme.foreground),
               ),
             ),
-          if (hasTrailing && text != null) children[children.length - 2],
+          if (hasTrailing && widget.text != null)
+            children[children.length - 2],
           if (hasTrailing) children.last,
         ],
       );

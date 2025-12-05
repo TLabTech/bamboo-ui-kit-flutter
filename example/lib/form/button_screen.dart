@@ -78,7 +78,9 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         child: TButtonPrimary(
                           text: "Button Primary",
                           onPressed: () {},
-                          loading: true,
+                          onLongPress: () {},
+                          loading: false,
+                          longPressDuration: Duration(seconds: 3),
                         ),
                       ),
                       SizedBox(
@@ -87,11 +89,15 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         child: TButtonSecondary(
                           text: "Button Secondary",
                           onPressed: () {},
+                          onLongPress: () {},
+                          longPressDuration: Duration(seconds: 3),
                         ),
                       ),
                       TButtonDestructive(
                         text: "Button Destructive",
                         onPressed: () {},
+                        onLongPress: () {},
+                        longPressDuration: Duration(seconds: 3),
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
@@ -99,6 +105,8 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         child: TButtonOutline(
                           text: "Button Outline",
                           onPressed: () {},
+                          onLongPress: () {},
+                          longPressDuration: Duration(seconds: 3),
                         ),
                       ),
                       TButtonGhost(
@@ -106,6 +114,8 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         textStyle: TFontBold.body(context)
                             .copyWith(color: HexColor(primary500)),
                         onPressed: () {},
+                        onLongPress: () {},
+                        longPressDuration: Duration(seconds: 3),
                       ),
                       TButtonDisable(
                         text: "Button Disable",
