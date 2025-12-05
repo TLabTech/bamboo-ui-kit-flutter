@@ -1,23 +1,23 @@
-# TCalendar
+# Calendar
 
 Overview
 - A flexible, themable calendar widget for selecting single, multiple, or ranged dates. Use it when you need event markers, range selection with business-day or calendar-day limits, or programmatic navigation/selection from parent widgets.
-- Component source: [`TCalendar`](lib/src/form/calendar/calendar.dart) — [lib/src/form/calendar/calendar.dart](lib/src/form/calendar/calendar.dart)
+- Component source: [`TCalendar`](../../lib/src/form/calendar/calendar.dart) — [lib/src/form/calendar/calendar.dart](../../lib/src/form/calendar/calendar.dart)
 
 Features
-- Single, multi, and range selection modes via [`SelectionMode`](lib/src/form/calendar/calendar.dart).
-- Event markers and event tap callback using [`EventData`](lib/src/form/calendar/event_data.dart).
+- Single, multi, and range selection modes via [`SelectionMode`](../../lib/src/form/calendar/calendar.dart).
+- Event markers and event tap callback using [`EventData`](../../lib/src/form/calendar/event_data.dart).
 - Programmatic control through a `GlobalKey<TCalendarState>`: jump/animate and select dates.
 - Range limits: max calendar days (`maxRangeLength`) and max working days (`maxWorkingDays`).
 - Year/month navigation with compact month & year pickers.
 
-Import
+## 📦 Import
 
 ```dart
 import 'package:flutter_bamboo_ui_kit/core.dart';
 ```
 
-### Usage 
+## Usage 
 
 ```dart
 TCalendar(

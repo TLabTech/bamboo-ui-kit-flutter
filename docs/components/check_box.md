@@ -12,13 +12,13 @@ Features
 - Easy integration with TThemeManager for consistent colors and typography.
 - Works inside checkbox groups when managed by parent state.
 
-Import
+## 📦 Import
 
 ```dart
 import 'package:flutter_bamboo_ui_kit/core.dart';
 ```
 
-### Usage 
+## Usage 
 
 ```dart
 // Basic checkbox with label

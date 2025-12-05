@@ -11,14 +11,13 @@ Features
 - Emits selected items via onChanged callback.
 - Integrates with TThemeManager and TFont helpers for consistent styling.
 
-Import
+## 📦 Import
 
 ```dart
 import 'package:flutter_bamboo_ui_kit/core.dart';
 ```
 
-Usage Example
-- Example taken from example/lib/form/check_box_group_screen.dart
+## Usage
 
 ```dart
 TCheckBoxGroup(
