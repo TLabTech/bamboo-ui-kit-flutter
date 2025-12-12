@@ -75,9 +75,12 @@ class _SwitchScreenState extends State<SwitchScreen> {
                     description: "Description",
                     value: _isFeatureEnabled,
                     onChanged: (value) {
-                      _isFeatureEnabled = value;
+                      setState(() {
+                        _isFeatureEnabled = value;
+                      });
                     },
                     isEnabled: true,
+                    // lockWhenEnabled: true,
                   ),
                 ),
               ),
@@ -107,7 +110,9 @@ class _SwitchScreenState extends State<SwitchScreen> {
                     description: "Description",
                     value: _isFeatureDisableEnabled,
                     onChanged: (value) {
-                      _isFeatureEnabled = value;
+                      setState(() {
+                        _isFeatureEnabled = value;
+                      });
                     },
                     isEnabled: false,
                   ),
@@ -139,7 +144,9 @@ class _SwitchScreenState extends State<SwitchScreen> {
                     description: "Description",
                     value: _isFeatureErrorEnabled,
                     onChanged: (value) {
-                      _isFeatureErrorEnabled = value;
+                      setState(() {
+                        _isFeatureErrorEnabled = value;
+                      });
                     },
                     isError: true,
                     error: "Error description,",
