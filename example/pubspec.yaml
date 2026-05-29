@@ -17,6 +17,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   forui: ^0.9.1+1
   flutter_bloc: ^9.1.0
+  flutter_secure_storage: ^9.0.0
 
   flutter_bamboo_ui_kit:
     path: ../

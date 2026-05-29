@@ -1,9 +1,7 @@
-import 'package:example/bottom_navigation_sample/bottom_navigation_sample.dart';
 import 'package:example/chart/bar_chart_screen.dart';
 import 'package:example/chart/doughnut_chart_screen.dart';
 import 'package:example/chart/line_chart_screen.dart';
 import 'package:example/chart/pie_chart_screen.dart';
-import 'package:example/chart/chart_screen.dart';
 import 'package:example/data_presentation/accordion_screen.dart';
 import 'package:example/data_presentation/avatar_screen.dart';
 import 'package:example/data_presentation/badge_screen.dart';
@@ -29,7 +27,8 @@ import 'package:example/navigation/stepper_screen.dart';
 import 'package:example/navigation/tabs_screen.dart';
 import 'package:example/navigation/tittle_section_screen.dart';
 import 'package:example/overlay/dialog_screen.dart';
-import 'package:example/themes.dart';
+import 'package:example/screens/home_screen.dart';
+import 'package:example/screens/login_screen.dart';
 import 'package:example/tile/tile_group_screen.dart';
 import 'package:example/tile/tile_screen.dart';
 import 'package:flutter/material.dart';
@@ -61,10 +60,15 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<TThemeManager, TTheme>(
       builder: (context, theme) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Bamboo Design System',
           debugShowCheckedModeBanner: false,
           theme: theme.themeData,
-          home: MyHomePage(title: "Bamboo UI Kit"),
+          initialRoute: '/login',
+          routes: {
+            '/login': (context) => const LoginScreen(),
+            '/home': (context) => const HomeScreen(),
+            '/components': (context) => const MyHomePage(title: "Bamboo UI Kit"),
+          },
         );
       },
     );
@@ -94,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       child: Scaffold(
         backgroundColor: theme.background,
-        appBar: THeader(
+        appBar: THeader.nested(
           title: 'Bamboo Design System - Mobile',
           enableCenterTitle: true,
           bottomColor: Colors.transparent,
