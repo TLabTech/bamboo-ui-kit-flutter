@@ -2,11 +2,19 @@ stages:
   - mirror
 
 mirror_to_github:
-  image: alpine/git
+  image:
+    name: alpine/git
+    entrypoint: [""]
+
   stage: mirror
+
+  before_script:
+    - git config --global credential.helper store
+    - echo "https://oauth2:${GITHUB_TOKEN}@github.com" > ~/.git-credentials
+
   script:
     - git remote remove github 2>/dev/null || true
-    - git remote add github "https://${GITHUB_TOKEN}@github.com/TLabTech/bamboo-ui-kit-flutter.git"
+    - git remote add github "https://github.com/TLabTech/bamboo-ui-kit-flutter.git"
     - git fetch origin --prune
     - git push github +refs/remotes/origin/*:refs/heads/* --prune --force
     - git push github --tags --force
