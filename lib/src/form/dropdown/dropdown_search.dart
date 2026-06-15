@@ -35,11 +35,13 @@ class TDropdownSearch<T> extends StatefulWidget {
 
 class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
   List<T> _filteredList = [];
+  late final ValueNotifier<T?> _valueNotifier;
 
   @override
   void initState() {
     super.initState();
     _filteredList = widget.list;
+    _valueNotifier = ValueNotifier<T?>(widget.value);
   }
 
   @override
@@ -50,6 +52,15 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
         _filteredList = widget.list;
       });
     }
+    if (widget.value != oldWidget.value) {
+      _valueNotifier.value = widget.value;
+    }
+  }
+
+  @override
+  void dispose() {
+    _valueNotifier.dispose();
+    super.dispose();
   }
 
   void _search(String query) {
@@ -66,7 +77,6 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
     final theme = context.watch<TThemeManager>().state;
 
     return Container(
-      width: MediaQuery.of(context).size.width,
       height: 46.0,
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       decoration: BoxDecoration(
@@ -75,10 +85,8 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
         border: Border.all(color: widget.borderColor ?? theme.border),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            flex: 1,
+          Flexible(
             child: Theme(
               data: Theme.of(context).copyWith(
                 splashColor: Colors.transparent,
@@ -90,13 +98,21 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                   isExpanded: true,
                   hint: Text(
                     widget.hint,
+                    overflow: TextOverflow.ellipsis,
                     style: TFontRegular.body(context).copyWith(
                       color: theme.mutedForeground,
                     ),
                   ),
+                  selectedItemBuilder: (context) => _filteredList.map((item) => Text(
+                    widget.displayText(item),
+                    overflow: TextOverflow.ellipsis,
+                    style: TFontRegular.body(context).copyWith(
+                      color: theme.foreground,
+                    ),
+                  )).toList(),
                   items: _filteredList
                       .map(
-                        (item) => DropdownMenuItem<T>(
+                        (item) => DropdownItem<T>(
                       value: item,
                       child: Text(
                         widget.displayText(item),
@@ -110,7 +126,7 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                     ),
                   )
                       .toList(),
-                  value: _filteredList.contains(widget.value) ? widget.value : null,
+                  valueListenable: _valueNotifier,
                   onChanged: widget.readOnly
                       ? null
                       : (T? value) {
@@ -125,13 +141,12 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                     width: MediaQuery.of(context).size.width,
                   ),
                   menuItemStyleData: const MenuItemStyleData(
-                    height: 40.0,
                     padding: EdgeInsets.only(left: 8.0, right: 8.0),
                   ),
                   dropdownSearchData: DropdownSearchData(
                     searchController: widget.textEditingController,
-                    searchInnerWidgetHeight: 60,
-                    searchInnerWidget: Padding(
+                    searchBarWidgetHeight: 60,
+                    searchBarWidget: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
                         controller: widget.textEditingController,

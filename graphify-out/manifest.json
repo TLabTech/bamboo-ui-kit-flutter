@@ -20,13 +20,13 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/macos/Flutter/GeneratedPluginRegistrant.swift": {
-    "mtime": 1781250102.69344,
-    "ast_hash": "f5bf97d782f165c29cd53309374fb655",
+    "mtime": 1781496591.914997,
+    "ast_hash": "8e95d417ada563fef239f57e237a24d5",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/macos/Flutter/ephemeral/flutter_export_environment.sh": {
-    "mtime": 1759128384.8410048,
-    "ast_hash": "f863cca7212a5d777620ebc7777eb4f2",
+    "mtime": 1781495540.7689834,
+    "ast_hash": "1685c283a5f204931ed915746ef1da1a",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/macos/Pods/Target Support Files/Pods-Runner/Pods-Runner-umbrella.h": {
@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/RunnerTests/RunnerTests.swift": {
-    "mtime": 1739430078.669091,
-    "ast_hash": "a225a382d14d7b16b6f602a5c1d49331",
+    "mtime": 1781492451.0248148,
+    "ast_hash": "8f3c517581339e045f5d49f9a5821c46",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Runner/Runner-Bridging-Header.h": {
@@ -95,18 +95,18 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Runner/GeneratedPluginRegistrant.h": {
-    "mtime": 1781249660.27472,
+    "mtime": 1781250459.0179737,
     "ast_hash": "decb9041b5e91a07e66f4664e5dac408",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Runner/AppDelegate.swift": {
-    "mtime": 1739428098.6973114,
-    "ast_hash": "303ca46dbd58544be7b816861d70a27c",
+    "mtime": 1781495935.6346173,
+    "ast_hash": "2bd8469f2a4b701ff582f6574e58b13c",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Runner/GeneratedPluginRegistrant.m": {
-    "mtime": 1781249660.275586,
-    "ast_hash": "66eff348e70dc58a9f16f1e524a97ca5",
+    "mtime": 1781496591.9139793,
+    "ast_hash": "637b567eae086f1cf3cb98ccfcbcb573",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json": {
@@ -120,53 +120,33 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Flutter/flutter_export_environment.sh": {
-    "mtime": 1759128384.8167892,
-    "ast_hash": "27623c9a50a66c54f988e479d307ff17",
+    "mtime": 1781495937.2164073,
+    "ast_hash": "5efd8f068bbdc049554df0d8aed59c72",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-umbrella.h": {
-    "mtime": 1744686827.509641,
+    "mtime": 1781496715.2997801,
     "ast_hash": "557db06615837593f7d130a79167db5c",
     "semantic_hash": ""
   },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh": {
-    "mtime": 1744686827.5111034,
-    "ast_hash": "31ecd33121a9b9b140c316c0b4485455",
-    "semantic_hash": ""
-  },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-dummy.m": {
-    "mtime": 1744686827.5136237,
+    "mtime": 1781496715.3095572,
     "ast_hash": "d3f88e6bc5bffb456bd31d3ae36c9256",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests-dummy.m": {
-    "mtime": 1744686827.5178306,
+    "mtime": 1781496715.3137605,
     "ast_hash": "097dfaf08332f413805fcca47157791c",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests-umbrella.h": {
-    "mtime": 1744686827.5171244,
+    "mtime": 1781496715.312983,
     "ast_hash": "b7effd136883324d64ca181e91aba30c",
     "semantic_hash": ""
   },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/path_provider_foundation/path_provider_foundation-dummy.m": {
-    "mtime": 1744686827.505471,
-    "ast_hash": "51228058372a8904ac705f59db3910bc",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/path_provider_foundation/path_provider_foundation-umbrella.h": {
-    "mtime": 1744686827.5031393,
-    "ast_hash": "b107c8ce8170b85b0bb0269bce7c5346",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Local Podspecs/path_provider_foundation.podspec.json": {
-    "mtime": 1744686827.3669717,
-    "ast_hash": "10c194f68a19b75fdf44f1c9ea8d13a3",
-    "semantic_hash": ""
-  },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Local Podspecs/Flutter.podspec.json": {
-    "mtime": 1744686827.3657289,
-    "ast_hash": "8267af19fae66fda362c59daca3b91c9",
+    "mtime": 1781496715.1418645,
+    "ast_hash": "fe280d163daf413e8f14344a8401bbbb",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/linux/runner/main.cc": {
@@ -185,12 +165,12 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/linux/flutter/generated_plugin_registrant.cc": {
-    "mtime": 1781250102.692358,
-    "ast_hash": "d07afe003d5837167bdd357d593f20a0",
+    "mtime": 1781496591.9087,
+    "ast_hash": "e51606128f6c2595af1393720bb05539",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/linux/flutter/generated_plugin_registrant.h": {
-    "mtime": 1781249660.2783568,
+    "mtime": 1781250459.0212812,
     "ast_hash": "d295462c9da9f7fef22dc86c34492318",
     "semantic_hash": ""
   },
@@ -205,13 +185,13 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/android/settings.gradle.kts": {
-    "mtime": 1739430078.6650984,
-    "ast_hash": "683f9ca2f32a701ed1517715bf394e23",
+    "mtime": 1781491044.4405107,
+    "ast_hash": "5b2f8883bf3fdcd7b73cc914b645b264",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/android/app/build.gradle.kts": {
-    "mtime": 1751523165.1672459,
-    "ast_hash": "0cc2629ec1913b1e899fa21578659a37",
+    "mtime": 1781491045.447834,
+    "ast_hash": "4f63a13671a23886e82f09f752b1ccfa",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/android/app/.cxx/RelWithDebInfo/1gg5h38c/armeabi-v7a/android_gradle_build_mini.json": {
@@ -815,8 +795,8 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java": {
-    "mtime": 1781249660.2733479,
-    "ast_hash": "21e4072e91992985b1eb228ea9d8c888",
+    "mtime": 1781496591.9066122,
+    "ast_hash": "d88d6e421e5e87d61913253cd55ac36d",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/android/app/src/main/kotlin/com/example/example/MainActivity.kt": {
@@ -830,8 +810,8 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/lib/main.dart": {
-    "mtime": 1781250102.6916192,
-    "ast_hash": "a09cb898210c58ab82a4b1cc9ced65ba",
+    "mtime": 1781491801.7146893,
+    "ast_hash": "c469f59bea7f36e38d991782c3d08f2c",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/lib/form/switch_screen.dart": {
@@ -1065,12 +1045,12 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/windows/flutter/generated_plugin_registrant.cc": {
-    "mtime": 1781250102.696381,
-    "ast_hash": "a8f91348d8d9090f22ec69d597c41e1f",
+    "mtime": 1781496591.9110503,
+    "ast_hash": "abf3006978595decef5de781845ed71e",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/windows/flutter/generated_plugin_registrant.h": {
-    "mtime": 1781249660.2831702,
+    "mtime": 1781250459.026061,
     "ast_hash": "0ea33875f9f8e118f9c2ded03e2e2835",
     "semantic_hash": ""
   },
@@ -1085,13 +1065,13 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/gen/assets.gen.dart": {
-    "mtime": 1741935148.846042,
-    "ast_hash": "ac3fc743a53fd135c1a63976c026f0ad",
+    "mtime": 1781489651.307623,
+    "ast_hash": "7f6698a6b9a83a666c5d52445e6ea9f6",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/gen/fonts.gen.dart": {
-    "mtime": 1741935097.0594227,
-    "ast_hash": "86a9f116db52373d0d9c1c78b750c1a0",
+    "mtime": 1781489651.30794,
+    "ast_hash": "eed6e6e4c3e248e63c73ff07331f1a02",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/widgets/calendar.dart": {
@@ -1230,13 +1210,13 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/form/dropdown/dropdown.dart": {
-    "mtime": 1752479552.5884995,
-    "ast_hash": "2ad04511e1ac4d1b79861d0859fdd016",
+    "mtime": 1781489600.4576542,
+    "ast_hash": "4a7b823c86e5db56349f54277e1cbc6a",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/form/dropdown/dropdown_search.dart": {
-    "mtime": 1762507441.6920536,
-    "ast_hash": "9e3fd4f94995cd59ff216055a76da216",
+    "mtime": 1781490692.5726283,
+    "ast_hash": "ac6d7cf7f4a008eed421fc8b2ff5976e",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/form/calendar/calendar.dart": {
@@ -1400,13 +1380,13 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/navigation/bottom_navigation/bottom_navigation.dart": {
-    "mtime": 1742692119.4218154,
-    "ast_hash": "8ff9f831638174db539e57331908083d",
+    "mtime": 1781489912.448435,
+    "ast_hash": "617fe84191de87fa05f606b04ceba534",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/navigation/bottom_navigation/bottom_navigation_helper.dart": {
-    "mtime": 1751532801.7973888,
-    "ast_hash": "80d58410262f63a5fef306bd24318b33",
+    "mtime": 1781489917.1695359,
+    "ast_hash": "4681849c45f81b26f15a6bd29860738a",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/navigation/bottom_navigation/style/circular_navbar.dart": {
@@ -1490,8 +1470,8 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/fondation/tfont.dart": {
-    "mtime": 1742523943.0466447,
-    "ast_hash": "a1ef1710145db906488aedddcb143042",
+    "mtime": 1781489925.3196902,
+    "ast_hash": "75980f4746e1cf064447eb86471763fe",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/fondation/utils/tshadow.dart": {
@@ -1515,8 +1495,8 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/fondation/theme/theme.dart": {
-    "mtime": 1742799594.084293,
-    "ast_hash": "66630911d7884c424c902d5bdca41601",
+    "mtime": 1781489593.022269,
+    "ast_hash": "5c50c24f06c13c1089e2e7f877099e3c",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/lib/src/data_presentation/accordion/accordion.dart": {
@@ -1545,13 +1525,13 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/README.md": {
-    "mtime": 1781250102.6791258,
-    "ast_hash": "95ce6408cb1b3cbe3f56ae879cc6100b",
+    "mtime": 1781250251.0080526,
+    "ast_hash": "2e5c1df8c8a37b5fdb242fe3cc67ce65",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/pubspec.yaml": {
-    "mtime": 1764649335.152043,
-    "ast_hash": "ccf40c3d008d2131f4fe3936d54dfdc4",
+    "mtime": 1781489616.6693654,
+    "ast_hash": "fdb55f776dd2eeddd052a9523ce1b454",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/CONTRIBUTING.md": {
@@ -1565,8 +1545,8 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/.gitlab-ci.yml": {
-    "mtime": 1781250102.6784089,
-    "ast_hash": "de205b8db8dad925b2a1c5e39818569e",
+    "mtime": 1781250251.005159,
+    "ast_hash": "ebf7fc36d89fc291597d6e36f35cdc40",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/README.md": {
@@ -1575,8 +1555,8 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/pubspec.yaml": {
-    "mtime": 1781250102.6959124,
-    "ast_hash": "26496c15a0172fe7acfbf34cbec59765",
+    "mtime": 1781496589.2114594,
+    "ast_hash": "cb81c9c441384c5472f1aaa3f61f9c84",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/analysis_options.yaml": {
@@ -1999,141 +1979,6 @@
     "ast_hash": "0c500410e3259a9a053797dc1c28070e",
     "semantic_hash": ""
   },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/accordion.md": {
-    "mtime": 1781250102.6825254,
-    "ast_hash": "8c72e0c587409c816cac634577d4d5a6",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/title_section.md": {
-    "mtime": 1781250102.690653,
-    "ast_hash": "fb2f2e94ed50124a00af33e10938075c",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/radio.md": {
-    "mtime": 1781250102.6877053,
-    "ast_hash": "b48a5cea27c9f9797387f6db8a638b26",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/slider.md": {
-    "mtime": 1781250102.6884522,
-    "ast_hash": "06368128d155524c464f5fef1989885a",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/calendar.md": {
-    "mtime": 1781250102.684842,
-    "ast_hash": "3bb0ccd53980cbe56dc8c9b753e36ce8",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/check_box_group.md": {
-    "mtime": 1781250102.6855876,
-    "ast_hash": "91515e22b55aa2ba5054880b3676f112",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/button.md": {
-    "mtime": 1781250102.6845517,
-    "ast_hash": "15d82f03720e6dc09fdebef8bc03c761",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/alert.md": {
-    "mtime": 1781250102.6828072,
-    "ast_hash": "ba0c7e08932e4f2c9340ed9be74284cf",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/breadcrumbs.md": {
-    "mtime": 1781250102.684216,
-    "ast_hash": "15555a736a41c1e2b6a0d923aca16f89",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/check_box.md": {
-    "mtime": 1781250102.685431,
-    "ast_hash": "db92acd9721592393c0f7b40683684c8",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/textfield.md": {
-    "mtime": 1781250102.6892996,
-    "ast_hash": "6633aff9f9df370162002c80765da1f4",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/progress.md": {
-    "mtime": 1781250102.687274,
-    "ast_hash": "2ad419aa1394ffc35bc1c8144e0bbcac",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/component_template.md": {
-    "mtime": 1781250102.685823,
-    "ast_hash": "faa18ffd6e2b59a184c8624aa4639ccc",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/dropdown.md": {
-    "mtime": 1781250102.686325,
-    "ast_hash": "64130375948ba72344740db0b3f92b0b",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/bottom_navigation.md": {
-    "mtime": 1781250102.6839583,
-    "ast_hash": "2283f17bce45b05649a27f3ad0f6aaea",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/radio_group.md": {
-    "mtime": 1781250102.6881163,
-    "ast_hash": "44ff4698c93e6367a129f269d26765f6",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/dialog.md": {
-    "mtime": 1781250102.686159,
-    "ast_hash": "2f17c470690653329ca96a61572c3406",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/header.md": {
-    "mtime": 1781250102.6871114,
-    "ast_hash": "b2d8e1c445343e80d60a9284e117eb13",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/theme.md": {
-    "mtime": 1781250102.689758,
-    "ast_hash": "0fadf5e23591a29b947e2372961e8bda",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/stepper.md": {
-    "mtime": 1781250102.6888978,
-    "ast_hash": "584cb67a70f6769ae8e7e2c4f5344bd9",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/tile_group.md": {
-    "mtime": 1781250102.6903017,
-    "ast_hash": "e2fadf32bd2ff0ecc96a3ab3727eba90",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/tile.md": {
-    "mtime": 1781250102.6899188,
-    "ast_hash": "08f094fd5811094f453b4f5322aec018",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/chart.md": {
-    "mtime": 1781250102.685269,
-    "ast_hash": "61890797fc6886fb3aa65cba9cc46d5e",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/switch.md": {
-    "mtime": 1781250102.6890554,
-    "ast_hash": "2fdfc642880111bf5047bc28bb81e33d",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/avatar.md": {
-    "mtime": 1781250102.6832576,
-    "ast_hash": "776a5837d419576f7b3c0f75303fa365",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/font.md": {
-    "mtime": 1781250102.686751,
-    "ast_hash": "5a420936632502871413a4c302061ea6",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/components/badge.md": {
-    "mtime": 1781250102.683416,
-    "ast_hash": "815e6b15cc2241c38e3b16872f0871f2",
-    "semantic_hash": ""
-  },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png": {
     "mtime": 1739428133.8602183,
     "ast_hash": "8bf511604bc6ed0a6aeb380c5113fdcf",
@@ -2492,6 +2337,271 @@
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/assets/svg/chevron-left.svg": {
     "mtime": 1739864702.0,
     "ast_hash": "d7bb2adb6f7b24618367ff851ef1e3b1",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/macos/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Package.swift": {
+    "mtime": 1781495926.3618803,
+    "ast_hash": "5fc40eaefd401ab497ca1378025b321c",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/macos/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Sources/FlutterGeneratedPluginSwiftPackage/FlutterGeneratedPluginSwiftPackage.swift": {
+    "mtime": 1781495540.9094539,
+    "ast_hash": "e6366d8685ad56268730656aa0a6e00c",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Flutter/ephemeral/flutter_lldb_helper.py": {
+    "mtime": 1781495540.7354558,
+    "ast_hash": "98fc75412162af387e2e3461e4e58094",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Flutter/ephemeral/Packages/.packages/FlutterFramework/Package.swift": {
+    "mtime": 1781496598.107453,
+    "ast_hash": "0be97e7c440958734803cc9f1f14cd7f",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Flutter/ephemeral/Packages/.packages/FlutterFramework/Sources/FlutterFramework/FlutterFramework.swift": {
+    "mtime": 1781496598.1061983,
+    "ast_hash": "e6366d8685ad56268730656aa0a6e00c",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Package.swift": {
+    "mtime": 1781496598.1087515,
+    "ast_hash": "287882db13b0a4c6b9d94c0af0a80070",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Sources/FlutterGeneratedPluginSwiftPackage/FlutterGeneratedPluginSwiftPackage.swift": {
+    "mtime": 1781495540.891959,
+    "ast_hash": "e6366d8685ad56268730656aa0a6e00c",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/lib/screens/login_screen.dart": {
+    "mtime": 1781250251.0387719,
+    "ast_hash": "463636a072fb54bb796c452c37438dc3",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/lib/screens/home_screen.dart": {
+    "mtime": 1781250251.0385077,
+    "ast_hash": "2997022fa13fd3b48ee1f2986245915d",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/lib/services/auth_service.dart": {
+    "mtime": 1781250251.0393693,
+    "ast_hash": "aa86e3c23c84f635cfe43f69950c147b",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/lib/services/secure_storage_service.dart": {
+    "mtime": 1781250251.039619,
+    "ast_hash": "09e930397d724b8076f8e4ad599c786e",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/.opencode/opencode.json": {
+    "mtime": 1781250251.0057106,
+    "ast_hash": "e5f74d14a81702b55bdf53b33ec991d7",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/.opencode/plugins/graphify.js": {
+    "mtime": 1781250251.0062242,
+    "ast_hash": "64ccd3c03dbfe0980b6095766f5c4e52",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/architecture/graph.json": {
+    "mtime": 1781250251.0257113,
+    "ast_hash": "12abde6190e44e14931d1a48c3f46e6e",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/.vscode/launch.json": {
+    "mtime": 1781250251.0065715,
+    "ast_hash": "5db15e6fd09a8050650dfd5ba953a037",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/AGENTS.md": {
+    "mtime": 1781250251.0072272,
+    "ast_hash": "62c05a2bf20bf036a0b2633478663e64",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/LOGIN.md": {
+    "mtime": 1781250251.037587,
+    "ast_hash": "03798d5fd469764b555ebefa54be616e",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/DESIGN.md": {
+    "mtime": 1781250251.0087624,
+    "ast_hash": "e5ccf80764af9cea64dafdda48a62366",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/accordion.md": {
+    "mtime": 1781250251.0302172,
+    "ast_hash": "8c72e0c587409c816cac634577d4d5a6",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/title_section.md": {
+    "mtime": 1781250251.0370822,
+    "ast_hash": "fb2f2e94ed50124a00af33e10938075c",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/radio.md": {
+    "mtime": 1781250251.0350804,
+    "ast_hash": "b48a5cea27c9f9797387f6db8a638b26",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/slider.md": {
+    "mtime": 1781250251.0356534,
+    "ast_hash": "06368128d155524c464f5fef1989885a",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/calendar.md": {
+    "mtime": 1781250251.032356,
+    "ast_hash": "3bb0ccd53980cbe56dc8c9b753e36ce8",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/check_box_group.md": {
+    "mtime": 1781250251.0332403,
+    "ast_hash": "91515e22b55aa2ba5054880b3676f112",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/button.md": {
+    "mtime": 1781250251.0321028,
+    "ast_hash": "15d82f03720e6dc09fdebef8bc03c761",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/alert.md": {
+    "mtime": 1781250251.0305502,
+    "ast_hash": "ba0c7e08932e4f2c9340ed9be74284cf",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/breadcrumbs.md": {
+    "mtime": 1781250251.031654,
+    "ast_hash": "15555a736a41c1e2b6a0d923aca16f89",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/check_box.md": {
+    "mtime": 1781250251.032946,
+    "ast_hash": "db92acd9721592393c0f7b40683684c8",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/textfield.md": {
+    "mtime": 1781250251.0362656,
+    "ast_hash": "6633aff9f9df370162002c80765da1f4",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/progress.md": {
+    "mtime": 1781250251.034846,
+    "ast_hash": "2ad419aa1394ffc35bc1c8144e0bbcac",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/component_template.md": {
+    "mtime": 1781250251.0335994,
+    "ast_hash": "faa18ffd6e2b59a184c8624aa4639ccc",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/dropdown.md": {
+    "mtime": 1781250251.0341246,
+    "ast_hash": "64130375948ba72344740db0b3f92b0b",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/bottom_navigation.md": {
+    "mtime": 1781250251.0314126,
+    "ast_hash": "2283f17bce45b05649a27f3ad0f6aaea",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/radio_group.md": {
+    "mtime": 1781250251.0353575,
+    "ast_hash": "44ff4698c93e6367a129f269d26765f6",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/dialog.md": {
+    "mtime": 1781250251.03395,
+    "ast_hash": "2f17c470690653329ca96a61572c3406",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/header.md": {
+    "mtime": 1781250251.0346584,
+    "ast_hash": "b2d8e1c445343e80d60a9284e117eb13",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/theme.md": {
+    "mtime": 1781250251.0364337,
+    "ast_hash": "0fadf5e23591a29b947e2372961e8bda",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/stepper.md": {
+    "mtime": 1781250251.0358918,
+    "ast_hash": "584cb67a70f6769ae8e7e2c4f5344bd9",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/tile_group.md": {
+    "mtime": 1781250251.036775,
+    "ast_hash": "e2fadf32bd2ff0ecc96a3ab3727eba90",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/tile.md": {
+    "mtime": 1781250251.0365949,
+    "ast_hash": "08f094fd5811094f453b4f5322aec018",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/chart.md": {
+    "mtime": 1781250251.0327263,
+    "ast_hash": "61890797fc6886fb3aa65cba9cc46d5e",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/switch.md": {
+    "mtime": 1781250251.0360756,
+    "ast_hash": "2fdfc642880111bf5047bc28bb81e33d",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/avatar.md": {
+    "mtime": 1781250251.0309916,
+    "ast_hash": "776a5837d419576f7b3c0f75303fa365",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/font.md": {
+    "mtime": 1781250251.0343657,
+    "ast_hash": "5a420936632502871413a4c302061ea6",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/components/badge.md": {
+    "mtime": 1781250251.0311513,
+    "ast_hash": "815e6b15cc2241c38e3b16872f0871f2",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/architecture/graph.html": {
+    "mtime": 1781250251.0172405,
+    "ast_hash": "68c89de467024c3c754e8badf4ec11de",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/docs/architecture/GRAPH_REPORT.md": {
+    "mtime": 1781250251.009621,
+    "ast_hash": "6b67f8f8c05a68de1afd3a09205222ca",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/.github/copilot-instructions.md": {
+    "mtime": 1781250251.0043044,
+    "ast_hash": "ec2dc0dc7bef63488889f34de2f5584d",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/clean.sh": {
+    "mtime": 1781496675.122525,
+    "ast_hash": "4bb5600e2335e14946f7a64d924c2fd0",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/flutter_secure_storage/flutter_secure_storage-umbrella.h": {
+    "mtime": 1781496715.2928464,
+    "ast_hash": "7d1743e4cc7b5b84a5960e78ea0591f9",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/flutter_secure_storage/flutter_secure_storage-dummy.m": {
+    "mtime": 1781496715.2959456,
+    "ast_hash": "0c019652874afdb981b0afed256b189e",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh": {
+    "mtime": 1781496715.3021228,
+    "ast_hash": "e725335db02929d283b78efb566429b3",
+    "semantic_hash": ""
+  },
+  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/example/ios/Pods/Local Podspecs/flutter_secure_storage.podspec.json": {
+    "mtime": 1781496715.1431055,
+    "ast_hash": "963c85adf7447cd3aec567036ce7d96a",
     "semantic_hash": ""
   }
 }

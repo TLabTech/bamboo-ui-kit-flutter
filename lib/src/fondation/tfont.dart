@@ -12,7 +12,7 @@ class TFontRegular {
     fontSize: 34,
   );
 
-  static TextStyle title1(context) => TextStyle(
+  static TextStyle title1(BuildContext context) => TextStyle(
     fontFamily: _getFontFamily(context),
     fontWeight: FontWeight.w400,
     fontSize: 28,

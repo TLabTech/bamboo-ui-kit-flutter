@@ -200,6 +200,6 @@ class TTheme {
         foregroundColor: WidgetStateProperty.all(primaryForeground),
       ),
     ),
-    dialogTheme: DialogTheme(backgroundColor: popover),
+    dialogTheme: DialogThemeData(backgroundColor: popover),
   );
 }

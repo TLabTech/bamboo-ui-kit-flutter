@@ -16,7 +16,6 @@ class TBottomNavigationHelper {
         bool withNavBar = false,
         PageTransitionAnimation pageTransitionAnimation =
             PageTransitionAnimation.platform,
-        PageRoute<T>? customPageRoute,
         RouteSettings? settings,
       }) {
     return pushScreen<T>(
@@ -24,7 +23,6 @@ class TBottomNavigationHelper {
       screen: screen,
       withNavBar: withNavBar,
       pageTransitionAnimation: pageTransitionAnimation,
-      customPageRoute: customPageRoute,
       settings: settings,
     );
   }
