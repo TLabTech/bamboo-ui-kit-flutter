@@ -16,10 +16,13 @@ class _ProgressScreenState extends State<ProgressScreen> {
   Widget build(BuildContext context) {
     final theme = context.read<TThemeManager>().state;
     final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
-    
+
     return Scaffold(
       backgroundColor: theme.background,
-      appBar: THeader.nested(title: 'Progress', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Progress',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

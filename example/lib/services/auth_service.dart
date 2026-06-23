@@ -49,18 +49,18 @@ class UserData {
 }
 
 /// Authentication Service
-/// 
+///
 /// Contoh implementasi untuk integrasi dengan API backend
-/// 
+///
 /// Penggunaan:
 /// ```dart
 /// final authService = AuthService();
-/// 
+///
 /// final response = await authService.login(
 ///   email: 'user@example.com',
 ///   password: 'password123',
 /// );
-/// 
+///
 /// if (response.success) {
 ///   // Save token
 ///   await _saveToken(response.token);
@@ -77,7 +77,7 @@ class AuthService {
   static const String _logoutEndpoint = '/auth/logout';
 
   /// Login dengan email dan password
-  /// 
+  ///
   /// Returns: LoginResponse dengan token jika berhasil
   Future<LoginResponse> login({
     required String email,
@@ -86,7 +86,7 @@ class AuthService {
     try {
       // Simulate API call
       // Dalam production, ganti dengan actual HTTP request
-      
+
       if (kDebugMode) {
         print('Attempting login with email: $email');
       }

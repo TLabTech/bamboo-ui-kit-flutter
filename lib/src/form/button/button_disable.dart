@@ -42,7 +42,8 @@ class TButtonDisable extends StatefulWidget {
     this.prefixIcon,
     this.loading = false,
     this.child,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.centerContent = true,
     this.minimumSize = const Size(double.infinity, 48),
     this.maximumSize = const Size(double.infinity, 48),
@@ -65,7 +66,8 @@ class TButtonDisable extends StatefulWidget {
     this.minimumSize = const Size(48, 48),
     this.maximumSize = const Size(48, 48),
     this.minFontSize = 12.0,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
   })  : child = icon,
         text = null,
         suffixIcon = null,
@@ -244,8 +246,7 @@ class _TButtonDisableState extends State<TButtonDisable> {
                 textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
                 overflow: TextOverflow.ellipsis,
                 style: widget.textStyle ??
-                    TFontBold.body(context)
-                        .copyWith(color: theme.foreground),
+                    TFontBold.body(context).copyWith(color: theme.foreground),
               ),
             ),
           if (hasTrailing && widget.text != null) children[children.length - 2],

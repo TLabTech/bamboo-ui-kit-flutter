@@ -41,9 +41,7 @@ class _Screen4State extends State<Screen4> {
             ),
             onPress: () {
               helper.pushNewScreenWithNavBar(
-                context,
-                MaterialPageRoute(builder: (_) => Screen1())
-              );
+                  context, MaterialPageRoute(builder: (_) => Screen1()));
             },
           ),
         ],

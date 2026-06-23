@@ -21,7 +21,10 @@ class _SliderScreenState extends State<SliderScreen> {
 
     return Scaffold(
       backgroundColor: theme.background,
-      appBar: THeader.nested(title: 'Slider', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Slider',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

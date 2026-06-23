@@ -19,7 +19,7 @@ class _TabsScreenState extends State<TabsScreen>
   @override
   void initState() {
     controller = TabController(length: 2, vsync: this);
-    controller.addListener((){
+    controller.addListener(() {
       index = controller.index;
     });
     super.initState();

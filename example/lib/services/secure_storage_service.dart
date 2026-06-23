@@ -1,10 +1,10 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// Secure Storage Service
-/// 
+///
 /// Menyimpan sensitive data seperti JWT tokens dengan aman
 /// menggunakan native secure storage
-/// 
+///
 /// Dependencies yang diperlukan:
 /// ```yaml
 /// dependencies:

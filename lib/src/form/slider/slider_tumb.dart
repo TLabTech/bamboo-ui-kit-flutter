@@ -5,7 +5,8 @@ class CustomSliderThumb extends SliderComponentShape {
   final TTheme theme;
   final Color? innerColor;
   final Color? outerColor;
-  const CustomSliderThumb({required this.theme, this.innerColor, this.outerColor});
+  const CustomSliderThumb(
+      {required this.theme, this.innerColor, this.outerColor});
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) => const Size(24, 24);

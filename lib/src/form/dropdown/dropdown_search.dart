@@ -66,8 +66,10 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
   void _search(String query) {
     setState(() {
       _filteredList = widget.list
-          .where((item) =>
-          widget.displayText(item).toLowerCase().contains(query.toLowerCase()))
+          .where((item) => widget
+              .displayText(item)
+              .toLowerCase()
+              .contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -103,35 +105,37 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                       color: theme.mutedForeground,
                     ),
                   ),
-                  selectedItemBuilder: (context) => _filteredList.map((item) => Text(
-                    widget.displayText(item),
-                    overflow: TextOverflow.ellipsis,
-                    style: TFontRegular.body(context).copyWith(
-                      color: theme.foreground,
-                    ),
-                  )).toList(),
+                  selectedItemBuilder: (context) => _filteredList
+                      .map((item) => Text(
+                            widget.displayText(item),
+                            overflow: TextOverflow.ellipsis,
+                            style: TFontRegular.body(context).copyWith(
+                              color: theme.foreground,
+                            ),
+                          ))
+                      .toList(),
                   items: _filteredList
                       .map(
                         (item) => DropdownItem<T>(
-                      value: item,
-                      child: Text(
-                        widget.displayText(item),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        softWrap: true,
-                        style: TFontRegular.body(context).copyWith(
-                          color: theme.foreground,
+                          value: item,
+                          child: Text(
+                            widget.displayText(item),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: true,
+                            style: TFontRegular.body(context).copyWith(
+                              color: theme.foreground,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  )
+                      )
                       .toList(),
                   valueListenable: _valueNotifier,
                   onChanged: widget.readOnly
                       ? null
                       : (T? value) {
-                    if (value != null) widget.onChanged(value);
-                  },
+                          if (value != null) widget.onChanged(value);
+                        },
                   dropdownStyleData: DropdownStyleData(
                     elevation: 1,
                     isOverButton: true,
@@ -163,27 +167,28 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
                   iconStyleData: widget.readOnly
                       ? const IconStyleData(iconSize: 0.0)
                       : IconStyleData(
-                    icon: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, top: 1.0),
-                      child: SvgPicture.asset(
-                        Assets.svg.chevronDown,
-                        width: 20.0,
-                        height: 20.0,
-                        colorFilter: ColorFilter.mode(
-                          theme.foreground,
-                          BlendMode.srcIn,
+                          icon: Padding(
+                            padding: const EdgeInsets.only(left: 8.0, top: 1.0),
+                            child: SvgPicture.asset(
+                              Assets.svg.chevronDown,
+                              width: 20.0,
+                              height: 20.0,
+                              colorFilter: ColorFilter.mode(
+                                theme.foreground,
+                                BlendMode.srcIn,
+                              ),
+                            ),
+                          ),
+                          iconSize: 14,
+                          iconEnabledColor: theme.foreground,
+                          iconDisabledColor: theme.mutedForeground,
                         ),
-                      ),
-                    ),
-                    iconSize: 14,
-                    iconEnabledColor: theme.foreground,
-                    iconDisabledColor: theme.mutedForeground,
-                  ),
                   onMenuStateChange: (isOpen) {
                     if (!isOpen) {
                       widget.textEditingController.clear();
                       setState(() {
-                        _filteredList = widget.list; // Reset list when menu closes
+                        _filteredList =
+                            widget.list; // Reset list when menu closes
                       });
                     }
                   },

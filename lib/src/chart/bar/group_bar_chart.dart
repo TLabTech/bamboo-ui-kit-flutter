@@ -57,8 +57,8 @@ class TGroupBarChart extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TFontBold.body(context)
-                      .copyWith(color: theme.foreground),
+                  style:
+                      TFontBold.body(context).copyWith(color: theme.foreground),
                 ),
                 if (showOption)
                   InkWell(

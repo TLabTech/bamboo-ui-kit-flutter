@@ -42,9 +42,9 @@ void main() {
   runApp(
     BlocProvider(
       create: (context) => TThemeManager(
-        // lightTheme: ThemeConfig().customLightTheme, // Use custom light theme (disable it when using default)
-        // darkTheme: ThemeConfig().customDarkTheme, // Use custom dark theme (disable it when using default)
-      ),
+          // lightTheme: ThemeConfig().customLightTheme, // Use custom light theme (disable it when using default)
+          // darkTheme: ThemeConfig().customDarkTheme, // Use custom dark theme (disable it when using default)
+          ),
       child: TThemeProvider(
         child: const MyApp(),
       ),
@@ -67,7 +67,8 @@ class MyApp extends StatelessWidget {
           routes: {
             '/login': (context) => const LoginScreen(),
             '/home': (context) => const HomeScreen(),
-            '/components': (context) => const MyHomePage(title: "Bamboo UI Kit"),
+            '/components': (context) =>
+                const MyHomePage(title: "Bamboo UI Kit"),
           },
         );
       },
@@ -119,7 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        final isDarkMode = context.read<TThemeManager>().state == context.read<TThemeManager>().darkTheme;
+                        final isDarkMode =
+                            context.read<TThemeManager>().state ==
+                                context.read<TThemeManager>().darkTheme;
                         context.read<TThemeManager>().toggleTheme(!isDarkMode);
                       },
                       child: BlocBuilder<TThemeManager, TTheme>(
@@ -555,8 +558,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      HomeIndicatorScreen()),
+                                  builder: (context) => HomeIndicatorScreen()),
                             );
                           },
                         ),
@@ -646,8 +648,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      TittleSectionScreen()),
+                                  builder: (context) => TittleSectionScreen()),
                             );
                           },
                         ),
@@ -842,8 +843,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      DoughnutChartScreen()),
+                                  builder: (context) => DoughnutChartScreen()),
                             );
                           },
                         ),

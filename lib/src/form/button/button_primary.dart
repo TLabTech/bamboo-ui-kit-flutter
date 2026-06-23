@@ -42,7 +42,8 @@ class TButtonPrimary extends StatefulWidget {
     this.prefixIcon,
     this.loading = false,
     this.child,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.centerContent = true,
     this.minimumSize = const Size(double.infinity, 48),
     this.maximumSize = const Size(double.infinity, 48),
@@ -65,7 +66,8 @@ class TButtonPrimary extends StatefulWidget {
     this.minimumSize = const Size(48, 48),
     this.maximumSize = const Size(48, 48),
     this.minFontSize = 12.0,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
   })  : child = icon,
         text = null,
         suffixIcon = null,
@@ -211,7 +213,8 @@ class _TButtonPrimaryState extends State<TButtonPrimary> {
             stepGranularity: 0.5,
             overflow: TextOverflow.ellipsis,
             style: widget.textStyle ??
-                TFontBold.body(context).copyWith(color: theme.primaryForeground),
+                TFontBold.body(context)
+                    .copyWith(color: theme.primaryForeground),
           ),
         ),
       );
@@ -234,9 +237,7 @@ class _TButtonPrimaryState extends State<TButtonPrimary> {
         mainAxisSize: MainAxisSize.max,
         children: [
           if (hasLeading) children[0],
-
           if (hasLeading && widget.text != null) children[1],
-
           if (widget.text != null)
             Expanded(
               child: AutoSizeText(
@@ -251,7 +252,6 @@ class _TButtonPrimaryState extends State<TButtonPrimary> {
               ),
             ),
           if (hasTrailing && widget.text != null) children[children.length - 2],
-
           if (hasTrailing) children.last,
         ],
       );

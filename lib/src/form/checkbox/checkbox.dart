@@ -54,9 +54,8 @@ class _TCheckBoxState extends State<TCheckBox> {
     final theme = context.watch<TThemeManager>().state;
 
     final bool hasContent = widget.label != null || widget.description != null;
-    final CrossAxisAlignment rowAlignment = hasContent
-        ? CrossAxisAlignment.start
-        : CrossAxisAlignment.center;
+    final CrossAxisAlignment rowAlignment =
+        hasContent ? CrossAxisAlignment.start : CrossAxisAlignment.center;
 
     return GestureDetector(
       onTap: () {
@@ -118,8 +117,8 @@ class _TCheckBoxState extends State<TCheckBox> {
                   color: widget.isError
                       ? theme.destructive
                       : !widget.isEnabled
-                      ? theme.mutedForeground
-                      : theme.foreground,
+                          ? theme.mutedForeground
+                          : theme.foreground,
                 ),
               ),
               Visibility(

@@ -98,13 +98,11 @@ class TNavbarStyle {
   ) {
     final theme = context.watch<TThemeManager>().state;
     return FloatingCircularTextNavbar(
-      navBarConfig: navBarConfig,
-      navBarDecoration: NavBarDecoration(
-        color: activeColor ?? theme.primary,
-      ),
-      backgroundColor: backgroundColor ??
-          theme.popover
-    );
+        navBarConfig: navBarConfig,
+        navBarDecoration: NavBarDecoration(
+          color: activeColor ?? theme.primary,
+        ),
+        backgroundColor: backgroundColor ?? theme.popover);
     // return FloatingStyle4NavBar(
     //   navBarConfig: navBarConfig,
     //   backgroundColor: backgroundColor ?? Colors.white,

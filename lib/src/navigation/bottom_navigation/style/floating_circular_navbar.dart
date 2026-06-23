@@ -94,7 +94,8 @@ class _FloatingCircularNavbarState extends State<FloatingCircularNavbar>
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center, // Center the items
-              children: List.generate(widget.navBarConfig.items.length, (index) {
+              children:
+                  List.generate(widget.navBarConfig.items.length, (index) {
                 final isActive = widget.navBarConfig.selectedIndex == index;
                 final tab = widget.navBarConfig.items[index];
 
@@ -117,7 +118,7 @@ class _FloatingCircularNavbarState extends State<FloatingCircularNavbar>
                                 scale: isActive ? _scaleAnimation.value : 1.0,
                                 child: Opacity(
                                   opacity:
-                                  isActive ? _opacityAnimation.value : 1.0,
+                                      isActive ? _opacityAnimation.value : 1.0,
                                   child: Container(
                                     width: 50,
                                     height: 50,

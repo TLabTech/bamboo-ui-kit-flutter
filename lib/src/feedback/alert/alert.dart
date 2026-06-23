@@ -135,13 +135,15 @@ class TAlert extends StatelessWidget {
                 Text(
                   title,
                   style: titleStyle ??
-                      TFontRegular.body(context).copyWith(color: alertTitleColor),
+                      TFontRegular.body(context)
+                          .copyWith(color: alertTitleColor),
                 ),
                 if (subtitle != null)
                   Text(
                     subtitle!,
                     style: subtitleStyle ??
-                        TFontRegular.footNote(context).copyWith(color: alertSubtitleColor),
+                        TFontRegular.footNote(context)
+                            .copyWith(color: alertSubtitleColor),
                   ),
               ],
             ),

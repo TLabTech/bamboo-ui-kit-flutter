@@ -121,8 +121,9 @@ class _HeaderScreenState extends State<HeaderScreen> {
                     child: THeader.homepage(
                       title: "Placeholder",
                       subtitle: "description",
-                      prefixAction:  TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                      prefixAction: TAvatar(
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.large,
                         type: AvatarType.general,
                         shape: AvatarShape.circle,
@@ -231,7 +232,8 @@ class _HeaderScreenState extends State<HeaderScreen> {
                       suffixAction: [
                         THeaderAction(
                           icon: TAvatar(
-                            imageUrl: "https://randomuser.me/api/portraits/women/2.jpg",
+                            imageUrl:
+                                "https://randomuser.me/api/portraits/women/2.jpg",
                             shape: AvatarShape.circle,
                             size: 40,
                             backgroundColor: theme.accent,

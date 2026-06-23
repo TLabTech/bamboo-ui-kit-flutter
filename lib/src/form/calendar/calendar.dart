@@ -88,7 +88,8 @@ class TCalendarState extends State<TCalendar> {
     final endDate = DateTime(end.year, end.month, end.day);
 
     while (!current.isAfter(endDate)) {
-      if (current.weekday >= DateTime.monday && current.weekday <= DateTime.friday) {
+      if (current.weekday >= DateTime.monday &&
+          current.weekday <= DateTime.friday) {
         count++;
       }
       current = current.add(const Duration(days: 1));
@@ -96,7 +97,8 @@ class TCalendarState extends State<TCalendar> {
     return count;
   }
 
-  DateTime _trimRangeToMaxWorkingDays(DateTime start, DateTime end, int maxWorkingDays) {
+  DateTime _trimRangeToMaxWorkingDays(
+      DateTime start, DateTime end, int maxWorkingDays) {
     if (maxWorkingDays <= 0) return start;
 
     int workingDayCount = 0;
@@ -104,7 +106,8 @@ class TCalendarState extends State<TCalendar> {
     final originalEnd = DateTime(end.year, end.month, end.day);
 
     while (!current.isAfter(originalEnd)) {
-      if (current.weekday >= DateTime.monday && current.weekday <= DateTime.friday) {
+      if (current.weekday >= DateTime.monday &&
+          current.weekday <= DateTime.friday) {
         workingDayCount++;
         if (workingDayCount >= maxWorkingDays) {
           return current;
@@ -117,7 +120,8 @@ class TCalendarState extends State<TCalendar> {
   }
 
   // ✅ Apply both working-day and calendar-day limits
-  void _applyRangeLimits(DateTime start, DateTime end, DateTime selectedDay, Function(DateTime, DateTime, Set<DateTime>) onSuccess) {
+  void _applyRangeLimits(DateTime start, DateTime end, DateTime selectedDay,
+      Function(DateTime, DateTime, Set<DateTime>) onSuccess) {
     DateTime potentialStart = start;
     DateTime potentialEnd = end;
 
@@ -125,7 +129,8 @@ class TCalendarState extends State<TCalendar> {
     if (widget.maxWorkingDays != null) {
       final workingDaysCount = _countWorkingDays(potentialStart, potentialEnd);
       if (workingDaysCount > widget.maxWorkingDays!) {
-        potentialEnd = _trimRangeToMaxWorkingDays(potentialStart, potentialEnd, widget.maxWorkingDays!);
+        potentialEnd = _trimRangeToMaxWorkingDays(
+            potentialStart, potentialEnd, widget.maxWorkingDays!);
       }
     }
 
@@ -133,7 +138,8 @@ class TCalendarState extends State<TCalendar> {
     if (widget.maxRangeLength != null) {
       final diff = potentialEnd.difference(potentialStart).inDays;
       if (diff >= widget.maxRangeLength!) {
-        potentialEnd = potentialStart.add(Duration(days: widget.maxRangeLength! - 1));
+        potentialEnd =
+            potentialStart.add(Duration(days: widget.maxRangeLength! - 1));
         if (potentialEnd.isAfter(widget.lastDay)) {
           potentialEnd = widget.lastDay;
         }
@@ -168,7 +174,8 @@ class TCalendarState extends State<TCalendar> {
 
   void _goToPrevious() {
     if (_currentView == CalendarView.date) {
-      final previousMonth = DateTime(_focusedDay.year, _focusedDay.month - 1, 1);
+      final previousMonth =
+          DateTime(_focusedDay.year, _focusedDay.month - 1, 1);
       if (previousMonth.isAfter(widget.firstDay)) {
         setState(() {
           _focusedDay = previousMonth;
@@ -330,8 +337,10 @@ class TCalendarState extends State<TCalendar> {
             DateTime start = sortedDates.first;
             DateTime end = sortedDates.last;
 
-            if (widget.maxWorkingDays != null || widget.maxRangeLength != null) {
-              _applyRangeLimits(start, end, dates.first, (newStart, newEnd, newSelected) {
+            if (widget.maxWorkingDays != null ||
+                widget.maxRangeLength != null) {
+              _applyRangeLimits(start, end, dates.first,
+                  (newStart, newEnd, newSelected) {
                 _rangeStart = newStart;
                 _rangeEnd = newEnd;
                 _selectedDays = newSelected;
@@ -399,8 +408,10 @@ class TCalendarState extends State<TCalendar> {
             DateTime start = sortedDates.first;
             DateTime end = sortedDates.last;
 
-            if (widget.maxWorkingDays != null || widget.maxRangeLength != null) {
-              _applyRangeLimits(start, end, start, (newStart, newEnd, newSelected) {
+            if (widget.maxWorkingDays != null ||
+                widget.maxRangeLength != null) {
+              _applyRangeLimits(start, end, start,
+                  (newStart, newEnd, newSelected) {
                 _rangeStart = newStart;
                 _rangeEnd = newEnd;
                 _selectedDays = newSelected;
@@ -436,7 +447,8 @@ class TCalendarState extends State<TCalendar> {
 
   Set<DateTime> get selectedDates => Set.from(_selectedDays);
 
-  DateTime? get selectedDate => _selectedDays.isEmpty ? null : _selectedDays.first;
+  DateTime? get selectedDate =>
+      _selectedDays.isEmpty ? null : _selectedDays.first;
 
   DateTime? get rangeStart => _rangeStart;
 
@@ -465,7 +477,8 @@ class TCalendarState extends State<TCalendar> {
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
     final today = DateTime.now();
-    final isCurrentMonth = today.month == _focusedDay.month && today.year == _focusedDay.year;
+    final isCurrentMonth =
+        today.month == _focusedDay.month && today.year == _focusedDay.year;
     final isCurrentYear = today.year == _focusedDay.year;
 
     return Column(
@@ -476,7 +489,8 @@ class TCalendarState extends State<TCalendar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: _currentView != CalendarView.month ? _goToPrevious : null,
+                onTap:
+                    _currentView != CalendarView.month ? _goToPrevious : null,
                 child: SvgPicture.asset(
                   Assets.svg.previousCircle,
                   colorFilter: ColorFilter.mode(
@@ -622,7 +636,8 @@ class TCalendarState extends State<TCalendar> {
                 _rangeEnd = null;
                 break;
               case SelectionMode.multi:
-                final alreadySelected = _selectedDays.any((d) => isSameDay(d, selectedDay));
+                final alreadySelected =
+                    _selectedDays.any((d) => isSameDay(d, selectedDay));
                 if (alreadySelected) {
                   _selectedDays.removeWhere((d) => isSameDay(d, selectedDay));
                 } else {
@@ -666,7 +681,8 @@ class TCalendarState extends State<TCalendar> {
           }
 
           // Apply limits and update state
-          _applyRangeLimits(potentialStart, potentialEnd, selectedDay, (newStart, newEnd, newSelected) {
+          _applyRangeLimits(potentialStart, potentialEnd, selectedDay,
+              (newStart, newEnd, newSelected) {
             setState(() {
               _rangeStart = newStart;
               _rangeEnd = newEnd;
@@ -681,9 +697,12 @@ class TCalendarState extends State<TCalendar> {
       onPageChanged: _onPageChanged,
       headerVisible: false,
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekdayStyle: TFontRegular.caption2(context).copyWith(color: theme.mutedForeground),
-        weekendStyle: TFontRegular.caption2(context).copyWith(color: theme.mutedForeground),
-        dowTextFormatter: (date, locale) => ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'][date.weekday % 7],
+        weekdayStyle: TFontRegular.caption2(context)
+            .copyWith(color: theme.mutedForeground),
+        weekendStyle: TFontRegular.caption2(context)
+            .copyWith(color: theme.mutedForeground),
+        dowTextFormatter: (date, locale) =>
+            ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'][date.weekday % 7],
       ),
       calendarFormat: CalendarFormat.month,
       calendarStyle: CalendarStyle(
@@ -712,10 +731,13 @@ class TCalendarState extends State<TCalendar> {
         outsideTextStyle: TextStyle(color: theme.mutedForeground),
       ),
       calendarBuilders: CalendarBuilders(
-        defaultBuilder: (context, date, events) => _buildDayCell(context, date, theme),
-        outsideBuilder: (context, date, _) => _buildDayCell(context, date, theme),
+        defaultBuilder: (context, date, events) =>
+            _buildDayCell(context, date, theme),
+        outsideBuilder: (context, date, _) =>
+            _buildDayCell(context, date, theme),
         todayBuilder: (context, date, _) => _buildDayCell(context, date, theme),
-        selectedBuilder: (context, date, _) => _buildDayCell(context, date, theme),
+        selectedBuilder: (context, date, _) =>
+            _buildDayCell(context, date, theme),
         markerBuilder: (context, date, events) {
           final normalizedDate = DateTime(date.year, date.month, date.day);
           if ((_eventsMap[normalizedDate]?.isNotEmpty ?? false)) {
@@ -812,7 +834,8 @@ class TCalendarState extends State<TCalendar> {
           '${date.day}',
           style: TFontRegular.body(context).copyWith(
             color: textColor,
-            fontWeight: isToday || isSelected ? FontWeight.bold : FontWeight.normal,
+            fontWeight:
+                isToday || isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),
       ),

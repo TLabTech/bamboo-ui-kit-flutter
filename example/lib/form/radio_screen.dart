@@ -23,7 +23,10 @@ class _RadioScreenState extends State<RadioScreen> {
 
     return Scaffold(
       backgroundColor: theme.background,
-      appBar: THeader.nested(title: 'Radio', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Radio',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

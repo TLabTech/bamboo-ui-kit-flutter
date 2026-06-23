@@ -203,7 +203,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           onTap: () {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('Fitur lupa password akan segera datang'),
+                                content: Text(
+                                    'Fitur lupa password akan segera datang'),
                                 duration: Duration(seconds: 2),
                               ),
                             );
@@ -238,9 +239,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: RichText(
                           text: TextSpan(
                             text: 'Belum punya akun? ',
-                            style: TFontRegular.footNote(context).copyWith(
-                              color: theme.foreground
-                            ),
+                            style: TFontRegular.footNote(context)
+                                .copyWith(color: theme.foreground),
                             children: [
                               TextSpan(
                                 text: 'Daftar di sini',
@@ -305,11 +305,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: GestureDetector(
                     onTap: () {
                       final themeManager = context.read<TThemeManager>();
-                      final isDark = themeManager.state == themeManager.darkTheme;
+                      final isDark =
+                          themeManager.state == themeManager.darkTheme;
                       themeManager.toggleTheme(!isDark);
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
                         color: theme.primary.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),

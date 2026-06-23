@@ -7,138 +7,138 @@ const String fontFamily = FontFamily.inter;
 
 class TFontRegular {
   static TextStyle titleLarge(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 34,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 34,
+      );
 
   static TextStyle title1(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 28,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 28,
+      );
 
   static TextStyle title2(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 22,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 22,
+      );
 
   static TextStyle title3(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 20,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 20,
+      );
 
   static TextStyle headline(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w500,
-    fontSize: 17,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w500,
+        fontSize: 17,
+      );
 
   static TextStyle body(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 17,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 17,
+      );
 
   static TextStyle callOut(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 16,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 16,
+      );
 
   static TextStyle subHeadline(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 15,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 15,
+      );
 
   static TextStyle footNote(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 13,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 13,
+      );
 
   static TextStyle caption1(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 12,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+      );
 
   static TextStyle caption2(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w400,
-    fontSize: 11,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w400,
+        fontSize: 11,
+      );
 }
 
 class TFontBold {
   static TextStyle titleLarge(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w700,
-    fontSize: 34,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w700,
+        fontSize: 34,
+      );
 
   static TextStyle title1(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w700,
-    fontSize: 28,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w700,
+        fontSize: 28,
+      );
 
   static TextStyle title2(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w700,
-    fontSize: 22,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w700,
+        fontSize: 22,
+      );
 
   static TextStyle title3(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w500,
-    fontSize: 20,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w500,
+        fontSize: 20,
+      );
 
   static TextStyle headline(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w500,
-    fontSize: 17,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w500,
+        fontSize: 17,
+      );
 
   static TextStyle body(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w500,
-    fontSize: 17,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w500,
+        fontSize: 17,
+      );
 
   static TextStyle callout(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w500,
-    fontSize: 16,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
+      );
 
   static TextStyle subHeadline(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w500,
-    fontSize: 15,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w500,
+        fontSize: 15,
+      );
 
   static TextStyle footNote(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w500,
-    fontSize: 13,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w500,
+        fontSize: 13,
+      );
 
   static TextStyle caption1(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w500,
-    fontSize: 12,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w500,
+        fontSize: 12,
+      );
 
   static TextStyle caption2(BuildContext context) => TextStyle(
-    fontFamily: _getFontFamily(context),
-    fontWeight: FontWeight.w500,
-    fontSize: 11,
-  );
+        fontFamily: _getFontFamily(context),
+        fontWeight: FontWeight.w500,
+        fontSize: 11,
+      );
 }
 
 String _getFontFamily(BuildContext context) {

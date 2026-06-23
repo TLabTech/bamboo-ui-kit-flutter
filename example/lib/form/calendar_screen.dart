@@ -96,9 +96,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             'Selected ${selectedDates.length} dates: $selectedDates');
 
                         final workingDays = selectedDates
-                            .where((d) => d.weekday >= DateTime.monday && d.weekday <= DateTime.friday)
+                            .where((d) =>
+                                d.weekday >= DateTime.monday &&
+                                d.weekday <= DateTime.friday)
                             .toList();
-                        print('Selected: ${selectedDates.length} calendar days, ${workingDays.length} working days');
+                        print(
+                            'Selected: ${selectedDates.length} calendar days, ${workingDays.length} working days');
                       },
                       events: [
                         EventData(

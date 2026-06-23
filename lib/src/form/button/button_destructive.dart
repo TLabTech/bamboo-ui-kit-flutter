@@ -42,7 +42,8 @@ class TButtonDestructive extends StatefulWidget {
     this.prefixIcon,
     this.loading = false,
     this.child,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.centerContent = true,
     this.minimumSize = const Size(double.infinity, 48),
     this.maximumSize = const Size(double.infinity, 48),
@@ -65,7 +66,8 @@ class TButtonDestructive extends StatefulWidget {
     this.minimumSize = const Size(48, 48),
     this.maximumSize = const Size(48, 48),
     this.minFontSize = 12.0,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
   })  : child = icon,
         text = null,
         suffixIcon = null,
@@ -160,7 +162,8 @@ class _TButtonDestructiveState extends State<TButtonDestructive> {
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
           (states) {
             if (states.contains(WidgetState.pressed)) {
-              return widget.onPressedBackgroundColor ?? theme.destructivePressed;
+              return widget.onPressedBackgroundColor ??
+                  theme.destructivePressed;
             }
             return widget.backgroundColor ?? theme.destructive;
           },
