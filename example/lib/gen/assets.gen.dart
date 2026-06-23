@@ -54,21 +54,21 @@ class $AssetsSvgGen {
 
   /// List of all assets
   List<String> get values => [
-    logo,
-    bell,
-    briefcase,
-    chevronDown,
-    chevronRight,
-    home,
-    homeOutline,
-    magnifyingGlass,
-    moon,
-    plus,
-    sun,
-    userCircle,
-    user,
-    wifi,
-  ];
+        logo,
+        bell,
+        briefcase,
+        chevronDown,
+        chevronRight,
+        home,
+        homeOutline,
+        magnifyingGlass,
+        moon,
+        plus,
+        sun,
+        userCircle,
+        user,
+        wifi,
+      ];
 }
 
 class Assets {

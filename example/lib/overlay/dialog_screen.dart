@@ -19,7 +19,10 @@ class _DialogScreenState extends State<DialogScreen> {
 
     return Scaffold(
       backgroundColor: theme.background,
-      appBar: THeader.nested(title: 'Dialog', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Dialog',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -74,7 +77,7 @@ class _DialogScreenState extends State<DialogScreen> {
                           return TDialog(
                             title: 'Lorem ipsum dolor sit amet',
                             content:
-                            "Lorem ipsum dolor sit amet consectetur. Sit sit scelerisque sed nisl sed egestas. Diam amet orci velit facilisis dui dui ullamcorper. Aliquam donec odio ipsum.",
+                                "Lorem ipsum dolor sit amet consectetur. Sit sit scelerisque sed nisl sed egestas. Diam amet orci velit facilisis dui dui ullamcorper. Aliquam donec odio ipsum.",
                             direction: Axis.horizontal,
                             onPositivePressed: () {
                               Navigator.of(context).pop();
@@ -119,7 +122,7 @@ class _DialogScreenState extends State<DialogScreen> {
                           return TDialog(
                             title: 'Lorem ipsum dolor sit amet',
                             content:
-                            "Lorem ipsum dolor sit amet consectetur. Sit sit scelerisque sed nisl sed egestas. Diam amet orci velit facilisis dui dui ullamcorper. Aliquam donec odio ipsum.",
+                                "Lorem ipsum dolor sit amet consectetur. Sit sit scelerisque sed nisl sed egestas. Diam amet orci velit facilisis dui dui ullamcorper. Aliquam donec odio ipsum.",
                             direction: Axis.vertical,
                             onPositivePressed: () {
                               Navigator.of(context).pop();

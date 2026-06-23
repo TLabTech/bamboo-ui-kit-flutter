@@ -50,7 +50,7 @@ class ThemeConfig {
     destructiveForeground: HexColor(red900),
     destructivePressed: HexColor(red600),
     warning: HexColor(yellow500),
-    warningForeground:HexColor(yellow900),
+    warningForeground: HexColor(yellow900),
     warningPressed: HexColor(yellow600),
     success: HexColor(green500),
     successForeground: HexColor(primary900),

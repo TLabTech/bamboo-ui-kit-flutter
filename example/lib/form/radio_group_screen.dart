@@ -21,7 +21,10 @@ class _RadioGroupScreenState extends State<RadioGroupScreen> {
 
     return Scaffold(
       backgroundColor: theme.background,
-      appBar: THeader.nested(title: 'Radio Group', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Radio Group',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -70,7 +73,13 @@ class _RadioGroupScreenState extends State<RadioGroupScreen> {
                   ),
                   child: TRadioGroup<String>(
                     label: "Label",
-                    values: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'],
+                    values: [
+                      'Option 1',
+                      'Option 2',
+                      'Option 3',
+                      'Option 4',
+                      'Option 5'
+                    ],
                     items: ['Label', 'Label', 'Label', 'Label', 'Label'],
                     selectedValue: selectedOption,
                     onChanged: (value) {

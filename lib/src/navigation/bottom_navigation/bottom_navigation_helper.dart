@@ -11,27 +11,24 @@ class TBottomNavigationHelper {
 
   /// Pushes a new screen with transition, optionally with nav bar
   Future<T?> pushNewScreen<T extends Object?>(
-      BuildContext context, {
-        required Widget screen,
-        bool withNavBar = false,
-        PageTransitionAnimation pageTransitionAnimation =
-            PageTransitionAnimation.platform,
-        PageRoute<T>? customPageRoute,
-        RouteSettings? settings,
-      }) {
+    BuildContext context, {
+    required Widget screen,
+    bool withNavBar = false,
+    PageTransitionAnimation pageTransitionAnimation =
+        PageTransitionAnimation.platform,
+    RouteSettings? settings,
+  }) {
     return pushScreen<T>(
       context,
       screen: screen,
       withNavBar: withNavBar,
       pageTransitionAnimation: pageTransitionAnimation,
-      customPageRoute: customPageRoute,
       settings: settings,
     );
   }
 
   /// Push a raw route with nav bar
-  Future<T?> pushNewScreenWithNavBar<T>(
-      BuildContext context, Route<T> route) {
+  Future<T?> pushNewScreenWithNavBar<T>(BuildContext context, Route<T> route) {
     return pushWithNavBar(context, route);
   }
 
@@ -61,10 +58,10 @@ class TBottomNavigationHelper {
 
   /// Replace current route with one with nav bar
   Future<T?> pushReplacementWithNavBar<T extends Object?, TO extends Object?>(
-      BuildContext context,
-      Route<T> route, {
-        TO? result,
-      }) {
+    BuildContext context,
+    Route<T> route, {
+    TO? result,
+  }) {
     return pushReplacementWithNavBar<T, TO>(
       context,
       route,
@@ -73,11 +70,12 @@ class TBottomNavigationHelper {
   }
 
   /// Replace current route with one without nav bar
-  Future<T?> pushReplacementWithoutNavBar<T extends Object?, TO extends Object?>(
-      BuildContext context,
-      Route<T> route, {
-        TO? result,
-      }) {
+  Future<T?>
+      pushReplacementWithoutNavBar<T extends Object?, TO extends Object?>(
+    BuildContext context,
+    Route<T> route, {
+    TO? result,
+  }) {
     return pushReplacementWithoutNavBar<T, TO>(
       context,
       route,

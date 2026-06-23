@@ -19,7 +19,10 @@ class _LineChartScreenState extends State<LineChartScreen> {
 
     return Scaffold(
       backgroundColor: theme.background,
-      appBar: THeader.nested(title: 'Line', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Line',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -98,12 +101,18 @@ class _LineChartScreenState extends State<LineChartScreen> {
                       LineChartData(x: "F", y: 37, color: HexColor(primary500)),
                     ],
                     [
-                      LineChartData(x: "A", y: 39, color: HexColor(secondary500)),
-                      LineChartData(x: "B", y: 64, color: HexColor(secondary500)),
-                      LineChartData(x: "C", y: 80, color: HexColor(secondary500)),
-                      LineChartData(x: "D", y: 17, color: HexColor(secondary500)),
-                      LineChartData(x: "E", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "F", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "A", y: 39, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "B", y: 64, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "C", y: 80, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "D", y: 17, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "E", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "F", y: 15, color: HexColor(secondary500)),
                     ],
                   ],
                   legendLabels: [
@@ -136,12 +145,18 @@ class _LineChartScreenState extends State<LineChartScreen> {
                       LineChartData(x: "F", y: 37, color: HexColor(primary500)),
                     ],
                     [
-                      LineChartData(x: "A", y: 39, color: HexColor(secondary500)),
-                      LineChartData(x: "B", y: 64, color: HexColor(secondary500)),
-                      LineChartData(x: "C", y: 80, color: HexColor(secondary500)),
-                      LineChartData(x: "D", y: 17, color: HexColor(secondary500)),
-                      LineChartData(x: "E", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "F", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "A", y: 39, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "B", y: 64, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "C", y: 80, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "D", y: 17, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "E", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "F", y: 15, color: HexColor(secondary500)),
                     ],
                     [
                       LineChartData(x: "A", y: 59, color: HexColor(red500)),
@@ -184,13 +199,20 @@ class _LineChartScreenState extends State<LineChartScreen> {
                       LineChartData(x: "G", y: 85, color: HexColor(primary500)),
                     ],
                     [
-                      LineChartData(x: "A", y: 39, color: HexColor(secondary500)),
-                      LineChartData(x: "B", y: 64, color: HexColor(secondary500)),
-                      LineChartData(x: "C", y: 80, color: HexColor(secondary500)),
-                      LineChartData(x: "D", y: 17, color: HexColor(secondary500)),
-                      LineChartData(x: "E", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "F", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "G", y: 45, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "A", y: 39, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "B", y: 64, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "C", y: 80, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "D", y: 17, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "E", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "F", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "G", y: 45, color: HexColor(secondary500)),
                     ],
                     [
                       LineChartData(x: "A", y: 59, color: HexColor(red500)),
@@ -244,13 +266,20 @@ class _LineChartScreenState extends State<LineChartScreen> {
                       LineChartData(x: "G", y: 85, color: HexColor(primary500)),
                     ],
                     [
-                      LineChartData(x: "A", y: 39, color: HexColor(secondary500)),
-                      LineChartData(x: "B", y: 64, color: HexColor(secondary500)),
-                      LineChartData(x: "C", y: 80, color: HexColor(secondary500)),
-                      LineChartData(x: "D", y: 17, color: HexColor(secondary500)),
-                      LineChartData(x: "E", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "F", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "G", y: 45, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "A", y: 39, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "B", y: 64, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "C", y: 80, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "D", y: 17, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "E", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "F", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "G", y: 45, color: HexColor(secondary500)),
                     ],
                     [
                       LineChartData(x: "A", y: 15, color: HexColor(red500)),
@@ -342,12 +371,18 @@ class _LineChartScreenState extends State<LineChartScreen> {
                       LineChartData(x: "F", y: 37, color: HexColor(primary500)),
                     ],
                     [
-                      LineChartData(x: "A", y: 39, color: HexColor(secondary500)),
-                      LineChartData(x: "B", y: 64, color: HexColor(secondary500)),
-                      LineChartData(x: "C", y: 80, color: HexColor(secondary500)),
-                      LineChartData(x: "D", y: 17, color: HexColor(secondary500)),
-                      LineChartData(x: "E", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "F", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "A", y: 39, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "B", y: 64, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "C", y: 80, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "D", y: 17, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "E", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "F", y: 15, color: HexColor(secondary500)),
                     ],
                   ],
                   legendLabels: [
@@ -380,12 +415,18 @@ class _LineChartScreenState extends State<LineChartScreen> {
                       LineChartData(x: "F", y: 37, color: HexColor(primary500)),
                     ],
                     [
-                      LineChartData(x: "A", y: 39, color: HexColor(secondary500)),
-                      LineChartData(x: "B", y: 64, color: HexColor(secondary500)),
-                      LineChartData(x: "C", y: 80, color: HexColor(secondary500)),
-                      LineChartData(x: "D", y: 17, color: HexColor(secondary500)),
-                      LineChartData(x: "E", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "F", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "A", y: 39, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "B", y: 64, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "C", y: 80, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "D", y: 17, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "E", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "F", y: 15, color: HexColor(secondary500)),
                     ],
                     [
                       LineChartData(x: "A", y: 59, color: HexColor(red500)),
@@ -428,13 +469,20 @@ class _LineChartScreenState extends State<LineChartScreen> {
                       LineChartData(x: "G", y: 85, color: HexColor(primary500)),
                     ],
                     [
-                      LineChartData(x: "A", y: 39, color: HexColor(secondary500)),
-                      LineChartData(x: "B", y: 64, color: HexColor(secondary500)),
-                      LineChartData(x: "C", y: 80, color: HexColor(secondary500)),
-                      LineChartData(x: "D", y: 17, color: HexColor(secondary500)),
-                      LineChartData(x: "E", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "F", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "G", y: 45, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "A", y: 39, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "B", y: 64, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "C", y: 80, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "D", y: 17, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "E", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "F", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "G", y: 45, color: HexColor(secondary500)),
                     ],
                     [
                       LineChartData(x: "A", y: 59, color: HexColor(red500)),
@@ -488,13 +536,20 @@ class _LineChartScreenState extends State<LineChartScreen> {
                       LineChartData(x: "G", y: 85, color: HexColor(primary500)),
                     ],
                     [
-                      LineChartData(x: "A", y: 39, color: HexColor(secondary500)),
-                      LineChartData(x: "B", y: 64, color: HexColor(secondary500)),
-                      LineChartData(x: "C", y: 80, color: HexColor(secondary500)),
-                      LineChartData(x: "D", y: 17, color: HexColor(secondary500)),
-                      LineChartData(x: "E", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "F", y: 15, color: HexColor(secondary500)),
-                      LineChartData(x: "G", y: 45, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "A", y: 39, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "B", y: 64, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "C", y: 80, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "D", y: 17, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "E", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "F", y: 15, color: HexColor(secondary500)),
+                      LineChartData(
+                          x: "G", y: 45, color: HexColor(secondary500)),
                     ],
                     [
                       LineChartData(x: "A", y: 59, color: HexColor(red500)),

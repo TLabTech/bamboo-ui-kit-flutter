@@ -19,7 +19,10 @@ class _StepperScreenState extends State<StepperScreen> {
 
     return Scaffold(
       backgroundColor: theme.background,
-      appBar: THeader.nested(title: 'Stepper', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Stepper',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

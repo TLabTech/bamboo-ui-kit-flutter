@@ -97,9 +97,7 @@ class _TTabsState extends State<TTabs> {
                   child: Text(
                     widget.tabs[index],
                     style: TFontRegular.subHeadline(context).copyWith(
-                      color: isSelected
-                          ? activeTextColor
-                          : inactiveTextColor,
+                      color: isSelected ? activeTextColor : inactiveTextColor,
                     ),
                     textAlign: TextAlign.center,
                   ),

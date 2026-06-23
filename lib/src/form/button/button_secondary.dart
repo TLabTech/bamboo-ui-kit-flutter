@@ -36,7 +36,8 @@ class TButtonSecondary extends StatefulWidget {
     this.onPressedBackgroundColor,
     this.loadingColor,
     this.borderRadius = 8,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.textStyle,
     this.suffixIcon,
     this.prefixIcon,
@@ -58,7 +59,8 @@ class TButtonSecondary extends StatefulWidget {
     this.onPressedBackgroundColor,
     this.loadingColor,
     this.borderRadius = 8,
-    this.padding = const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
+    this.padding =
+        const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.textStyle,
     this.loading = false,
     this.minimumSize = const Size(48, 48),
@@ -173,12 +175,12 @@ class _TButtonSecondaryState extends State<TButtonSecondary> {
 
     Widget? leadingIcon = widget.loading
         ? SizedBox(
-      width: 18,
-      height: 18,
-      child: CircularProgressIndicator(
-        color: widget.loadingColor ?? theme.foreground,
-      ),
-    )
+            width: 18,
+            height: 18,
+            child: CircularProgressIndicator(
+              color: widget.loadingColor ?? theme.foreground,
+            ),
+          )
         : widget.prefixIcon;
 
     Widget? trailingIcon = widget.loading ? null : widget.suffixIcon;
@@ -234,15 +236,13 @@ class _TButtonSecondaryState extends State<TButtonSecondary> {
                 widget.text!,
                 maxLines: 1,
                 minFontSize: widget.minFontSize,
-                textAlign:
-                hasOnlyText ? TextAlign.center : TextAlign.left,
+                textAlign: hasOnlyText ? TextAlign.center : TextAlign.left,
                 overflow: TextOverflow.ellipsis,
                 style: widget.textStyle ??
                     TFontBold.body(context).copyWith(color: theme.foreground),
               ),
             ),
-          if (hasTrailing && widget.text != null)
-            children[children.length - 2],
+          if (hasTrailing && widget.text != null) children[children.length - 2],
           if (hasTrailing) children.last,
         ],
       );

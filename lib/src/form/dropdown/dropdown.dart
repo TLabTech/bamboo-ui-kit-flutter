@@ -33,7 +33,7 @@ class TDropdown<T> extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DropdownButtonFormField<T>(
-          value: value,
+          initialValue: value,
           decoration: decoration ??
               InputDecoration(
                 hintText: hintText,

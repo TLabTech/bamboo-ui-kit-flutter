@@ -119,8 +119,7 @@ class _TAccordionState extends State<TAccordion> {
         title: Text(
           widget.title,
           style: widget.titleStyle ??
-              TFontBold.body(context)
-                  .copyWith(color: theme.foreground),
+              TFontBold.body(context).copyWith(color: theme.foreground),
         ),
         trailing: AnimatedRotation(
           turns: isExpanded ? 0.5 : 0.0,

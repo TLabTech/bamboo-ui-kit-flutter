@@ -22,7 +22,10 @@ class _CheckBoxScreenState extends State<CheckBoxScreen> {
 
     return Scaffold(
       backgroundColor: theme.background,
-      appBar: THeader.nested(title: 'Checkbox', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Checkbox',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

@@ -19,7 +19,10 @@ class _AvatarScreenState extends State<AvatarScreen> {
 
     return Scaffold(
       backgroundColor: theme.background,
-      appBar: THeader.nested(title: 'Avatar', enableCenterTitle: true,),
+      appBar: THeader.nested(
+        title: 'Avatar',
+        enableCenterTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -87,7 +90,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.large,
                         type: AvatarType.general,
                         shape: AvatarShape.circle,
@@ -140,7 +144,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.general,
                         shape: AvatarShape.circle,
@@ -193,7 +198,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.small,
                         type: AvatarType.general,
                         shape: AvatarShape.circle,
@@ -248,7 +254,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.notification,
                         notificationCount: 5,
@@ -302,7 +309,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.online,
                         shape: AvatarShape.circle,
@@ -354,7 +362,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.large,
                         type: AvatarType.general,
                         shape: AvatarShape.roundedSquare,
@@ -407,7 +416,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.general,
                         shape: AvatarShape.roundedSquare,
@@ -460,7 +470,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.small,
                         type: AvatarType.general,
                         shape: AvatarShape.roundedSquare,
@@ -515,7 +526,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.notification,
                         notificationCount: 5,
@@ -569,7 +581,8 @@ class _AvatarScreenState extends State<AvatarScreen> {
                         backgroundColor: HexColor(primary500),
                       ),
                       TAvatar(
-                        imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+                        imageUrl:
+                            "https://randomuser.me/api/portraits/women/1.jpg",
                         predefinedSize: AvatarSize.medium,
                         type: AvatarType.online,
                         shape: AvatarShape.roundedSquare,

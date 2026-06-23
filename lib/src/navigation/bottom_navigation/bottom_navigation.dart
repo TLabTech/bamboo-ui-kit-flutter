@@ -49,7 +49,6 @@ class TBottomNavigationState extends State<TBottomNavigation> {
           .toList(),
       navBarBuilder: widget.navBarBuilder,
       backgroundColor: widget.backgroundColor ?? theme.popover,
-      navBarHeight: widget.navBarHeight,
       onTabChanged: widget.onTabChanged,
     );
   }
