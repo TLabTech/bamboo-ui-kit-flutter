@@ -313,7 +313,7 @@ Future<void> _handleLogin() async {
 ## 📚 Related Documentation
 
 - [Design System Guide](../DESIGN.md)
-- [Component Documentation](../docs/components/)
+- [Component Documentation](../doc/components/)
 - [Theme Management](../DESIGN.md#theme-management)
 
 ## 🐛 Troubleshooting

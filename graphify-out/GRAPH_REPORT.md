@@ -1,16 +1,16 @@
-# Graph Report - flutter-component  (2026-06-15)
+# Graph Report - flutter-component  (2026-06-23)
 
 ## Corpus Check
-- 361 files · ~467,917 words
+- 361 files · ~468,022 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3332 nodes · 3093 edges · 367 communities (325 shown, 42 thin omitted)
+- 3454 nodes · 3214 edges · 381 communities (339 shown, 42 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3e1c8787`
+- Built from commit: `eed0e9bd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -310,18 +310,32 @@
 - [[_COMMUNITY_Community 355|Community 355]]
 - [[_COMMUNITY_Community 356|Community 356]]
 - [[_COMMUNITY_Community 366|Community 366]]
+- [[_COMMUNITY_Community 367|Community 367]]
+- [[_COMMUNITY_Community 368|Community 368]]
+- [[_COMMUNITY_Community 369|Community 369]]
+- [[_COMMUNITY_Community 370|Community 370]]
+- [[_COMMUNITY_Community 371|Community 371]]
+- [[_COMMUNITY_Community 372|Community 372]]
+- [[_COMMUNITY_Community 373|Community 373]]
+- [[_COMMUNITY_Community 374|Community 374]]
+- [[_COMMUNITY_Community 375|Community 375]]
+- [[_COMMUNITY_Community 376|Community 376]]
+- [[_COMMUNITY_Community 377|Community 377]]
+- [[_COMMUNITY_Community 378|Community 378]]
+- [[_COMMUNITY_Community 379|Community 379]]
+- [[_COMMUNITY_Community 380|Community 380]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Communities (327 total, 40 thin omitted)` - 224 edges
 2. `Bamboo Design System` - 19 edges
-3. `Login Feature Documentation` - 15 edges
-4. `Variant` - 10 edges
-5. `Graph Report - flutter-component  (2026-05-26)` - 10 edges
-6. `Interaction Patterns` - 8 edges
-7. `WindowClassRegistrar` - 7 edges
-8. `Create()` - 7 edges
-9. `Destroy()` - 7 edges
-10. `Token Categories` - 6 edges
+3. `Bamboo Design System` - 19 edges
+4. `Login Feature Documentation` - 15 edges
+5. `Graph Report - flutter-component  (2026-05-26)` - 11 edges
+6. `Variant` - 10 edges
+7. `Interaction Patterns` - 8 edges
+8. `Interaction Patterns` - 8 edges
+9. `WindowClassRegistrar` - 7 edges
+10. `Create()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `main()` --calls--> `my_application_new()`  [INFERRED]
@@ -335,7 +349,7 @@
 - `OnCreate()` --calls--> `SetChildContent()`  [INFERRED]
   example/windows/runner/flutter_window.cpp → example/windows/runner/win32_window.cpp
 
-## Communities (367 total, 42 thin omitted)
+## Communities (381 total, 42 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.04
@@ -1250,7 +1264,7 @@ Cohesion: 0.18
 Nodes (11): Accessing Theme Colors, Architecture, code:block17 (TThemeManager (BLoC)), code:dart (void main() {), code:dart (// Toggle between light and dark), code:dart (// In any widget), code:dart (class CustomTheme {), Custom Theme Implementation (+3 more)
 
 ### Community 328 - "Community 328"
-Cohesion: 0.20
+Cohesion: 0.18
 Nodes (9): Community Hubs (Navigation), Corpus Check, God Nodes (most connected - your core abstractions), Graph Freshness, Graph Report - flutter-component  (2026-05-26), Knowledge Gaps, Suggested Questions, Summary (+1 more)
 
 ### Community 329 - "Community 329"
@@ -1349,8 +1363,64 @@ Nodes (3): package:flutter_secure_storage/flutter_secure_storage.dart, Exception
 Cohesion: 0.50
 Nodes (4): code:block6 (/login          → LoginScreen (Initial Route)), code:dart (// Navigate to home after login), Navigation Examples, 🌐 Routing Structure
 
+### Community 367 - "Community 367"
+Cohesion: 0.08
+Nodes (22): 1. **Always Use Theme Colors**, 2. **Semantic Component Usage**, 3. **Consistent Spacing**, 4. **Font Styling**, 5. **Component Composition**, Best Practices, code:dart (Container(color: Color(0xFF00D89C))), code:dart (Container(color: theme.primary)) (+14 more)
+
+### Community 368 - "Community 368"
+Cohesion: 0.14
+Nodes (13): 1. Button Interactions, 2. Form Input Interactions, 3. Selection Interactions, 4. Navigation Interactions, 5. Modal/Overlay Interactions, 6. Loading States, code:dart (// Primary CTA), code:dart (// Single Selection) (+5 more)
+
+### Community 369 - "Community 369"
+Cohesion: 0.18
+Nodes (11): Accessing Theme Colors, Architecture, code:block17 (TThemeManager (BLoC)), code:dart (void main() {), code:dart (// Toggle between light and dark), code:dart (// In any widget), code:dart (class CustomTheme {), Custom Theme Implementation (+3 more)
+
+### Community 370 - "Community 370"
+Cohesion: 0.20
+Nodes (9): Bamboo Design System, Contributing to Design System, Core Principles, Current Version: 1.0, Design Goals, Design Philosophy, Resources, Table of Contents (+1 more)
+
+### Community 371 - "Community 371"
+Cohesion: 0.20
+Nodes (9): Bold Weight, code:dart (TFontRegular.body(context)           // 17pt - Main body tex), code:dart (TFontBold.headline(context)          // 22pt - Main headline), Customization Example, Font Families, Regular Weight (14-20 min), Text Styles, Typography System (+1 more)
+
+### Community 372 - "Community 372"
+Cohesion: 0.22
+Nodes (9): 1. **Color Tokens**, 2. **Typography Tokens**, 3. **Spacing Tokens**, 4. **Shadow Tokens**, 5. **Border Radius**, code:dart (// 1. Via Theme Context (Theme-aware)), Reusable Tokens, Token Access Patterns (+1 more)
+
+### Community 373 - "Community 373"
+Cohesion: 0.29
+Nodes (7): Component Hierarchy, Component Tiers, Tier 1: Foundational Components (Core), Tier 2: Form Components (Input), Tier 3: Navigation Components, Tier 4: Data Presentation Components, Tier 5: Composite Components
+
+### Community 374 - "Community 374"
+Cohesion: 0.33
+Nodes (6): code:dart (// Primary Color Family (Teal)), code:dart (// Direct color access via HexColor), Color Families (Scale 50-950), Color Palette, Semantic Color Tokens, Usage Patterns
+
+### Community 375 - "Community 375"
+Cohesion: 0.40
+Nodes (5): Accessibility Considerations, Color Contrast, Dark Mode, Semantic Structure, Touch Targets
+
+### Community 376 - "Community 376"
+Cohesion: 0.40
+Nodes (5): Based on Graph Analysis & Community Detection, Most Used Components, 🔥 **Tier 1: Mission Critical**, ⭐ **Tier 2: Highly Used**, 📊 **Tier 3: Regular Use**
+
+### Community 377 - "Community 377"
+Cohesion: 0.40
+Nodes (5): code:dart (// Using EdgeInsets), Implementation, Layout Grid, Spacing & Layout, Spacing Scale
+
+### Community 378 - "Community 378"
+Cohesion: 0.40
+Nodes (4): code:dart (// Shadow Small (UI elements, cards)), Elevation Levels, Shadow System, Usage
+
+### Community 379 - "Community 379"
+Cohesion: 0.50
+Nodes (4): Available Components, code:dart (import 'package:flutter_bamboo_ui_kit/core.dart';), Component Reference, Quick Import
+
+### Community 380 - "Community 380"
+Cohesion: 0.50
+Nodes (4): code:block1 (┌─────────────────────────────────────┐), Core Classes, Design System Architecture, Layer Structure
+
 ## Knowledge Gaps
-- **2184 isolated node(s):** `clean.sh script`, `Assets`, `FontFamily`, `TFontRegular`, `TFontBold` (+2179 more)
+- **2246 isolated node(s):** `Features`, `code:dart (dependencies:)`, `Table of Contents`, `Core Principles`, `Design Goals` (+2241 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **42 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -1358,13 +1428,13 @@ Nodes (4): code:block6 (/login          → LoginScreen (Initial Route)), code:d
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Communities (327 total, 40 thin omitted)` connect `Community 323` to `Community 328`?**
-  _High betweenness centrality (0.002) - this node is a cross-community bridge._
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Why does `Bamboo Design System` connect `Community 329` to `Community 324`, `Community 325`, `Community 327`, `Community 330`, `Community 333`, `Community 335`, `Community 337`, `Community 339`, `Community 340`, `Community 341`, `Community 342`, `Community 349`, `Community 350`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **Why does `Implementation Guidelines` connect `Community 324` to `Community 329`?**
+- **Why does `Bamboo Design System` connect `Community 370` to `Community 367`, `Community 368`, `Community 369`, `Community 371`, `Community 372`, `Community 373`, `Community 374`, `Community 375`, `Community 376`, `Community 377`, `Community 378`, `Community 379`, `Community 380`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **What connects `clean.sh script`, `Assets`, `FontFamily` to the rest of the system?**
-  _2185 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Features`, `code:dart (dependencies:)`, `Table of Contents` to the rest of the system?**
+  _2247 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.041666666666666664 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
