@@ -25,6 +25,9 @@ class TTile<T> extends StatelessWidget {
   final ValueChanged<T>? onChanged;
   final bool showRadio;
   final VoidCallback? onPress;
+  final bool showCheckbox;
+  final bool isChecked;
+  final ValueChanged<bool>? onCheckboxChanged;
 
   const TTile({
     super.key,
@@ -50,15 +53,18 @@ class TTile<T> extends StatelessWidget {
     this.onChanged,
     this.showRadio = false,
     this.onPress,
+    this.showCheckbox = false,
+    this.isChecked = false,
+    this.onCheckboxChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
-
     final hasValueText = valueText != null && valueText!.trim().isNotEmpty;
 
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: enable == true ? onPress : null,
       child: Container(
         padding: padding ??
@@ -118,18 +124,20 @@ class TTile<T> extends StatelessWidget {
                   horizontal: 12,
                   vertical: 6,
                 ),
-                decoration: valueDecoration ?? BoxDecoration(
-                  color: HexColor(primary050),
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: HexColor(primary200),
-                  ),
-                ),
+                decoration: valueDecoration ??
+                    BoxDecoration(
+                      color: HexColor(primary050),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: HexColor(primary200),
+                      ),
+                    ),
                 child: Text(
                   valueText!,
-                  style: valueStyle ?? TFontBold.caption1(context).copyWith(
-                    color: HexColor(primary600),
-                  ),
+                  style: valueStyle ??
+                      TFontBold.caption1(context).copyWith(
+                        color: HexColor(primary600),
+                      ),
                 ),
               ),
             ],
@@ -173,6 +181,21 @@ class TTile<T> extends StatelessWidget {
                           onChanged!(value as T);
                         }
                       }
+                    : null,
+              ),
+            ],
+            if (showCheckbox) ...[
+              const SizedBox(width: 8),
+              _buildInlineCheckbox(
+                context,
+                isChecked: isChecked,
+                isEnabled: enable == true,
+                onTap: enable == true
+                    ? () {
+                  if (onCheckboxChanged != null) {
+                    onCheckboxChanged!(!isChecked);
+                  }
+                }
                     : null,
               ),
             ],
@@ -231,6 +254,48 @@ Widget _buildInlineRadio(
   );
 }
 
+Widget _buildInlineCheckbox(
+  BuildContext context, {
+  required bool isChecked,
+  required bool isEnabled,
+  VoidCallback? onTap,
+}) {
+  final theme = context.watch<TThemeManager>().state;
+
+  return GestureDetector(
+    behavior: HitTestBehavior.opaque,
+    onTap: onTap,
+    child: AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      width: 20,
+      height: 20,
+      decoration: BoxDecoration(
+        color: isEnabled
+            ? isChecked
+                ? HexColor(primary500)
+                : theme.background
+            : theme.muted,
+        border: Border.all(
+          color: isEnabled
+              ? isChecked
+                  ? Colors.transparent
+                  : theme.border
+              : theme.border,
+          width: 1.5,
+        ),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: isEnabled && isChecked
+          ? Icon(
+              Icons.check,
+              color: theme.primaryForeground,
+              size: 14,
+            )
+          : null,
+    ),
+  );
+}
+
 extension TTileCopy<T> on TTile<T> {
   TTile<T> copyWith({
     String? title,
@@ -253,6 +318,9 @@ extension TTileCopy<T> on TTile<T> {
     T? value,
     T? groupValue,
     ValueChanged<T?>? onChanged,
+    bool? showCheckbox,
+    bool? isChecked,
+    ValueChanged<bool>? onCheckboxChanged,
   }) {
     return TTile<T>(
       title: title ?? this.title,
@@ -275,6 +343,9 @@ extension TTileCopy<T> on TTile<T> {
       groupValue: groupValue ?? this.groupValue,
       onChanged: onChanged ?? this.onChanged,
       padding: padding ?? this.padding,
+      showCheckbox: showCheckbox ?? this.showCheckbox,
+      isChecked: isChecked ?? this.isChecked,
+      onCheckboxChanged: onCheckboxChanged ?? this.onCheckboxChanged,
     );
   }
 }
