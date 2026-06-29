@@ -14,6 +14,9 @@ class TTile<T> extends StatelessWidget {
   final String? subtitle;
   final TextStyle? subtitleStyle;
   final String? detail;
+  final String? valueText;
+  final TextStyle? valueStyle;
+  final BoxDecoration? valueDecoration;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final EdgeInsets? padding;
@@ -36,6 +39,9 @@ class TTile<T> extends StatelessWidget {
     this.enable = true,
     this.subtitle,
     this.detail,
+    this.valueText,
+    this.valueStyle,
+    this.valueDecoration,
     this.prefixIcon,
     this.suffixIcon,
     this.padding,
@@ -49,6 +55,8 @@ class TTile<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
+
+    final hasValueText = valueText != null && valueText!.trim().isNotEmpty;
 
     return GestureDetector(
       onTap: enable == true ? onPress : null,
@@ -103,6 +111,28 @@ class TTile<T> extends StatelessWidget {
                 ],
               ),
             ),
+            if (hasValueText) ...[
+              const SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
+                decoration: valueDecoration ?? BoxDecoration(
+                  color: HexColor(primary050),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: HexColor(primary200),
+                  ),
+                ),
+                child: Text(
+                  valueText!,
+                  style: valueStyle ?? TFontBold.caption1(context).copyWith(
+                    color: HexColor(primary600),
+                  ),
+                ),
+              ),
+            ],
             if (detail != null || suffixIcon != null) ...[
               const SizedBox(width: 8),
               Row(
@@ -213,6 +243,9 @@ extension TTileCopy<T> on TTile<T> {
     String? subtitle,
     TextStyle? subtitleStyle,
     String? detail,
+    String? valueText,
+    TextStyle? valueStyle,
+    BoxDecoration? valueDecoration,
     Widget? prefixIcon,
     Widget? suffixIcon,
     EdgeInsets? padding,
@@ -232,6 +265,9 @@ extension TTileCopy<T> on TTile<T> {
       subtitle: subtitle ?? this.subtitle,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
       detail: detail ?? this.detail,
+      valueText: valueText ?? this.valueText,
+      valueStyle: valueStyle ?? this.valueStyle,
+      valueDecoration: valueDecoration ?? this.valueDecoration,
       prefixIcon: prefixIcon ?? this.prefixIcon,
       suffixIcon: suffixIcon ?? this.suffixIcon,
       showRadio: showRadio ?? this.showRadio,
