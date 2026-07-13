@@ -25,7 +25,7 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
   @override
   void initState() {
     items = [
-      {"label": "1", "value": "Central Java"},
+      {"label": "1", "value": "Central Java, Indonesia, South East Asia"},
       {"label": "2", "value": "Central Borneo"},
       {"label": "3", "value": "Central Sumatra"},
       {"label": "4", "value": "Yogyakarta"},

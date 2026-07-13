@@ -157,6 +157,52 @@ class _SwitchScreenState extends State<SwitchScreen> {
                   ),
                 ),
               ),
+              TAccordion(
+                title: "Custom",
+                titleStyle: TFontBold.headline(context),
+                showDivider: false,
+                initiallyExpanded: true,
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: HexColor(gray300),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      TSwitch(
+                        label: "",
+                        description: "",
+                        value: _isFeatureErrorEnabled,
+                        onChanged: (value) {
+                          setState(() {
+                            _isFeatureErrorEnabled = value;
+                          });
+                        },
+                        height: 28,
+                        isError: false,
+                        isEnabled: true,
+                      ),
+                      Text(
+                        'Equal Split',
+                        style: TFontRegular.body(context).copyWith(
+                          color: theme.foreground,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
