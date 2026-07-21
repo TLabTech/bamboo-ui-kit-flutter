@@ -1,16 +1,16 @@
-# Graph Report - flutter-component  (2026-06-23)
+# Graph Report - flutter-component  (2026-06-29)
 
 ## Corpus Check
-- 361 files · ~468,022 words
+- 359 files · ~468,090 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3454 nodes · 3214 edges · 381 communities (339 shown, 42 thin omitted)
+- 3453 nodes · 3214 edges · 380 communities (338 shown, 42 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `eed0e9bd`
+- Built from commit: `802b8f4f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -114,7 +114,6 @@
 - [[_COMMUNITY_Community 96|Community 96]]
 - [[_COMMUNITY_Community 97|Community 97]]
 - [[_COMMUNITY_Community 98|Community 98]]
-- [[_COMMUNITY_Community 99|Community 99]]
 - [[_COMMUNITY_Community 100|Community 100]]
 - [[_COMMUNITY_Community 101|Community 101]]
 - [[_COMMUNITY_Community 102|Community 102]]
@@ -349,7 +348,7 @@
 - `OnCreate()` --calls--> `SetChildContent()`  [INFERRED]
   example/windows/runner/flutter_window.cpp → example/windows/runner/win32_window.cpp
 
-## Communities (381 total, 42 thin omitted)
+## Communities (380 total, 42 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.04
@@ -508,8 +507,8 @@ Cohesion: 0.13
 Nodes (14): authors, Flutter Dev Team, homepage, license, type, name, platforms, ios (+6 more)
 
 ### Community 39 - "Community 39"
-Cohesion: 0.12
-Nodes (15): package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:dropdown_button2/dropdown_button2.dart, package:flutter_bamboo_ui_kit/gen/assets.gen.dart, package:flutter_svg/flutter_svg.dart, build, Container (+7 more)
+Cohesion: 0.08
+Nodes (23): package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:dropdown_button2/dropdown_button2.dart, package:example/gen/assets.gen.dart (+15 more)
 
 ### Community 40 - "Community 40"
 Cohesion: 0.13
@@ -746,10 +745,6 @@ Nodes (9): package:example/gen/assets.gen.dart, package:flutter_bamboo_ui_kit/co
 ### Community 98 - "Community 98"
 Cohesion: 0.20
 Nodes (9): package:example/gen/assets.gen.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_svg/flutter_svg.dart, AvatarScreen, _AvatarScreenState, build (+1 more)
-
-### Community 99 - "Community 99"
-Cohesion: 0.20
-Nodes (9): package:example/gen/assets.gen.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_svg/flutter_svg.dart, BadgeScreen, _BadgeScreenState, build (+1 more)
 
 ### Community 100 - "Community 100"
 Cohesion: 0.20
@@ -1420,7 +1415,7 @@ Cohesion: 0.50
 Nodes (4): code:block1 (┌─────────────────────────────────────┐), Core Classes, Design System Architecture, Layer Structure
 
 ## Knowledge Gaps
-- **2246 isolated node(s):** `Features`, `code:dart (dependencies:)`, `Table of Contents`, `Core Principles`, `Design Goals` (+2241 more)
+- **2244 isolated node(s):** `TTile`, `build`, `GestureDetector`, `SizedBox`, `_buildInlineRadio` (+2239 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **42 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -1428,13 +1423,13 @@ Nodes (4): code:block1 (┌─────────────────�
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Communities (327 total, 40 thin omitted)` connect `Community 323` to `Community 328`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **Why does `Bamboo Design System` connect `Community 329` to `Community 324`, `Community 325`, `Community 327`, `Community 330`, `Community 333`, `Community 335`, `Community 337`, `Community 339`, `Community 340`, `Community 341`, `Community 342`, `Community 349`, `Community 350`?**
-  _High betweenness centrality (0.001) - this node is a cross-community bridge._
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **Why does `Bamboo Design System` connect `Community 370` to `Community 367`, `Community 368`, `Community 369`, `Community 371`, `Community 372`, `Community 373`, `Community 374`, `Community 375`, `Community 376`, `Community 377`, `Community 378`, `Community 379`, `Community 380`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **What connects `Features`, `code:dart (dependencies:)`, `Table of Contents` to the rest of the system?**
-  _2247 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `TTile`, `build`, `GestureDetector` to the rest of the system?**
+  _2245 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.041666666666666664 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**

@@ -127,6 +127,55 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 height: 8,
               ),
               TAccordion(
+                title: "Selectable Date Range",
+                titleStyle: TFontBold.headline(context),
+                showDivider: false,
+                initiallyExpanded: true,
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                child: Container(
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: HexColor(gray300),
+                    ),
+                  ),
+                  child: Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: HexColor(gray300),
+                      ),
+                    ),
+                    child: TCalendar(
+                      firstDay: DateTime(2000, 4, 4),
+                      lastDay: DateTime(2030, 1, 2),
+                      selectionMode: SelectionMode.single,
+                      // selectableDayPredicate: (day) {
+                      //   final today = DateTime.now();
+                      //   final tenDaysAgo = today.subtract(Duration(days: 10));
+                      //   return day.isAfter(tenDaysAgo.subtract(Duration(days: 1))) && !day.isAfter(today);
+                      // },
+                      selectableDayPredicate: (day) => !day.isAfter(DateTime.now().add(Duration(days: 2))),
+                      onSelectionChanged: (selectedDates) {
+                        print(
+                            'Selected ${selectedDates.length} dates: $selectedDates');
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              TAccordion(
                 title: "Jump to Date",
                 titleStyle: TFontBold.headline(context),
                 showDivider: false,

@@ -23,6 +23,7 @@ class TCalendar extends StatefulWidget {
   final DateTime lastDay;
   final int? maxRangeLength;
   final int? maxWorkingDays;
+  final bool Function(DateTime)? selectableDayPredicate;
 
   const TCalendar({
     super.key,
@@ -35,6 +36,7 @@ class TCalendar extends StatefulWidget {
     required this.lastDay,
     this.maxRangeLength,
     this.maxWorkingDays,
+    this.selectableDayPredicate,
   });
 
   @override
@@ -290,7 +292,13 @@ class TCalendarState extends State<TCalendar> {
     _selectDateInternal(date);
   }
 
+  bool _isDateSelectable(DateTime date) {
+    if (widget.selectableDayPredicate == null) return true;
+    return widget.selectableDayPredicate!(date);
+  }
+
   void _selectDateInternal(DateTime date) {
+    if (!_isDateSelectable(date)) return;
     setState(() {
       switch (widget.selectionMode) {
         case SelectionMode.single:
@@ -318,6 +326,9 @@ class TCalendarState extends State<TCalendar> {
       clearSelection();
       return;
     }
+
+    dates = dates.where((d) => _isDateSelectable(d)).toList();
+    if (dates.isEmpty) return;
 
     setState(() {
       switch (widget.selectionMode) {
@@ -368,6 +379,8 @@ class TCalendarState extends State<TCalendar> {
       end = temp;
     }
 
+    if (!_isDateSelectable(start) || !_isDateSelectable(end)) return;
+
     setState(() {
       if (widget.maxWorkingDays != null || widget.maxRangeLength != null) {
         _applyRangeLimits(start, end, start, (newStart, newEnd, newSelected) {
@@ -389,6 +402,9 @@ class TCalendarState extends State<TCalendar> {
       clearSelection();
       return;
     }
+
+    selectedDates = selectedDates.where((d) => _isDateSelectable(d)).toSet();
+    if (selectedDates.isEmpty) return;
 
     setState(() {
       switch (widget.selectionMode) {
@@ -627,6 +643,7 @@ class TCalendarState extends State<TCalendar> {
         return _selectedDays.any((d) => isSameDay(d, day));
       },
       onDaySelected: (selectedDay, focusedDay) {
+        if (!_isDateSelectable(selectedDay)) return;
         if (widget.selectionMode != SelectionMode.range) {
           setState(() {
             switch (widget.selectionMode) {
@@ -696,6 +713,12 @@ class TCalendarState extends State<TCalendar> {
       },
       onPageChanged: _onPageChanged,
       headerVisible: false,
+      enabledDayPredicate: (day) {
+        if (widget.selectableDayPredicate != null) {
+          return widget.selectableDayPredicate!(day);
+        }
+        return true;
+      },
       daysOfWeekStyle: DaysOfWeekStyle(
         weekdayStyle: TFontRegular.caption2(context)
             .copyWith(color: theme.mutedForeground),
@@ -769,13 +792,16 @@ class TCalendarState extends State<TCalendar> {
     final isToday = isSameDay(date, DateTime.now());
     final isSelected = _selectedDays.any((d) => isSameDay(d, date));
     final isCurrentMonth = date.month == _focusedDay.month;
+    final isDisabled = !_isDateSelectable(date);
 
     final rangePosition = _getRangePosition(date);
 
     Decoration? backgroundDecoration;
     Color textColor = isCurrentMonth ? theme.foreground : theme.mutedForeground;
 
-    if (isToday && !isSelected) {
+    if (isDisabled) {
+      textColor = theme.mutedForeground.withAlpha(100);
+    } else if (isToday && !isSelected) {
       backgroundDecoration = BoxDecoration(
         color: theme.accent,
         borderRadius: BorderRadius.circular(6),
@@ -835,7 +861,9 @@ class TCalendarState extends State<TCalendar> {
           style: TFontRegular.body(context).copyWith(
             color: textColor,
             fontWeight:
-                isToday || isSelected ? FontWeight.bold : FontWeight.normal,
+                (isToday || isSelected) && !isDisabled
+                    ? FontWeight.bold
+                    : FontWeight.normal,
           ),
         ),
       ),
