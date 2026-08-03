@@ -9,6 +9,7 @@ Features
 - Event markers and event tap callback using [`EventData`](../../lib/src/form/calendar/event_data.dart).
 - Programmatic control through a `GlobalKey<TCalendarState>`: jump/animate and select dates.
 - Range limits: max calendar days (`maxRangeLength`) and max working days (`maxWorkingDays`).
+- Date disabling via `selectableDayPredicate` — any date for which the predicate returns `false` is dimmed and cannot be selected.
 - Year/month navigation with compact month & year pickers.
 
 ## 📦 Import
@@ -89,5 +90,33 @@ TCalendar(
       SnackBar(content: Text('Tapped: ${event.title}')),
     );
   },
+)
+```
+
+### Disabling dates
+
+Use `selectableDayPredicate` to disable specific dates. Dates for which the predicate returns `false` will be dimmed and non-interactive.
+
+```dart
+// Only allow selection from 10 days ago up to today
+TCalendar(
+  firstDay: DateTime(2000, 4, 4),
+  lastDay: DateTime(2030, 1, 2),
+  selectionMode: SelectionMode.single,
+  selectableDayPredicate: (day) {
+    final today = DateTime.now();
+    final tenDaysAgo = today.subtract(Duration(days: 10));
+    return day.isAfter(tenDaysAgo.subtract(Duration(days: 1))) && !day.isAfter(today);
+  },
+)
+```
+
+```dart
+// Only allow selection of dates up to 2 days from now
+TCalendar(
+  firstDay: DateTime(2000, 4, 4),
+  lastDay: DateTime(2030, 1, 2),
+  selectionMode: SelectionMode.single,
+  selectableDayPredicate: (day) => !day.isAfter(DateTime.now().add(Duration(days: 2))),
 )
 ```

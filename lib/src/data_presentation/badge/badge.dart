@@ -31,11 +31,13 @@ class TBadge extends StatelessWidget {
     required String label,
     Color? backgroundColor,
     Color? textColor,
+    Color? borderColor,
     double radius = 8,
   }) : this._(
           label: label,
           backgroundColor: backgroundColor,
           textColor: textColor,
+          borderColor: borderColor,
           badgeType: TBadgeType.raw,
           radius: radius,
         );

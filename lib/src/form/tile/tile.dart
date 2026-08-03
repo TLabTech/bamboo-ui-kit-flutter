@@ -14,6 +14,9 @@ class TTile<T> extends StatelessWidget {
   final String? subtitle;
   final TextStyle? subtitleStyle;
   final String? detail;
+  final String? valueText;
+  final TextStyle? valueStyle;
+  final BoxDecoration? valueDecoration;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final EdgeInsets? padding;
@@ -22,6 +25,9 @@ class TTile<T> extends StatelessWidget {
   final ValueChanged<T>? onChanged;
   final bool showRadio;
   final VoidCallback? onPress;
+  final bool showCheckbox;
+  final bool isChecked;
+  final ValueChanged<bool>? onCheckboxChanged;
 
   const TTile({
     super.key,
@@ -36,6 +42,9 @@ class TTile<T> extends StatelessWidget {
     this.enable = true,
     this.subtitle,
     this.detail,
+    this.valueText,
+    this.valueStyle,
+    this.valueDecoration,
     this.prefixIcon,
     this.suffixIcon,
     this.padding,
@@ -44,13 +53,18 @@ class TTile<T> extends StatelessWidget {
     this.onChanged,
     this.showRadio = false,
     this.onPress,
+    this.showCheckbox = false,
+    this.isChecked = false,
+    this.onCheckboxChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<TThemeManager>().state;
+    final hasValueText = valueText != null && valueText!.trim().isNotEmpty;
 
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: enable == true ? onPress : null,
       child: Container(
         padding: padding ??
@@ -103,6 +117,30 @@ class TTile<T> extends StatelessWidget {
                 ],
               ),
             ),
+            if (hasValueText) ...[
+              const SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
+                decoration: valueDecoration ??
+                    BoxDecoration(
+                      color: HexColor(primary050),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: HexColor(primary200),
+                      ),
+                    ),
+                child: Text(
+                  valueText!,
+                  style: valueStyle ??
+                      TFontBold.caption1(context).copyWith(
+                        color: HexColor(primary600),
+                      ),
+                ),
+              ),
+            ],
             if (detail != null || suffixIcon != null) ...[
               const SizedBox(width: 8),
               Row(
@@ -143,6 +181,21 @@ class TTile<T> extends StatelessWidget {
                           onChanged!(value as T);
                         }
                       }
+                    : null,
+              ),
+            ],
+            if (showCheckbox) ...[
+              const SizedBox(width: 8),
+              _buildInlineCheckbox(
+                context,
+                isChecked: isChecked,
+                isEnabled: enable == true,
+                onTap: enable == true
+                    ? () {
+                  if (onCheckboxChanged != null) {
+                    onCheckboxChanged!(!isChecked);
+                  }
+                }
                     : null,
               ),
             ],
@@ -201,6 +254,48 @@ Widget _buildInlineRadio(
   );
 }
 
+Widget _buildInlineCheckbox(
+  BuildContext context, {
+  required bool isChecked,
+  required bool isEnabled,
+  VoidCallback? onTap,
+}) {
+  final theme = context.watch<TThemeManager>().state;
+
+  return GestureDetector(
+    behavior: HitTestBehavior.opaque,
+    onTap: onTap,
+    child: AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      width: 20,
+      height: 20,
+      decoration: BoxDecoration(
+        color: isEnabled
+            ? isChecked
+                ? HexColor(primary500)
+                : theme.background
+            : theme.muted,
+        border: Border.all(
+          color: isEnabled
+              ? isChecked
+                  ? Colors.transparent
+                  : theme.border
+              : theme.border,
+          width: 1.5,
+        ),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: isEnabled && isChecked
+          ? Icon(
+              Icons.check,
+              color: theme.primaryForeground,
+              size: 14,
+            )
+          : null,
+    ),
+  );
+}
+
 extension TTileCopy<T> on TTile<T> {
   TTile<T> copyWith({
     String? title,
@@ -213,6 +308,9 @@ extension TTileCopy<T> on TTile<T> {
     String? subtitle,
     TextStyle? subtitleStyle,
     String? detail,
+    String? valueText,
+    TextStyle? valueStyle,
+    BoxDecoration? valueDecoration,
     Widget? prefixIcon,
     Widget? suffixIcon,
     EdgeInsets? padding,
@@ -220,6 +318,9 @@ extension TTileCopy<T> on TTile<T> {
     T? value,
     T? groupValue,
     ValueChanged<T?>? onChanged,
+    bool? showCheckbox,
+    bool? isChecked,
+    ValueChanged<bool>? onCheckboxChanged,
   }) {
     return TTile<T>(
       title: title ?? this.title,
@@ -232,6 +333,9 @@ extension TTileCopy<T> on TTile<T> {
       subtitle: subtitle ?? this.subtitle,
       subtitleStyle: subtitleStyle ?? this.subtitleStyle,
       detail: detail ?? this.detail,
+      valueText: valueText ?? this.valueText,
+      valueStyle: valueStyle ?? this.valueStyle,
+      valueDecoration: valueDecoration ?? this.valueDecoration,
       prefixIcon: prefixIcon ?? this.prefixIcon,
       suffixIcon: suffixIcon ?? this.suffixIcon,
       showRadio: showRadio ?? this.showRadio,
@@ -239,6 +343,9 @@ extension TTileCopy<T> on TTile<T> {
       groupValue: groupValue ?? this.groupValue,
       onChanged: onChanged ?? this.onChanged,
       padding: padding ?? this.padding,
+      showCheckbox: showCheckbox ?? this.showCheckbox,
+      isChecked: isChecked ?? this.isChecked,
+      onCheckboxChanged: onCheckboxChanged ?? this.onCheckboxChanged,
     );
   }
 }
