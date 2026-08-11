@@ -34,6 +34,7 @@ graphify-out/memory/
 graphify-out/.graphify_*
 graphify-out/.vocab.txt
 graphify-out/cost.json
+graphify-out/20*/
 lib/graphify-out/cache/
 lib/graphify-out/memory/
 lib/graphify-out/.graphify_*
