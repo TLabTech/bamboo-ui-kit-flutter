@@ -1,3 +1,21 @@
+## Bamboo Design System
+
+When writing Bamboo UI code, always reference these docs for API and conventions:
+
+| Doc | Purpose |
+|-----|---------|
+| [doc/DESIGN.md](doc/DESIGN.md) | Design system overview, philosophy, component hierarchy |
+| [doc/foundation/](doc/foundation/) | Colors, typography, spacing, shadows |
+| [doc/guides/](doc/guides/) | Theme setup, interaction patterns, best practices |
+| [doc/components/](doc/components/) | Individual component API & usage |
+
+Rules:
+- Always use `theme.*` for colors, never hardcode hex values
+- Always use `TFontRegular.*` / `TFontBold.*` for text styling
+- Always use spacing scale (8px base): 4, 8, 16, 24, 32, 48
+
+---
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.

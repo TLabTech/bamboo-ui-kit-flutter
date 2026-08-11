@@ -1,6 +1,15 @@
 # TLab Bamboo DLS
 A custom widget library created by TLab for TLab.
 
+## Documentation
+
+| Section | Description |
+|---------|-------------|
+| [Design System Overview](doc/DESIGN.md) | Philosophy, architecture, component hierarchy |
+| [Foundation](doc/foundation/) | Colors, typography, spacing, shadows |
+| [Guides](doc/guides/) | Theme setup, interaction patterns, best practices |
+| [Components](doc/components/) | Individual component documentation |
+
 ## Features
 
 The package provides the following components and utilities:
@@ -15,14 +24,13 @@ The package provides the following components and utilities:
 - [**Tile**](doc/components/tile.md) & [**Header**](doc/components/header.md): Layout tiles and header components.
 - [**Tab**](doc/components/tab.md) & [**Stepper**](doc/components/stepper.md): Tab navigation and stepper for multi-step flows.
 - [**Alert**](doc/components/alert.md) & [**Dialog**](doc/components/dialog.md): Notification and interactive dialog components.
-- [**Progress**](doc/components/progress.md) & [ **Slider**](doc/components/slider.md): Progress indicators and sliders for value input.
+- [**Progress**](doc/components/progress.md) & [**Slider**](doc/components/slider.md): Progress indicators and sliders for value input.
 - [**Bottom Navigation**](doc/components/bottom_navigation.md): Bottom navigation with multiple styles.
 - [**Calendar**](doc/components/calendar.md): Calendar widget.
 - [**Charts**](doc/components/chart.md): Bar, pie, doughnut, line charts and more for data visualization.
 - [**Breadcrumbs**](doc/components/breadcrumbs.md): Breadcrumb navigation.
 - [**Font**](doc/components/font.md): font widget.
 - [**Title Section**](doc/components/title_section.md): Section header to present a clear title.
-- [**Theme**](doc/components/theme.md): Title components and theme management.
 
 ## Getting started
 
