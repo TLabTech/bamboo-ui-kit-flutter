@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../widgets/theme.dart';
 import '../../fondation/tfont.dart';
+import 'button_loading_position.dart';
 
 class TButtonDestructive extends StatefulWidget {
   final String? text;
@@ -21,6 +22,9 @@ class TButtonDestructive extends StatefulWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool loading;
+  final TButtonLoadingPosition loadingPosition;
+  final double iconSpacing;
+  final bool spaceBetween;
   final Widget? child;
   final bool centerContent;
   final Size minimumSize;
@@ -41,6 +45,9 @@ class TButtonDestructive extends StatefulWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.loading = false,
+    this.loadingPosition = TButtonLoadingPosition.leading,
+    this.iconSpacing = 10,
+    this.spaceBetween = false,
     this.child,
     this.padding =
         const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
@@ -62,6 +69,9 @@ class TButtonDestructive extends StatefulWidget {
     this.borderRadius = 8,
     this.textStyle,
     this.loading = false,
+    this.loadingPosition = TButtonLoadingPosition.leading,
+    this.iconSpacing = 10,
+    this.spaceBetween = false,
     this.centerContent = true,
     this.minimumSize = const Size(48, 48),
     this.maximumSize = const Size(48, 48),
@@ -181,17 +191,24 @@ class _TButtonDestructiveState extends State<TButtonDestructive> {
       return widget.child!;
     }
 
+    final loadingIcon = SizedBox(
+      width: 18,
+      height: 18,
+      child: CircularProgressIndicator(
+        color: widget.loadingColor ?? theme.destructiveForeground,
+      ),
+    );
+
+    final bool loadingTrailing =
+        widget.loadingPosition == TButtonLoadingPosition.trailing;
+
     Widget? leadingIcon = widget.loading
-        ? SizedBox(
-            width: 18,
-            height: 18,
-            child: CircularProgressIndicator(
-              color: widget.loadingColor ?? theme.destructiveForeground,
-            ),
-          )
+        ? (loadingTrailing ? widget.prefixIcon : loadingIcon)
         : widget.prefixIcon;
 
-    Widget? trailingIcon = widget.loading ? null : widget.suffixIcon;
+    Widget? trailingIcon = widget.loading
+        ? (loadingTrailing ? loadingIcon : null)
+        : widget.suffixIcon;
 
     List<Widget> children = [];
 
@@ -200,14 +217,11 @@ class _TButtonDestructiveState extends State<TButtonDestructive> {
     }
 
     if (leadingIcon != null && widget.text != null) {
-      children.add(const SizedBox(width: 10));
+      children.add(SizedBox(width: widget.iconSpacing));
     }
 
-    if (widget.text != null) {
-      children.add(
-        Flexible(
-          fit: FlexFit.loose,
-          child: AutoSizeText(
+    final textWidget = widget.text != null
+        ? AutoSizeText(
             widget.text!,
             maxLines: 1,
             minFontSize: widget.minFontSize,
@@ -216,13 +230,15 @@ class _TButtonDestructiveState extends State<TButtonDestructive> {
             style: widget.textStyle ??
                 TFontBold.body(context)
                     .copyWith(color: theme.destructiveForeground),
-          ),
-        ),
-      );
+          )
+        : null;
+
+    if (textWidget != null) {
+      children.add(Flexible(fit: FlexFit.loose, child: textWidget));
     }
 
     if (trailingIcon != null && widget.text != null) {
-      children.add(const SizedBox(width: 10));
+      children.add(SizedBox(width: widget.iconSpacing));
     }
 
     if (trailingIcon != null) {
@@ -232,6 +248,21 @@ class _TButtonDestructiveState extends State<TButtonDestructive> {
     bool hasLeading = leadingIcon != null;
     bool hasTrailing = trailingIcon != null;
     bool hasOnlyText = !hasLeading && !hasTrailing;
+
+    if (widget.spaceBetween && textWidget != null && !hasOnlyText) {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (leadingIcon != null) leadingIcon,
+          if (hasLeading && hasTrailing)
+            Expanded(child: Center(child: textWidget))
+          else
+            Flexible(fit: FlexFit.loose, child: textWidget),
+          if (trailingIcon != null) trailingIcon,
+        ],
+      );
+    }
 
     if (!widget.centerContent) {
       return Row(

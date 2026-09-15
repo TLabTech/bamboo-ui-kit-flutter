@@ -102,6 +102,48 @@ TButtonPrimary(
 ```
 ![Button Loading Preview](../assets/button/button_loading_preview.gif)
 
+By default the spinner is shown on the leading (left) side. Use
+`loadingPosition` to render it on the trailing (right) side, keeping the
+`prefixIcon` visible:
+
+```dart
+TButtonPrimary(
+  text: "Submitting",
+  loading: true,
+  loadingPosition: TButtonLoadingPosition.trailing,
+  onPressed: () {},
+);
+```
+
+### Icon spacing
+
+Use `iconSpacing` to control the gap between the icon (or the loading spinner)
+and the text. Default is `10`.
+
+```dart
+TButtonPrimary(
+  text: "Button Primary",
+  iconSpacing: 16,
+  prefixIcon: Icon(Icons.add, color: Colors.white),
+  onPressed: () {},
+);
+```
+
+### Space between
+
+Set `spaceBetween: true` to push the leading icon/loading to the left edge and
+the trailing icon/loading to the right edge, with the text centered in between.
+
+```dart
+TButtonPrimary(
+  text: "Delete",
+  spaceBetween: true,
+  prefixIcon: Icon(Icons.delete, color: Colors.white),
+  suffixIcon: Icon(Icons.chevron_right, color: Colors.white),
+  onPressed: () {},
+);
+```
+
 ### Long-press (custom duration)
 
 ```dart

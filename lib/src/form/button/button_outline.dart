@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../widgets/theme.dart';
 import '../../fondation/tfont.dart';
+import 'button_loading_position.dart';
 
 class TButtonOutline extends StatefulWidget {
   final String? text;
@@ -21,6 +22,9 @@ class TButtonOutline extends StatefulWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool loading;
+  final TButtonLoadingPosition loadingPosition;
+  final double iconSpacing;
+  final bool spaceBetween;
   final Widget? child;
   final Size minimumSize;
   final Size maximumSize;
@@ -43,6 +47,9 @@ class TButtonOutline extends StatefulWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.loading = false,
+    this.loadingPosition = TButtonLoadingPosition.leading,
+    this.iconSpacing = 10,
+    this.spaceBetween = false,
     this.child,
     this.minimumSize = const Size(double.infinity, 48),
     this.maximumSize = const Size(double.infinity, 48),
@@ -64,6 +71,9 @@ class TButtonOutline extends StatefulWidget {
         const EdgeInsets.only(top: 10, bottom: 10, left: 12, right: 12),
     this.textStyle,
     this.loading = false,
+    this.loadingPosition = TButtonLoadingPosition.leading,
+    this.iconSpacing = 10,
+    this.spaceBetween = false,
     this.minimumSize = const Size(48, 48),
     this.maximumSize = const Size(48, 48),
     this.minFontSize = 12.0,
@@ -168,18 +178,25 @@ class _TButtonOutlineState extends State<TButtonOutline> {
       return widget.child!;
     }
 
+    final loadingIcon = SizedBox(
+      width: 18,
+      height: 18,
+      child: CircularProgressIndicator(
+        color: widget.loadingColor ?? theme.primary,
+        strokeWidth: 2,
+      ),
+    );
+
+    final bool loadingTrailing =
+        widget.loadingPosition == TButtonLoadingPosition.trailing;
+
     Widget? leadingIcon = widget.loading
-        ? SizedBox(
-            width: 18,
-            height: 18,
-            child: CircularProgressIndicator(
-              color: widget.loadingColor ?? theme.primary,
-              strokeWidth: 2,
-            ),
-          )
+        ? (loadingTrailing ? widget.prefixIcon : loadingIcon)
         : widget.prefixIcon;
 
-    Widget? trailingIcon = widget.loading ? null : widget.suffixIcon;
+    Widget? trailingIcon = widget.loading
+        ? (loadingTrailing ? loadingIcon : null)
+        : widget.suffixIcon;
 
     List<Widget> children = [];
 
@@ -188,14 +205,11 @@ class _TButtonOutlineState extends State<TButtonOutline> {
     }
 
     if (leadingIcon != null && widget.text != null) {
-      children.add(const SizedBox(width: 10));
+      children.add(SizedBox(width: widget.iconSpacing));
     }
 
-    if (widget.text != null) {
-      children.add(
-        Flexible(
-          fit: FlexFit.loose,
-          child: AutoSizeText(
+    final textWidget = widget.text != null
+        ? AutoSizeText(
             widget.text!,
             maxLines: 1,
             minFontSize: widget.minFontSize,
@@ -203,13 +217,15 @@ class _TButtonOutlineState extends State<TButtonOutline> {
             overflow: TextOverflow.ellipsis,
             style: widget.textStyle ??
                 TFontBold.body(context).copyWith(color: currentTextColor),
-          ),
-        ),
-      );
+          )
+        : null;
+
+    if (textWidget != null) {
+      children.add(Flexible(fit: FlexFit.loose, child: textWidget));
     }
 
     if (trailingIcon != null && widget.text != null) {
-      children.add(const SizedBox(width: 10));
+      children.add(SizedBox(width: widget.iconSpacing));
     }
 
     if (trailingIcon != null) {
@@ -219,6 +235,21 @@ class _TButtonOutlineState extends State<TButtonOutline> {
     bool hasLeading = leadingIcon != null;
     bool hasTrailing = trailingIcon != null;
     bool hasOnlyText = !hasLeading && !hasTrailing;
+
+    if (widget.spaceBetween && textWidget != null && !hasOnlyText) {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (leadingIcon != null) leadingIcon,
+          if (hasLeading && hasTrailing)
+            Expanded(child: Center(child: textWidget))
+          else
+            Flexible(fit: FlexFit.loose, child: textWidget),
+          if (trailingIcon != null) trailingIcon,
+        ],
+      );
+    }
 
     if (!widget.centerContent) {
       return Row(
