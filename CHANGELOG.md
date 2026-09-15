@@ -1,3 +1,17 @@
+## 0.0.4
+
+### Added
+
+- `TButtonPrimary`, `TButtonSecondary`, `TButtonDestructive`, `TButtonOutline`, `TButtonGhost`, and `TButtonDisable`: new `loadingPosition` parameter (`TButtonLoadingPosition.leading` or `.trailing`) to render the loading spinner on either side of the text.
+- `TButton*`: new `iconSpacing` parameter to control the gap between the icon/loading spinner and the text (default `10`).
+- `TButton*`: new `spaceBetween` parameter to pin the leading icon/loading to the left edge and the trailing icon/loading to the right edge, with the text centered in between.
+- New `TButtonLoadingPosition` enum.
+
+### Documentation
+
+- Added loading position, icon spacing, and space between usage examples to `doc/components/button.md`.
+- Added "Button Icon Spacing" examples to `ButtonScreen`.
+
 ## 0.0.3
 
 ### Added
