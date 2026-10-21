@@ -1,3 +1,13 @@
+## Unreleased
+
+### Added
+
+- `THeader.search`: new `searchFieldBorderColor` and `searchFieldBackgroundColor` parameters so the search field can match `TTextField` styling (background + `theme.border` outline).
+
+### Documentation
+
+- Added search field border and background examples to `doc/components/header.md`.
+
 ## 0.0.5
 
 ### Added

@@ -17,6 +17,13 @@ Finder get _clearButton => find.descendant(
       matching: find.byType(IconButton),
     );
 
+BoxDecoration _searchFieldDecoration(WidgetTester tester) {
+  final container = tester.widget<Container>(
+    find.byKey(const ValueKey('theader-search-field')),
+  );
+  return container.decoration! as BoxDecoration;
+}
+
 void main() {
   group('THeader.search', () {
     testWidgets('clear button fires onChanged with empty string once',
@@ -118,6 +125,43 @@ void main() {
       await tester.enterText(find.byType(TextField), 'abc');
       await tester.pump();
       expect(_clearButton, findsOneWidget);
+    });
+
+    testWidgets('keeps the accent background without a border by default',
+        (tester) async {
+      await tester.pumpWidget(_app(const THeader.search(hintText: 'Cari')));
+
+      final decoration = _searchFieldDecoration(tester);
+      expect(decoration.color, TTheme.light().accent);
+      expect(decoration.border, isNull);
+      expect(decoration.borderRadius, BorderRadius.circular(8));
+    });
+
+    testWidgets('border colour switches the field to the background colour',
+        (tester) async {
+      final borderColor = TTheme.light().border;
+
+      await tester.pumpWidget(
+        _app(THeader.search(searchFieldBorderColor: borderColor)),
+      );
+
+      final decoration = _searchFieldDecoration(tester);
+      expect(decoration.color, TTheme.light().background);
+      expect(decoration.border, Border.all(color: borderColor));
+    });
+
+    testWidgets('searchFieldBackgroundColor overrides the field background',
+        (tester) async {
+      await tester.pumpWidget(
+        _app(
+          THeader.search(
+            searchFieldBorderColor: TTheme.light().border,
+            searchFieldBackgroundColor: Colors.red,
+          ),
+        ),
+      );
+
+      expect(_searchFieldDecoration(tester).color, Colors.red);
     });
   });
 }
