@@ -1,16 +1,16 @@
 # Graph Report - flutter-component  (2026-10-21)
 
 ## Corpus Check
-- 368 files · ~221,345 words
+- 369 files · ~222,225 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3354 nodes · 3407 edges · 365 communities (326 shown, 39 thin omitted)
+- 3374 nodes · 3430 edges · 363 communities (324 shown, 39 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dcbaddd3`
+- Built from commit: `df8238a7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -305,9 +305,7 @@
 - [[_COMMUNITY_Community 355|Community 355]]
 - [[_COMMUNITY_Community 356|Community 356]]
 - [[_COMMUNITY_Community 361|Community 361]]
-- [[_COMMUNITY_Community 362|Community 362]]
 - [[_COMMUNITY_Community 363|Community 363]]
-- [[_COMMUNITY_Community 364|Community 364]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Bamboo Design System` - 19 edges
@@ -333,7 +331,7 @@
 - `Tile Group` --defines--> `build`  [EXTRACTED]
   doc/components/tile_group.md → lib/src/form/tile/tile_group.dart
 
-## Communities (365 total, 39 thin omitted)
+## Communities (363 total, 39 thin omitted)
 
 ### Community 0 - "Community Button Navbar"
 Cohesion: 0.07
@@ -445,7 +443,7 @@ Nodes (21): button_loading_position.dart, dart:async, package:auto_size_text/aut
 
 ### Community 27 - "header.dart"
 Cohesion: 0.09
-Nodes (21): package:flutter_bamboo_ui_kit/core.dart, package:flutter_bamboo_ui_kit/gen/assets.gen.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_svg/svg.dart, AppBar, build, _buildBrandHeader (+13 more)
+Nodes (22): package:flutter_bamboo_ui_kit/core.dart, package:flutter_bamboo_ui_kit/gen/assets.gen.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_svg/svg.dart, package:flutter_svg/svg.dart, AppBar, build (+14 more)
 
 ### Community 28 - "code:dart (import 'package:flutter_bamboo_ui_kit/c"
 Cohesion: 0.10
@@ -612,8 +610,8 @@ Cohesion: 0.18
 Nodes (9): code:dart (import 'package:flutter_bamboo_ui_kit/core.dart';), code:dart (class TextDisplayScreen extends StatelessWidget {), code:dart (Text(), Customizing text, Different font size, Font, 📦 Import, Usage (+1 more)
 
 ### Community 71 - "Additional Usage"
-Cohesion: 0.18
-Nodes (10): Additional Usage, code:dart (import 'package:flutter_bamboo_ui_kit/core.dart';), code:dart (// Inside a StatefulWidget), code:dart (// Inside a StatefulWidget), code:dart (bool _isFeatureErrorEnabled = false;), Disabled switch, Error state with message, 📦 Import (+2 more)
+Cohesion: 0.16
+Nodes (13): Additional Usage, code:dart (import 'package:flutter_bamboo_ui_kit/core.dart';), code:dart (// Inside a StatefulWidget), code:dart (TSwitch(), code:dart (Row(), code:dart (// Inside a StatefulWidget), code:dart (bool _isFeatureErrorEnabled = false;), Compact switch (without label) (+5 more)
 
 ### Community 72 - "Additional Usage Examples"
 Cohesion: 0.18
@@ -748,8 +746,8 @@ Cohesion: 0.20
 Nodes (9): package:flutter_bamboo_ui_kit/core.dart, package:flutter_bamboo_ui_kit/gen/assets.gen.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter_svg/flutter_svg.dart, package:flutter/widgets.dart, build, Container, SizedBox (+1 more)
 
 ### Community 105 - "switch.dart"
-Cohesion: 0.20
-Nodes (9): package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, build, handleToggle, HexColor, Row, SizedBox (+1 more)
+Cohesion: 0.13
+Nodes (14): package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, build, _buildCompactSwitch, _buildSwitch, Column, handleToggle (+6 more)
 
 ### Community 106 - "Radio Group Usage"
 Cohesion: 0.22
@@ -1012,8 +1010,8 @@ Cohesion: 0.20
 Nodes (9): package:example/gen/assets.gen.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_svg/flutter_svg.dart, AccordionScreen, _AccordionScreenState, build (+1 more)
 
 ### Community 172 - "Gen Bloc Svg"
-Cohesion: 0.18
-Nodes (10): package:example/gen/assets.gen.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_svg/svg.dart, package:flutter_svg/flutter_svg.dart, build, ButtonScreen (+2 more)
+Cohesion: 0.06
+Nodes (29): package:example/gen/assets.gen.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_svg/flutter_svg.dart, package:example/gen/assets.gen.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart (+21 more)
 
 ### Community 173 - "Community 173"
 Cohesion: 0.18
@@ -1260,8 +1258,8 @@ Cohesion: 0.40
 Nodes (4): images, info, author, version
 
 ### Community 234 - "widget_test.dart"
-Cohesion: 0.33
-Nodes (5): package:flutter/material.dart, package:flutter_test/flutter_test.dart, package:example/main.dart, package:flutter_test/flutter_test.dart, main
+Cohesion: 0.15
+Nodes (11): package:flutter/material.dart, package:flutter_test/flutter_test.dart, package:example/main.dart, package:flutter_test/flutter_test.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_test/flutter_test.dart (+3 more)
 
 ### Community 235 - "Contents.json"
 Cohesion: 0.40
@@ -1316,8 +1314,8 @@ Cohesion: 0.50
 Nodes (3): package:flutter/material.dart, _getColorFromHex, HexColor
 
 ### Community 248 - "CHANGELOG.md"
-Cohesion: 0.16
-Nodes (15): 0.0.1, 0.0.2, 0.0.3, 0.0.4, Added, Added, Added, Added (+7 more)
+Cohesion: 0.14
+Nodes (17): 0.0.1, 0.0.2, 0.0.3, 0.0.4, Added, Added, Added, Added (+9 more)
 
 ### Community 261 - "license"
 Cohesion: 0.67
@@ -1336,37 +1334,29 @@ Cohesion: 0.67
 Nodes (3): platforms, ios, osx
 
 ### Community 361 - "Community 361"
-Cohesion: 0.18
-Nodes (10): package:example/gen/assets.gen.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_svg/flutter_svg.dart, package:example/gen/assets.gen.dart, build, CalendarScreen (+2 more)
-
-### Community 362 - "Community 362"
-Cohesion: 0.20
-Nodes (9): package:example/gen/assets.gen.dart, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_svg/flutter_svg.dart, BadgeScreen, _BadgeScreenState, build (+1 more)
+Cohesion: 0.22
+Nodes (8): dart:ui, package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_test/flutter_test.dart, _app, _decorationOf, main
 
 ### Community 363 - "Community 363"
 Cohesion: 0.29
 Nodes (6): code:diff (@@ class THeader extends StatefulWidget {), Diff usulan, Patch untuk `flutter_bamboo_ui_kit` — `THeader.search` (v0.0.4), Setelah kit dirilis (mis. 0.0.5) — perubahan di app, Titik serah (human), Verifikasi yang diharapkan kit
 
-### Community 364 - "Community 364"
-Cohesion: 0.29
-Nodes (6): package:flutter_bamboo_ui_kit/core.dart, package:flutter_bloc/flutter_bloc.dart, package:flutter/material.dart, package:flutter_test/flutter_test.dart, _app, main
-
 ## Knowledge Gaps
-- **1959 isolated node(s):** `_app`, `main`, `package:flutter/material.dart`, `package:flutter_bamboo_ui_kit/core.dart`, `package:flutter_bloc/flutter_bloc.dart` (+1954 more)
+- **1974 isolated node(s):** `_app`, `_decorationOf`, `main`, `dart:ui`, `package:flutter/material.dart` (+1969 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `package:flutter_bamboo_ui_kit/gen/assets.gen.dart` connect `dropdown_search.dart` to `calendar.dart`, `tfont.dart`?**
+- **Why does `package:flutter_bamboo_ui_kit/gen/assets.gen.dart` connect `dropdown_search.dart` to `calendar.dart`, `header.dart`, `tfont.dart`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **Why does `package:flutter_svg/flutter_svg.dart` connect `Gen Bloc Svg` to `Community 361`, `Community 362`, `dropdown_search.dart`?**
-  _High betweenness centrality (0.001) - this node is a cross-community bridge._
 - **Why does `Bamboo Design System` connect `Bamboo Design System` to `Tier Used Based`, `Accessing Theme Colors`, `1. **Always Use Theme Colors**`, `1. **Color Tokens**`, `code:block1 (┌────────────────────────────────────`, `1. Button Interactions`, `Available Components`, `Accessibility Considerations`, `code:dart (// Shadow Small (UI elements, cards))`, `Layout Spacing Using`, `Tier Components Hierarchy`, `Bold Weight`, `code:dart (// Primary Color Family (Teal))`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **What connects `_app`, `main`, `package:flutter/material.dart` to the rest of the system?**
-  _1960 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `Login Feature Documentation` connect `Login Home Documentation` to `Add Remember Me Feature`, `code:dart (if (value?.isEmpty ?? true) {)`, `code:block6 (/login          → LoginScreen (Initia`, `1. Akun Demo`, `Error Loading Button`, `bottom_navigation_item.dart`, `Issue Form Tidak`, `Theme Manager Custom`?**
+  _High betweenness centrality (0.001) - this node is a cross-community bridge._
+- **What connects `_app`, `_decorationOf`, `main` to the rest of the system?**
+  _1975 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community Button Navbar` be split into smaller, more focused modules?**
   _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
 - **Should `Button` be split into smaller, more focused modules?**

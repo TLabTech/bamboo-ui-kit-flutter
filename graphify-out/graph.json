@@ -4,12 +4,93 @@
   "graph": {},
   "nodes": [
     {
+      "label": "switch_test.dart",
+      "file_type": "code",
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "id": "test_form_switch_test_dart",
+      "community": 361,
+      "norm_label": "switch_test.dart"
+    },
+    {
+      "label": "_app",
+      "file_type": "code",
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_test_form_switch_test_dart_app",
+      "community": 361,
+      "norm_label": "_app"
+    },
+    {
+      "label": "_decorationOf",
+      "file_type": "code",
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_test_form_switch_test_dart_decorationof",
+      "community": 361,
+      "norm_label": "_decorationof"
+    },
+    {
+      "label": "main",
+      "file_type": "code",
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_test_form_switch_test_dart_main",
+      "community": 361,
+      "norm_label": "main"
+    },
+    {
+      "label": "dart:ui",
+      "file_type": "code",
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "id": "dart_ui",
+      "community": 361,
+      "norm_label": "dart:ui"
+    },
+    {
+      "label": "package:flutter/material.dart",
+      "file_type": "code",
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "id": "test_form_switch_test_dart_package_flutter_material_dart",
+      "community": 361,
+      "norm_label": "package:flutter/material.dart"
+    },
+    {
+      "label": "package:flutter_bamboo_ui_kit/core.dart",
+      "file_type": "code",
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "id": "test_form_switch_test_dart_package_flutter_bamboo_ui_kit_core_dart",
+      "community": 361,
+      "norm_label": "package:flutter_bamboo_ui_kit/core.dart"
+    },
+    {
+      "label": "package:flutter_bloc/flutter_bloc.dart",
+      "file_type": "code",
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "id": "test_form_switch_test_dart_package_flutter_bloc_flutter_bloc_dart",
+      "community": 361,
+      "norm_label": "package:flutter_bloc/flutter_bloc.dart"
+    },
+    {
+      "label": "package:flutter_test/flutter_test.dart",
+      "file_type": "code",
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "id": "test_form_switch_test_dart_package_flutter_test_flutter_test_dart",
+      "community": 361,
+      "norm_label": "package:flutter_test/flutter_test.dart"
+    },
+    {
       "label": "header_search_test.dart",
       "file_type": "code",
       "source_file": "test/navigation/header_search_test.dart",
       "source_location": null,
       "id": "test_navigation_header_search_test_dart",
-      "community": 364,
+      "community": 234,
       "norm_label": "header_search_test.dart"
     },
     {
@@ -18,7 +99,7 @@
       "source_file": "test/navigation/header_search_test.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_test_navigation_header_search_test_dart_app",
-      "community": 364,
+      "community": 234,
       "norm_label": "_app"
     },
     {
@@ -27,7 +108,7 @@
       "source_file": "test/navigation/header_search_test.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_test_navigation_header_search_test_dart_main",
-      "community": 364,
+      "community": 234,
       "norm_label": "main"
     },
     {
@@ -36,7 +117,7 @@
       "source_file": "test/navigation/header_search_test.dart",
       "source_location": null,
       "id": "test_navigation_header_search_test_dart_package_flutter_material_dart",
-      "community": 364,
+      "community": 234,
       "norm_label": "package:flutter/material.dart"
     },
     {
@@ -45,7 +126,7 @@
       "source_file": "test/navigation/header_search_test.dart",
       "source_location": null,
       "id": "test_navigation_header_search_test_dart_package_flutter_bamboo_ui_kit_core_dart",
-      "community": 364,
+      "community": 234,
       "norm_label": "package:flutter_bamboo_ui_kit/core.dart"
     },
     {
@@ -54,7 +135,7 @@
       "source_file": "test/navigation/header_search_test.dart",
       "source_location": null,
       "id": "test_navigation_header_search_test_dart_package_flutter_bloc_flutter_bloc_dart",
-      "community": 364,
+      "community": 234,
       "norm_label": "package:flutter_bloc/flutter_bloc.dart"
     },
     {
@@ -63,7 +144,7 @@
       "source_file": "test/navigation/header_search_test.dart",
       "source_location": null,
       "id": "test_navigation_header_search_test_dart_package_flutter_test_flutter_test_dart",
-      "community": 364,
+      "community": 234,
       "norm_label": "package:flutter_test/flutter_test.dart"
     },
     {
@@ -12544,7 +12625,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "example_lib_form_calendar_screen_dart",
-      "community": 361,
+      "community": 172,
       "norm_label": "calendar_screen.dart"
     },
     {
@@ -12553,7 +12634,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_example_lib_form_calendar_screen_dart_calendarscreen",
-      "community": 361,
+      "community": 172,
       "norm_label": "calendarscreen"
     },
     {
@@ -12562,7 +12643,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_example_lib_form_calendar_screen_dart_calendarscreenstate",
-      "community": 361,
+      "community": 172,
       "norm_label": "_calendarscreenstate"
     },
     {
@@ -12571,7 +12652,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_example_lib_form_calendar_screen_dart_build",
-      "community": 361,
+      "community": 172,
       "norm_label": "build"
     },
     {
@@ -12580,7 +12661,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_example_lib_form_calendar_screen_dart_scaffold",
-      "community": 361,
+      "community": 172,
       "norm_label": "scaffold"
     },
     {
@@ -12589,7 +12670,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "example_lib_form_calendar_screen_dart_package_example_gen_assets_gen_dart",
-      "community": 361,
+      "community": 172,
       "norm_label": "package:example/gen/assets.gen.dart"
     },
     {
@@ -12598,7 +12679,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "example_lib_form_calendar_screen_dart_package_flutter_material_dart",
-      "community": 361,
+      "community": 172,
       "norm_label": "package:flutter/material.dart"
     },
     {
@@ -12607,7 +12688,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "example_lib_form_calendar_screen_dart_package_flutter_bamboo_ui_kit_core_dart",
-      "community": 361,
+      "community": 172,
       "norm_label": "package:flutter_bamboo_ui_kit/core.dart"
     },
     {
@@ -12616,7 +12697,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "example_lib_form_calendar_screen_dart_package_flutter_bloc_flutter_bloc_dart",
-      "community": 361,
+      "community": 172,
       "norm_label": "package:flutter_bloc/flutter_bloc.dart"
     },
     {
@@ -12625,7 +12706,7 @@
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
       "id": "example_lib_form_calendar_screen_dart_package_flutter_svg_flutter_svg_dart",
-      "community": 361,
+      "community": 172,
       "norm_label": "package:flutter_svg/flutter_svg.dart"
     },
     {
@@ -15082,7 +15163,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "example_lib_data_presentation_badge_screen_dart",
-      "community": 362,
+      "community": 172,
       "norm_label": "badge_screen.dart"
     },
     {
@@ -15091,7 +15172,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_example_lib_data_presentation_badge_screen_dart_badgescreen",
-      "community": 362,
+      "community": 172,
       "norm_label": "badgescreen"
     },
     {
@@ -15100,7 +15181,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_example_lib_data_presentation_badge_screen_dart_badgescreenstate",
-      "community": 362,
+      "community": 172,
       "norm_label": "_badgescreenstate"
     },
     {
@@ -15109,7 +15190,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_example_lib_data_presentation_badge_screen_dart_build",
-      "community": 362,
+      "community": 172,
       "norm_label": "build"
     },
     {
@@ -15118,7 +15199,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_example_lib_data_presentation_badge_screen_dart_scaffold",
-      "community": 362,
+      "community": 172,
       "norm_label": "scaffold"
     },
     {
@@ -15127,7 +15208,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "example_lib_data_presentation_badge_screen_dart_package_example_gen_assets_gen_dart",
-      "community": 362,
+      "community": 172,
       "norm_label": "package:example/gen/assets.gen.dart"
     },
     {
@@ -15136,7 +15217,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "example_lib_data_presentation_badge_screen_dart_package_flutter_material_dart",
-      "community": 362,
+      "community": 172,
       "norm_label": "package:flutter/material.dart"
     },
     {
@@ -15145,7 +15226,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "example_lib_data_presentation_badge_screen_dart_package_flutter_bamboo_ui_kit_core_dart",
-      "community": 362,
+      "community": 172,
       "norm_label": "package:flutter_bamboo_ui_kit/core.dart"
     },
     {
@@ -15154,7 +15235,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "example_lib_data_presentation_badge_screen_dart_package_flutter_bloc_flutter_bloc_dart",
-      "community": 362,
+      "community": 172,
       "norm_label": "package:flutter_bloc/flutter_bloc.dart"
     },
     {
@@ -15163,7 +15244,7 @@
       "source_file": "example/lib/data_presentation/badge_screen.dart",
       "source_location": null,
       "id": "example_lib_data_presentation_badge_screen_dart_package_flutter_svg_flutter_svg_dart",
-      "community": 362,
+      "community": 172,
       "norm_label": "package:flutter_svg/flutter_svg.dart"
     },
     {
@@ -19370,6 +19451,24 @@
       "norm_label": "handletoggle"
     },
     {
+      "label": "Column",
+      "file_type": "code",
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_column",
+      "community": 105,
+      "norm_label": "column"
+    },
+    {
+      "label": "SizedBox",
+      "file_type": "code",
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_sizedbox",
+      "community": 105,
+      "norm_label": "sizedbox"
+    },
+    {
       "label": "Row",
       "file_type": "code",
       "source_file": "lib/src/form/switch/switch.dart",
@@ -19377,6 +19476,33 @@
       "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_row",
       "community": 105,
       "norm_label": "row"
+    },
+    {
+      "label": "_buildSwitch",
+      "file_type": "code",
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_buildswitch",
+      "community": 105,
+      "norm_label": "_buildswitch"
+    },
+    {
+      "label": "_buildCompactSwitch",
+      "file_type": "code",
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_buildcompactswitch",
+      "community": 105,
+      "norm_label": "_buildcompactswitch"
+    },
+    {
+      "label": "SwitchTheme",
+      "file_type": "code",
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_switchtheme",
+      "community": 105,
+      "norm_label": "switchtheme"
     },
     {
       "label": "HexColor",
@@ -19388,13 +19514,13 @@
       "norm_label": "hexcolor"
     },
     {
-      "label": "SizedBox",
+      "label": "Semantics",
       "file_type": "code",
       "source_file": "lib/src/form/switch/switch.dart",
       "source_location": null,
-      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_sizedbox",
+      "id": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_semantics",
       "community": 105,
-      "norm_label": "sizedbox"
+      "norm_label": "semantics"
     },
     {
       "label": "package:flutter/material.dart",
@@ -23081,7 +23207,7 @@
       "label": "Documentation",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L8",
+      "source_location": "L9",
       "id": "flutter_component_changelog_documentation",
       "community": 248,
       "norm_label": "documentation"
@@ -23090,7 +23216,7 @@
       "label": "0.0.4",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L12",
+      "source_location": "L14",
       "id": "flutter_component_changelog_0_0_4",
       "community": 248,
       "norm_label": "0.0.4"
@@ -23099,8 +23225,8 @@
       "label": "Added",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L14",
-      "id": "flutter_component_changelog_added_14",
+      "source_location": "L16",
+      "id": "flutter_component_changelog_added_16",
       "community": 248,
       "norm_label": "added"
     },
@@ -23108,8 +23234,8 @@
       "label": "Documentation",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L21",
-      "id": "flutter_component_changelog_documentation_21",
+      "source_location": "L23",
+      "id": "flutter_component_changelog_documentation_23",
       "community": 248,
       "norm_label": "documentation"
     },
@@ -23117,7 +23243,7 @@
       "label": "0.0.3",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L26",
+      "source_location": "L28",
       "id": "flutter_component_changelog_0_0_3",
       "community": 248,
       "norm_label": "0.0.3"
@@ -23126,8 +23252,8 @@
       "label": "Added",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L28",
-      "id": "flutter_component_changelog_added_28",
+      "source_location": "L30",
+      "id": "flutter_component_changelog_added_30",
       "community": 248,
       "norm_label": "added"
     },
@@ -23135,7 +23261,7 @@
       "label": "Changed",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L36",
+      "source_location": "L38",
       "id": "flutter_component_changelog_changed",
       "community": 248,
       "norm_label": "changed"
@@ -23144,7 +23270,7 @@
       "label": "Fixed",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L41",
+      "source_location": "L43",
       "id": "flutter_component_changelog_fixed",
       "community": 248,
       "norm_label": "fixed"
@@ -23153,8 +23279,8 @@
       "label": "Documentation",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L45",
-      "id": "flutter_component_changelog_documentation_45",
+      "source_location": "L47",
+      "id": "flutter_component_changelog_documentation_47",
       "community": 248,
       "norm_label": "documentation"
     },
@@ -23162,7 +23288,7 @@
       "label": "0.0.2",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L49",
+      "source_location": "L51",
       "id": "flutter_component_changelog_0_0_2",
       "community": 248,
       "norm_label": "0.0.2"
@@ -23171,7 +23297,7 @@
       "label": "0.0.1",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L54",
+      "source_location": "L56",
       "id": "flutter_component_changelog_0_0_1",
       "community": 248,
       "norm_label": "0.0.1"
@@ -27122,7 +27248,7 @@
       "label": "\ud83d\udce6 Import",
       "file_type": "document",
       "source_file": "doc/components/switch.md",
-      "source_location": "L14",
+      "source_location": "L15",
       "id": "components_switch_import",
       "community": 71,
       "norm_label": "\ud83d\udce6 import"
@@ -27131,7 +27257,7 @@
       "label": "code:dart (import 'package:flutter_bamboo_ui_kit/core.dart';)",
       "file_type": "document",
       "source_file": "doc/components/switch.md",
-      "source_location": "L16",
+      "source_location": "L17",
       "id": "components_switch_codeblock_1",
       "community": 71,
       "norm_label": "code:dart (import 'package:flutter_bamboo_ui_kit/core.dart';)"
@@ -27140,7 +27266,7 @@
       "label": "Usage",
       "file_type": "document",
       "source_file": "doc/components/switch.md",
-      "source_location": "L20",
+      "source_location": "L21",
       "id": "components_switch_usage",
       "community": 71,
       "norm_label": "usage"
@@ -27149,7 +27275,7 @@
       "label": "code:dart (// Inside a StatefulWidget)",
       "file_type": "document",
       "source_file": "doc/components/switch.md",
-      "source_location": "L21",
+      "source_location": "L22",
       "id": "components_switch_codeblock_2",
       "community": 71,
       "norm_label": "code:dart (// inside a statefulwidget)"
@@ -27158,16 +27284,43 @@
       "label": "Additional Usage",
       "file_type": "document",
       "source_file": "doc/components/switch.md",
-      "source_location": "L39",
+      "source_location": "L40",
       "id": "components_switch_additional_usage",
       "community": 71,
       "norm_label": "additional usage"
     },
     {
+      "label": "Compact switch (without label)",
+      "file_type": "document",
+      "source_file": "doc/components/switch.md",
+      "source_location": "L42",
+      "id": "components_switch_compact_switch_without_label",
+      "community": 71,
+      "norm_label": "compact switch (without label)"
+    },
+    {
+      "label": "code:dart (TSwitch()",
+      "file_type": "document",
+      "source_file": "doc/components/switch.md",
+      "source_location": "L47",
+      "id": "components_switch_codeblock_3",
+      "community": 71,
+      "norm_label": "code:dart (tswitch()"
+    },
+    {
+      "label": "code:dart (Row()",
+      "file_type": "document",
+      "source_file": "doc/components/switch.md",
+      "source_location": "L58",
+      "id": "components_switch_codeblock_4",
+      "community": 71,
+      "norm_label": "code:dart (row()"
+    },
+    {
       "label": "Disabled switch",
       "file_type": "document",
       "source_file": "doc/components/switch.md",
-      "source_location": "L41",
+      "source_location": "L77",
       "id": "components_switch_disabled_switch",
       "community": 71,
       "norm_label": "disabled switch"
@@ -27176,8 +27329,8 @@
       "label": "code:dart (// Inside a StatefulWidget)",
       "file_type": "document",
       "source_file": "doc/components/switch.md",
-      "source_location": "L42",
-      "id": "components_switch_codeblock_3",
+      "source_location": "L78",
+      "id": "components_switch_codeblock_5",
       "community": 71,
       "norm_label": "code:dart (// inside a statefulwidget)"
     },
@@ -27185,7 +27338,7 @@
       "label": "Error state with message",
       "file_type": "document",
       "source_file": "doc/components/switch.md",
-      "source_location": "L57",
+      "source_location": "L93",
       "id": "components_switch_error_state_with_message",
       "community": 71,
       "norm_label": "error state with message"
@@ -27194,8 +27347,8 @@
       "label": "code:dart (bool _isFeatureErrorEnabled = false;)",
       "file_type": "document",
       "source_file": "doc/components/switch.md",
-      "source_location": "L58",
-      "id": "components_switch_codeblock_4",
+      "source_location": "L94",
+      "id": "components_switch_codeblock_6",
       "community": 71,
       "norm_label": "code:dart (bool _isfeatureerrorenabled = false;)"
     },
@@ -28136,31 +28289,67 @@
       "norm_label": "general principles"
     },
     {
-      "label": "package:flutter_test/flutter_test.dart",
-      "file_type": "code",
-      "source_file": "example/test/widget_test.dart",
-      "source_location": null,
-      "community": 234,
-      "norm_label": "package:flutter_test/flutter_test.dart",
-      "id": "package_flutter_test_flutter_test_dart"
-    },
-    {
       "label": "Added",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L17",
+      "source_location": "L14",
       "community": 248,
       "norm_label": "added",
-      "id": "flutter_component_changelog_added_17"
+      "id": "flutter_component_changelog_added_14"
     },
     {
       "label": "Documentation",
       "file_type": "document",
       "source_file": "CHANGELOG.md",
-      "source_location": "L34",
+      "source_location": "L21",
       "community": 248,
       "norm_label": "documentation",
-      "id": "flutter_component_changelog_documentation_34"
+      "id": "flutter_component_changelog_documentation_21"
+    },
+    {
+      "label": "Added",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L28",
+      "community": 248,
+      "norm_label": "added",
+      "id": "flutter_component_changelog_added_28"
+    },
+    {
+      "label": "Documentation",
+      "file_type": "document",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L45",
+      "community": 248,
+      "norm_label": "documentation",
+      "id": "flutter_component_changelog_documentation_45"
+    },
+    {
+      "label": "package:flutter_bamboo_ui_kit/gen/assets.gen.dart",
+      "file_type": "code",
+      "source_file": "lib/src/navigation/header/header.dart",
+      "source_location": null,
+      "community": 54,
+      "norm_label": "package:flutter_bamboo_ui_kit/gen/assets.gen.dart",
+      "id": "package_flutter_bamboo_ui_kit_gen_assets_gen_dart"
+    },
+    {
+      "label": "package:flutter_svg/svg.dart",
+      "file_type": "code",
+      "source_file": "lib/src/navigation/header/header.dart",
+      "source_location": null,
+      "community": 27,
+      "norm_label": "package:flutter_svg/svg.dart",
+      "id": "package_flutter_svg_svg_dart"
+    },
+    {
+      "label": "package:flutter_test/flutter_test.dart",
+      "file_type": "code",
+      "source_file": "test/navigation/header_search_test.dart",
+      "source_location": null,
+      "community": 234,
+      "norm_label": "package:flutter_test/flutter_test.dart",
+      "id": "package_flutter_test_flutter_test_dart"
     },
     {
       "label": "package:flutter/material.dart",
@@ -28179,15 +28368,6 @@
       "community": 149,
       "norm_label": "package:flutter_bamboo_ui_kit/core.dart",
       "id": "package_flutter_bamboo_ui_kit_core_dart"
-    },
-    {
-      "label": "package:flutter_bamboo_ui_kit/gen/assets.gen.dart",
-      "file_type": "code",
-      "source_file": "lib/src/form/dropdown/dropdown_search.dart",
-      "source_location": null,
-      "community": 54,
-      "norm_label": "package:flutter_bamboo_ui_kit/gen/assets.gen.dart",
-      "id": "package_flutter_bamboo_ui_kit_gen_assets_gen_dart"
     },
     {
       "label": "package:flutter_bloc/flutter_bloc.dart",
@@ -28347,7 +28527,7 @@
       "file_type": "code",
       "source_file": "example/lib/form/calendar_screen.dart",
       "source_location": null,
-      "community": 361,
+      "community": 172,
       "norm_label": "package:example/gen/assets.gen.dart",
       "id": "package_example_gen_assets_gen_dart"
     },
@@ -30283,6 +30463,86 @@
       "relation": "defines",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_form_switch_test_dart",
+      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_test_form_switch_test_dart_app"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_form_switch_test_dart",
+      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_test_form_switch_test_dart_decorationof"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_form_switch_test_dart",
+      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_test_form_switch_test_dart_main"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_form_switch_test_dart",
+      "target": "dart_ui"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_form_switch_test_dart",
+      "target": "test_form_switch_test_dart_package_flutter_material_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_form_switch_test_dart",
+      "target": "test_form_switch_test_dart_package_flutter_bamboo_ui_kit_core_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_form_switch_test_dart",
+      "target": "test_form_switch_test_dart_package_flutter_bloc_flutter_bloc_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/form/switch_test.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_form_switch_test_dart",
+      "target": "test_form_switch_test_dart_package_flutter_test_flutter_test_dart"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "test/navigation/header_search_test.dart",
       "source_location": null,
       "weight": 1.0,
@@ -30338,6 +30598,16 @@
       "weight": 1.0,
       "source": "test_navigation_header_search_test_dart",
       "target": "test_navigation_header_search_test_dart_package_flutter_test_flutter_test_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/navigation/header_search_test.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "test_navigation_header_search_test_dart",
+      "target": "package_flutter_test_flutter_test_dart"
     },
     {
       "relation": "contains",
@@ -49602,6 +49872,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "lib_src_form_dropdown_dropdown_search_dart",
+      "target": "package_flutter_bamboo_ui_kit_gen_assets_gen_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/src/form/dropdown/dropdown_search.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lib_src_form_dropdown_dropdown_search_dart",
       "target": "package_flutter_material_dart"
     },
     {
@@ -49613,16 +49893,6 @@
       "weight": 1.0,
       "source": "lib_src_form_dropdown_dropdown_search_dart",
       "target": "package_flutter_bamboo_ui_kit_core_dart"
-    },
-    {
-      "relation": "imports",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/src/form/dropdown/dropdown_search.dart",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "lib_src_form_dropdown_dropdown_search_dart",
-      "target": "package_flutter_bamboo_ui_kit_gen_assets_gen_dart"
     },
     {
       "relation": "imports",
@@ -52552,7 +52822,57 @@
       "source_location": null,
       "weight": 1.0,
       "source": "lib_src_form_switch_switch_dart",
+      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_column"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lib_src_form_switch_switch_dart",
+      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_sizedbox"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lib_src_form_switch_switch_dart",
       "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_row"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lib_src_form_switch_switch_dart",
+      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_buildswitch"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lib_src_form_switch_switch_dart",
+      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_buildcompactswitch"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/src/form/switch/switch.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lib_src_form_switch_switch_dart",
+      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_switchtheme"
     },
     {
       "relation": "defines",
@@ -52572,7 +52892,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "lib_src_form_switch_switch_dart",
-      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_sizedbox"
+      "target": "users_mobiledev_androidstudioprojects_tlab_kickstart_repository_flutter_component_lib_src_form_switch_switch_dart_semantics"
     },
     {
       "relation": "imports",
@@ -55475,6 +55795,26 @@
       "target": "lib_src_navigation_header_header_dart_package_flutter_svg_svg_dart"
     },
     {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/src/navigation/header/header.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lib_src_navigation_header_header_dart",
+      "target": "package_flutter_bamboo_ui_kit_gen_assets_gen_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/src/navigation/header/header.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lib_src_navigation_header_header_dart",
+      "target": "package_flutter_svg_svg_dart"
+    },
+    {
       "relation": "defines",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -56630,9 +56970,9 @@
       "source_file": "CHANGELOG.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "changelog_md",
-      "target": "flutter_component_changelog_unreleased",
-      "confidence_score": 1.0
+      "target": "flutter_component_changelog_unreleased"
     },
     {
       "relation": "contains",
@@ -56680,9 +57020,9 @@
       "source_file": "CHANGELOG.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flutter_component_changelog_unreleased",
-      "target": "flutter_component_changelog_added",
-      "confidence_score": 1.0
+      "target": "flutter_component_changelog_added"
     },
     {
       "relation": "contains",
@@ -56690,9 +57030,9 @@
       "source_file": "CHANGELOG.md",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flutter_component_changelog_unreleased",
-      "target": "flutter_component_changelog_documentation",
-      "confidence_score": 1.0
+      "target": "flutter_component_changelog_documentation"
     },
     {
       "relation": "contains",
@@ -56738,11 +57078,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGELOG.md",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "flutter_component_changelog_0_0_4",
-      "target": "flutter_component_changelog_added_14",
+      "target": "flutter_component_changelog_added_16",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "flutter_component_changelog_0_0_4",
+      "target": "flutter_component_changelog_documentation_23",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGELOG.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "flutter_component_changelog_0_0_4",
+      "target": "flutter_component_changelog_added_14"
     },
     {
       "relation": "contains",
@@ -56750,18 +57110,18 @@
       "source_file": "CHANGELOG.md",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flutter_component_changelog_0_0_4",
-      "target": "flutter_component_changelog_documentation_21",
-      "confidence_score": 1.0
+      "target": "flutter_component_changelog_documentation_21"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGELOG.md",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0,
       "source": "flutter_component_changelog_0_0_3",
-      "target": "flutter_component_changelog_added_28",
+      "target": "flutter_component_changelog_added_30",
       "confidence_score": 1.0
     },
     {
@@ -56788,31 +57148,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGELOG.md",
-      "source_location": "L45",
+      "source_location": "L47",
       "weight": 1.0,
       "source": "flutter_component_changelog_0_0_3",
-      "target": "flutter_component_changelog_documentation_45",
+      "target": "flutter_component_changelog_documentation_47",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGELOG.md",
-      "source_location": "L17",
+      "source_location": "L28",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "flutter_component_changelog_0_0_3",
-      "target": "flutter_component_changelog_added_17"
+      "target": "flutter_component_changelog_added_28"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGELOG.md",
-      "source_location": "L34",
+      "source_location": "L45",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "flutter_component_changelog_0_0_3",
-      "target": "flutter_component_changelog_documentation_34"
+      "target": "flutter_component_changelog_documentation_45"
     },
     {
       "relation": "contains",
@@ -57780,9 +58140,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "doc_patches_bamboo_ui_kit_tswitch_compact_md",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_patch_untuk_flutter_bamboo_ui_kit_tswitch_varian_padat_atom_v0_0_4",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_patch_untuk_flutter_bamboo_ui_kit_tswitch_varian_padat_atom_v0_0_4"
     },
     {
       "relation": "contains",
@@ -57790,9 +58150,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tswitch_compact_patch_untuk_flutter_bamboo_ui_kit_tswitch_varian_padat_atom_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_temuan_kode_v0_0_4",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_temuan_kode_v0_0_4"
     },
     {
       "relation": "contains",
@@ -57800,9 +58160,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tswitch_compact_patch_untuk_flutter_bamboo_ui_kit_tswitch_varian_padat_atom_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_usulan",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_usulan"
     },
     {
       "relation": "contains",
@@ -57810,9 +58170,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tswitch_compact_patch_untuk_flutter_bamboo_ui_kit_tswitch_varian_padat_atom_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_implementasi_referensi_sudah_dipakai_dites_di_app",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_implementasi_referensi_sudah_dipakai_dites_di_app"
     },
     {
       "relation": "contains",
@@ -57820,9 +58180,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L143",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tswitch_compact_patch_untuk_flutter_bamboo_ui_kit_tswitch_varian_padat_atom_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_verifikasi_yang_diharapkan_kit",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_verifikasi_yang_diharapkan_kit"
     },
     {
       "relation": "contains",
@@ -57830,9 +58190,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L152",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tswitch_compact_patch_untuk_flutter_bamboo_ui_kit_tswitch_varian_padat_atom_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_setelah_kit_dirilis_mis_0_0_5_perubahan_di_app",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_setelah_kit_dirilis_mis_0_0_5_perubahan_di_app"
     },
     {
       "relation": "contains",
@@ -57840,9 +58200,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L160",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tswitch_compact_patch_untuk_flutter_bamboo_ui_kit_tswitch_varian_padat_atom_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_titik_serah_human",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_titik_serah_human"
     },
     {
       "relation": "contains",
@@ -57850,9 +58210,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L166",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tswitch_compact_patch_untuk_flutter_bamboo_ui_kit_tswitch_varian_padat_atom_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_lampiran_temuan_lain_yang_layak_patch_terpisah",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_lampiran_temuan_lain_yang_layak_patch_terpisah"
     },
     {
       "relation": "contains",
@@ -57860,9 +58220,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tswitch_compact_usulan",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_codeblock_1",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_codeblock_1"
     },
     {
       "relation": "contains",
@@ -57870,9 +58230,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tswitch-compact.md",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tswitch_compact_implementasi_referensi_sudah_dipakai_dites_di_app",
-      "target": "patches_bamboo_ui_kit_tswitch_compact_codeblock_2",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tswitch_compact_codeblock_2"
     },
     {
       "relation": "contains",
@@ -57880,9 +58240,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tsearch.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "doc_patches_bamboo_ui_kit_tsearch_md",
-      "target": "patches_bamboo_ui_kit_tsearch_patch_untuk_flutter_bamboo_ui_kit_theader_search_v0_0_4",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tsearch_patch_untuk_flutter_bamboo_ui_kit_theader_search_v0_0_4"
     },
     {
       "relation": "contains",
@@ -57890,9 +58250,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tsearch.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tsearch_patch_untuk_flutter_bamboo_ui_kit_theader_search_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tsearch_diff_usulan",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tsearch_diff_usulan"
     },
     {
       "relation": "contains",
@@ -57900,9 +58260,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tsearch.md",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tsearch_patch_untuk_flutter_bamboo_ui_kit_theader_search_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tsearch_verifikasi_yang_diharapkan_kit",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tsearch_verifikasi_yang_diharapkan_kit"
     },
     {
       "relation": "contains",
@@ -57910,9 +58270,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tsearch.md",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tsearch_patch_untuk_flutter_bamboo_ui_kit_theader_search_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tsearch_setelah_kit_dirilis_mis_0_0_5_perubahan_di_app",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tsearch_setelah_kit_dirilis_mis_0_0_5_perubahan_di_app"
     },
     {
       "relation": "contains",
@@ -57920,9 +58280,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tsearch.md",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tsearch_patch_untuk_flutter_bamboo_ui_kit_theader_search_v0_0_4",
-      "target": "patches_bamboo_ui_kit_tsearch_titik_serah_human",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tsearch_titik_serah_human"
     },
     {
       "relation": "contains",
@@ -57930,9 +58290,9 @@
       "source_file": "doc/patches/bamboo-ui-kit-tsearch.md",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "patches_bamboo_ui_kit_tsearch_diff_usulan",
-      "target": "patches_bamboo_ui_kit_tsearch_codeblock_1",
-      "confidence_score": 1.0
+      "target": "patches_bamboo_ui_kit_tsearch_codeblock_1"
     },
     {
       "relation": "contains",
@@ -60940,9 +61300,9 @@
       "source_file": "doc/components/header.md",
       "source_location": "L123",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_header_search_header",
-      "target": "components_header_autofocus_initial_text_and_clear_callback",
-      "confidence_score": 1.0
+      "target": "components_header_autofocus_initial_text_and_clear_callback"
     },
     {
       "relation": "contains",
@@ -60950,9 +61310,9 @@
       "source_file": "doc/components/header.md",
       "source_location": "L124",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_header_autofocus_initial_text_and_clear_callback",
-      "target": "components_header_codeblock_7",
-      "confidence_score": 1.0
+      "target": "components_header_codeblock_7"
     },
     {
       "relation": "contains",
@@ -60970,9 +61330,9 @@
       "source_file": "doc/components/header.md",
       "source_location": "L143",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_header_brand_header",
-      "target": "components_header_codeblock_8",
-      "confidence_score": 1.0
+      "target": "components_header_codeblock_8"
     },
     {
       "relation": "contains",
@@ -61588,6 +61948,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "doc/components/switch.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "components_switch_additional_usage",
+      "target": "components_switch_compact_switch_without_label",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "doc/components/switch.md",
       "source_location": "L41",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -61608,6 +61978,26 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "doc/components/switch.md",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "components_switch_compact_switch_without_label",
+      "target": "components_switch_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "doc/components/switch.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "components_switch_compact_switch_without_label",
+      "target": "components_switch_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "doc/components/switch.md",
       "source_location": "L42",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -61623,6 +62013,26 @@
       "confidence_score": 1.0,
       "source": "components_switch_error_state_with_message",
       "target": "components_switch_codeblock_4"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "doc/components/switch.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "components_switch_disabled_switch",
+      "target": "components_switch_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "doc/components/switch.md",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "components_switch_error_state_with_message",
+      "target": "components_switch_codeblock_6",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -64416,5 +64826,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dcbaddd317ef9b91c87feb0882fc5aaf883996d2"
+  "built_at_commit": "df8238a71f04773ae1930f237ff957916af37d16"
 }

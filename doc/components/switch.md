@@ -5,7 +5,8 @@ Overview
 
 Features
 
-- Labeled switch with optional description.
+- Labeled switch with optional label and description.
+- Compact switch-only variant (no text column) with a 42×24 default track.
 - Disabled state when interaction is not allowed.
 - Error state with an error message display.
 - Theming integration via TThemeManager and TFont helpers.
@@ -37,6 +38,41 @@ Preview
 ![Switch Preview](../assets/checkbox/switch_preview.gif)
 
 ## Additional Usage
+
+### Compact switch (without label)
+
+Omit both `label` and `description` to render only the switch. The compact track
+defaults to `42×24` and can be resized with `width` and `height`.
+
+```dart
+TSwitch(
+  value: _isEnabled,
+  onChanged: (value) {
+    setState(() {
+      _isEnabled = value;
+    });
+  },
+);
+```
+
+```dart
+Row(
+  children: [
+    TSwitch(
+      value: _isEnabled,
+      width: 56,
+      height: 32,
+      onChanged: (value) {
+        setState(() {
+          _isEnabled = value;
+        });
+      },
+    ),
+    const SizedBox(width: 8),
+    Text('Equal split'),
+  ],
+);
+```
 
 ### Disabled switch
 ```dart

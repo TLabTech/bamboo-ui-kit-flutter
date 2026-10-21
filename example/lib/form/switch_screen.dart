@@ -15,6 +15,7 @@ class _SwitchScreenState extends State<SwitchScreen> {
   bool _isFeatureEnabled = false;
   final bool _isFeatureDisableEnabled = false;
   bool _isFeatureErrorEnabled = false;
+  bool _isCompactEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -158,6 +159,48 @@ class _SwitchScreenState extends State<SwitchScreen> {
                 ),
               ),
               TAccordion(
+                title: "Compact",
+                titleStyle: TFontBold.headline(context),
+                showDivider: false,
+                initiallyExpanded: true,
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: HexColor(gray300),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      TSwitch(
+                        value: _isCompactEnabled,
+                        onChanged: (value) {
+                          setState(() {
+                            _isCompactEnabled = value;
+                          });
+                        },
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        'Equal Split',
+                        style: TFontRegular.body(context).copyWith(
+                          color: theme.foreground,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              TAccordion(
                 title: "Custom",
                 titleStyle: TFontBold.headline(context),
                 showDivider: false,
@@ -181,8 +224,6 @@ class _SwitchScreenState extends State<SwitchScreen> {
                   child: Row(
                     children: [
                       TSwitch(
-                        label: "",
-                        description: "",
                         value: _isFeatureErrorEnabled,
                         onChanged: (value) {
                           setState(() {

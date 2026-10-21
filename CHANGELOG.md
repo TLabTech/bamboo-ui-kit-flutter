@@ -4,10 +4,12 @@
 
 - `THeader.search`: new `onCleared` callback, `searchController`, `searchInitialText`, and `searchAutofocus` parameters.
 - `THeader.search`: the clear button now also emits `onChanged('')` so callers can reset their results.
+- `TSwitch`: `label` and `description` are now optional; omitting both renders a compact switch-only variant (default `42×24`) instead of an empty text column.
 
 ### Documentation
 
 - Added autofocus, initial text, external controller, and clear callback examples to `doc/components/header.md`.
+- Added compact switch examples to `doc/components/switch.md`.
 
 ## 0.0.4
 
