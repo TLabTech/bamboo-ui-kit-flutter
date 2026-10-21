@@ -71,6 +71,10 @@ class TDropdownSearchState<T> extends State<TDropdownSearch<T>> {
               .toLowerCase()
               .contains(query.toLowerCase()))
           .toList();
+      final selected = _valueNotifier.value;
+      if (selected != null && !_filteredList.contains(selected)) {
+        _filteredList = [..._filteredList, selected];
+      }
     });
   }
 

@@ -1,0 +1,1 @@
+enum TButtonLoadingPosition { leading, trailing }

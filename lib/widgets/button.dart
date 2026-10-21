@@ -1,5 +1,6 @@
 library;
 
+export '../src/form/button/button_loading_position.dart';
 export '../src/form/button/button_primary.dart';
 export '../src/form/button/button_secondary.dart';
 export '../src/form/button/button_destructive.dart';

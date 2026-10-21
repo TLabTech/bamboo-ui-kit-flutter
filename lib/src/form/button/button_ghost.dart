@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../widgets/theme.dart';
 import '../../fondation/tfont.dart';
+import 'button_loading_position.dart';
 
 class TButtonGhost extends StatefulWidget {
   final String? text;
@@ -18,6 +19,9 @@ class TButtonGhost extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget? child;
   final bool loading;
+  final TButtonLoadingPosition loadingPosition;
+  final double iconSpacing;
+  final bool spaceBetween;
   final Color? normalColor;
   final Color? pressedColor;
   final Color? loadingColor;
@@ -36,6 +40,9 @@ class TButtonGhost extends StatefulWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.loading = false,
+    this.loadingPosition = TButtonLoadingPosition.leading,
+    this.iconSpacing = 10,
+    this.spaceBetween = false,
     this.child,
     this.normalColor,
     this.pressedColor,
@@ -56,6 +63,9 @@ class TButtonGhost extends StatefulWidget {
     this.longPressDuration = const Duration(seconds: 1),
     this.textStyle,
     this.loading = false,
+    this.loadingPosition = TButtonLoadingPosition.leading,
+    this.iconSpacing = 10,
+    this.spaceBetween = false,
     this.normalColor,
     this.pressedColor,
     this.loadingColor,
@@ -140,21 +150,28 @@ class _TButtonGhostState extends State<TButtonGhost> {
       return widget.child!;
     }
 
+    final loadingIcon = SizedBox(
+      width: 18,
+      height: 18,
+      child: CircularProgressIndicator(
+        color: widget.loadingColor != null
+            ? widget.loadingColor!
+            : _isPressed
+                ? (widget.pressedColor ?? theme.primaryPressed)
+                : (widget.normalColor ?? theme.primary),
+      ),
+    );
+
+    final bool loadingTrailing =
+        widget.loadingPosition == TButtonLoadingPosition.trailing;
+
     Widget? leadingIcon = widget.loading
-        ? SizedBox(
-            width: 18,
-            height: 18,
-            child: CircularProgressIndicator(
-              color: widget.loadingColor != null
-                  ? widget.loadingColor!
-                  : _isPressed
-                      ? (widget.pressedColor ?? theme.primaryPressed)
-                      : (widget.normalColor ?? theme.primary),
-            ),
-          )
+        ? (loadingTrailing ? widget.prefixIcon : loadingIcon)
         : widget.prefixIcon;
 
-    Widget? trailingIcon = widget.loading ? null : widget.suffixIcon;
+    Widget? trailingIcon = widget.loading
+        ? (loadingTrailing ? loadingIcon : null)
+        : widget.suffixIcon;
 
     List<Widget> children = [];
 
@@ -163,13 +180,11 @@ class _TButtonGhostState extends State<TButtonGhost> {
     }
 
     if (leadingIcon != null && widget.text != null) {
-      children.add(const SizedBox(width: 10));
+      children.add(SizedBox(width: widget.iconSpacing));
     }
 
-    if (widget.text != null) {
-      children.add(
-        Flexible(
-          child: AutoSizeText(
+    final textWidget = widget.text != null
+        ? AutoSizeText(
             widget.text!,
             maxLines: 1,
             minFontSize: widget.minFontSize,
@@ -181,13 +196,15 @@ class _TButtonGhostState extends State<TButtonGhost> {
                       ? (widget.pressedColor ?? theme.primaryPressed)
                       : (widget.normalColor ?? theme.primary),
                 ),
-          ),
-        ),
-      );
+          )
+        : null;
+
+    if (textWidget != null) {
+      children.add(Flexible(child: textWidget));
     }
 
     if (trailingIcon != null && widget.text != null) {
-      children.add(const SizedBox(width: 10));
+      children.add(SizedBox(width: widget.iconSpacing));
     }
 
     if (trailingIcon != null) {
@@ -197,6 +214,21 @@ class _TButtonGhostState extends State<TButtonGhost> {
     bool hasLeading = leadingIcon != null;
     bool hasTrailing = trailingIcon != null;
     bool hasOnlyText = !hasLeading && !hasTrailing;
+
+    if (widget.spaceBetween && textWidget != null && !hasOnlyText) {
+      return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (leadingIcon != null) leadingIcon,
+          if (hasLeading && hasTrailing)
+            Expanded(child: Center(child: textWidget))
+          else
+            Flexible(child: textWidget),
+          if (trailingIcon != null) trailingIcon,
+        ],
+      );
+    }
 
     if (!widget.centerContent) {
       return Row(

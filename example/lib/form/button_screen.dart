@@ -14,8 +14,12 @@ class ButtonScreen extends StatefulWidget {
 class _ButtonScreenState extends State<ButtonScreen> {
   @override
   Widget build(BuildContext context) {
-    final theme = context.read<TThemeManager>().state;
-    final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+    final theme = context
+        .read<TThemeManager>()
+        .state;
+    final isDarkMode = theme == context
+        .read<TThemeManager>()
+        .darkTheme;
 
     return Scaffold(
       backgroundColor: theme.background,
@@ -73,7 +77,10 @@ class _ButtonScreenState extends State<ButtonScreen> {
                     spacing: 16,
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width,
                         height: 48,
                         child: TButtonPrimary(
                           text: "Button Primary",
@@ -84,7 +91,10 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width,
                         height: 48,
                         child: TButtonSecondary(
                           text: "Button Secondary",
@@ -100,7 +110,10 @@ class _ButtonScreenState extends State<ButtonScreen> {
                         longPressDuration: Duration(seconds: 3),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width,
                         height: 48,
                         child: TButtonOutline(
                           text: "Button Outline",
@@ -338,7 +351,10 @@ class _ButtonScreenState extends State<ButtonScreen> {
                       color: HexColor(gray300),
                     ),
                   ),
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   child: Column(
                     spacing: 16,
                     children: [
@@ -425,11 +441,18 @@ class _ButtonScreenState extends State<ButtonScreen> {
                       color: HexColor(gray300),
                     ),
                   ),
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   child: Column(
+                    spacing: 16,
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width,
                         height: 48,
                         child: TButtonPrimary(
                           loading: true,
@@ -443,7 +466,134 @@ class _ButtonScreenState extends State<ButtonScreen> {
                           ),
                           onPressed: () {},
                         ),
+                      ),
+                      SizedBox(
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width,
+                        height: 48,
+                        child: TButtonPrimary(
+                          loading: true,
+                          text: "Button Primary (Right Loading)",
+                          loadingPosition: TButtonLoadingPosition.trailing,
+                          prefixIcon: SvgPicture.asset(
+                            Assets.svg.plus,
+                            colorFilter: ColorFilter.mode(
+                              Colors.white,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
                       )
+                    ],
+                  ),
+                ),
+              ),
+              TAccordion(
+                title: "Button Icon Spacing",
+                titleStyle: TFontBold.headline(context),
+                showDivider: false,
+                initiallyExpanded: true,
+                trailing: SvgPicture.asset(
+                  Assets.svg.chevronDown,
+                  colorFilter: ColorFilter.mode(
+                    isDarkMode ? Colors.white : Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: HexColor(gray300),
+                    ),
+                  ),
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  child: Column(
+                    spacing: 16,
+                    children: [
+                      TButtonPrimary(
+                        text: "Icon Spacing 4",
+                        iconSpacing: 4,
+                        prefixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                      TButtonPrimary(
+                        text: "Icon Spacing 16",
+                        iconSpacing: 16,
+                        prefixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                      TButtonPrimary(
+                        text: "Right Icon Spacing 16",
+                        iconSpacing: 16,
+                        suffixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                      TButtonPrimary(
+                        text: "Loading Spacing 16",
+                        loading: true,
+                        iconSpacing: 16,
+                        loadingPosition: TButtonLoadingPosition.trailing,
+                        onPressed: () {},
+                      ),
+                      TButtonPrimary(
+                        text: "Space Between",
+                        spaceBetween: true,
+                        prefixIcon: SvgPicture.asset(
+                          Assets.svg.plus,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        suffixIcon: SvgPicture.asset(
+                          Assets.svg.chevronDown,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                      TButtonPrimary(
+                        text: "Space Between Loading",
+                        spaceBetween: true,
+                        loading: true,
+                        loadingPosition: TButtonLoadingPosition.trailing,
+                        // prefixIcon: SvgPicture.asset(
+                        //   Assets.svg.plus,
+                        //   colorFilter: ColorFilter.mode(
+                        //     Colors.white,
+                        //     BlendMode.srcIn,
+                        //   ),
+                        // ),
+                        onPressed: () {},
+                      ),
                     ],
                   ),
                 ),
