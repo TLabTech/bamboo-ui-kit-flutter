@@ -1,3 +1,14 @@
+## Unreleased
+
+### Added
+
+- `THeader.search`: new `onCleared` callback, `searchController`, `searchInitialText`, and `searchAutofocus` parameters.
+- `THeader.search`: the clear button now also emits `onChanged('')` so callers can reset their results.
+
+### Documentation
+
+- Added autofocus, initial text, external controller, and clear callback examples to `doc/components/header.md`.
+
 ## 0.0.4
 
 ### Added

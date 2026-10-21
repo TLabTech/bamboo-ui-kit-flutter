@@ -9,6 +9,7 @@ Features
 - Optional back navigation behavior
 - Support for prefix action, suffix action, and leading avatar
 - Search bar mode with text input callbacks
+- Search bar supports autofocus, initial text, an external controller, and a clear callback
 - Brand-only mode for logo-centric layouts
 - Theming compatibility using TThemeManager
 - Supports custom icons, widgets, and flexible layout composition
@@ -118,6 +119,25 @@ THeader.search(
   },
 );
 ```
+
+#### Autofocus, initial text, and clear callback
+```dart
+THeader.search(
+  hintText: 'Cari lokasi',
+  onChanged: (value) {
+    // Also called with '' when the clear button is pressed
+  },
+  onCleared: () {
+    // Clear the current results
+  },
+  searchAutofocus: true,
+  searchInitialText: 'Yogyakarta',
+);
+```
+
+Use `searchController` instead of `searchInitialText` when the caller needs to
+read or update the keyword itself. The header never disposes a controller it did
+not create; `searchInitialText` is only applied when the field is created.
 
 ### Brand Header
 ```dart
