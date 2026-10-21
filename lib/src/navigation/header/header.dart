@@ -23,6 +23,19 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   final HeaderType headerType;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
+
+  /// Dipanggil setelah tombol ✕ mengosongkan field (varian `search`).
+  final VoidCallback? onCleared;
+
+  /// Controller eksternal; bila null header membuat sendiri (varian `search`).
+  final TextEditingController? searchController;
+
+  /// Teks awal field bila `searchController` null (varian `search`).
+  final String? searchInitialText;
+
+  /// Fokus otomatis ke field saat dibangun (varian `search`).
+  final bool searchAutofocus;
+
   final Widget icon;
 
   const THeader({
@@ -43,6 +56,10 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         hintText = null,
         onChanged = null,
         onSubmitted = null,
+        onCleared = null,
+        searchController = null,
+        searchInitialText = null,
+        searchAutofocus = false,
         icon = const Icon(Icons.home, color: Colors.white);
 
   const THeader.nested({
@@ -63,6 +80,10 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         hintText = null,
         onChanged = null,
         onSubmitted = null,
+        onCleared = null,
+        searchController = null,
+        searchInitialText = null,
+        searchAutofocus = false,
         icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
 
   const THeader.homepage({
@@ -83,6 +104,10 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         onChanged = null,
         iconColor = null,
         onSubmitted = null,
+        onCleared = null,
+        searchController = null,
+        searchInitialText = null,
+        searchAutofocus = false,
         icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
 
   const THeader.search({
@@ -94,6 +119,10 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.prefixAction,
     this.iconColor,
     this.bottomColor,
+    this.onCleared,
+    this.searchController,
+    this.searchInitialText,
+    this.searchAutofocus = false,
   })  : headerType = HeaderType.search,
         title = '',
         titleStyle = null,
@@ -123,7 +152,11 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         iconColor = null,
         hintText = null,
         onChanged = null,
-        onSubmitted = null;
+        onSubmitted = null,
+        onCleared = null,
+        searchController = null,
+        searchInitialText = null,
+        searchAutofocus = false;
 
   @override
   State<THeader> createState() => _THeaderState();
@@ -133,22 +166,47 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _THeaderState extends State<THeader> {
-  final TextEditingController _controller = TextEditingController();
+  late TextEditingController _controller;
+  bool _ownsController = false;
   bool _isTextNotEmpty = false;
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
-      setState(() {
-        _isTextNotEmpty = _controller.text.isNotEmpty;
-      });
+    _controller = widget.searchController ??
+        TextEditingController(text: widget.searchInitialText);
+    _ownsController = widget.searchController == null;
+    _isTextNotEmpty = _controller.text.isNotEmpty;
+    _controller.addListener(_handleControllerChanged);
+  }
+
+  void _handleControllerChanged() {
+    final isTextNotEmpty = _controller.text.isNotEmpty;
+    if (isTextNotEmpty == _isTextNotEmpty) return;
+    setState(() {
+      _isTextNotEmpty = isTextNotEmpty;
     });
   }
 
   @override
+  void didUpdateWidget(covariant THeader oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.searchController == oldWidget.searchController) return;
+
+    _controller.removeListener(_handleControllerChanged);
+    if (_ownsController) _controller.dispose();
+
+    _controller = widget.searchController ??
+        TextEditingController(text: widget.searchInitialText);
+    _ownsController = widget.searchController == null;
+    _isTextNotEmpty = _controller.text.isNotEmpty;
+    _controller.addListener(_handleControllerChanged);
+  }
+
+  @override
   void dispose() {
-    _controller.dispose();
+    _controller.removeListener(_handleControllerChanged);
+    if (_ownsController) _controller.dispose();
     super.dispose();
   }
 
@@ -284,6 +342,7 @@ class _THeaderState extends State<THeader> {
                   Expanded(
                     child: TextField(
                       controller: _controller,
+                      autofocus: widget.searchAutofocus,
                       decoration: InputDecoration(
                         hintText: widget.hintText,
                         hintStyle: TFontRegular.caption1(context)
@@ -309,6 +368,8 @@ class _THeaderState extends State<THeader> {
                       ),
                       onPressed: () {
                         _controller.clear();
+                        widget.onChanged?.call('');
+                        widget.onCleared?.call();
                       },
                     ),
                 ],
