@@ -2385,13 +2385,13 @@
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/.opencode/opencode.json": {
-    "mtime": 1782196720.2610362,
-    "ast_hash": "e5f74d14a81702b55bdf53b33ec991d7",
+    "mtime": 1794359790.2147236,
+    "ast_hash": "5fc4c3ee6b7021786c69de2027704cb5",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/.opencode/plugins/graphify.js": {
-    "mtime": 1782196720.2613552,
-    "ast_hash": "64ccd3c03dbfe0980b6095766f5c4e52",
+    "mtime": 1794359811.5169528,
+    "ast_hash": "ef5340cae9e7770dee856daf836e1546",
     "semantic_hash": ""
   },
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/.vscode/launch.json": {
@@ -2627,11 +2627,6 @@
   "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/test/form/switch_test.dart": {
     "mtime": 1792550679.4260778,
     "ast_hash": "4ab59b72b30a3a2e4a15aab2f324f312",
-    "semantic_hash": ""
-  },
-  "/Users/mobiledev/AndroidStudioProjects/tlab-kickstart-repository/flutter-component/doc/bamboo-ui-kit-tsearch.md": {
-    "mtime": 1792554063.41548,
-    "ast_hash": "1fd6d77b1313b1adcc4c422cb71551b6",
     "semantic_hash": ""
   }
 }
