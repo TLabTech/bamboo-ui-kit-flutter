@@ -36,6 +36,13 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
   /// Fokus otomatis ke field saat dibangun (varian `search`).
   final bool searchAutofocus;
 
+  /// Warna border field varian `search`; null = tanpa border (perilaku 0.0.5).
+  final Color? searchFieldBorderColor;
+
+  /// Latar field varian `search`; null = `theme.accent`, atau
+  /// `theme.background` saat [searchFieldBorderColor] diisi.
+  final Color? searchFieldBackgroundColor;
+
   final Widget icon;
 
   const THeader({
@@ -60,6 +67,8 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         searchController = null,
         searchInitialText = null,
         searchAutofocus = false,
+        searchFieldBorderColor = null,
+        searchFieldBackgroundColor = null,
         icon = const Icon(Icons.home, color: Colors.white);
 
   const THeader.nested({
@@ -84,6 +93,8 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         searchController = null,
         searchInitialText = null,
         searchAutofocus = false,
+        searchFieldBorderColor = null,
+        searchFieldBackgroundColor = null,
         icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
 
   const THeader.homepage({
@@ -108,6 +119,8 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         searchController = null,
         searchInitialText = null,
         searchAutofocus = false,
+        searchFieldBorderColor = null,
+        searchFieldBackgroundColor = null,
         icon = const Icon(Icons.arrow_back_ios, color: Colors.white);
 
   const THeader.search({
@@ -123,6 +136,8 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
     this.searchController,
     this.searchInitialText,
     this.searchAutofocus = false,
+    this.searchFieldBorderColor,
+    this.searchFieldBackgroundColor,
   })  : headerType = HeaderType.search,
         title = '',
         titleStyle = null,
@@ -156,7 +171,9 @@ class THeader extends StatefulWidget implements PreferredSizeWidget {
         onCleared = null,
         searchController = null,
         searchInitialText = null,
-        searchAutofocus = false;
+        searchAutofocus = false,
+        searchFieldBorderColor = null,
+        searchFieldBackgroundColor = null;
 
   @override
   State<THeader> createState() => _THeaderState();
@@ -318,16 +335,23 @@ class _THeaderState extends State<THeader> {
 
   Widget _buildSearchHeader(TTheme theme) {
     final isDarkMode = theme == context.read<TThemeManager>().darkTheme;
+    final hasBorder = widget.searchFieldBorderColor != null;
+    final fieldBackgroundColor = widget.searchFieldBackgroundColor ??
+        (hasBorder ? theme.background : theme.accent);
     return Padding(
       padding: EdgeInsets.only(left: 8.0, right: 16.0),
       child: Row(
         children: [
           Flexible(
             child: Container(
+              key: const ValueKey('theader-search-field'),
               padding: const EdgeInsets.only(left: 12.0),
               decoration: BoxDecoration(
-                color: theme.accent,
+                color: fieldBackgroundColor,
                 borderRadius: BorderRadius.circular(8.0),
+                border: hasBorder
+                    ? Border.all(color: widget.searchFieldBorderColor!)
+                    : null,
               ),
               child: Row(
                 children: [

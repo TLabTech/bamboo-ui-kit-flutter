@@ -139,6 +139,20 @@ Use `searchController` instead of `searchInitialText` when the caller needs to
 read or update the keyword itself. The header never disposes a controller it did
 not create; `searchInitialText` is only applied when the field is created.
 
+#### Search field border and background
+```dart
+THeader.search(
+  hintText: 'Cari lokasi',
+  searchFieldBorderColor: theme.border,
+  searchFieldBackgroundColor: theme.background,
+);
+```
+
+`searchFieldBorderColor` draws a 1 px outline with radius 8 and, when
+`searchFieldBackgroundColor` is not set, switches the field background to
+`theme.background`. Without these parameters the field keeps the accent
+background and no border.
+
 ### Brand Header
 ```dart
 THeader.brand(
